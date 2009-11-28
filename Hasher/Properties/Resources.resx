@@ -127,7 +127,7 @@
     <value>The HashAlgorithmList cannot be null.</value>
   </data>
   <data name="invalidCrcOrder" xml:space="preserve">
-    <value>CRC Order must represent full bytes and be between 8 and 64.</value>
+    <value>The CRC Order must represent full bytes and be between 8 and 64.</value>
   </data>
   <data name="invalidFnvOrder" xml:space="preserve">
     <value>The FNV Order can only be 32 or 64 bits long.</value>
@@ -143,6 +143,9 @@
   </data>
   <data name="invalidSnefruPasses" xml:space="preserve">
     <value>The number of Snefru2 Passes can only be 4 or 8.</value>
+  </data>
+  <data name="invalidSumOrder" xml:space="preserve">
+    <value>The Sum Order must represent full bytes and be between 8 and 64.</value>
   </data>
   <data name="lengthMultipleOfTypeSize" xml:space="preserve">
     <value>The number of bytes to convert must be a multiple of the size of the type.</value>

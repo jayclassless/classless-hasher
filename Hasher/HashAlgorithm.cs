@@ -88,10 +88,12 @@ namespace Classless.Hasher {
 				case "Classless.Hasher.SHA384": return new SHA384();
 				case "Classless.Hasher.SHA512": return new SHA512();
 				case "Classless.Hasher.Snefru2": return new Snefru2(Snefru2Parameters.GetParameters(Snefru2Standard.Snefru2_8_256));
+				case "Classless.Hasher.Sum": return new Sum(SumParameters.GetParameters(SumStandard.SUM32));
 				case "Classless.Hasher.SumBSD": return new SumBSD();
 				case "Classless.Hasher.SumSysV": return new SumSysV();
 				case "Classless.Hasher.Tiger": return new Tiger();
 				case "Classless.Hasher.Whirlpool": return new Whirlpool();
+				case "Classless.Hasher.XOR8": return new XOR8();
 				case "Classless.Hasher.XUM32": return new XUM32();
 				case "Classless.Hasher.Utilities.MultiHash": return new MultiHash();
 				case "Classless.Hasher.Utilities.ParallelHash": return new ParallelHash();
@@ -124,10 +126,12 @@ namespace Classless.Hasher {
 				case "SHA384": return new SHA384();
 				case "SHA512": return new SHA512();
 				case "Snefru2": return new Snefru2(Snefru2Parameters.GetParameters(Snefru2Standard.Snefru2_8_256));
+				case "Sum": return new Sum(SumParameters.GetParameters(SumStandard.SUM32));
 				case "SumBSD": return new SumBSD();
 				case "SumSysV": return new SumSysV();
 				case "Tiger": return new Tiger();
 				case "Whirlpool": return new Whirlpool();
+				case "XOR8": return new XOR8();
 				case "XUM32": return new XUM32();
 				case "MultiHash": return new MultiHash();
 				case "ParallelHash": return new ParallelHash();
@@ -151,6 +155,7 @@ namespace Classless.Hasher {
 				case "SHA-512": return new SHA512();
 				case "Sum-BSD": return new SumBSD();
 				case "Sum-SysV": return new SumSysV();
+				case "XOR-8": return new XOR8();
 				case "XUM-32": return new XUM32();
 
 				// Look up names for paramatized classes.
@@ -267,6 +272,16 @@ namespace Classless.Hasher {
 				case "Snefru2-4-256": return new Snefru2(Snefru2Parameters.GetParameters(Snefru2Standard.Snefru2_4_256));
 				case "Snefru2-8-128": return new Snefru2(Snefru2Parameters.GetParameters(Snefru2Standard.Snefru2_8_128));
 				case "Snefru2-8-256": return new Snefru2(Snefru2Parameters.GetParameters(Snefru2Standard.Snefru2_8_256));
+				case "Sum8": return new Sum(SumParameters.GetParameters(SumStandard.SUM8));
+				case "Sum-8": return new Sum(SumParameters.GetParameters(SumStandard.SUM8));
+				case "Sum16": return new Sum(SumParameters.GetParameters(SumStandard.SUM16));
+				case "Sum-16": return new Sum(SumParameters.GetParameters(SumStandard.SUM16));
+				case "Sum24": return new Sum(SumParameters.GetParameters(SumStandard.SUM24));
+				case "Sum-24": return new Sum(SumParameters.GetParameters(SumStandard.SUM24));
+				case "Sum32": return new Sum(SumParameters.GetParameters(SumStandard.SUM32));
+				case "Sum-32": return new Sum(SumParameters.GetParameters(SumStandard.SUM32));
+				case "Sum64": return new Sum(SumParameters.GetParameters(SumStandard.SUM64));
+				case "Sum-64": return new Sum(SumParameters.GetParameters(SumStandard.SUM64));
 
 				// When in doubt, let the host framework try to figure it out.
 				default: return System.Security.Cryptography.HashAlgorithm.Create(hashName);

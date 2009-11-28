@@ -79,6 +79,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Sum.cs" />
+    <Compile Include="SumParameters.cs" />
+    <Compile Include="SumStandard.cs" />
     <Compile Include="Utilities\BitTools.cs" />
     <Compile Include="HashAlgorithmCollection.cs" />
     <Compile Include="Utilities\MultiHash.cs" />

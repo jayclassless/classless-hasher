@@ -181,6 +181,16 @@ namespace Classless.Hasher.Tests {
 			new object[] { "Snefru2-4-256", typeof(Snefru2), Snefru2Parameters.GetParameters(Snefru2Standard.Snefru2_4_256) },
 			new object[] { "Snefru2-8-128", typeof(Snefru2), Snefru2Parameters.GetParameters(Snefru2Standard.Snefru2_8_128) },
 			new object[] { "Snefru2-8-256", typeof(Snefru2), Snefru2Parameters.GetParameters(Snefru2Standard.Snefru2_8_256) },
+			new object[] { "Sum8", typeof(Sum), SumParameters.GetParameters(SumStandard.SUM8) },
+			new object[] { "Sum-8", typeof(Sum), SumParameters.GetParameters(SumStandard.SUM8) },
+			new object[] { "Sum16", typeof(Sum), SumParameters.GetParameters(SumStandard.SUM16) },
+			new object[] { "Sum-16", typeof(Sum), SumParameters.GetParameters(SumStandard.SUM16) },
+			new object[] { "Sum24", typeof(Sum), SumParameters.GetParameters(SumStandard.SUM24) },
+			new object[] { "Sum-24", typeof(Sum), SumParameters.GetParameters(SumStandard.SUM24) },
+			new object[] { "Sum32", typeof(Sum), SumParameters.GetParameters(SumStandard.SUM32) },
+			new object[] { "Sum-32", typeof(Sum), SumParameters.GetParameters(SumStandard.SUM32) },
+			new object[] { "Sum64", typeof(Sum), SumParameters.GetParameters(SumStandard.SUM64) },
+			new object[] { "Sum-64", typeof(Sum), SumParameters.GetParameters(SumStandard.SUM64) },
 		};
 
 		static public object[] HashCreateDefaultedParametrizedNames = {
@@ -194,6 +204,8 @@ namespace Classless.Hasher.Tests {
 			new object[] { "Classless.Hasher.HAVAL", typeof(HAVAL), HAVALParameters.GetParameters(HAVALStandard.HAVAL_5_256) },
 			new object[] { "Snefru2", typeof(Snefru2), Snefru2Parameters.GetParameters(Snefru2Standard.Snefru2_8_256) },
 			new object[] { "Classless.Hasher.Snefru2", typeof(Snefru2), Snefru2Parameters.GetParameters(Snefru2Standard.Snefru2_8_256) },
+			new object[] { "Sum", typeof(Sum), SumParameters.GetParameters(SumStandard.SUM32) },
+			new object[] { "Classless.Hasher.Sum", typeof(Sum), SumParameters.GetParameters(SumStandard.SUM32) },
 		};
 
 		[Test, TestCaseSource("HashCreateParametrizedNames"), TestCaseSource("HashCreateDefaultedParametrizedNames")]
@@ -224,6 +236,7 @@ namespace Classless.Hasher.Tests {
 			new object[] { "SHA-512", typeof(SHA512) },
 			new object[] { "Sum-BSD", typeof(SumBSD) },
 			new object[] { "Sum-SysV", typeof(SumSysV) },
+			new object[] { "XOR-8", typeof(XOR8) },
 			new object[] { "XUM-32", typeof(XUM32) },
 		};
 

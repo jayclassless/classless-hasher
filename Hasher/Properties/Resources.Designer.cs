@@ -88,7 +88,7 @@ namespace Classless.Hasher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CRC Order must represent full bytes and be between 8 and 64..
+        ///   Looks up a localized string similar to The CRC Order must represent full bytes and be between 8 and 64..
         /// </summary>
         internal static string invalidCrcOrder {
             get {
@@ -138,6 +138,15 @@ namespace Classless.Hasher.Properties {
         internal static string invalidSnefruPasses {
             get {
                 return ResourceManager.GetString("invalidSnefruPasses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Sum Order must represent full bytes and be between 8 and 64..
+        /// </summary>
+        internal static string invalidSumOrder {
+            get {
+                return ResourceManager.GetString("invalidSumOrder", resourceCulture);
             }
         }
         

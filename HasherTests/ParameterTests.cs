@@ -36,6 +36,7 @@ namespace Classless.Hasher.Tests {
 			new object[] { typeof(FNV) },
 			new object[] { typeof(GHash) },
 			new object[] { typeof(HAVAL) },
+			new object[] { typeof(Sum) },
 		};
 
 		[Test, TestCaseSource("Algorithms"), ExpectedException(typeof(ArgumentNullException))]
@@ -164,6 +165,22 @@ namespace Classless.Hasher.Tests {
 		[Test, TestCaseSource("CrcParameterAliases")]
 		public void CrcParameterAliasesTest(CRCStandard alias, CRCStandard master) {
 			Assert.AreEqual(CRCParameters.GetParameters(master), CRCParameters.GetParameters(alias));
+		}
+
+
+		static public IEnumerable BadSumOrders {
+			get {
+				for (int i = -500; i <= 500; i++) {
+					if ((i < 0) || (i > 64) || ((i % 8) > 0)) {
+						yield return new TestCaseData(i);
+					}
+				}
+			}
+		} 
+
+		[Test, TestCaseSource("BadSumOrders"), ExpectedException(typeof(ArgumentOutOfRangeException))]
+		public void SumOrderTest(int order) {
+			SumParameters param = new SumParameters(order);
 		}
 
 
