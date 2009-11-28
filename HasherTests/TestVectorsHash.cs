@@ -783,6 +783,7 @@ namespace Classless.Hasher.Tests {
 			new object[] { new JenkinsHash(), Battery.Message, h("4687CE02") },
 			new object[] { new JenkinsHash(), Battery.QuickFox, h("FC1558DE") },
 			new object[] { new JenkinsHash(), Battery.MillionAs, h("8E375E5B") },
+			new object[] { new JenkinsHash(), s("1234567890a"), h("E0247204") },
 
 
 			// MD2
