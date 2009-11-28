@@ -53,7 +53,7 @@ namespace Classless.Hasher {
 		/// <returns>An instance of a cryptographic object to perform the hash algorithm.</returns>
 		/// <remarks>The default implementation of HashAlgorithm is SHA1.</remarks>
 		new public static System.Security.Cryptography.HashAlgorithm Create() {
-			return HashAlgorithm.Create("Classless.Hasher.SHA1");
+			return HashAlgorithm.Create(typeof(HashAlgorithm).FullName);
 		}
 
 		/// <summary>Creates an instance of the specified implementation of HashAlgorithm.</summary>
@@ -95,6 +95,7 @@ namespace Classless.Hasher {
 				case "Classless.Hasher.XUM32": return new XUM32();
 				case "Classless.Hasher.Utilities.MultiHash": return new MultiHash();
 				case "Classless.Hasher.Utilities.ParallelHash": return new ParallelHash();
+				case "Classless.Hasher.HashAlgorithm": return new SHA1();
 
 				// Look up by class name.
 				case "Adler32": return new Adler32();
@@ -130,6 +131,7 @@ namespace Classless.Hasher {
 				case "XUM32": return new XUM32();
 				case "MultiHash": return new MultiHash();
 				case "ParallelHash": return new ParallelHash();
+				case "HashAlgorithm": return new SHA1();
 
 				// Look up by alternate names.
 				case "Adler-32": return new Adler32();
@@ -142,6 +144,7 @@ namespace Classless.Hasher {
 				case "RIPEMD-160": return new RIPEMD160();
 				case "RIPEMD-256": return new RIPEMD256();
 				case "RIPEMD-320": return new RIPEMD320();
+				case "SHA": return new SHA1();
 				case "SHA-224": return new SHA224();
 				case "SHA-256": return new SHA256();
 				case "SHA-384": return new SHA384();

@@ -48,6 +48,7 @@ namespace Classless.Hasher.Tests {
 			}
 		}
 
+
 		static public IEnumerable HashCreateNames {
 			get {
 				Assembly classless = Assembly.GetAssembly(typeof(HashAlgorithm));
@@ -202,8 +203,7 @@ namespace Classless.Hasher.Tests {
 			Assert.AreEqual(((IParametrizedHashAlgorithm)hasher).Parameters, expectedParameters);
 		}
 
-
-
+		
 		static public object[] HashCreateAlternateNames = {
 			new object[] { "Adler-32", typeof(Adler32) },
 			new object[] { "ELF", typeof(ELFHash) },
@@ -215,6 +215,9 @@ namespace Classless.Hasher.Tests {
 			new object[] { "RIPEMD-160", typeof(RIPEMD160) },
 			new object[] { "RIPEMD-256", typeof(RIPEMD256) },
 			new object[] { "RIPEMD-320", typeof(RIPEMD320) },
+			new object[] { "Classless.Hasher.HashAlgorithm", typeof(SHA1) },
+			new object[] { "HashAlgorithm", typeof(SHA1) },
+			new object[] { "SHA", typeof(SHA1) },
 			new object[] { "SHA-224", typeof(SHA224) },
 			new object[] { "SHA-256", typeof(SHA256) },
 			new object[] { "SHA-384", typeof(SHA384) },
@@ -226,6 +229,21 @@ namespace Classless.Hasher.Tests {
 
 		[Test, TestCaseSource("HashCreateAlternateNames")]
 		public void CreateAlternateTest(string name, Type expectedType) {
+			Assert.IsInstanceOf(expectedType, HashAlgorithm.Create(name));
+		}
+
+
+		static public object[] HashCreateFrameworkDefaultNames = {
+			new object[] { "System.Security.Cryptography.SHA1", typeof(System.Security.Cryptography.SHA1) },
+			new object[] { "System.Security.Cryptography.HashAlgorithm", typeof(System.Security.Cryptography.SHA1) },
+			new object[] { "System.Security.Cryptography.MD5", typeof(System.Security.Cryptography.MD5) },
+			new object[] { "System.Security.Cryptography.SHA256", typeof(System.Security.Cryptography.SHA256) },
+			new object[] { "System.Security.Cryptography.SHA384", typeof(System.Security.Cryptography.SHA384) },
+			new object[] { "System.Security.Cryptography.SHA512", typeof(System.Security.Cryptography.SHA512) },
+		};
+
+		[Test, TestCaseSource("HashCreateFrameworkDefaultNames")]
+		public void CreateDefaultFrameworkTest(string name, Type expectedType) {
 			Assert.IsInstanceOf(expectedType, HashAlgorithm.Create(name));
 		}
 	}
