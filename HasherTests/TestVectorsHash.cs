@@ -1144,6 +1144,19 @@ namespace Classless.Hasher.Tests {
 			new object[] { new XUM32(), Battery.MillionAs, h("9E65BFF7") },
 
 
+			// XOR8
+			new object[] { new XOR8(), Battery.Empty, h("00") },
+			new object[] { new XOR8(), Battery.A, h("61") },
+			new object[] { new XOR8(), Battery.ABC, h("60") },
+			new object[] { new XOR8(), Battery.Alphabet, h("1B") },
+			new object[] { new XOR8(), Battery.Alphanumeric, h("01") },
+			new object[] { new XOR8(), Battery.Numeric, h("01") },
+			new object[] { new XOR8(), Battery.NumericRepeated, h("00") },
+			new object[] { new XOR8(), Battery.Message, h("43") },
+			new object[] { new XOR8(), Battery.QuickFox, h("4F") },
+			new object[] { new XOR8(), Battery.MillionAs, h("00") },
+
+
 			// Parallel
 			new object[] { new ParallelHash(new HashAlgorithm[] { new Whirlpool() }), Battery.Alphabet, h("F1D754662636FFE92C82EBB9212A484A8D38631EAD4238F5442EE13B8054E41B08BF2A9251C30B6A0B8AAE86177AB4A6F68F673E7207865D5D9819A3DBA4EB3B") },
 			new object[] { new ParallelHash(new HashAlgorithm[] { new CRC(CRCParameters.GetParameters(CRCStandard.CRC32)), new MD5(), new SHA1() }), Battery.Alphabet, h("4C2750BDC3FCD3D76192E4007DFB496CCA67E13B32D10C7B8CF96570CA04CE37F2A19D84240D3A89") },
