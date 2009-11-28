@@ -35,7 +35,9 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the XOR8 class.</summary>
-		public XOR8() : base() { }
+		public XOR8() : base() {
+			HashSizeValue = 8;
+		}
 
 
 		/// <summary>Initializes the algorithm.</summary>
