@@ -39,6 +39,7 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlockHashAlgorithmTests.cs" />
     <Compile Include="HashAlgorithmTests.cs" />
     <Compile Include="ParameterTests.cs" />
     <Compile Include="TestVectors.cs" />
