@@ -165,5 +165,11 @@ namespace Classless.Hasher.Tests {
 		public void CrcParameterAliasesTest(CRCStandard alias, CRCStandard master) {
 			Assert.AreEqual(CRCParameters.GetParameters(master), CRCParameters.GetParameters(alias));
 		}
+
+
+		[Test]
+		public void EqualsNullTest() {
+			Assert.IsFalse(CRCParameters.GetParameters(CRCStandard.CRC32).Equals(null));
+		}
 	}
 }
