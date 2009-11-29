@@ -25,6 +25,7 @@
 #endregion
 
 using System;
+using System.Text;
 
 namespace Classless.Hasher.Tests {
 	abstract class TestVectors {
@@ -59,21 +60,31 @@ namespace Classless.Hasher.Tests {
 		}
 
 
-		static public byte[] s(string input) {
+		static public byte[] s(string input) { return s(input, 1); }
+		static public byte[] s(string input, int repeat) {
 			if (input == null) {
 				return System.Text.Encoding.ASCII.GetBytes(String.Empty);
 			} else {
-				return System.Text.Encoding.ASCII.GetBytes(input);
+				StringBuilder sb = new StringBuilder(repeat * input.Length);
+				for (int i = 0; i < repeat; i++) {
+					sb.Append(input);
+				}
+				return System.Text.Encoding.ASCII.GetBytes(sb.ToString());
 			}
 		}
 
 
-		static public byte[] h(string input) {
+		static public byte[] h(string input) { return h(input, 1); }
+		static public byte[] h(string input, int repeat) {
 			if (input == null) {
 				return new byte[0];
 			} else {
-				return Classless.Hasher.Utilities.Conversions.HexadecimalToByte(input);
+				StringBuilder sb = new StringBuilder(repeat * input.Length);
+				for (int i = 0; i < repeat; i++) {
+					sb.Append(input);
+				}
+				return Classless.Hasher.Utilities.Conversions.HexadecimalToByte(sb.ToString());
 			}
 		}
-}
+	}
 }

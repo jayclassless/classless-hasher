@@ -61,11 +61,29 @@ namespace Classless.Hasher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The List of HashAlgorithms cannot change in the middle of a hash computation..
+        ///   Looks up a localized string similar to The HashAlgorithm cannot be changed in the middle of a hash computation..
+        /// </summary>
+        internal static string cantChangeHasher {
+            get {
+                return ResourceManager.GetString("cantChangeHasher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The List of HashAlgorithms cannot be changed in the middle of a hash computation..
         /// </summary>
         internal static string cantChangeHasherList {
             get {
                 return ResourceManager.GetString("cantChangeHasherList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Key cannot be changed in the middle of a hash computation..
+        /// </summary>
+        internal static string cantChangeKey {
+            get {
+                return ResourceManager.GetString("cantChangeKey", resourceCulture);
             }
         }
         

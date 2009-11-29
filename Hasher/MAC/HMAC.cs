@@ -15,7 +15,7 @@
  * The Original Code is Classless.Hasher - C#/.NET Hash and Checksum Algorithm Library.
  *
  * The Initial Developer of the Original Code is Classless.net.
- * Portions created by the Initial Developer are Copyright (C) 2004 the Initial
+ * Portions created by the Initial Developer are Copyright (C) 2009 the Initial
  * Developer. All Rights Reserved.
  *
  * Contributor(s):
@@ -25,58 +25,124 @@
 #endregion
 
 using System;
+using System.Security.Cryptography;
 using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher.MAC {
 	/// <summary>Implements the HMAC keyed message authentication code algorithm.</summary>
-	public class HMAC : System.Security.Cryptography.KeyedHashAlgorithm {
+	public class HMAC : KeyedHashAlgorithm {
 		private readonly object syncLock = new object();
 
-		private System.Security.Cryptography.HashAlgorithm hash;
+		private BlockHashAlgorithm hashAlgorithm;
 		private byte[] keyBuffer;
+		private byte[] innerPadding;
+		private byte[] outerPadding;
 		private bool isHashing;
+
+
+		/// <summary>Gets the hash algorithm used in the computation.</summary>
+		public BlockHashAlgorithm HashAlgorithm {
+			get {
+					return hashAlgorithm;
+			}
+			set {
+				if (isHashing) {
+					throw new CryptographicException(Properties.Resources.cantChangeHasher);
+				}
+				hashAlgorithm = value;
+				InitializeKey(KeyValue);
+			}
+		}
 
 
 		/// <summary>Gets the size of the computed hash code in bits.</summary>
 		override public int HashSize {
-			get { return hash.HashSize; }
+			get { return hashAlgorithm.HashSize; }
+		}
+
+
+		/// <summary>Gets or sets the key to use in the hash algorithm.</summary>
+		override public byte[] Key {
+			get {
+				return (byte[])KeyValue.Clone();
+			}
+			set {
+				if (isHashing) {
+					throw new CryptographicException(Properties.Resources.cantChangeKey);
+				}
+				InitializeKey(value);
+			}
 		}
 
 
 		/// <summary>Initializes a new instance of the HMAC class.</summary>
-		/// <param name="hash">The base hash algorithm to use.</param>
-		/// <remarks>A random key will be used.</remarks>
-		public HMAC(System.Security.Cryptography.HashAlgorithm hash) : this(hash, (byte[])null) { }
+		/// <remarks>The default HashAlgorithm will be used, and a random key will be generated.</remarks>
+		public HMAC() : this((BlockHashAlgorithm)Classless.Hasher.HashAlgorithm.Create(), null) { }
 
 		/// <summary>Initializes a new instance of the HMAC class.</summary>
-		/// <param name="hash">The base hash algorithm to use.</param>
-		/// <param name="rgbKey">The key to use for the HMAC.</param>
-		public HMAC(System.Security.Cryptography.HashAlgorithm hash, string rgbKey) : this(hash, Conversions.HexadecimalToByte(rgbKey)) { }
+		/// <param name="hashAlgorithm">The base hash algorithm to use.</param>
+		/// <remarks>A random key will be generated.</remarks>
+		public HMAC(BlockHashAlgorithm hashAlgorithm) : this(hashAlgorithm, null) { }
 
 		/// <summary>Initializes a new instance of the HMAC class.</summary>
-		/// <param name="hash">The base hash algorithm to use.</param>
+		/// <param name="hashAlgorithm">The base hash algorithm to use.</param>
 		/// <param name="rgbKey">The key to use for the HMAC.</param>
 		/// <remarks>If rgbKey is null, a random key will be used.</remarks>
-		public HMAC(System.Security.Cryptography.HashAlgorithm hash, byte[] rgbKey) {
+		public HMAC(BlockHashAlgorithm hashAlgorithm, byte[] rgbKey) {
 			lock (syncLock) {
-				if (hash == null) { throw new ArgumentNullException("hash", Hasher.Properties.Resources.hashCantBeNull); }
+				if (hashAlgorithm == null) { throw new ArgumentNullException("hashAlgorithm", Properties.Resources.hashCantBeNull); }
+				this.hashAlgorithm = hashAlgorithm;
+
 				if (rgbKey == null) {
 					Random r = new Random((int)System.DateTime.Now.Ticks);
-					rgbKey = new byte[hash.HashSize / 8];
-					r.NextBytes(rgbKey);
+					byte[] temp = new byte[HashAlgorithm.BlockSize];
+					r.NextBytes(temp);
+					InitializeKey(temp);
+				} else {
+					InitializeKey(rgbKey);
 				}
-
-				this.hash = hash;
-				KeyValue = (byte[])rgbKey.Clone();
 			}
+		}
+
+
+		/// <summary>Returns a String that represents the current Object.</summary>
+		/// <returns>A String that represents the current Object.</returns>
+		override public string ToString() {
+			return string.Format("HMAC-{0}", hashAlgorithm.ToString());
 		}
 
 
 		/// <summary>Initializes the MAC.</summary>
 		override public void Initialize() {
 			lock (syncLock) {
-				hash.Initialize();
+				State = 0;
+				hashAlgorithm.Initialize();
 				isHashing = false;
+			}
+		}
+
+
+		/// <summary>Prepares the Key for use.</summary>
+		/// <param name="key">The key to use.</param>
+		protected void InitializeKey(byte[] key) {
+			KeyValue = (byte[])key.Clone();
+
+			if (Key.Length > HashAlgorithm.BlockSize) {
+				keyBuffer = HashAlgorithm.ComputeHash(key);
+			} else {
+				keyBuffer = (byte[])key.Clone();
+			}
+
+			innerPadding = new byte[HashAlgorithm.BlockSize];
+			outerPadding = new byte[HashAlgorithm.BlockSize];
+			for (int i = 0; i < HashAlgorithm.BlockSize; i++) {
+				innerPadding[i] = 0x36;
+				outerPadding[i] = 0x5C;
+			}
+
+			for (int i = 0; i < keyBuffer.Length; i++) {
+				innerPadding[i] ^= keyBuffer[i];
+				outerPadding[i] ^= keyBuffer[i];
 			}
 		}
 
@@ -88,26 +154,10 @@ namespace Classless.Hasher.MAC {
 		override protected void HashCore(byte[] array, int ibStart, int cbSize) {
 			lock (syncLock) {
 				if (!isHashing) {
-					keyBuffer = new byte[64];
-					byte[] temp = new byte[64];
-					byte[] key;
-
-					if (this.Key.Length > 64) {
-						key = hash.ComputeHash(this.Key);
-					} else {
-						key = this.Key;
-					}
-					Array.Copy(key, 0, keyBuffer, 0, key.Length);
-
-					for (int i = 0; i < 64; i++) {
-						temp[i] = (byte)(keyBuffer[i] ^ 0x36);
-					}
-					hash.TransformBlock(temp, 0, temp.Length, temp, 0);
-
+					HashAlgorithm.TransformBlock(innerPadding, 0, innerPadding.Length, null, 0);
 					isHashing = true;
 				}
-
-				hash.TransformBlock(array, ibStart, cbSize, array, ibStart);
+				hashAlgorithm.TransformBlock(array, ibStart, cbSize, null, 0);
 			}
 		}
 
@@ -116,23 +166,20 @@ namespace Classless.Hasher.MAC {
 		/// <returns>The computed hash code.</returns>
 		override protected byte[] HashFinal() {
 			lock (syncLock) {
-				byte[] data;
-				byte[] temp = new byte[64];
-
-				hash.TransformFinalBlock(new byte[0], 0, 0);
-				data = hash.Hash;
-
-				for (int i = 0; i < 64; i++) {
-					temp[i] = (byte)(keyBuffer[i] ^ 0x5C);
+				if (!isHashing) {
+					HashAlgorithm.TransformBlock(innerPadding, 0, innerPadding.Length, null, 0);
+					isHashing = true;
 				}
-				hash.Initialize();
-				hash.TransformBlock(temp, 0, temp.Length, temp, 0);
-				hash.TransformFinalBlock(data, 0, data.Length);
-				data = hash.Hash;
+				HashAlgorithm.TransformFinalBlock(new byte[0], 0, 0);
+				byte[] data = HashAlgorithm.Hash;
 
-				keyBuffer = null;
+				hashAlgorithm.Initialize();
+				hashAlgorithm.TransformBlock(outerPadding, 0, outerPadding.Length, null, 0);
+				hashAlgorithm.TransformBlock(data, 0, data.Length, null, 0);
+				HashAlgorithm.TransformFinalBlock(new byte[0], 0, 0);
+
 				isHashing = false;
-				return data;
+				return HashAlgorithm.Hash;
 			}
 		}
 	}

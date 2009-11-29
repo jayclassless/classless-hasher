@@ -32,8 +32,100 @@ using Classless.Hasher.Utilities;
 namespace Classless.Hasher.Tests {
 	[TestFixture]
 	public class HMACTests {
+		[Test]
+		public void ConstructorDefaultTest() {
+			HMAC hmac = new HMAC();
+			SHA1 sha = new SHA1();
+			Assert.AreEqual(sha.GetType(), hmac.HashAlgorithm.GetType());
+			Assert.AreEqual(sha.HashSize, hmac.HashAlgorithm.HashSize);
+			Assert.AreEqual(sha.BlockSize, hmac.Key.Length);
+		}
+
+
+		[Test]
+		public void ConstructorSingleTest() {
+			HMAC hmac = new HMAC(new MD5());
+			MD5 md = new MD5();
+			Assert.AreEqual(md.GetType(), hmac.HashAlgorithm.GetType());
+			Assert.AreEqual(md.HashSize, hmac.HashAlgorithm.HashSize);
+			Assert.AreEqual(md.BlockSize, hmac.Key.Length);
+		}
+
+
+		[Test]
+		public void ConstructorDoubleTest() {
+			byte[] key = TestVectors.s("1234567890");
+			HMAC hmac = new HMAC(new MD5(), key);
+			MD5 md = new MD5();
+			Assert.AreEqual(md.GetType(), hmac.HashAlgorithm.GetType());
+			Assert.AreEqual(md.HashSize, hmac.HashAlgorithm.HashSize);
+			Assert.AreEqual(key.Length, hmac.Key.Length);
+			for (int i = 0; i < key.Length; i++) {
+				Assert.AreEqual(key[i], hmac.Key[i]);
+			}
+		}
+
+
+		[Test, ExpectedException(typeof(ArgumentNullException))]
+		public void ConstructorNullHasherTest() {
+			HMAC hmac = new HMAC(null);
+		}
+
+
+		static public object[] HashSizeHashers = {
+			new object[] { new MD5() },
+			new object[] { new SHA1() },
+			new object[] { new Tiger() },
+			new object[] { new Whirlpool() },
+			new object[] { new SHA384() },
+			new object[] { new SHA224() },
+		};
+
+		[Test, TestCaseSource("HashSizeHashers")]
+		public void HashSizeTest(BlockHashAlgorithm hasher) {
+			HMAC hmac = new HMAC(hasher);
+			Assert.AreEqual(hasher.HashSize, hmac.HashSize);
+		}
+
+
+		[Test]
+		public void ChangeHashGoodTest() {
+			byte[] input = TestVectors.s("1234567890");
+			HMAC hmac = new HMAC(new MD5());
+			hmac.HashAlgorithm = new SHA1();
+			hmac.TransformBlock(input, 0, 4, null, 0);
+		}
+
+
+		[Test, ExpectedException(typeof(System.Security.Cryptography.CryptographicException))]
+		public void ChangeHashBadTest() {
+			byte[] input = TestVectors.s("1234567890");
+			HMAC hmac = new HMAC(new MD5());
+			hmac.TransformBlock(input, 0, 4, null, 0);
+			hmac.HashAlgorithm = new SHA1();
+		}
+
+
+		[Test]
+		public void ChangeKeyGoodTest() {
+			byte[] input = TestVectors.s("1234567890");
+			HMAC hmac = new HMAC(new MD5());
+			hmac.Key = TestVectors.s("new key!");
+			hmac.TransformBlock(input, 0, 4, null, 0);
+		}
+
+
+		[Test, ExpectedException(typeof(System.Security.Cryptography.CryptographicException))]
+		public void ChangeKeyBadTest() {
+			byte[] input = TestVectors.s("1234567890");
+			HMAC hmac = new HMAC(new MD5());
+			hmac.TransformBlock(input, 0, 4, null, 0);
+			hmac.Key = TestVectors.s("new key!");
+		}
+
+
 		[Test, TestCaseSource(typeof(TestVectorsHMAC), "Vectors")]
-		public void TestVector(HashAlgorithm hasher, byte[] key, byte[] input, byte[] expectedOutput) {
+		public void TestVector(BlockHashAlgorithm hasher, byte[] key, byte[] input, byte[] expectedOutput) {
 			HMAC hmac = new HMAC(hasher, key);
 			byte[] result = hmac.ComputeHash(input);
 
@@ -43,7 +135,7 @@ namespace Classless.Hasher.Tests {
 				Assert.AreEqual(
 					expectedOutput[i],
 					result[i],
-					"HMAC-" + hasher.GetType().Name + "(" + Conversions.ByteToHexadecimal(key) + ", " + Conversions.ByteToHexadecimal(input) + ") should have produced " + Conversions.ByteToHexadecimal(expectedOutput) + " but instead got " + Conversions.ByteToHexadecimal(result)
+					string.Format("{0}({1}) on {2} should have produced {3} but instead got {4}", hmac, Conversions.ByteToHexadecimal(key), Conversions.ByteToHexadecimal(input), Conversions.ByteToHexadecimal(expectedOutput), Conversions.ByteToHexadecimal(result))
 				);
 			}
 		}

@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="cantChangeHasher" xml:space="preserve">
+    <value>The HashAlgorithm cannot be changed in the middle of a hash computation.</value>
+  </data>
   <data name="cantChangeHasherList" xml:space="preserve">
-    <value>The List of HashAlgorithms cannot change in the middle of a hash computation.</value>
+    <value>The List of HashAlgorithms cannot be changed in the middle of a hash computation.</value>
+  </data>
+  <data name="cantChangeKey" xml:space="preserve">
+    <value>The Key cannot be changed in the middle of a hash computation.</value>
   </data>
   <data name="hashCantBeNull" xml:space="preserve">
     <value>The HashAlgorithm cannot be null.</value>
