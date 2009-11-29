@@ -187,6 +187,15 @@ namespace Classless.Hasher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Length specified is larger than this implementation allows..
+        /// </summary>
+        internal static string lengthWayTooLong {
+            get {
+                return ResourceManager.GetString("lengthWayTooLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The hash Parameters cannot be null..
         /// </summary>
         internal static string paramCantBeNull {

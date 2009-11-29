@@ -245,6 +245,9 @@ namespace Classless.Hasher.Utilities {
 			if ((length + offset) > array.Length) {
 				throw new ArgumentException(Hasher.Properties.Resources.lengthOffsetOutOfBounds);
 			}
+			if (length > (int.MaxValue / 2)) {
+				throw new ArgumentOutOfRangeException("length", length, Properties.Resources.lengthWayTooLong);
+			}
 
 			byte[] temp = new byte[length * 2];
 
@@ -304,6 +307,9 @@ namespace Classless.Hasher.Utilities {
 		static public byte[] UIntToByte(uint[] array, int offset, int length, EndianType endian) {
 			if ((length + offset) > array.Length) {
 				throw new ArgumentException(Hasher.Properties.Resources.lengthOffsetOutOfBounds);
+			}
+			if (length > (int.MaxValue / 4)) {
+				throw new ArgumentOutOfRangeException("length", length, Properties.Resources.lengthWayTooLong);
 			}
 
 			byte[] temp = new byte[length * 4];
@@ -365,6 +371,9 @@ namespace Classless.Hasher.Utilities {
 			if ((length + offset) > array.Length) {
 				throw new ArgumentException(Hasher.Properties.Resources.lengthOffsetOutOfBounds);
 			}
+			if (length > (int.MaxValue / 8)) {
+				throw new ArgumentOutOfRangeException("length", length, Properties.Resources.lengthWayTooLong);
+			}
 
 			byte[] temp = new byte[length * 8];
 
@@ -398,6 +407,9 @@ namespace Classless.Hasher.Utilities {
 		static public string ByteToHexadecimal(byte[] array, int offset, int length) {
 			if ((length + offset) > array.Length) {
 				throw new ArgumentException(Hasher.Properties.Resources.lengthOffsetOutOfBounds);
+			}
+			if (length > (int.MaxValue / 2)) {
+				throw new ArgumentOutOfRangeException("length", length, Properties.Resources.lengthWayTooLong);
 			}
 
 			System.Text.StringBuilder temp = new System.Text.StringBuilder(2 * length);

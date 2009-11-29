@@ -195,135 +195,240 @@
           <Members>
            <Member Name="#ProcessBlock(System.Byte[],System.Int32)">
             <Messages>
-             <Message Id="inputOffset+1" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+1" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+1</Item>
                <Item>'JenkinsHash.ProcessBlock(byte[], int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
-             <Message Id="inputOffset+10" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+10" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+10</Item>
                <Item>'JenkinsHash.ProcessBlock(byte[], int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
-             <Message Id="inputOffset+11" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+11" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+11</Item>
                <Item>'JenkinsHash.ProcessBlock(byte[], int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
-             <Message Id="inputOffset+2" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+2" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+2</Item>
                <Item>'JenkinsHash.ProcessBlock(byte[], int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
-             <Message Id="inputOffset+3" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+3" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+3</Item>
                <Item>'JenkinsHash.ProcessBlock(byte[], int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
-             <Message Id="inputOffset+4" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+4" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+4</Item>
                <Item>'JenkinsHash.ProcessBlock(byte[], int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
-             <Message Id="inputOffset+5" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+5" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+5</Item>
                <Item>'JenkinsHash.ProcessBlock(byte[], int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
-             <Message Id="inputOffset+6" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+6" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+6</Item>
                <Item>'JenkinsHash.ProcessBlock(byte[], int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
-             <Message Id="inputOffset+7" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+7" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+7</Item>
                <Item>'JenkinsHash.ProcessBlock(byte[], int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
-             <Message Id="inputOffset+8" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+8" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+8</Item>
                <Item>'JenkinsHash.ProcessBlock(byte[], int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
-             <Message Id="inputOffset+9" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+9" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+9</Item>
                <Item>'JenkinsHash.ProcessBlock(byte[], int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
             </Messages>
            </Member>
            <Member Name="#ProcessFinalBlock(System.Byte[],System.Int32,System.Int32)">
             <Messages>
-             <Message Id="inputOffset+1" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+1" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+1</Item>
                <Item>'JenkinsHash.ProcessFinalBlock(byte[], int, int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
-             <Message Id="inputOffset+10" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+10" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+10</Item>
                <Item>'JenkinsHash.ProcessFinalBlock(byte[], int, int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
-             <Message Id="inputOffset+2" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+2" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+2</Item>
                <Item>'JenkinsHash.ProcessFinalBlock(byte[], int, int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
-             <Message Id="inputOffset+3" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+3" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+3</Item>
                <Item>'JenkinsHash.ProcessFinalBlock(byte[], int, int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
-             <Message Id="inputOffset+4" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+4" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+4</Item>
                <Item>'JenkinsHash.ProcessFinalBlock(byte[], int, int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
-             <Message Id="inputOffset+5" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+5" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+5</Item>
                <Item>'JenkinsHash.ProcessFinalBlock(byte[], int, int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
-             <Message Id="inputOffset+6" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+6" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+6</Item>
                <Item>'JenkinsHash.ProcessFinalBlock(byte[], int, int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
-             <Message Id="inputOffset+7" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+7" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+7</Item>
                <Item>'JenkinsHash.ProcessFinalBlock(byte[], int, int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
-             <Message Id="inputOffset+8" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+8" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+8</Item>
                <Item>'JenkinsHash.ProcessFinalBlock(byte[], int, int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
-             <Message Id="inputOffset+9" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="inputOffset+9" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>inputOffset+9</Item>
                <Item>'JenkinsHash.ProcessFinalBlock(byte[], int, int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="5" />
+               </User>
+              </Notes>
              </Message>
             </Messages>
            </Member>
@@ -355,105 +460,91 @@
           <Members>
            <Member Name="#RotateLeft(System.UInt16,System.Int32)">
             <Messages>
-             <Message Id="16-shift" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="16-shift" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>16-shift</Item>
                <Item>'BitTools.RotateLeft(ushort, int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="4" />
+               </User>
+              </Notes>
              </Message>
             </Messages>
            </Member>
            <Member Name="#RotateLeft(System.UInt32,System.Int32)">
             <Messages>
-             <Message Id="32-shift" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="32-shift" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>32-shift</Item>
                <Item>'BitTools.RotateLeft(uint, int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="4" />
+               </User>
+              </Notes>
              </Message>
             </Messages>
            </Member>
            <Member Name="#RotateLeft(System.UInt64,System.Int32)">
             <Messages>
-             <Message Id="64-shift" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="64-shift" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>64-shift</Item>
                <Item>'BitTools.RotateLeft(ulong, int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="4" />
+               </User>
+              </Notes>
              </Message>
             </Messages>
            </Member>
            <Member Name="#RotateRight(System.UInt16,System.Int32)">
             <Messages>
-             <Message Id="16-shift" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="16-shift" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>16-shift</Item>
                <Item>'BitTools.RotateRight(ushort, int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="4" />
+               </User>
+              </Notes>
              </Message>
             </Messages>
            </Member>
            <Member Name="#RotateRight(System.UInt32,System.Int32)">
             <Messages>
-             <Message Id="32-shift" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="32-shift" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>32-shift</Item>
                <Item>'BitTools.RotateRight(uint, int)'</Item>
               </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="4" />
+               </User>
+              </Notes>
              </Message>
             </Messages>
            </Member>
            <Member Name="#RotateRight(System.UInt64,System.Int32)">
             <Messages>
-             <Message Id="64-shift" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
+             <Message Id="64-shift" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Status="Excluded" Created="2009-11-27 15:42:43Z">
               <Issue>
                <Item>64-shift</Item>
                <Item>'BitTools.RotateRight(ulong, int)'</Item>
               </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="Conversions">
-          <Members>
-           <Member Name="#ByteToHexadecimal(System.Byte[],System.Int32,System.Int32)">
-            <Messages>
-             <Message Id="2*length" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
-              <Issue>
-               <Item>2*length</Item>
-               <Item>'Conversions.ByteToHexadecimal(byte[], int, int)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#UIntToByte(System.UInt32[],System.Int32,System.Int32,Classless.Hasher.EndianType)">
-            <Messages>
-             <Message Id="length*4" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
-              <Issue>
-               <Item>length*4</Item>
-               <Item>'Conversions.UIntToByte(uint[], int, int, EndianType)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#ULongToByte(System.UInt64[],System.Int32,System.Int32,Classless.Hasher.EndianType)">
-            <Messages>
-             <Message Id="length*8" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
-              <Issue>
-               <Item>length*8</Item>
-               <Item>'Conversions.ULongToByte(ulong[], int, int, EndianType)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#UShortToByte(System.UInt16[],System.Int32,System.Int32,Classless.Hasher.EndianType)">
-            <Messages>
-             <Message Id="length*2" TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233" Created="2009-11-27 15:42:43Z">
-              <Issue>
-               <Item>length*2</Item>
-               <Item>'Conversions.UShortToByte(ushort[], int, int, EndianType)'</Item>
-              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="4" />
+               </User>
+              </Notes>
              </Message>
             </Messages>
            </Member>
@@ -538,6 +629,8 @@
     <Note Id="1" Modified="2009-11-27 18:54:17Z">No security risk here.</Note>
     <Note Id="2" Modified="2009-11-27 18:55:00Z">In production release, the assembly will be signed. This is just a debug assembly.</Note>
     <Note Id="3" Modified="2009-11-29 02:41:48Z">There's no need to generate the tables unless the user actually wants to invoke these algorithms.</Note>
+    <Note Id="4" Modified="2009-11-29 15:54:13Z">Overflow is expected or desired when using these methods.</Note>
+    <Note Id="5" Modified="2009-11-29 16:18:33Z">These overflows are anticipated.</Note>
    </User>
   </Notes>
   <Rules>

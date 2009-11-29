@@ -159,6 +159,9 @@
   <data name="lengthOffsetOutOfBounds" xml:space="preserve">
     <value>The length and offset provided extend past the end of the array.</value>
   </data>
+  <data name="lengthWayTooLong" xml:space="preserve">
+    <value>The Length specified is larger than this implementation allows.</value>
+  </data>
   <data name="paramCantBeNull" xml:space="preserve">
     <value>The hash Parameters cannot be null.</value>
   </data>
