@@ -41,8 +41,9 @@ namespace Classless.Hasher {
 		/// <summary>Returns a String that represents the current Object.</summary>
 		/// <returns>A String that represents the current Object.</returns>
 		override public string ToString() {
-			if (this is IParametrizedHashAlgorithm) {
-				return string.Format("{0}({1})", base.ToString(), ((IParametrizedHashAlgorithm)this).Parameters.ToString());
+			IParametrizedHashAlgorithm ipha = this as IParametrizedHashAlgorithm;
+			if (ipha != null) {
+				return string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}({1})", base.ToString(), ipha.Parameters.ToString());
 			} else {
 				return base.ToString();
 			}

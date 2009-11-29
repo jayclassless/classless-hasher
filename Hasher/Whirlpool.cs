@@ -44,7 +44,7 @@ namespace Classless.Hasher {
 
 		/// <summary>Initialize the substitution boxes.</summary>
 		static Whirlpool() {
-			ulong s1, s2, s3, s4, s5, s8, s9, t;
+			ulong s1, s2, /*s3,*/ s4, s5, s8, s9, t;
 			byte[] S = new byte[256];
 			ushort c;
 
@@ -77,7 +77,7 @@ namespace Classless.Hasher {
 				s2 = s1 << 1;
 				if (s2 > 0xFF) { s2 ^= 0x011D; }
 
-				s3 = s2 ^ s1;
+				//s3 = s2 ^ s1;
 				s4 = s2 << 1;
 				if (s4 > 0xFF) { s4 ^= 0x011D; }
 

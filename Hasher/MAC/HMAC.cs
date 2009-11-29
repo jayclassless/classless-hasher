@@ -108,7 +108,7 @@ namespace Classless.Hasher.MAC {
 		/// <summary>Returns a String that represents the current Object.</summary>
 		/// <returns>A String that represents the current Object.</returns>
 		override public string ToString() {
-			return string.Format("HMAC-{0}", hashAlgorithm.ToString());
+			return string.Format(System.Globalization.CultureInfo.InvariantCulture, "HMAC-{0}", hashAlgorithm.ToString());
 		}
 
 
@@ -124,10 +124,10 @@ namespace Classless.Hasher.MAC {
 
 		/// <summary>Prepares the Key for use.</summary>
 		/// <param name="key">The key to use.</param>
-		protected void InitializeKey(byte[] key) {
+		private void InitializeKey(byte[] key) {
 			KeyValue = (byte[])key.Clone();
 
-			if (Key.Length > HashAlgorithm.BlockSize) {
+			if (KeyValue.Length > HashAlgorithm.BlockSize) {
 				keyBuffer = HashAlgorithm.ComputeHash(key);
 			} else {
 				keyBuffer = (byte[])key.Clone();
