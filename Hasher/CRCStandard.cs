@@ -35,7 +35,7 @@ namespace Classless.Hasher {
 		/// <summary>8bit CRC</summary>
 		CRC8_ICODE,
 
-		/// <summary>8bit CRC; Used in ATM HEC</summary>
+		/// <summary>8bit CRC</summary>
 		CRC8_ITU,
 
 		/// <summary>8bit CRC</summary>
