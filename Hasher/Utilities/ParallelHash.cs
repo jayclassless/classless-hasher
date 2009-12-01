@@ -38,7 +38,9 @@ namespace Classless.Hasher.Utilities {
 			get {
 				int hashSize = 0;
 				foreach (System.Security.Cryptography.HashAlgorithm hasher in HashAlgorithms) {
-					hashSize += hasher.HashSize;
+					if (hasher != null) {
+						hashSize += hasher.HashSize;
+					}
 				}
 				return hashSize;
 			}
@@ -60,7 +62,7 @@ namespace Classless.Hasher.Utilities {
 		/// <summary>The delegate that handles the Changed event of the HashAlgorithms property.</summary>
 		/// <param name="sender">The HashAlgorithmList object that triggered the event.</param>
 		/// <param name="e">Data about the event.</param>
-		new protected void HashAlgorithms_Changed(object sender, ChangedEventArgs e) {
+		override protected void HashAlgorithms_Changed(object sender, ChangedEventArgs e) {
 			if (State != 0) {
 				throw new CryptographicException(Properties.Resources.cantChangeHasherList);
 			}
@@ -71,16 +73,18 @@ namespace Classless.Hasher.Utilities {
 		/// <returns>The final hash value.</returns>
 		override protected byte[] HashFinal() {
 			lock (syncLock) {
+				base.HashFinal();
+
 				byte[] hash = new byte[HashSize / 8];
-				byte[] dummy = new byte[1];
 				byte[] temp;
 				int position = 0;
 
 				foreach (System.Security.Cryptography.HashAlgorithm hasher in HashAlgorithms) {
-					hasher.TransformFinalBlock(dummy, 0, 0);
-					temp = hasher.Hash;
-					Array.Copy(temp, 0, hash, position, temp.Length);
-					position += temp.Length;
+					if (hasher != null) {
+						temp = hasher.Hash;
+						Array.Copy(temp, 0, hash, position, temp.Length);
+						position += temp.Length;
+					}
 				}
 
 				return hash;

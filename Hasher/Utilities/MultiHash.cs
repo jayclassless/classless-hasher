@@ -67,7 +67,7 @@ namespace Classless.Hasher.Utilities {
 		/// <summary>The delegate that handles the Changed event of the HashAlgorithms property.</summary>
 		/// <param name="sender">The HashAlgorithmList object that triggered the event.</param>
 		/// <param name="e">Data about the event.</param>
-		protected void HashAlgorithms_Changed(object sender, ChangedEventArgs e) {
+		protected virtual void HashAlgorithms_Changed(object sender, ChangedEventArgs e) {
 			if ((e != null) && (e.ChangeType == ChangedEventType.Element) && (State != 0)) {
 				throw new CryptographicException(Properties.Resources.cantChangeHasherList);
 			}
@@ -79,7 +79,9 @@ namespace Classless.Hasher.Utilities {
 			lock (syncLock) {
 				base.Initialize();
 				foreach (System.Security.Cryptography.HashAlgorithm hasher in hashAlgorithms) {
-					hasher.Initialize();
+					if (hasher != null) {
+						hasher.Initialize();
+					}
 				}
 			}
 		}
@@ -94,7 +96,9 @@ namespace Classless.Hasher.Utilities {
 				byte[] temp = new byte[array.Length];
 
 				foreach (System.Security.Cryptography.HashAlgorithm hasher in hashAlgorithms) {
-					hasher.TransformBlock(array, ibStart, cbSize, temp, 0);
+					if (hasher != null) {
+						hasher.TransformBlock(array, ibStart, cbSize, temp, 0);
+					}
 				}
 			}
 		}
@@ -107,7 +111,9 @@ namespace Classless.Hasher.Utilities {
 				byte[] dummy = new byte[1];
 
 				foreach (System.Security.Cryptography.HashAlgorithm hasher in hashAlgorithms) {
-					hasher.TransformFinalBlock(dummy, 0, 0);
+					if (hasher != null) {
+						hasher.TransformFinalBlock(dummy, 0, 0);
+					}
 				}
 
 				return null;

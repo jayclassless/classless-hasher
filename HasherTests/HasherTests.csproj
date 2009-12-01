@@ -39,6 +39,8 @@
   <ItemGroup>
     <Compile Include="BlockHashAlgorithmTests.cs" />
     <Compile Include="HashAlgorithmTests.cs" />
+    <Compile Include="MultiHashTests.cs" />
+    <Compile Include="ParallelHashTest.cs" />
     <Compile Include="ParameterTests.cs" />
     <Compile Include="TestVectors.cs" />
     <Compile Include="TestVectorsHMAC.cs" />
