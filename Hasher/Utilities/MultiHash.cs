@@ -35,6 +35,21 @@ namespace Classless.Hasher.Utilities {
 		private HashAlgorithmCollection hashAlgorithms = new HashAlgorithmCollection();
 
 
+		/// <summary>Gets the size of the computed hash code in bits.</summary>
+		/// <remarks>This value will be the largest of all of the inner HashAlgorithm.HashSize values.</remarks>
+		public override int HashSize {
+			get {
+				int hashSize = 0;
+				foreach (System.Security.Cryptography.HashAlgorithm hasher in HashAlgorithms) {
+					if (hasher.HashSize > hashSize) {
+						hashSize = hasher.HashSize;
+					}
+				}
+				return hashSize;
+			}
+		}
+
+
 		/// <summary>Gets or sets the list of HashAlgorithms that are being used.</summary>
 		public HashAlgorithmCollection HashAlgorithms {
 			get { return hashAlgorithms; }
@@ -79,9 +94,7 @@ namespace Classless.Hasher.Utilities {
 			lock (syncLock) {
 				base.Initialize();
 				foreach (System.Security.Cryptography.HashAlgorithm hasher in hashAlgorithms) {
-					if (hasher != null) {
-						hasher.Initialize();
-					}
+					hasher.Initialize();
 				}
 			}
 		}
@@ -96,9 +109,7 @@ namespace Classless.Hasher.Utilities {
 				byte[] temp = new byte[array.Length];
 
 				foreach (System.Security.Cryptography.HashAlgorithm hasher in hashAlgorithms) {
-					if (hasher != null) {
-						hasher.TransformBlock(array, ibStart, cbSize, temp, 0);
-					}
+					hasher.TransformBlock(array, ibStart, cbSize, temp, 0);
 				}
 			}
 		}
@@ -111,9 +122,7 @@ namespace Classless.Hasher.Utilities {
 				byte[] dummy = new byte[1];
 
 				foreach (System.Security.Cryptography.HashAlgorithm hasher in hashAlgorithms) {
-					if (hasher != null) {
-						hasher.TransformFinalBlock(dummy, 0, 0);
-					}
+					hasher.TransformFinalBlock(dummy, 0, 0);
 				}
 
 				return null;

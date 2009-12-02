@@ -34,13 +34,12 @@ namespace Classless.Hasher.Utilities {
 
 
 		/// <summary>Gets the size of the computed hash code in bits.</summary>
+		/// <remarks>This value will be the sum of all of the inner HashAlgorithm.HashSize values.</remarks>
 		public override int HashSize {
 			get {
 				int hashSize = 0;
 				foreach (System.Security.Cryptography.HashAlgorithm hasher in HashAlgorithms) {
-					if (hasher != null) {
-						hashSize += hasher.HashSize;
-					}
+					hashSize += hasher.HashSize;
 				}
 				return hashSize;
 			}
@@ -80,11 +79,9 @@ namespace Classless.Hasher.Utilities {
 				int position = 0;
 
 				foreach (System.Security.Cryptography.HashAlgorithm hasher in HashAlgorithms) {
-					if (hasher != null) {
-						temp = hasher.Hash;
-						Array.Copy(temp, 0, hash, position, temp.Length);
-						position += temp.Length;
-					}
+					temp = hasher.Hash;
+					Array.Copy(temp, 0, hash, position, temp.Length);
+					position += temp.Length;
 				}
 
 				return hash;

@@ -162,6 +162,9 @@
   <data name="lengthWayTooLong" xml:space="preserve">
     <value>The Length specified is larger than this implementation allows.</value>
   </data>
+  <data name="noDupeHashers" xml:space="preserve">
+    <value>A HashAlgorithm cannot be placed in the collection more than once.</value>
+  </data>
   <data name="paramCantBeNull" xml:space="preserve">
     <value>The hash Parameters cannot be null.</value>
   </data>

@@ -196,6 +196,15 @@ namespace Classless.Hasher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A HashAlgorithm cannot be placed in the collection more than once..
+        /// </summary>
+        internal static string noDupeHashers {
+            get {
+                return ResourceManager.GetString("noDupeHashers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The hash Parameters cannot be null..
         /// </summary>
         internal static string paramCantBeNull {

@@ -37,13 +37,15 @@ namespace Classless.Hasher {
 		/// <summary>Initializes an instance of HashAlgorithmList.</summary>
 		public HashAlgorithmCollection() : base() { }
 
-		/// <summary>Initializes an instance of HashAlgorithmList that contains elements copied from the specified collection and has sufficient capacity to accommodate the number of elements copied.</summary>
-		/// <param name="collection">The collection whose elements are copied to the new List.</param>
-		public HashAlgorithmCollection(IEnumerable<System.Security.Cryptography.HashAlgorithm> collection) : base(collection) { }
-
 		/// <summary>Initializes an instance of HashAlgorithmList that is empty and has the specified initial capacity.</summary>
 		/// <param name="capacity">The number of elements that the new list can initially store.</param>
 		public HashAlgorithmCollection(int capacity) : base(capacity) { }
+
+		/// <summary>Initializes an instance of HashAlgorithmList that contains elements copied from the specified collection and has sufficient capacity to accommodate the number of elements copied.</summary>
+		/// <param name="collection">The collection whose elements are copied to the new List.</param>
+		public HashAlgorithmCollection(IEnumerable<System.Security.Cryptography.HashAlgorithm> collection) : base() {
+			AddRange(collection);
+		}
 
 
 		/// <summary>Triggers the Changed event for this List.</summary>
@@ -58,6 +60,8 @@ namespace Classless.Hasher {
 		/// <summary>Adds a HashAlgorithm to the end of the List.</summary>
 		/// <param name="item">The HashAlgorithm to be added to the end of the List.</param>
 		new public void Add(System.Security.Cryptography.HashAlgorithm item) {
+			if (item == null) { throw new ArgumentNullException("item", Properties.Resources.hashCantBeNull); }
+
 			base.Add(item);
 			OnChanged(new ChangedEventArgs(item, ChangedEventType.Element));
 		}
@@ -81,6 +85,8 @@ namespace Classless.Hasher {
 		/// <param name="index">The zero-based index at which item should be inserted.</param>
 		/// <param name="item">The HashAlgorithm to insert.</param>
 		new public void Insert(int index, System.Security.Cryptography.HashAlgorithm item) {
+			if (item == null) { throw new ArgumentNullException("item", Properties.Resources.hashCantBeNull); }
+
 			base.Insert(index, item);
 			OnChanged(new ChangedEventArgs(item, ChangedEventType.Element));
 		}
@@ -90,11 +96,16 @@ namespace Classless.Hasher {
 		/// <param name="index">The zero-based index at which item should be inserted.</param>
 		/// <param name="collection">The collection whose elements should be inserted into the List.</param>
 		new public void InsertRange(int index, IEnumerable<System.Security.Cryptography.HashAlgorithm> collection) {
-			base.InsertRange(index, collection);
-			foreach (System.Security.Cryptography.HashAlgorithm hasher in collection) {
-				OnChanged(new ChangedEventArgs(hasher, ChangedEventType.Element));
-				break; // We'll only report the first one.
+			if (collection == null) { return; }
+
+			System.Security.Cryptography.HashAlgorithm hasher = null;
+			foreach (System.Security.Cryptography.HashAlgorithm item in collection) {
+				if (item == null) { throw new ArgumentNullException("item", Properties.Resources.hashCantBeNull); }
+				if (hasher != null) { hasher = item; }
 			}
+
+			base.InsertRange(index, collection);
+			OnChanged(new ChangedEventArgs(hasher, ChangedEventType.Element)); // We'll only report the first one.
 		}
 
 
