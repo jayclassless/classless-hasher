@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Classless.Hasher" default="build" basedir=".">
+	<description>.NET Hash and Checksum Algorithm Library</description>
+
+	<!-- Project properties. -->
+	<property name="project.version" value="0.8" />
+
+	<!-- Build properties. -->
+	<property name="build.keyfile" value="../../Classless.Hasher.snk" />
+	<property name="build.defines" value="" />
+	<if test="${not property::exists('build.config')}">
+		<property name="build.config" value="release" />
+	</if>
+
+
+	<!-- Build configurations. -->
+	<target name="release" description="Perform a 'release' build.">
+		<echo message="Preparing for a Release build." />
+		<property name="build.debug" value="false" />
+		<property name="build.warnaserror" value="true" />
+		<property name="build.optimize" value="true" />
+		<property name="build.dir" value="${project::get-base-directory()}/build/${build.config}/${nant.settings.currentframework}" />
+	</target>
+	<target name="debug" description="Perform a 'debug' build.">
+		<echo message="Preparing for a Debug build." />
+		<property name="build.debug" value="true" />
+		<property name="build.warnaserror" value="false" />
+		<property name="build.optimize" value="false" />
+		<property name="build.defines" value="DEBUG" />
+		<property name="build.dir" value="${project::get-base-directory()}/build/${build.config}/${nant.settings.currentframework}" />
+	</target>
+
+
+	<!-- Initialize the build environment. -->
+	<target name="init" description="Initializes build properties.">
+		<echo message="Initializing build." />
+		<call target="${build.config}" />
+	</target>
+
+
+	<!-- The main build target. -->
+	<target name="build" depends="init" description="Compiles the program.">
+		<echo message="Building a ${build.config} configuration with ${framework::get-description(framework::get-target-framework())} (${nant.settings.currentframework})." />
+
+		<mkdir dir="${build.dir}" />
+
+		<fileset id="sourcecode">
+			<include name="${project::get-base-directory()}/Hasher/*.cs" />
+			<include name="${project::get-base-directory()}/Hasher/*/*.cs" />
+		</fileset>
+
+		<csc
+			target="library"
+			output="${build.dir}/${project::get-name()}.dll"
+			doc="${build.dir}/${project::get-name()}.xml"
+			debug="${build.debug}"
+			warnaserror="${build.warnaserror}"
+			define="${build.defines}"
+			optimize="${build.optimize}"
+			keyfile="${build.keyfile}"
+			>
+
+			<sources refid="sourcecode" />
+		</csc>
+	</target>
+
+
+	<!-- The distribution packages. -->
+	<target name="dist" depends="init" description="Builds the distribution package.">
+		<!--<echo message="Copying documentation." />
+		<copy todir="${build.dir}">
+			<fileset basedir="${project::get-base-directory()}/doc">
+				<include name="*" />
+			</fileset>
+		</copy>-->
+
+		<echo message="Zipping files." />
+		<zip zipfile="${build.dir}/${project::get-name()}.${project.version}.zip" ziplevel="9">
+			<fileset basedir="${build.dir}">
+				<include name="*" />
+			</fileset>
+		</zip>
+	</target>
+	<target name="distsrc" depends="init" description="Builds the source distribution package.">
+		<echo message="Zipping source files." />
+		<zip zipfile="${project::get-base-directory()}/build/${project::get-name()}.${project.version}-src.zip" ziplevel="9">
+			<fileset basedir="${project::get-base-directory()}">
+				<include name="**/*" />
+				<exclude name="build/**" />
+				<exclude name="**/bin/**" />
+				<exclude name="**/obj/**" />
+				<exclude name="Hasher.suo" />
+			</fileset>
+		</zip>
+	</target>
+
+	<!-- Clean house. -->
+	<target name="clean" description="Remove all generated files.">
+		<echo message="Cleaning out all previous builds." />
+		<delete dir="${project::get-base-directory()}/build" failonerror="false" />
+	</target>
+</project>
