@@ -33,6 +33,7 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Gets or sets the order of the Sum (e.g., how many bits).</summary>
+		/// <exception cref="ArgumentOutOfRangeException">When the specified value is not a multiple of 8, is less than 8, or is greater than 64.</exception>
 		public int Order {
 			get { return order; }
 			set {

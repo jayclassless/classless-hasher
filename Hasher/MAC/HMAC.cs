@@ -41,6 +41,7 @@ namespace Classless.Hasher.MAC {
 
 
 		/// <summary>Gets the hash algorithm used in the computation.</summary>
+		/// <exception cref="CryptographicException">When an attempt to change the value of the HashAlgorithm occurs during the execution of a hash calculation.</exception>
 		public BlockHashAlgorithm HashAlgorithm {
 			get {
 					return hashAlgorithm;
@@ -62,6 +63,7 @@ namespace Classless.Hasher.MAC {
 
 
 		/// <summary>Gets or sets the key to use in the hash algorithm.</summary>
+		/// <exception cref="CryptographicException">When an attempt to change the value of the Key occurs during the execution of a hash calculation.</exception>
 		override public byte[] Key {
 			get {
 				return (byte[])KeyValue.Clone();
@@ -87,6 +89,7 @@ namespace Classless.Hasher.MAC {
 		/// <summary>Initializes a new instance of the HMAC class.</summary>
 		/// <param name="hashAlgorithm">The base hash algorithm to use.</param>
 		/// <param name="rgbKey">The key to use for the HMAC.</param>
+		/// <exception cref="ArgumentNullException">When the specified HashAlgorithm is null.</exception>
 		/// <remarks>If rgbKey is null, a random key will be used.</remarks>
 		public HMAC(BlockHashAlgorithm hashAlgorithm, byte[] rgbKey) {
 			lock (syncLock) {

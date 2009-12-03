@@ -36,6 +36,7 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Gets or sets the order of the FNV (e.g., how many bits).</summary>
+		/// <exception cref="ArgumentOutOfRangeException">When the specified value is not either 32 or 64.</exception>
 		public int Order {
 			get { return order; }
 			set {

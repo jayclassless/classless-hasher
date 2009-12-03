@@ -44,6 +44,7 @@ namespace Classless.Hasher {
 
 		/// <summary>Initializes a new instance of the HAVAL class.</summary>
 		/// <param name="param">The parameters to utilize in the HAVAL calculation.</param>
+		/// <exception cref="ArgumentNullException">When the specified parameters are null.</exception>
 		public HAVAL(HAVALParameters param) : base(128) {
 			lock (syncLock) {
 				if (param == null) { throw new ArgumentNullException("param", Hasher.Properties.Resources.paramCantBeNull); }
@@ -76,6 +77,7 @@ namespace Classless.Hasher {
 		/// <param name="inputBuffer">The block of data to process.</param>
 		/// <param name="inputOffset">Where to start in the block.</param>
 		/// <param name="inputCount">How many bytes need to be processed.</param>
+		/// <returns>The results of the completed hash calculation.</returns>
 		override protected byte[] ProcessFinalBlock(byte[] inputBuffer, int inputOffset, int inputCount) {
 			lock (syncLock) {
 				byte[] temp;

@@ -162,6 +162,7 @@ namespace Classless.Hasher {
 		/// <param name="inputBuffer">The block of data to process.</param>
 		/// <param name="inputOffset">Where to start in the block.</param>
 		/// <param name="inputCount">How many bytes to process.</param>
+		/// <returns>The results of the completed hash calculation.</returns>
 		override protected byte[] ProcessFinalBlock(byte[] inputBuffer, int inputOffset, int inputCount) {
 			lock (syncLock) {
 				byte[] temp;

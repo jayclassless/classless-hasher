@@ -59,6 +59,7 @@ namespace Classless.Hasher {
 
 		/// <summary>Adds a HashAlgorithm to the end of the List.</summary>
 		/// <param name="item">The HashAlgorithm to be added to the end of the List.</param>
+		/// <exception cref="ArgumentNullException">When the specified HashAlgorithm is null.</exception>
 		new public void Add(System.Security.Cryptography.HashAlgorithm item) {
 			if (item == null) { throw new ArgumentNullException("item", Properties.Resources.hashCantBeNull); }
 
@@ -84,6 +85,7 @@ namespace Classless.Hasher {
 		/// <summary>Inserts a HashAlgorithm into the List at the specified index.</summary>
 		/// <param name="index">The zero-based index at which item should be inserted.</param>
 		/// <param name="item">The HashAlgorithm to insert.</param>
+		/// <exception cref="ArgumentNullException">When the specified HashAlgorithm is null.</exception>
 		new public void Insert(int index, System.Security.Cryptography.HashAlgorithm item) {
 			if (item == null) { throw new ArgumentNullException("item", Properties.Resources.hashCantBeNull); }
 
@@ -95,6 +97,7 @@ namespace Classless.Hasher {
 		/// <summary>Inserts the elements of a collection into the List at the specified index.</summary>
 		/// <param name="index">The zero-based index at which item should be inserted.</param>
 		/// <param name="collection">The collection whose elements should be inserted into the List.</param>
+		/// <exception cref="ArgumentNullException">When a HashAlgorithm within the specified collection is null.</exception>
 		new public void InsertRange(int index, IEnumerable<System.Security.Cryptography.HashAlgorithm> collection) {
 			if (collection == null) { return; }
 

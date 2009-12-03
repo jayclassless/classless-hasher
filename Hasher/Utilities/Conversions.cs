@@ -59,6 +59,7 @@ namespace Classless.Hasher.Utilities {
 		/// <param name="length">How many bytes in the array to convert.</param>
 		/// <param name="endian">The order in which to read the bytes.</param>
 		/// <returns>The unsigned short integers represented as a byte array.</returns>
+		/// <exception cref="ArgumentException">When the range specified for the array is invalid, or if the length specified does not represent full UShort values.</exception>
 		[CLSCompliant(false)]
 		static public ushort[] ByteToUShort(byte[] array, int offset, int length, EndianType endian) {
 			if ((length + offset) > array.Length) {
@@ -110,6 +111,7 @@ namespace Classless.Hasher.Utilities {
 		/// <param name="length">How many bytes in the array to convert.</param>
 		/// <param name="endian">The order in which to read the bytes.</param>
 		/// <returns>The unsigned integers represented as a byte array.</returns>
+		/// <exception cref="ArgumentException">When the range specified for the array is invalid, or if the length specified does not represent full UInt values.</exception>
 		[CLSCompliant(false)]
 		static public uint[] ByteToUInt(byte[] array, int offset, int length, EndianType endian) {
 			if ((length + offset) > array.Length) {
@@ -165,6 +167,7 @@ namespace Classless.Hasher.Utilities {
 		/// <param name="length">How many bytes in the array to convert.</param>
 		/// <param name="endian">The order in which to read the bytes.</param>
 		/// <returns>The unsigned long integers represented as a byte array.</returns>
+		/// <exception cref="ArgumentException">When the range specified for the array is invalid, or if the length specified does not represent full ULong values.</exception>
 		[CLSCompliant(false)]
 		static public ulong[] ByteToULong(byte[] array, int offset, int length, EndianType endian) {
 			if ((length + offset) > array.Length) {
@@ -240,6 +243,8 @@ namespace Classless.Hasher.Utilities {
 		/// <param name="length">How many unsigned short integers in the array to convert.</param>
 		/// <param name="endian">The order in which to store the bytes.</param>
 		/// <returns>The unsigned short integers represented as a byte array.</returns>
+		/// <exception cref="ArgumentException">When the range specified for the array is invalid.</exception>
+		/// <exception cref="ArgumentOutOfRangeException">When the length specified is longer than this implementation supports.</exception>
 		[CLSCompliant(false)]
 		static public byte[] UShortToByte(ushort[] array, int offset, int length, EndianType endian) {
 			if ((length + offset) > array.Length) {
@@ -303,6 +308,8 @@ namespace Classless.Hasher.Utilities {
 		/// <param name="length">How many unsigned integers in the array to convert.</param>
 		/// <param name="endian">The order in which to store the bytes.</param>
 		/// <returns>The unsigned integers represented as a byte array.</returns>
+		/// <exception cref="ArgumentException">When the range specified for the array is invalid.</exception>
+		/// <exception cref="ArgumentOutOfRangeException">When the length specified is longer than this implementation supports.</exception>
 		[CLSCompliant(false)]
 		static public byte[] UIntToByte(uint[] array, int offset, int length, EndianType endian) {
 			if ((length + offset) > array.Length) {
@@ -366,6 +373,8 @@ namespace Classless.Hasher.Utilities {
 		/// <param name="length">How many unsigned long integers in the array to convert.</param>
 		/// <param name="endian">The order in which to store the bytes.</param>
 		/// <returns>The unsigned long integers represented as a byte array.</returns>
+		/// <exception cref="ArgumentException">When the range specified for the array is invalid.</exception>
+		/// <exception cref="ArgumentOutOfRangeException">When the length specified is longer than this implementation supports.</exception>
 		[CLSCompliant(false)]
 		static public byte[] ULongToByte(ulong[] array, int offset, int length, EndianType endian) {
 			if ((length + offset) > array.Length) {
@@ -404,6 +413,8 @@ namespace Classless.Hasher.Utilities {
 		/// <param name="offset">Position in the array to begin the conversion.</param>
 		/// <param name="length">How many bytes in the array to convert.</param>
 		/// <returns>A string containing the hexadecimal equivelent of the byte array.</returns>
+		/// <exception cref="ArgumentException">When the range specified for the array is invalid.</exception>
+		/// <exception cref="ArgumentOutOfRangeException">When the length specified is longer than this implementation supports.</exception>
 		static public string ByteToHexadecimal(byte[] array, int offset, int length) {
 			if ((length + offset) > array.Length) {
 				throw new ArgumentException(Hasher.Properties.Resources.lengthOffsetOutOfBounds);

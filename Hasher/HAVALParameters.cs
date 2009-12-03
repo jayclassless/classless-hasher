@@ -34,6 +34,7 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Gets or sets the number of passes.</summary>
+		/// <exception cref="ArgumentOutOfRangeException">When the specified value is not 3, 4, or 5.</exception>
 		public short Passes {
 			get { return passes; }
 			set {
@@ -46,6 +47,7 @@ namespace Classless.Hasher {
 		}
 
 		/// <summary>Gets or sets the bit length.</summary>
+		/// <exception cref="ArgumentOutOfRangeException">When the specified value is not 128, 160, 192, 224, or 256.</exception>
 		public short Length {
 			get { return length; }
 			set {

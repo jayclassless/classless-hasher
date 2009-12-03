@@ -44,6 +44,7 @@ namespace Classless.Hasher {
 
 		/// <summary>Initializes a new instance of the FNV class.</summary>
 		/// <param name="param">The parameters to utilize in the FNV calculation.</param>
+		/// <exception cref="ArgumentNullException">When the specified parameters are null.</exception>
 		public FNV(FNVParameters param) : base() {
 			lock (syncLock) {
 				if (param == null) { throw new ArgumentNullException("param", Hasher.Properties.Resources.paramCantBeNull); }

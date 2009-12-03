@@ -63,6 +63,7 @@ namespace Classless.Hasher.Utilities {
 
 		/// <summary>Initializes an instance of MultiHash.</summary>
 		/// <param name="hashAlgorithms">The list of HashAlgorithms to use in the calculations.</param>
+		/// <exception cref="ArgumentNullException">When the specified collection is null.</exception>
 		public MultiHash(HashAlgorithmCollection hashAlgorithms) : base() {
 			if (hashAlgorithms == null) {
 				throw new ArgumentNullException("hashAlgorithms", Properties.Resources.hashListCantBeNull);
@@ -82,6 +83,7 @@ namespace Classless.Hasher.Utilities {
 		/// <summary>The delegate that handles the Changed event of the HashAlgorithms property.</summary>
 		/// <param name="sender">The HashAlgorithmList object that triggered the event.</param>
 		/// <param name="e">Data about the event.</param>
+		/// <exception cref="CryptographicException">When the type of change that triggered this event will invalidate the hash calculation that is in progress.</exception>
 		protected virtual void HashAlgorithms_Changed(object sender, ChangedEventArgs e) {
 			if ((e != null) && (e.ChangeType == ChangedEventType.Element) && (State != 0)) {
 				throw new CryptographicException(Properties.Resources.cantChangeHasherList);
