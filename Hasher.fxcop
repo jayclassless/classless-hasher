@@ -191,6 +191,20 @@
            </Member>
           </Members>
          </Type>
+         <Type Name="HashAlgorithmCollection">
+          <Members>
+           <Member Name="#.ctor(System.Collections.Generic.IEnumerable`1&lt;System.Security.Cryptography.HashAlgorithm&gt;)">
+            <Messages>
+             <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Created="2009-12-20 05:37:22Z">
+              <Issue>
+               <Item>'HashAlgorithmCollection.HashAlgorithmCollection(IEnumerable&lt;HashAlgorithm&gt;)'</Item>
+               <Item>&#xD;&#xA;&#xD;&#xA;HashAlgorithmCollection..ctor(IEnumerable&lt;HashAlgorithm&gt;)&#xD;&#xA;HashAlgorithmCollection.AddRange(IEnumerable&lt;HashAlgorithm&gt;):Void&#xD;&#xA;List&lt;HashAlgorithm&gt;.get_Count():Int32&#xD;&#xA;HashAlgorithmCollection.InsertRange(Int32, IEnumerable&lt;HashAlgorithm&gt;):Void&#xD;&#xA;List&lt;HashAlgorithm&gt;.InsertRange(Int32, IEnumerable&lt;HashAlgorithm&gt;):Void&#xD;&#xA;HashAlgorithmCollection.OnChanged(ChangedEventArgs):Void</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
          <Type Name="JenkinsHash">
           <Members>
            <Member Name="#ProcessBlock(System.Byte[],System.Int32)">
@@ -636,6 +650,9 @@
   <Rules>
    <Rule TypeName="AssembliesShouldHaveValidStrongNames" Category="Microsoft.Design" CheckId="CA2210">
     <Resolution Name="NoStrongName">Sign {0} with a strong name key.</Resolution>
+   </Rule>
+   <Rule TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214">
+    <Resolution Name="Default">{0} contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: {1}</Resolution>
    </Rule>
    <Rule TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002">
     <Resolution Name="Default">Change {0} in {1} to use Collection&lt;T&gt;, ReadOnlyCollection&lt;T&gt; or KeyedCollection&lt;K,V&gt;</Resolution>

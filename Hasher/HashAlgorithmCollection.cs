@@ -103,7 +103,7 @@ namespace Classless.Hasher {
 
 			System.Security.Cryptography.HashAlgorithm hasher = null;
 			foreach (System.Security.Cryptography.HashAlgorithm item in collection) {
-				if (item == null) { throw new ArgumentNullException("item", Properties.Resources.hashCantBeNull); }
+				if (item == null) { throw new ArgumentNullException("collection", Properties.Resources.hashCantBeNull); }
 				if (hasher != null) { hasher = item; }
 			}
 
