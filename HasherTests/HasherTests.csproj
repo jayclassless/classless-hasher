@@ -37,6 +37,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitToolsTests.cs" />
     <Compile Include="BlockHashAlgorithmTests.cs" />
     <Compile Include="HashAlgorithmTests.cs" />
     <Compile Include="MultiHashTests.cs" />

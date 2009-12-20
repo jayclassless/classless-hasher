@@ -37,9 +37,12 @@ namespace Classless.Hasher.Utilities {
 		/// <param name="value">The unsigned short integer to rotate.</param>
 		/// <param name="shift">How many bits to rotate.</param>
 		/// <returns>The rotated unsigned short integer.</returns>
+		/// <remarks>If the shift value is negative, the result is functionally equivalent to a RotateLeft() operation.</remarks>
 		[CLSCompliant(false)]
 		static public ushort RotateRight(ushort value, int shift) {
-			return (ushort)((value >> shift) | (value << (16 - shift)));
+			if (shift < 0) { return RotateLeft(value, Math.Abs(shift)); }
+			int s = shift % 16;
+			return (ushort)((value >> s) | (value << (16 - s)));
 		}
 
 
@@ -47,9 +50,12 @@ namespace Classless.Hasher.Utilities {
 		/// <param name="value">The unsigned integer to rotate.</param>
 		/// <param name="shift">How many bits to rotate.</param>
 		/// <returns>The rotated unsigned integer.</returns>
+		/// <remarks>If the shift value is negative, the result is functionally equivalent to a RotateLeft() operation.</remarks>
 		[CLSCompliant(false)]
 		static public uint RotateRight(uint value, int shift) {
-			return (value >> shift) | (value << (32 - shift));
+			if (shift < 0) { return RotateLeft(value, Math.Abs(shift)); }
+			int s = shift % 32;
+			return (value >> shift) | (value << (32 - s));
 		}
 
 
@@ -57,9 +63,12 @@ namespace Classless.Hasher.Utilities {
 		/// <param name="value">The unsigned long integer to rotate.</param>
 		/// <param name="shift">How many bits to rotate.</param>
 		/// <returns>The rotated unsigned long integer.</returns>
+		/// <remarks>If the shift value is negative, the result is functionally equivalent to a RotateLeft() operation.</remarks>
 		[CLSCompliant(false)]
 		static public ulong RotateRight(ulong value, int shift) {
-			return (value >> shift) | (value << (64 - shift));
+			if (shift < 0) { return RotateLeft(value, Math.Abs(shift)); }
+			int s = shift % 64;
+			return (value >> shift) | (value << (64 - s));
 		}
 
 
@@ -67,9 +76,12 @@ namespace Classless.Hasher.Utilities {
 		/// <param name="value">The unsigned short integer to rotate.</param>
 		/// <param name="shift">How many bits to rotate.</param>
 		/// <returns>The rotated unsigned short integer.</returns>
+		/// <remarks>If the shift value is negative, the result is functionally equivalent to a RotateRight() operation.</remarks>
 		[CLSCompliant(false)]
 		static public ushort RotateLeft(ushort value, int shift) {
-			return (ushort)((value << shift) | (value >> (16 - shift)));
+			if (shift < 0) { return RotateRight(value, Math.Abs(shift)); }
+			int s = shift % 16;
+			return (ushort)((value << s) | (value >> (16 - s)));
 		}
 
 
@@ -77,9 +89,12 @@ namespace Classless.Hasher.Utilities {
 		/// <param name="value">The unsigned integer to rotate.</param>
 		/// <param name="shift">How many bits to rotate.</param>
 		/// <returns>The rotated unsigned integer.</returns>
+		/// <remarks>If the shift value is negative, the result is functionally equivalent to a RotateRight() operation.</remarks>
 		[CLSCompliant(false)]
 		static public uint RotateLeft(uint value, int shift) {
-			return (value << shift) | (value >> (32 - shift));
+			if (shift < 0) { return RotateRight(value, Math.Abs(shift)); }
+			int s = shift % 32;
+			return (value << s) | (value >> (32 - s));
 		}
 
 
@@ -87,9 +102,12 @@ namespace Classless.Hasher.Utilities {
 		/// <param name="value">The unsigned long integer to rotate.</param>
 		/// <param name="shift">How many bits to rotate.</param>
 		/// <returns>The rotated unsigned long integer.</returns>
+		/// <remarks>If the shift value is negative, the result is functionally equivalent to a RotateRight() operation.</remarks>
 		[CLSCompliant(false)]
 		static public ulong RotateLeft(ulong value, int shift) {
-			return (value << shift) | (value >> (64 - shift));
+			if (shift < 0) { return RotateRight(value, Math.Abs(shift)); }
+			int s = shift % 64;
+			return (value << s) | (value >> (64 - s));
 		}
 	}
 }
