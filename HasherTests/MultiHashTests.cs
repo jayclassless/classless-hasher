@@ -55,6 +55,19 @@ namespace Classless.Hasher.Tests {
 		}
 
 
+		static public object[] HashSizeTests = {
+			new object[] { new System.Security.Cryptography.HashAlgorithm[] { new Whirlpool(), new Tiger() }, 512 },
+			new object[] { new System.Security.Cryptography.HashAlgorithm[] { new MD5(), new Tiger() }, 192 },
+			new object[] { new System.Security.Cryptography.HashAlgorithm[] { new MD5(), new SumBSD(), new XOR8() }, 128 },
+		};
+
+		[Test, TestCaseSource("HashSizeTests")]
+		public void HashSizeTest(System.Security.Cryptography.HashAlgorithm[] algorithms, int expectedSize) {
+			MultiHash hasher = new MultiHash(algorithms);
+			Assert.AreEqual(expectedSize, hasher.HashSize);
+		}
+
+
 		[Test]
 		public void ChangeHasherGoodTest() {
 			MultiHash hasher = new MultiHash(new MD5(), new SHA1());
