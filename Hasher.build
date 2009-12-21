@@ -130,15 +130,9 @@
 
 
 	<!-- The distribution packages. -->
-	<target name="dist" depends="build,doc" description="Builds the distribution package.">
-		<echo message="Copying documentation." />
-		<copy todir="${build.dir}/doc">
-			<fileset basedir="${project::get-base-directory()}/doc">
-				<include name="**/*" />
-			</fileset>
-		</copy>
+	<target name="dist" depends="build" description="Builds the binary distribution package.">
+		<echo message="Packaging binary files." />
 
-		<echo message="Zipping files." />
 		<zip zipfile="${build.dir}/${project::get-name()}.${project.version}.zip" ziplevel="9">
 			<fileset basedir="${build.dir}">
 				<include name="**/*" />
@@ -149,7 +143,8 @@
 	</target>
 
 	<target name="distsrc" depends="init" description="Builds the source distribution package.">
-		<echo message="Zipping source files." />
+		<echo message="Packaging source files." />
+
 		<zip zipfile="${project::get-base-directory()}/build/${project::get-name()}.${project.version}-src.zip" ziplevel="9">
 			<fileset basedir="${project::get-base-directory()}">
 				<include name="**/*" />
@@ -158,9 +153,23 @@
 				<exclude name="**/bin/**" />
 				<exclude name="**/obj/**" />
 				<exclude name="Hasher.suo" />
+				<exclude name="**/*.pidb" />
+				<exclude name="Hasher.userprefs" />
 			</fileset>
 		</zip>
 	</target>
+
+	<target name="distdoc" depends="doc" description="Builds the documentation distribution package.">
+		<echo message="Packaging documentation." />
+
+		<zip zipfile="${project::get-base-directory()}/build/${project::get-name()}.${project.version}-doc.zip" ziplevel="9">
+			<fileset basedir="${project::get-base-directory()}/doc">
+				<include name="**/*" />
+			</fileset>
+		</zip>
+	</target>
+
+	<target name="distall" depends="dist,distsrc,distdoc" description="Builds all distribution packages." />
 
 
 	<!-- Clean house. -->
