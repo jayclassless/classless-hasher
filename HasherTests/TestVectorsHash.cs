@@ -47,6 +47,32 @@ namespace Classless.Hasher.Tests {
 			new object[] { new Adler32(), s("Wikipedia"), h("11E60398") },
 
 
+			// ApHash
+			new object[] { new ApHash(), Battery.Empty, h("AAAAAAAA") },
+			new object[] { new ApHash(), Battery.A, h("EAAAAA9E") },
+			new object[] { new ApHash(), Battery.ABC, h("E5C645BE") },
+			new object[] { new ApHash(), Battery.Alphabet, h("37C25334") },
+			new object[] { new ApHash(), Battery.Alphanumeric, h("1FC82142") },
+			new object[] { new ApHash(), Battery.Numeric, h("6B247FE1") },
+			new object[] { new ApHash(), Battery.NumericRepeated, h("455B1A45") },
+			new object[] { new ApHash(), Battery.Message, h("62533769") },
+			new object[] { new ApHash(), Battery.QuickFox, h("35B32447") },
+			new object[] { new ApHash(), Battery.MillionAs, h("4B2FB245") },
+
+
+			// BkdrHash
+			new object[] { new BkdrHash(), Battery.Empty, h("00000000") },
+			new object[] { new BkdrHash(), Battery.A, h("00000061") },
+			new object[] { new BkdrHash(), Battery.ABC, h("001998F2") },
+			new object[] { new BkdrHash(), Battery.Alphabet, h("970289E1") },
+			new object[] { new BkdrHash(), Battery.Alphanumeric, h("08F9BA1F") },
+			new object[] { new BkdrHash(), Battery.Numeric, h("BCB6EF2F") },
+			new object[] { new BkdrHash(), Battery.NumericRepeated, h("6FF91318") },
+			new object[] { new BkdrHash(), Battery.Message, h("29E04FB5") },
+			new object[] { new BkdrHash(), Battery.QuickFox, h("C5181667") },
+			new object[] { new BkdrHash(), Battery.MillionAs, h("5F895280") },
+
+
 			// Cksum
 			new object[] { new Cksum(), Battery.Empty, h("FFFFFFFF") },
 			new object[] { new Cksum(), Battery.A, h("48C279FE") },
@@ -422,6 +448,19 @@ namespace Classless.Hasher.Tests {
 			new object[] { new CRC(CRCParameters.GetParameters(CRCStandard.CRC64_JONES)), s("123456789"), h("E9C6D914C4B8D9CA") },
 
 
+			// DjbHash
+			new object[] { new DjbHash(), Battery.Empty, h("00001505") },
+			new object[] { new DjbHash(), Battery.A, h("0002B606") },
+			new object[] { new DjbHash(), Battery.ABC, h("0B885C8B") },
+			new object[] { new DjbHash(), Battery.Alphabet, h("EA11B604") },
+			new object[] { new DjbHash(), Battery.Alphanumeric, h("0C3EFF50") },
+			new object[] { new DjbHash(), Battery.Numeric, h("EF852BF2") },
+			new object[] { new DjbHash(), Battery.NumericRepeated, h("067EA36D") },
+			new object[] { new DjbHash(), Battery.Message, h("A972CF8A") },
+			new object[] { new DjbHash(), Battery.QuickFox, h("34CC38DE") },
+			new object[] { new DjbHash(), Battery.MillionAs, h("218D7345") },
+
+
 			// ELFHash
 			new object[] { new ELFHash(), Battery.Empty, h("00000000") },
 			new object[] { new ELFHash(), Battery.A, h("00000061") },
@@ -772,7 +811,7 @@ namespace Classless.Hasher.Tests {
 			new object[] { new HAVAL(HAVALParameters.GetParameters(HAVALStandard.HAVAL_5_256)), s("The quick brown fox jumps over the lazy cog"), h("60983BB8C8F49AD3BEA29899B78CD741F4C96E911BBC272E5550A4F195A4077E") },
 
 
-			// JHash
+			// JenkinsHash
 			new object[] { new JenkinsHash(), Battery.Empty, h("BD49D10D") },
 			new object[] { new JenkinsHash(), Battery.A, h("29EEC818") },
 			new object[] { new JenkinsHash(), Battery.ABC, h("251E4793") },
@@ -784,6 +823,19 @@ namespace Classless.Hasher.Tests {
 			new object[] { new JenkinsHash(), Battery.QuickFox, h("FC1558DE") },
 			new object[] { new JenkinsHash(), Battery.MillionAs, h("8E375E5B") },
 			new object[] { new JenkinsHash(), s("1234567890a"), h("E0247204") },
+
+
+			// JsHash
+			new object[] { new JsHash(), Battery.Empty, h("4E67C6A7") },
+			new object[] { new JsHash(), Battery.A, h("AEF5004D") },
+			new object[] { new JsHash(), Battery.ABC, h("1A9B17A1") },
+			new object[] { new JsHash(), Battery.Alphabet, h("AB943FA1") },
+			new object[] { new JsHash(), Battery.Alphanumeric, h("25839FCB") },
+			new object[] { new JsHash(), Battery.Numeric, h("A8097069") },
+			new object[] { new JsHash(), Battery.NumericRepeated, h("93E5B482") },
+			new object[] { new JsHash(), Battery.Message, h("750F5CFE") },
+			new object[] { new JsHash(), Battery.QuickFox, h("DFEFFE38") },
+			new object[] { new JsHash(), Battery.MillionAs, h("986DD485") },
 
 
 			// MD2
@@ -848,6 +900,19 @@ namespace Classless.Hasher.Tests {
 
 			// http://www.users.zetnet.co.uk/hopwood/crypto/scan/md.html
 			new object[] { new Panama(), s("T"), h("049D698307D8541F22870DFA0A551099D3D02BC6D57C610A06A4585ED8D35FF8") },
+
+
+			// Pjw32
+			new object[] { new Pjw32(), Battery.Empty, h("00000000") },
+			new object[] { new Pjw32(), Battery.A, h("00000061") },
+			new object[] { new Pjw32(), Battery.ABC, h("00006783") },
+			new object[] { new Pjw32(), Battery.Alphabet, h("0AFF0EBF") },
+			new object[] { new Pjw32(), Battery.Alphanumeric, h("03A5D43D") },
+			new object[] { new Pjw32(), Battery.Numeric, h("07897FF6") },
+			new object[] { new Pjw32(), Battery.NumericRepeated, h("0C62DC53") },
+			new object[] { new Pjw32(), Battery.Message, h("09EA4A50") },
+			new object[] { new Pjw32(), Battery.QuickFox, h("021B6694") },
+			new object[] { new Pjw32(), Battery.MillionAs, h("0DDDDE3C") },
 			
 
 			// RIPEMD128
@@ -915,6 +980,32 @@ namespace Classless.Hasher.Tests {
 
 			// http://homes.esat.kuleuven.be/~bosselae/ripemd160.html
 			new object[] { new RIPEMD320(), s("abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq"), h("D034A7950CF722021BA4B84DF769A5DE2060E259DF4C9BB4A4268C0E935BBC7470A969C9D072A1AC") },
+
+
+			// RsHash
+			new object[] { new RsHash(), Battery.Empty, h("00000000") },
+			new object[] { new RsHash(), Battery.A, h("00000061") },
+			new object[] { new RsHash(), Battery.ABC, h("B1012AAC") },
+			new object[] { new RsHash(), Battery.Alphabet, h("C19D0661") },
+			new object[] { new RsHash(), Battery.Alphanumeric, h("4389DF19") },
+			new object[] { new RsHash(), Battery.Numeric, h("11920B37") },
+			new object[] { new RsHash(), Battery.NumericRepeated, h("9DA5ECA0") },
+			new object[] { new RsHash(), Battery.Message, h("B4ACD743") },
+			new object[] { new RsHash(), Battery.QuickFox, h("29A4500B") },
+			new object[] { new RsHash(), Battery.MillionAs, h("30769300") },
+
+
+			// SdbmHash
+			new object[] { new SdbmHash(), Battery.Empty, h("00000000") },
+			new object[] { new SdbmHash(), Battery.A, h("00000061") },
+			new object[] { new SdbmHash(), Battery.ABC, h("3025F862") },
+			new object[] { new SdbmHash(), Battery.Alphabet, h("A7695B4D") },
+			new object[] { new SdbmHash(), Battery.Alphanumeric, h("BD17A51F") },
+			new object[] { new SdbmHash(), Battery.Numeric, h("2FB09D3B") },
+			new object[] { new SdbmHash(), Battery.NumericRepeated, h("6D4F07D8") },
+			new object[] { new SdbmHash(), Battery.Message, h("1893D83D") },
+			new object[] { new SdbmHash(), Battery.QuickFox, h("8CA77173") },
+			new object[] { new SdbmHash(), Battery.MillionAs, h("BE754800") },
 
 
 			// SHA0

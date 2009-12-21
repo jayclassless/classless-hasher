@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adler32.cs" />
+    <Compile Include="ApHash.cs" />
+    <Compile Include="BkdrHash.cs" />
     <Compile Include="BlockHashAlgorithm.cs" />
     <Compile Include="ChangedEventArgs.cs" />
     <Compile Include="ChangedEventType.cs" />
@@ -47,6 +49,7 @@
     <Compile Include="CRC.cs" />
     <Compile Include="CRCParameters.cs" />
     <Compile Include="CRCStandard.cs" />
+    <Compile Include="DjbHash.cs" />
     <Compile Include="ELFHash.cs" />
     <Compile Include="EndianType.cs" />
     <Compile Include="FCS16.cs" />
@@ -66,15 +69,19 @@
     <Compile Include="HAVALStandard.cs" />
     <Compile Include="IParametrizedHashAlgorithm.cs" />
     <Compile Include="JenkinsHash.cs" />
+    <Compile Include="JsHash.cs" />
     <Compile Include="MAC\HMAC.cs" />
     <Compile Include="MD2.cs" />
     <Compile Include="MD4.cs" />
     <Compile Include="MD5.cs" />
+    <Compile Include="Pjw32.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RsHash.cs" />
+    <Compile Include="SdbmHash.cs" />
     <Compile Include="Sum.cs" />
     <Compile Include="SumParameters.cs" />
     <Compile Include="SumStandard.cs" />

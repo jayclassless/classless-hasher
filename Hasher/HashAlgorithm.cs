@@ -64,8 +64,11 @@ namespace Classless.Hasher {
 			switch (hashName) {
 				// Lookup by fully qualified class name.
 				case "Classless.Hasher.Adler32": return new Adler32();
+				case "Classless.Hasher.ApHash": return new ApHash();
+				case "Classless.Hasher.BkdrHash": return new BkdrHash();
 				case "Classless.Hasher.Cksum": return new Cksum();
 				case "Classless.Hasher.CRC": return new CRC(CRCParameters.GetParameters(CRCStandard.CRC32));
+				case "Classless.Hasher.DjbHash": return new DjbHash();
 				case "Classless.Hasher.ELFHash": return new ELFHash();
 				case "Classless.Hasher.FCS16": return new FCS16();
 				case "Classless.Hasher.FCS32": return new FCS32();
@@ -74,14 +77,18 @@ namespace Classless.Hasher {
 				case "Classless.Hasher.GOSTHash": return new GOSTHash();
 				case "Classless.Hasher.HAVAL": return new HAVAL(HAVALParameters.GetParameters(HAVALStandard.HAVAL_5_256));
 				case "Classless.Hasher.JenkinsHash": return new JenkinsHash();
+				case "Classless.Hasher.JsHash": return new JsHash();
 				case "Classless.Hasher.MD2": return new MD2();
 				case "Classless.Hasher.MD4": return new MD4();
 				case "Classless.Hasher.MD5": return new MD5();
 				case "Classless.Hasher.Panama": return new Panama();
+				case "Classless.Hasher.Pjw32": return new Pjw32();
 				case "Classless.Hasher.RIPEMD128": return new RIPEMD128();
 				case "Classless.Hasher.RIPEMD160": return new RIPEMD160();
 				case "Classless.Hasher.RIPEMD256": return new RIPEMD256();
 				case "Classless.Hasher.RIPEMD320": return new RIPEMD320();
+				case "Classless.Hasher.RsHash": return new RsHash();
+				case "Classless.Hasher.SdbmHash": return new SdbmHash();
 				case "Classless.Hasher.SHA0": return new SHA0();
 				case "Classless.Hasher.SHA1": return new SHA1();
 				case "Classless.Hasher.SHA224": return new SHA224();
@@ -102,8 +109,11 @@ namespace Classless.Hasher {
 
 				// Look up by class name.
 				case "Adler32": return new Adler32();
+				case "ApHash": return new ApHash();
+				case "BkdrHash": return new BkdrHash();
 				case "Cksum": return new Cksum();
 				case "CRC": return new CRC(CRCParameters.GetParameters(CRCStandard.CRC32));
+				case "DjbHash": return new DjbHash();
 				case "ELFHash": return new ELFHash();
 				case "FCS16": return new FCS16();
 				case "FCS32": return new FCS32();
@@ -112,14 +122,18 @@ namespace Classless.Hasher {
 				case "GOSTHash": return new GOSTHash();
 				case "HAVAL": return new HAVAL(HAVALParameters.GetParameters(HAVALStandard.HAVAL_5_256));
 				case "JenkinsHash": return new JenkinsHash();
+				case "JsHash": return new JsHash();
 				case "MD2": return new MD2();
 				case "MD4": return new MD4();
 				case "MD5": return new MD5();
 				case "Panama": return new Panama();
+				case "Pjw32": return new Pjw32();
 				case "RIPEMD128": return new RIPEMD128();
 				case "RIPEMD160": return new RIPEMD160();
 				case "RIPEMD256": return new RIPEMD256();
 				case "RIPEMD320": return new RIPEMD320();
+				case "RsHash": return new RsHash();
+				case "SdbmHash": return new SdbmHash();
 				case "SHA0": return new SHA0();
 				case "SHA1": return new SHA1();
 				case "SHA224": return new SHA224();
