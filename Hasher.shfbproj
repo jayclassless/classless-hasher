@@ -17,8 +17,9 @@
     <OutputPath>.\doc\</OutputPath>
     <HtmlHelpName>Classless.Hasher</HtmlHelpName>
     <DocumentationSources>
-      <DocumentationSource sourceFile="Hasher\bin\Debug\Classless.Hasher.dll" xmlns="" />
-<DocumentationSource sourceFile="Hasher\bin\Debug\Classless.Hasher.xml" xmlns="" /></DocumentationSources>
+      <DocumentationSource sourceFile="$(HasherBuild).dll" xmlns="" />
+      <DocumentationSource sourceFile="$(HasherBuild).xml" xmlns="" />
+    </DocumentationSources>
     <HelpFileFormat>Help1xAndWebsite</HelpFileFormat>
     <FrameworkVersion>3.5</FrameworkVersion>
     <KeepLogFile>False</KeepLogFile>

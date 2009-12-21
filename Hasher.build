@@ -7,6 +7,8 @@
 
 	<!-- Build properties. -->
 	<property name="build.keyfile" value="../../Classless.Hasher.snk" />
+	<property name="msbuild.location" value="C:\Windows\Microsoft.NET\Framework\v3.5" />
+	<property name="nunit.location" value="C:\Program Files (x86)\TestDriven.NET 2.0\NUnit\2.5\net-2.0" />
 	<property name="build.defines" value="" />
 	<if test="${not property::exists('build.config')}">
 		<property name="build.config" value="release" />
@@ -35,14 +37,13 @@
 	<target name="init" description="Initializes build properties.">
 		<echo message="Initializing build." />
 		<call target="${build.config}" />
+		<mkdir dir="${build.dir}" />
 	</target>
 
 
 	<!-- The main build target. -->
 	<target name="build" depends="init" description="Compiles the program.">
 		<echo message="Building a ${build.config} configuration with ${framework::get-description(framework::get-target-framework())} (${nant.settings.currentframework})." />
-
-		<mkdir dir="${build.dir}" />
 
 		<fileset id="sourcecode">
 			<include name="${project::get-base-directory()}/Hasher/*.cs" />
@@ -60,33 +61,100 @@
 			keyfile="${build.keyfile}"
 			>
 
+			<resources dynamicprefix="true" prefix="Classless">
+				<include name="${project::get-base-directory()}/Hasher/**.resx" />
+			</resources>
+
 			<sources refid="sourcecode" />
 		</csc>
 	</target>
 
 
+	<!-- Testing. -->
+	<target name="buildtest" depends="build" description="Builds the unit test suite.">
+		<echo message="Building the NUnit test suite." />
+
+		<fileset id="testcode">
+			<include name="${project::get-base-directory()}/HasherTests/*.cs" />
+			<include name="${project::get-base-directory()}/HasherTests/*/*.cs" />
+		</fileset>
+
+		<csc
+			target="library"
+			output="${build.dir}/${project::get-name()}.Tests.dll"
+			debug="${build.debug}"
+			warnaserror="${build.warnaserror}"
+			define="${build.defines}"
+			optimize="${build.optimize}"
+			>
+
+			<references>
+				<include name="${build.dir}/${project::get-name()}.dll" />
+				<include name="${nunit.location}/framework/nunit.framework.dll" />
+			</references>
+
+			<sources refid="testcode" />
+		</csc>
+	</target>
+
+	<target name="test" depends="buildtest" description="Executes the unit test suite.">
+		<echo message="Executing the NUnit test suite." />
+
+		<exec
+			program="${nunit.location}/nunit-console.exe"
+			commandline="&quot;${build.dir}/${project::get-name()}.Tests.dll&quot; /nodots /xml:&quot;${build.dir}/${project::get-name()}.TestResults.xml&quot;"
+			failonerror="true"
+		/>
+	</target>
+
+
+	<!-- Documentation. -->
+	<target name="doc" depends="build" description="Generates the library documentation.">
+		<echo message="Generating documentation." />
+
+		<delete dir="${project::get-base-directory()}/doc" failonerror="false" />
+
+		<if test="${build.config=='release'}">
+			<property name="shfb.config" value="Release" />
+		</if>
+		<if test="${not property::exists('shfb.config')}">
+			<property name="shfb.config" value="Debug" />
+		</if>
+
+		<exec
+			program="${msbuild.location}/MSBuild.exe"
+			commandline="/property:HasherBuild=&quot;${build.dir}/${project::get-name()}&quot; /property:Configuration=${shfb.config} &quot;${project::get-base-directory()}/Hasher.shfbproj&quot;"
+			failonerror="true"
+		/>
+	</target>
+
+
 	<!-- The distribution packages. -->
-	<target name="dist" depends="init" description="Builds the distribution package.">
-		<!--<echo message="Copying documentation." />
-		<copy todir="${build.dir}">
+	<target name="dist" depends="build,doc" description="Builds the distribution package.">
+		<echo message="Copying documentation." />
+		<copy todir="${build.dir}/doc">
 			<fileset basedir="${project::get-base-directory()}/doc">
-				<include name="*" />
+				<include name="**/*" />
 			</fileset>
-		</copy>-->
+		</copy>
 
 		<echo message="Zipping files." />
 		<zip zipfile="${build.dir}/${project::get-name()}.${project.version}.zip" ziplevel="9">
 			<fileset basedir="${build.dir}">
-				<include name="*" />
+				<include name="**/*" />
+				<exclude name="*Tests.dll" />
+				<exclude name="*TestResults.xml" />
 			</fileset>
 		</zip>
 	</target>
+
 	<target name="distsrc" depends="init" description="Builds the source distribution package.">
 		<echo message="Zipping source files." />
 		<zip zipfile="${project::get-base-directory()}/build/${project::get-name()}.${project.version}-src.zip" ziplevel="9">
 			<fileset basedir="${project::get-base-directory()}">
 				<include name="**/*" />
 				<exclude name="build/**" />
+				<exclude name="doc/**" />
 				<exclude name="**/bin/**" />
 				<exclude name="**/obj/**" />
 				<exclude name="Hasher.suo" />
@@ -94,9 +162,11 @@
 		</zip>
 	</target>
 
+
 	<!-- Clean house. -->
 	<target name="clean" description="Remove all generated files.">
 		<echo message="Cleaning out all previous builds." />
 		<delete dir="${project::get-base-directory()}/build" failonerror="false" />
+		<delete dir="${project::get-base-directory()}/doc" failonerror="false" />
 	</target>
 </project>
