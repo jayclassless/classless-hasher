@@ -28,7 +28,7 @@ using System;
 using System.Text;
 
 namespace Classless.Hasher.Tests {
-	abstract class TestVectors {
+	abstract public class TestVectors {
 		public class Battery {
 			static public readonly byte[] Empty = s("");
 			static public readonly byte[] A = s("a");

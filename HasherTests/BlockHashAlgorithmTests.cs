@@ -30,7 +30,7 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher.Tests {
 	[TestFixture]
-	class BlockHashAlgorithmTests {
+	public class BlockHashAlgorithmTests {
 		static public object[] UnevenInputTests = {
 			new object[] {
 				"7707D6AE4E027C70EEA2A935C2296F21",

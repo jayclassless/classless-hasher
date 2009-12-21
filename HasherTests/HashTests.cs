@@ -30,7 +30,7 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher.Tests {
 	[TestFixture]
-	class HashTests {
+	public class HashTests {
 		[Test, TestCaseSource(typeof(TestVectorsHash), "Vectors")]
 		public void TestVector(HashAlgorithm hasher, byte[] input, byte[] expectedOutput) {
 			byte[] result = hasher.ComputeHash(input);

@@ -29,7 +29,7 @@ using Classless.Hasher;
 using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher.Tests {
-	class TestVectorsHash : TestVectors {
+	public class TestVectorsHash : TestVectors {
 		static public object[] Vectors = {
 			// Adler32
 			new object[] { new Adler32(), Battery.Empty, h("00000001") },

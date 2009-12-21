@@ -31,7 +31,7 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher.Tests {
 	[TestFixture]
-	class ParallelHashTests {
+	public class ParallelHashTests {
 		[Test, ExpectedException(typeof(ArgumentNullException))]
 		public void ConstructorNullTest() {
 			HashAlgorithmCollection hashCollection = null;

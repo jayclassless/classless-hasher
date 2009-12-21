@@ -31,7 +31,7 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher.Tests {
 	[TestFixture]
-	class BitToolsTests {
+	public class BitToolsTests {
 		static public IEnumerable RightShortTests {
 			get {
 				string mask = "1000000000000000";

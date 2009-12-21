@@ -30,7 +30,7 @@ using NUnit.Framework;
 
 namespace Classless.Hasher.Tests {
 	[TestFixture]
-	class ParameterTests {
+	public class ParameterTests {
 		static public object[] Algorithms = {
 			new object[] { typeof(CRC) },
 			new object[] { typeof(FNV) },

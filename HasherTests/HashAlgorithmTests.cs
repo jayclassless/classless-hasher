@@ -31,7 +31,7 @@ using NUnit.Framework;
 
 namespace Classless.Hasher.Tests {
 	[TestFixture]
-	class HashAlgorithmTests {
+	public class HashAlgorithmTests {
 		[Test]
 		public void DefaultCreateTest() {
 			Assert.IsInstanceOf(typeof(SHA1), HashAlgorithm.Create());
