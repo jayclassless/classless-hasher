@@ -127,7 +127,11 @@ namespace Classless.Hasher.Utilities {
 					hasher.TransformFinalBlock(dummy, 0, 0);
 				}
 
-				return null;
+				if (hashAlgorithms.Count > 0) {
+					return hashAlgorithms[0].Hash;
+				} else {
+					return new byte[0];
+				}
 			}
 		}
 	}

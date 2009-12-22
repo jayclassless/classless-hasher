@@ -1334,6 +1334,12 @@ namespace Classless.Hasher.Tests {
 			new object[] { new Xor8(), Battery.MillionAs, h("00") },
 
 
+			// MultiHash
+			new object[] { new MultiHash(new HashAlgorithm[] { new Whirlpool() }), Battery.Alphabet, h("F1D754662636FFE92C82EBB9212A484A8D38631EAD4238F5442EE13B8054E41B08BF2A9251C30B6A0B8AAE86177AB4A6F68F673E7207865D5D9819A3DBA4EB3B") },
+			new object[] { new MultiHash(new HashAlgorithm[] { new Crc(CrcParameters.GetParameters(CrcStandard.Crc32Bit)), new MD5(), new Sha1() }), Battery.Alphabet, h("4C2750BD") },
+			new object[] { new MultiHash(new HashAlgorithm[] { new Adler32(), new Tiger(), new Sha512() }), Battery.Alphabet, h("90860B20") },
+
+
 			// Parallel
 			new object[] { new ParallelHash(new HashAlgorithm[] { new Whirlpool() }), Battery.Alphabet, h("F1D754662636FFE92C82EBB9212A484A8D38631EAD4238F5442EE13B8054E41B08BF2A9251C30B6A0B8AAE86177AB4A6F68F673E7207865D5D9819A3DBA4EB3B") },
 			new object[] { new ParallelHash(new HashAlgorithm[] { new Crc(CrcParameters.GetParameters(CrcStandard.Crc32Bit)), new MD5(), new Sha1() }), Battery.Alphabet, h("4C2750BDC3FCD3D76192E4007DFB496CCA67E13B32D10C7B8CF96570CA04CE37F2A19D84240D3A89") },
