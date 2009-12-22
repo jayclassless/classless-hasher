@@ -35,15 +35,11 @@ namespace Classless.Hasher.Tests {
 		public void TestVector(HashAlgorithm hasher, byte[] input, byte[] expectedOutput) {
 			byte[] result = hasher.ComputeHash(input);
 
-			Assert.AreEqual(expectedOutput.Length, result.Length, "Digest sizes do not match");
-
-			for (int i = 0; i < result.Length; i++) {
-				Assert.AreEqual(
-					expectedOutput[i],
-					result[i],
-					string.Format("{0} on {1} should have produced {2} but instead got {3}", hasher, Conversions.ByteToHexadecimal(input), Conversions.ByteToHexadecimal(expectedOutput), Conversions.ByteToHexadecimal(result))
-				);
-			}
+			CustomAssert.AreEqual(
+				expectedOutput,
+				result,
+				string.Format("{0} on {1} should have produced {2} but instead got {3}", hasher, Conversions.ByteToHexadecimal(input), Conversions.ByteToHexadecimal(expectedOutput), Conversions.ByteToHexadecimal(result))
+			);
 		}
 	}
 }

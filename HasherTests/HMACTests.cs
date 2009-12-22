@@ -59,10 +59,7 @@ namespace Classless.Hasher.Tests {
 			MD5 md = new MD5();
 			Assert.AreEqual(md.GetType(), hmac.HashAlgorithm.GetType());
 			Assert.AreEqual(md.HashSize, hmac.HashAlgorithm.HashSize);
-			Assert.AreEqual(key.Length, hmac.Key.Length);
-			for (int i = 0; i < key.Length; i++) {
-				Assert.AreEqual(key[i], hmac.Key[i]);
-			}
+			CustomAssert.AreEqual(key, hmac.Key);
 		}
 
 
@@ -129,15 +126,11 @@ namespace Classless.Hasher.Tests {
 			Hmac hmac = new Hmac(hasher, key);
 			byte[] result = hmac.ComputeHash(input);
 
-			Assert.AreEqual(expectedOutput.Length, result.Length, "Digest sizes do not match");
-
-			for (int i = 0; i < result.Length; i++) {
-				Assert.AreEqual(
-					expectedOutput[i],
-					result[i],
-					string.Format("{0}({1}) on {2} should have produced {3} but instead got {4}", hmac, Conversions.ByteToHexadecimal(key), Conversions.ByteToHexadecimal(input), Conversions.ByteToHexadecimal(expectedOutput), Conversions.ByteToHexadecimal(result))
-				);
-			}
+			CustomAssert.AreEqual(
+				expectedOutput,
+				result,
+				string.Format("{0}({1}) on {2} should have produced {3} but instead got {4}", hmac, Conversions.ByteToHexadecimal(key), Conversions.ByteToHexadecimal(input), Conversions.ByteToHexadecimal(expectedOutput), Conversions.ByteToHexadecimal(result))
+			);
 		}
 	}
 }
