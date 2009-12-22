@@ -29,7 +29,7 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the SHA384 hash for the input data using the managed library.</summary>
-	public class SHA384 : BlockHashAlgorithm {
+	public class Sha384 : BlockHashAlgorithm {
 		private readonly object syncLock = new object();
 
 		private ulong[] accumulator = new ulong[] { 0xCBBB9D5DC1059ED8, 0x629A292A367CD507, 0x9159015A3070DD17, 0x152FECD8F70E5939, 0x67332667FFC00B31, 0x8EB44A8768581511, 0xDB0C2E0D64F98FA7, 0x47B5481DBEFA4FA4 };
@@ -69,7 +69,7 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the SHA384 class.</summary>
-		public SHA384() : base(128) {
+		public Sha384() : base(128) {
 			HashSizeValue = 384;
 		}
 

@@ -43,12 +43,12 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the GHash class.</summary>
-		/// <param name="param">The parameters to utilize in the GHash calculation.</param>
+		/// <param name="parameters">The parameters to utilize in the GHash calculation.</param>
 		/// <exception cref="ArgumentNullException">When the specified parameters are null.</exception>
-		public GHash(GHashParameters param) : base() {
+		public GHash(GHashParameters parameters) : base() {
 			lock (syncLock) {
-				if (param == null) { throw new ArgumentNullException("param", Hasher.Properties.Resources.paramCantBeNull); }
-				parameters = param;
+				if (parameters == null) { throw new ArgumentNullException("parameters", Hasher.Properties.Resources.paramCantBeNull); }
+				this.parameters = parameters;
 				HashSizeValue = 32;
 			}
 		}

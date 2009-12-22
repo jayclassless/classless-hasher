@@ -43,13 +43,13 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the Sum class.</summary>
-		/// <param name="param">The parameters to utilize in the Sum calculation.</param>
+		/// <param name="parameters">The parameters to utilize in the Sum calculation.</param>
 		/// <exception cref="ArgumentNullException">When the specified parameters are null.</exception>
-		public Sum(SumParameters param) : base() {
+		public Sum(SumParameters parameters) : base() {
 			lock (syncLock) {
-				if (param == null) { throw new ArgumentNullException("param", Properties.Resources.paramCantBeNull); }
-				HashSizeValue = param.Order;
-				parameters = param;
+				if (parameters == null) { throw new ArgumentNullException("parameters", Properties.Resources.paramCantBeNull); }
+				this.parameters = parameters;
+				HashSizeValue = this.parameters.Order;
 			}
 		}
 

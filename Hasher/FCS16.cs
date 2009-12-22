@@ -29,7 +29,7 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the FCS16 hash for the input data using the managed library.</summary>
-	public class FCS16 : HashAlgorithm {
+	public class Fcs16 : HashAlgorithm {
 		private readonly object syncLock = new object();
 
 		private ushort hash = 0xFFFF;
@@ -74,7 +74,7 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the FCS16 class.</summary>
-		public FCS16() : base() {
+		public Fcs16() : base() {
 			HashSizeValue = 16;
 		}
 

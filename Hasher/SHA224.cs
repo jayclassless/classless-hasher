@@ -29,7 +29,7 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the SHA224 hash for the input data using the managed library.</summary>
-	public class SHA224 : BlockHashAlgorithm {
+	public class Sha224 : BlockHashAlgorithm {
 		private readonly object syncLock = new object();
 
 		private uint[] accumulator = new uint[] { 0xC1059ED8, 0x367CD507, 0x3070DD17, 0xF70E5939, 0xFFC00B31, 0x68581511, 0x64F98FA7, 0xBEFA4FA4 };
@@ -58,7 +58,7 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the SHA224 class.</summary>
-		public SHA224() : base(64) {
+		public Sha224() : base(64) {
 			HashSizeValue = 224;
 		}
 

@@ -30,18 +30,18 @@ namespace Classless.Hasher {
 	/// <summary>Predefined standards for Sum algorithms.</summary>
 	public enum SumStandard {
 		/// <summary>8bit Sum</summary>
-		SUM8,
+		Sum8Bit,
 
 		/// <summary>16bit Sum</summary>
-		SUM16,
+		Sum16Bit,
 
 		/// <summary>24bit Sum</summary>
-		SUM24,
+		Sum24Bit,
 
 		/// <summary>32bit Sum</summary>
-		SUM32,
+		Sum32Bit,
 
 		/// <summary>64bit Sum</summary>
-		SUM64,
+		Sum64Bit,
 	}
 }

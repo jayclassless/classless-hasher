@@ -29,14 +29,14 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the BSD-style checksum for the input data using the managed library.</summary>
-	public class SumBSD : HashAlgorithm {
+	public class SumBsd : HashAlgorithm {
 		private readonly object syncLock = new object();
 
 		private ushort checksum;
 
 
 		/// <summary>Initializes a new instance of the SumBSD class.</summary>
-		public SumBSD () : base() {
+		public SumBsd () : base() {
 			HashSizeValue = 16;
 		}
 

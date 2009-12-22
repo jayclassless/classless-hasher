@@ -47,6 +47,7 @@
     <Rule Name="DoNotNestGenericTypesInMemberSignatures" Enabled="True" />
     <Rule Name="DoNotOverloadOperatorEqualsOnReferenceTypes" Enabled="True" />
     <Rule Name="DoNotPassTypesByReference" Enabled="True" />
+    <Rule Name="DoNotRaiseExceptionsInUnexpectedLocations" Enabled="True" />
     <Rule Name="EnumeratorsShouldBeStronglyTyped" Enabled="True" />
     <Rule Name="EnumsShouldHaveZeroValue" Enabled="True" />
     <Rule Name="EnumStorageShouldBeInt32" Enabled="True" />
@@ -89,28 +90,7 @@
    <RuleFile Name="$(FxCopDir)\Rules\GlobalizationRules.dll" Enabled="True" AllRulesEnabled="True" />
    <RuleFile Name="$(FxCopDir)\Rules\InteroperabilityRules.dll" Enabled="True" AllRulesEnabled="True" />
    <RuleFile Name="$(FxCopDir)\Rules\MobilityRules.dll" Enabled="True" AllRulesEnabled="True" />
-   <RuleFile Name="$(FxCopDir)\Rules\NamingRules.dll" Enabled="True" AllRulesEnabled="False">
-    <Rule Name="CompoundWordsShouldBeCasedCorrectly" Enabled="True" />
-    <Rule Name="DoNotNameEnumValuesReserved" Enabled="True" />
-    <Rule Name="DoNotPrefixEnumValuesWithTypeName" Enabled="True" />
-    <Rule Name="EventsShouldNotHaveBeforeOrAfterPrefix" Enabled="True" />
-    <Rule Name="FlagsEnumsShouldHavePluralNames" Enabled="True" />
-    <Rule Name="IdentifiersShouldDifferByMoreThanCase" Enabled="True" />
-    <Rule Name="IdentifiersShouldHaveCorrectPrefix" Enabled="True" />
-    <Rule Name="IdentifiersShouldHaveCorrectSuffix" Enabled="True" />
-    <Rule Name="IdentifiersShouldNotContainTypeNames" Enabled="True" />
-    <Rule Name="IdentifiersShouldNotHaveIncorrectPrefix" Enabled="True" />
-    <Rule Name="IdentifiersShouldNotHaveIncorrectSuffix" Enabled="True" />
-    <Rule Name="IdentifiersShouldNotMatchKeywords" Enabled="True" />
-    <Rule Name="OnlyFlagsEnumsShouldHavePluralNames" Enabled="True" />
-    <Rule Name="ParameterNamesShouldMatchBaseDeclaration" Enabled="True" />
-    <Rule Name="ParameterNamesShouldNotMatchMemberNames" Enabled="True" />
-    <Rule Name="PropertyNamesShouldNotMatchGetMethods" Enabled="True" />
-    <Rule Name="ResourceStringCompoundWordsShouldBeCasedCorrectly" Enabled="True" />
-    <Rule Name="ResourceStringsShouldBeSpelledCorrectly" Enabled="True" />
-    <Rule Name="TypeNamesShouldNotMatchNamespaces" Enabled="True" />
-    <Rule Name="UsePreferredTerms" Enabled="True" />
-   </RuleFile>
+   <RuleFile Name="$(FxCopDir)\Rules\NamingRules.dll" Enabled="True" AllRulesEnabled="True" />
    <RuleFile Name="$(FxCopDir)\Rules\PerformanceRules.dll" Enabled="True" AllRulesEnabled="False">
     <Rule Name="AvoidExcessiveLocals" Enabled="True" />
     <Rule Name="AvoidUncalledPrivateCode" Enabled="True" />
@@ -120,6 +100,7 @@
     <Rule Name="DoNotCastUnnecessarily" Enabled="True" />
     <Rule Name="DoNotInitializeUnnecessarily" Enabled="True" />
     <Rule Name="InitializeReferenceTypeStaticFieldsInline" Enabled="True" />
+    <Rule Name="MarkAssembliesWithNeutralResourcesLanguage" Enabled="True" />
     <Rule Name="MarkMembersAsStatic" Enabled="True" />
     <Rule Name="OverrideEqualsAndOperatorEqualsOnValueTypes" Enabled="True" />
     <Rule Name="PropertiesShouldNotReturnArrays" Enabled="True" />
@@ -155,17 +136,60 @@
       <Namespaces>
        <Namespace Name="Classless.Hasher">
         <Types>
-         <Type Name="CRC">
+         <Type Name="BkdrHash">
+          <Messages>
+           <Message Id="Bkdr" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:06:33Z">
+            <Issue Name="Type">
+             <Item>Bkdr</Item>
+             <Item>'BkdrHash'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="Cksum">
+          <Messages>
+           <Message Id="Cksum" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:06:33Z">
+            <Issue Name="Type">
+             <Item>Cksum</Item>
+             <Item>'Cksum'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="Crc">
+          <Messages>
+           <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:21:22Z">
+            <Issue Name="Type">
+             <Item>Crc</Item>
+             <Item>'Crc'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
           <Members>
            <Member Name="#.cctor()">
             <Messages>
-             <Message TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810" Status="Excluded" Created="2009-11-27 15:42:43Z">
+             <Message TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810" Status="Excluded" Created="2009-12-22 15:21:22Z">
               <Issue>
-               <Item>'CRC'</Item>
+               <Item>'Crc'</Item>
               </Issue>
               <Notes>
                <User Name="jay">
-                <Note Id="3" />
+                <Note Id="9" />
                </User>
               </Notes>
              </Message>
@@ -173,17 +197,951 @@
            </Member>
           </Members>
          </Type>
-         <Type Name="GOSTHash">
+         <Type Name="CrcParameters">
+          <Messages>
+           <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:21:22Z">
+            <Issue Name="Type">
+             <Item>Crc</Item>
+             <Item>'CrcParameters'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="CrcStandard">
+          <Messages>
+           <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:21:22Z">
+            <Issue Name="Type">
+             <Item>Crc</Item>
+             <Item>'CrcStandard'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
           <Members>
-           <Member Name="#.cctor()">
+           <Member Name="#Crc16Bit">
             <Messages>
-             <Message TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810" Status="Excluded" Created="2009-11-27 15:42:43Z">
-              <Issue>
-               <Item>'GOSTHash'</Item>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc16Bit'</Item>
               </Issue>
               <Notes>
                <User Name="jay">
-                <Note Id="3" />
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc16BitArc">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc16BitArc'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc16BitCcitt">
+            <Messages>
+             <Message Id="Ccitt" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Ccitt</Item>
+               <Item>'CrcStandard.Crc16BitCcitt'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc16BitCcitt'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc16BitCcittFalse">
+            <Messages>
+             <Message Id="Ccitt" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Ccitt</Item>
+               <Item>'CrcStandard.Crc16BitCcittFalse'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc16BitCcittFalse'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc16BitIbm">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc16BitIbm'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc16BitKermit">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc16BitKermit'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc16BitLha">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc16BitLha'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Lha" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Lha</Item>
+               <Item>'CrcStandard.Crc16BitLha'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc16BitMaxim">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc16BitMaxim'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc16BitUsb">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc16BitUsb'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc16BitX25">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc16BitX25'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc16BitXkermit">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc16BitXkermit'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Xkermit" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Xkermit</Item>
+               <Item>'CrcStandard.Crc16BitXkermit'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc16BitXmodem">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc16BitXmodem'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Xmodem" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Xmodem</Item>
+               <Item>'CrcStandard.Crc16BitXmodem'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc16BitZmodem">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc16BitZmodem'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Zmodem" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Zmodem</Item>
+               <Item>'CrcStandard.Crc16BitZmodem'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc24Bit">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc24Bit'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc24BitOpenPgp">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc24BitOpenPgp'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Pgp" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Pgp</Item>
+               <Item>'CrcStandard.Crc24BitOpenPgp'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc32Bit">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:07:31Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc32Bit'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="8" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc32BitBzip2">
+            <Messages>
+             <Message Id="Bzip" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:07:31Z">
+              <Issue Name="Member">
+               <Item>Bzip</Item>
+               <Item>'CrcStandard.Crc32BitBzip2'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="8" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:07:31Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc32BitBzip2'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="8" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc32BitCksum">
+            <Messages>
+             <Message Id="Cksum" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:07:31Z">
+              <Issue Name="Member">
+               <Item>Cksum</Item>
+               <Item>'CrcStandard.Crc32BitCksum'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="8" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:07:31Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc32BitCksum'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="8" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc32BitIscsi">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:07:31Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc32BitIscsi'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="8" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Iscsi" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:07:31Z">
+              <Issue Name="Member">
+               <Item>Iscsi</Item>
+               <Item>'CrcStandard.Crc32BitIscsi'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="8" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc32BitItu">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:07:31Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc32BitItu'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="8" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Itu" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:07:31Z">
+              <Issue Name="Member">
+               <Item>Itu</Item>
+               <Item>'CrcStandard.Crc32BitItu'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="8" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc32BitJam">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:07:31Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc32BitJam'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="8" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc32BitMpeg2">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:07:31Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc32BitMpeg2'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="8" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc32BitPkzip">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:07:31Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc32BitPkzip'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="8" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Pkzip" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:07:31Z">
+              <Issue Name="Member">
+               <Item>Pkzip</Item>
+               <Item>'CrcStandard.Crc32BitPkzip'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="8" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc32BitPosix">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:07:31Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc32BitPosix'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="8" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc64Bit">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc64Bit'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc64BitIso">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc64BitIso'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc64BitJones">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc64BitJones'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc64BitWE">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc64BitWE'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc8Bit">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc8Bit'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc8BitIcode">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc8BitIcode'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Icode" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Icode</Item>
+               <Item>'CrcStandard.Crc8BitIcode'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc8BitItu">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc8BitItu'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Itu" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Itu</Item>
+               <Item>'CrcStandard.Crc8BitItu'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc8BitMaxim">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc8BitMaxim'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Crc8BitWcdma">
+            <Messages>
+             <Message Id="Crc" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Crc</Item>
+               <Item>'CrcStandard.Crc8BitWcdma'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+             <Message Id="Wcdma" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:46:20Z">
+              <Issue Name="Member">
+               <Item>Wcdma</Item>
+               <Item>'CrcStandard.Crc8BitWcdma'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="DjbHash">
+          <Messages>
+           <Message Id="Djb" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:06:33Z">
+            <Issue Name="Type">
+             <Item>Djb</Item>
+             <Item>'DjbHash'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="Fcs16">
+          <Messages>
+           <Message Id="Fcs" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:21:22Z">
+            <Issue Name="Type">
+             <Item>Fcs</Item>
+             <Item>'Fcs16'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="Fcs32">
+          <Messages>
+           <Message Id="Fcs" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:21:22Z">
+            <Issue Name="Type">
+             <Item>Fcs</Item>
+             <Item>'Fcs32'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="Fnv">
+          <Messages>
+           <Message Id="Fnv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:21:22Z">
+            <Issue Name="Type">
+             <Item>Fnv</Item>
+             <Item>'Fnv'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="FnvAlgorithmType">
+          <Messages>
+           <Message Id="Fnv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:21:22Z">
+            <Issue Name="Type">
+             <Item>Fnv</Item>
+             <Item>'FnvAlgorithmType'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#Fnv1">
+            <Messages>
+             <Message Id="Fnv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:36:39Z">
+              <Issue Name="Member">
+               <Item>Fnv</Item>
+               <Item>'FnvAlgorithmType.Fnv1'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Fnv1A">
+            <Messages>
+             <Message Id="Fnv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:36:39Z">
+              <Issue Name="Member">
+               <Item>Fnv</Item>
+               <Item>'FnvAlgorithmType.Fnv1A'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="FnvParameters">
+          <Messages>
+           <Message Id="Fnv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:21:22Z">
+            <Issue Name="Type">
+             <Item>Fnv</Item>
+             <Item>'FnvParameters'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="FnvStandard">
+          <Messages>
+           <Message Id="Fnv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:21:22Z">
+            <Issue Name="Type">
+             <Item>Fnv</Item>
+             <Item>'FnvStandard'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#Fnv32BitType0">
+            <Messages>
+             <Message Id="Fnv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:41:47Z">
+              <Issue Name="Member">
+               <Item>Fnv</Item>
+               <Item>'FnvStandard.Fnv32BitType0'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Fnv32BitType1">
+            <Messages>
+             <Message Id="Fnv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:41:47Z">
+              <Issue Name="Member">
+               <Item>Fnv</Item>
+               <Item>'FnvStandard.Fnv32BitType1'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Fnv32BitType1A">
+            <Messages>
+             <Message Id="Fnv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:41:47Z">
+              <Issue Name="Member">
+               <Item>Fnv</Item>
+               <Item>'FnvStandard.Fnv32BitType1A'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Fnv64BitType0">
+            <Messages>
+             <Message Id="Fnv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:41:47Z">
+              <Issue Name="Member">
+               <Item>Fnv</Item>
+               <Item>'FnvStandard.Fnv64BitType0'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Fnv64BitType1">
+            <Messages>
+             <Message Id="Fnv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:41:47Z">
+              <Issue Name="Member">
+               <Item>Fnv</Item>
+               <Item>'FnvStandard.Fnv64BitType1'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Fnv64BitType1A">
+            <Messages>
+             <Message Id="Fnv" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:41:47Z">
+              <Issue Name="Member">
+               <Item>Fnv</Item>
+               <Item>'FnvStandard.Fnv64BitType1A'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="7" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="GostHash">
+          <Messages>
+           <Message Id="Gost" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:21:22Z">
+            <Issue Name="Type">
+             <Item>Gost</Item>
+             <Item>'GostHash'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#.cctor()">
+            <Messages>
+             <Message TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810" Status="Excluded" Created="2009-12-22 15:21:22Z">
+              <Issue>
+               <Item>'GostHash'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="9" />
                </User>
               </Notes>
              </Message>
@@ -204,6 +1162,293 @@
             </Messages>
            </Member>
           </Members>
+         </Type>
+         <Type Name="Haval">
+          <Messages>
+           <Message Id="Haval" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:21:22Z">
+            <Issue Name="Type">
+             <Item>Haval</Item>
+             <Item>'Haval'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="HavalParameters">
+          <Messages>
+           <Message Id="Haval" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:21:22Z">
+            <Issue Name="Type">
+             <Item>Haval</Item>
+             <Item>'HavalParameters'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="HavalStandard">
+          <Messages>
+           <Message Id="Haval" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:21:22Z">
+            <Issue Name="Type">
+             <Item>Haval</Item>
+             <Item>'HavalStandard'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#Haval128Bit3Pass">
+            <Messages>
+             <Message Id="Haval" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:27:09Z">
+              <Issue Name="Member">
+               <Item>Haval</Item>
+               <Item>'HavalStandard.Haval128Bit3Pass'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="10" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Haval128Bit4Pass">
+            <Messages>
+             <Message Id="Haval" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:27:09Z">
+              <Issue Name="Member">
+               <Item>Haval</Item>
+               <Item>'HavalStandard.Haval128Bit4Pass'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="10" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Haval128Bit5Pass">
+            <Messages>
+             <Message Id="Haval" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:27:09Z">
+              <Issue Name="Member">
+               <Item>Haval</Item>
+               <Item>'HavalStandard.Haval128Bit5Pass'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="10" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Haval160Bit3Pass">
+            <Messages>
+             <Message Id="Haval" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:27:09Z">
+              <Issue Name="Member">
+               <Item>Haval</Item>
+               <Item>'HavalStandard.Haval160Bit3Pass'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="10" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Haval160Bit4Pass">
+            <Messages>
+             <Message Id="Haval" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:27:09Z">
+              <Issue Name="Member">
+               <Item>Haval</Item>
+               <Item>'HavalStandard.Haval160Bit4Pass'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="10" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Haval160Bit5Pass">
+            <Messages>
+             <Message Id="Haval" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:27:09Z">
+              <Issue Name="Member">
+               <Item>Haval</Item>
+               <Item>'HavalStandard.Haval160Bit5Pass'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="10" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Haval192Bit3Pass">
+            <Messages>
+             <Message Id="Haval" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:27:09Z">
+              <Issue Name="Member">
+               <Item>Haval</Item>
+               <Item>'HavalStandard.Haval192Bit3Pass'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="10" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Haval192Bit4Pass">
+            <Messages>
+             <Message Id="Haval" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:27:09Z">
+              <Issue Name="Member">
+               <Item>Haval</Item>
+               <Item>'HavalStandard.Haval192Bit4Pass'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="10" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Haval192Bit5Pass">
+            <Messages>
+             <Message Id="Haval" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:27:09Z">
+              <Issue Name="Member">
+               <Item>Haval</Item>
+               <Item>'HavalStandard.Haval192Bit5Pass'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="10" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Haval224Bit3Pass">
+            <Messages>
+             <Message Id="Haval" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:27:09Z">
+              <Issue Name="Member">
+               <Item>Haval</Item>
+               <Item>'HavalStandard.Haval224Bit3Pass'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="10" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Haval224Bit4Pass">
+            <Messages>
+             <Message Id="Haval" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:27:09Z">
+              <Issue Name="Member">
+               <Item>Haval</Item>
+               <Item>'HavalStandard.Haval224Bit4Pass'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="10" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Haval224Bit5Pass">
+            <Messages>
+             <Message Id="Haval" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:27:09Z">
+              <Issue Name="Member">
+               <Item>Haval</Item>
+               <Item>'HavalStandard.Haval224Bit5Pass'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="10" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Haval256Bit3Pass">
+            <Messages>
+             <Message Id="Haval" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:27:09Z">
+              <Issue Name="Member">
+               <Item>Haval</Item>
+               <Item>'HavalStandard.Haval256Bit3Pass'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="10" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Haval256Bit4Pass">
+            <Messages>
+             <Message Id="Haval" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:27:09Z">
+              <Issue Name="Member">
+               <Item>Haval</Item>
+               <Item>'HavalStandard.Haval256Bit4Pass'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="10" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Haval256Bit5Pass">
+            <Messages>
+             <Message Id="Haval" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:27:09Z">
+              <Issue Name="Member">
+               <Item>Haval</Item>
+               <Item>'HavalStandard.Haval256Bit5Pass'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="10" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="IParametrizedHashAlgorithm">
+          <Messages>
+           <Message Id="Parametrized" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:06:33Z">
+            <Issue Name="Type">
+             <Item>Parametrized</Item>
+             <Item>'IParametrizedHashAlgorithm'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
          </Type>
          <Type Name="JenkinsHash">
           <Members>
@@ -448,6 +1693,233 @@
            </Member>
           </Members>
          </Type>
+         <Type Name="Pjw32">
+          <Messages>
+           <Message Id="Pjw" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:06:33Z">
+            <Issue Name="Type">
+             <Item>Pjw</Item>
+             <Item>'Pjw32'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="SdbmHash">
+          <Messages>
+           <Message Id="Sdbm" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:06:33Z">
+            <Issue Name="Type">
+             <Item>Sdbm</Item>
+             <Item>'SdbmHash'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="Sha0">
+          <Messages>
+           <Message Id="Sha" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:15:18Z">
+            <Issue Name="Type">
+             <Item>Sha</Item>
+             <Item>'Sha0'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="Sha1">
+          <Messages>
+           <Message Id="Sha" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:15:18Z">
+            <Issue Name="Type">
+             <Item>Sha</Item>
+             <Item>'Sha1'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="Sha224">
+          <Messages>
+           <Message Id="Sha" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:15:18Z">
+            <Issue Name="Type">
+             <Item>Sha</Item>
+             <Item>'Sha224'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="Sha256">
+          <Messages>
+           <Message Id="Sha" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:15:18Z">
+            <Issue Name="Type">
+             <Item>Sha</Item>
+             <Item>'Sha256'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="Sha384">
+          <Messages>
+           <Message Id="Sha" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:15:18Z">
+            <Issue Name="Type">
+             <Item>Sha</Item>
+             <Item>'Sha384'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="Sha512">
+          <Messages>
+           <Message Id="Sha" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:15:18Z">
+            <Issue Name="Type">
+             <Item>Sha</Item>
+             <Item>'Sha512'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="Snefru2">
+          <Messages>
+           <Message Id="Snefru" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:06:33Z">
+            <Issue Name="Type">
+             <Item>Snefru</Item>
+             <Item>'Snefru2'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="Snefru2Parameters">
+          <Messages>
+           <Message Id="Snefru" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:06:33Z">
+            <Issue Name="Type">
+             <Item>Snefru</Item>
+             <Item>'Snefru2Parameters'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="Snefru2Standard">
+          <Messages>
+           <Message Id="Snefru" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:06:33Z">
+            <Issue Name="Type">
+             <Item>Snefru</Item>
+             <Item>'Snefru2Standard'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#Snefru128Bit4Pass">
+            <Messages>
+             <Message Id="Snefru" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:27:09Z">
+              <Issue Name="Member">
+               <Item>Snefru</Item>
+               <Item>'Snefru2Standard.Snefru128Bit4Pass'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="10" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Snefru128Bit8Pass">
+            <Messages>
+             <Message Id="Snefru" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:27:09Z">
+              <Issue Name="Member">
+               <Item>Snefru</Item>
+               <Item>'Snefru2Standard.Snefru128Bit8Pass'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="10" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Snefru256Bit4Pass">
+            <Messages>
+             <Message Id="Snefru" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:27:09Z">
+              <Issue Name="Member">
+               <Item>Snefru</Item>
+               <Item>'Snefru2Standard.Snefru256Bit4Pass'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="10" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#Snefru256Bit8Pass">
+            <Messages>
+             <Message Id="Snefru" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 16:27:09Z">
+              <Issue Name="Member">
+               <Item>Snefru</Item>
+               <Item>'Snefru2Standard.Snefru256Bit8Pass'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="10" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
          <Type Name="Whirlpool">
           <Members>
            <Member Name="#.cctor()">
@@ -465,6 +1937,40 @@
             </Messages>
            </Member>
           </Members>
+         </Type>
+         <Type Name="Xum32">
+          <Messages>
+           <Message Id="Xum" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:15:18Z">
+            <Issue Name="Type">
+             <Item>Xum</Item>
+             <Item>'Xum32'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+        </Types>
+       </Namespace>
+       <Namespace Name="Classless.Hasher.Mac">
+        <Types>
+         <Type Name="Hmac">
+          <Messages>
+           <Message Id="Hmac" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:21:22Z">
+            <Issue Name="Type">
+             <Item>Hmac</Item>
+             <Item>'Hmac'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
          </Type>
         </Types>
        </Namespace>
@@ -565,6 +2071,19 @@
           </Members>
          </Type>
          <Type Name="MultiHash">
+          <Messages>
+           <Message Id="Multi" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:06:33Z">
+            <Issue Name="Type">
+             <Item>Multi</Item>
+             <Item>'MultiHash'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="7" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
           <Members>
            <Member Name="#.ctor(Classless.Hasher.HashAlgorithmCollection)">
             <Messages>
@@ -586,17 +2105,12 @@
              </Message>
             </Messages>
            </Member>
-           <Member Name="#HashAlgorithms_Changed(System.Object,Classless.Hasher.ChangedEventArgs)">
+           <Member Name="#HashAlgorithmsChanged(System.Object,Classless.Hasher.ChangedEventArgs)">
             <Messages>
-             <Message TypeName="ReviewVisibleEventHandlers" Category="Microsoft.Security" CheckId="CA2109" Status="Excluded" Created="2009-11-27 18:50:01Z">
+             <Message TypeName="ReviewVisibleEventHandlers" Category="Microsoft.Security" CheckId="CA2109" Created="2009-12-22 15:41:47Z">
               <Issue>
-               <Item>'MultiHash.HashAlgorithms_Changed(object, ChangedEventArgs)'</Item>
+               <Item>'MultiHash.HashAlgorithmsChanged(object, ChangedEventArgs)'</Item>
               </Issue>
-              <Notes>
-               <User Name="jay">
-                <Note Id="1" />
-               </User>
-              </Notes>
              </Message>
             </Messages>
            </Member>
@@ -614,37 +2128,51 @@
              </Message>
             </Messages>
            </Member>
-           <Member Name="#HashAlgorithms_Changed(System.Object,Classless.Hasher.ChangedEventArgs)">
-            <Messages>
-             <Message TypeName="ReviewVisibleEventHandlers" Category="Microsoft.Security" CheckId="CA2109" Status="Excluded" Created="2009-11-27 18:50:01Z">
-              <Issue>
-               <Item>'ParallelHash.HashAlgorithms_Changed(object, ChangedEventArgs)'</Item>
-              </Issue>
-              <Notes>
-               <User Name="jay">
-                <Note Id="0" />
-               </User>
-              </Notes>
-             </Message>
-            </Messages>
-           </Member>
           </Members>
          </Type>
         </Types>
        </Namespace>
       </Namespaces>
+      <Resources>
+       <Resource Name="Classless.Hasher.Properties.Resources.resources">
+        <Messages>
+         <Message Id="Snefru" TypeName="ResourceStringsShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1703" Status="Excluded" Created="2009-12-22 15:03:07Z">
+          <Issue Name="StringResource">
+           <Item>'Classless.Hasher.Properties.Resources.resx'</Item>
+           <Item>invalidSnefruLength</Item>
+           <Item>Snefru</Item>
+           <Item>The Snefru2 Length can only be 128 or 256 bits long.</Item>
+          </Issue>
+          <Issue Name="StringResource">
+           <Item>'Classless.Hasher.Properties.Resources.resx'</Item>
+           <Item>invalidSnefruPasses</Item>
+           <Item>Snefru</Item>
+           <Item>The number of Snefru2 Passes can only be 4 or 8.</Item>
+          </Issue>
+          <Notes>
+           <User Name="jay">
+            <Note Id="6" />
+           </User>
+          </Notes>
+         </Message>
+        </Messages>
+       </Resource>
+      </Resources>
      </Module>
     </Modules>
    </Target>
   </Targets>
   <Notes>
    <User Name="jay">
-    <Note Id="0" Modified="2009-11-27 18:54:09Z">No security risk here.</Note>
-    <Note Id="1" Modified="2009-11-27 18:54:17Z">No security risk here.</Note>
     <Note Id="2" Modified="2009-11-27 18:55:00Z">In production release, the assembly will be signed. This is just a debug assembly.</Note>
     <Note Id="3" Modified="2009-11-29 02:41:48Z">There's no need to generate the tables unless the user actually wants to invoke these algorithms.</Note>
     <Note Id="4" Modified="2009-11-29 15:54:13Z">Overflow is expected or desired when using these methods.</Note>
     <Note Id="5" Modified="2009-11-29 16:18:33Z">These overflows are anticipated.</Note>
+    <Note Id="6" Modified="2009-12-22 15:03:50Z">Snefru is spelled correctly.</Note>
+    <Note Id="7" Modified="2009-12-22 15:53:26Z">These are spelled correctly (either acronyms or wierd names).</Note>
+    <Note Id="8" Modified="2009-12-22 16:08:10Z">These are spelled correctly (either acronyms or wierd names).</Note>
+    <Note Id="9" Modified="2009-12-22 16:09:01Z">There's no need to generate the tables unless the user actually wants to invoke these algorithms.</Note>
+    <Note Id="10" Modified="2009-12-22 16:27:37Z">These are spelled correctly (either acronyms or wierd names).</Note>
    </User>
   </Notes>
   <Rules>
@@ -657,11 +2185,18 @@
    <Rule TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002">
     <Resolution Name="Default">Change {0} in {1} to use Collection&lt;T&gt;, ReadOnlyCollection&lt;T&gt; or KeyedCollection&lt;K,V&gt;</Resolution>
    </Rule>
+   <Rule TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704">
+    <Resolution Name="Member">Correct the spelling of '{0}' in member name {1} or remove it entirely if it represents any sort of Hungarian notation.</Resolution>
+    <Resolution Name="Type">Correct the spelling of '{0}' in type name {1}.</Resolution>
+   </Rule>
    <Rule TypeName="InitializeReferenceTypeStaticFieldsInline" Category="Microsoft.Performance" CheckId="CA1810">
     <Resolution Name="Default">Initialize all static fields in {0} when those fields are declared and remove the explicit static constructor.</Resolution>
    </Rule>
    <Rule TypeName="OperationsShouldNotOverflow" Category="Microsoft.Usage" CheckId="CA2233">
     <Resolution Name="Default">Correct the potential overflow in the operation '{0}' in {1}.</Resolution>
+   </Rule>
+   <Rule TypeName="ResourceStringsShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1703">
+    <Resolution Name="StringResource">In resource {0}, referenced by name '{1}', correct the spelling of '{2}' in string value '{3}'.</Resolution>
    </Rule>
    <Rule TypeName="ReviewVisibleEventHandlers" Category="Microsoft.Security" CheckId="CA2109">
     <Resolution Name="Default">Consider making {0} not externally visible.</Resolution>

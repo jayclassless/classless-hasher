@@ -29,10 +29,10 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the HAVAL hash for the input data using the managed library.</summary>
-	public class HAVAL : BlockHashAlgorithm, IParametrizedHashAlgorithm {
+	public class Haval : BlockHashAlgorithm, IParametrizedHashAlgorithm {
         private readonly object syncLock = new object();
 
-		private HAVALParameters parameters;
+		private HavalParameters parameters;
 		private uint[] accumulator = new uint[] { 0x243F6A88, 0x85A308D3, 0x13198A2E, 0x03707344, 0xA4093822, 0x299F31D0, 0x082EFA98, 0xEC4E6C89 };
 
 
@@ -43,13 +43,13 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the HAVAL class.</summary>
-		/// <param name="param">The parameters to utilize in the HAVAL calculation.</param>
+		/// <param name="parameters">The parameters to utilize in the HAVAL calculation.</param>
 		/// <exception cref="ArgumentNullException">When the specified parameters are null.</exception>
-		public HAVAL(HAVALParameters param) : base(128) {
+		public Haval(HavalParameters parameters) : base(128) {
 			lock (syncLock) {
-				if (param == null) { throw new ArgumentNullException("param", Hasher.Properties.Resources.paramCantBeNull); }
-				HashSizeValue = (int)param.Length;
-				parameters = param;
+				if (parameters == null) { throw new ArgumentNullException("parameters", Hasher.Properties.Resources.paramCantBeNull); }
+				this.parameters = parameters;
+				HashSizeValue = this.parameters.Length;
 			}
 		}
 

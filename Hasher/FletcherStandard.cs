@@ -30,12 +30,12 @@ namespace Classless.Hasher {
 	/// <summary>Predefined standards for Fletcher algorithms.</summary>
 	public enum FletcherStandard {
 		/// <summary>8bit Fletcher</summary>
-		FLETCHER8,
+		Fletcher8Bit,
 
 		/// <summary>16bit Fletcher</summary>
-		FLETCHER16,
+		Fletcher16Bit,
 
 		/// <summary>32bit Fletcher</summary>
-		FLETCHER32,
+		Fletcher32Bit,
 	}
 }

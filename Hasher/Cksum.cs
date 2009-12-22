@@ -29,14 +29,14 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the Cksum hash for the input data using the managed library.</summary>
-	public class Cksum : CRC {
+	public class Cksum : Crc {
 		private readonly object syncLock = new object();
 
 		private uint count;
 
 
 		/// <summary>Initializes a new instance of the Cksum class.</summary>
-		public Cksum() : base(CRCParameters.GetParameters(CRCStandard.CRC32_CKSUM)) { }
+		public Cksum() : base(CrcParameters.GetParameters(CrcStandard.Crc32BitCksum)) { }
 
 
 		/// <summary>Initializes the algorithm.</summary>

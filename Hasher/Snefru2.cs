@@ -43,16 +43,16 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the Snefru2 class.</summary>
-		/// <param name="param">The parameters to utilize in the Snefru calculation.</param>
-		public Snefru2(Snefru2Parameters param) : base(64 - (param.Length / 8)) {
+		/// <param name="parameters">The parameters to utilize in the Snefru calculation.</param>
+		public Snefru2(Snefru2Parameters parameters) : base(64 - (parameters.Length / 8)) {
 			lock (syncLock) {
 				// We'll never actually trip this condition because the base() constructor will fail because of the null reference.
 				//if (param == null) {
 					//throw new ArgumentNullException("param", Hasher.Properties.Resources.paramCantBeNull);
 				//}
-				HashSizeValue = (int)param.Length;
-				parameters = param;
-				accumulator = new uint[parameters.Length / 32];
+				this.parameters = parameters;
+				HashSizeValue = this.parameters.Length;
+				accumulator = new uint[this.parameters.Length / 32];
 			}
 		}
 

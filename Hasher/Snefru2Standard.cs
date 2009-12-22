@@ -30,15 +30,15 @@ namespace Classless.Hasher {
 	/// <summary>Predefined standard parameters for Snefru2 algorithms.</summary>
 	public enum Snefru2Standard {
 		/// <summary>Four passes with a 128bit result hash.</summary>
-		Snefru2_4_128,
+		Snefru128Bit4Pass,
 
 		/// <summary>Four passes with a 256bit result hash.</summary>
-		Snefru2_4_256,
+		Snefru256Bit4Pass,
 
 		/// <summary>Eight passes with a 128bit result hash.</summary>
-		Snefru2_8_128,
+		Snefru128Bit8Pass,
 
 		/// <summary>Eight passes with a 256bit result hash.</summary>
-		Snefru2_8_256
+		Snefru256Bit8Pass
 	}
 }

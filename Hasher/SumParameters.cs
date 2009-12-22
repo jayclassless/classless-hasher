@@ -67,11 +67,11 @@ namespace Classless.Hasher {
 			SumParameters temp = null;
 
 			switch (standard) {
-				case SumStandard.SUM8: temp = new SumParameters(8); break;
-				case SumStandard.SUM16: temp = new SumParameters(16); break;
-				case SumStandard.SUM24: temp = new SumParameters(24); break;
-				case SumStandard.SUM32: temp = new SumParameters(32); break;
-				case SumStandard.SUM64: temp = new SumParameters(64); break;
+				case SumStandard.Sum8Bit: temp = new SumParameters(8); break;
+				case SumStandard.Sum16Bit: temp = new SumParameters(16); break;
+				case SumStandard.Sum24Bit: temp = new SumParameters(24); break;
+				case SumStandard.Sum32Bit: temp = new SumParameters(32); break;
+				case SumStandard.Sum64Bit: temp = new SumParameters(64); break;
 			}
 
 			return temp;

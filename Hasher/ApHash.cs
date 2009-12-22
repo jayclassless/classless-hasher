@@ -29,7 +29,7 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the AP Hash for the input data using the managed library.</summary>
-	public class ApHash : HashAlgorithm {
+	public class APHash : HashAlgorithm {
 		private readonly object syncLock = new object();
 
 		private uint checksum = 0xAAAAAAAA;
@@ -37,7 +37,7 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the ApHash class.</summary>
-		public ApHash () : base() {
+		public APHash () : base() {
 			HashSizeValue = 32;
 		}
 

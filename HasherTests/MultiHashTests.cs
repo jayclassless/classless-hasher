@@ -44,9 +44,9 @@ namespace Classless.Hasher.Tests {
 			HashAlgorithmCollection hashCollection = new HashAlgorithmCollection();
 			MD5 md5 = new MD5();
 			hashCollection.Add(md5);
-			SHA1 sha1 = new SHA1();
+			Sha1 sha1 = new Sha1();
 			hashCollection.Add(sha1);
-			XOR8 xor8 = new XOR8();
+			Xor8 xor8 = new Xor8();
 			hashCollection.Add(xor8);
 			MultiHash hasher = new MultiHash(hashCollection);
 			Assert.Contains(md5, hasher.HashAlgorithms);
@@ -58,7 +58,7 @@ namespace Classless.Hasher.Tests {
 		static public object[] HashSizeTests = {
 			new object[] { new System.Security.Cryptography.HashAlgorithm[] { new Whirlpool(), new Tiger() }, 512 },
 			new object[] { new System.Security.Cryptography.HashAlgorithm[] { new MD5(), new Tiger() }, 192 },
-			new object[] { new System.Security.Cryptography.HashAlgorithm[] { new MD5(), new SumBSD(), new XOR8() }, 128 },
+			new object[] { new System.Security.Cryptography.HashAlgorithm[] { new MD5(), new SumBsd(), new Xor8() }, 128 },
 		};
 
 		[Test, TestCaseSource("HashSizeTests")]
@@ -70,8 +70,8 @@ namespace Classless.Hasher.Tests {
 
 		[Test]
 		public void ChangeHasherGoodTest() {
-			MultiHash hasher = new MultiHash(new MD5(), new SHA1());
-			hasher.HashAlgorithms.Add(new RIPEMD128());
+			MultiHash hasher = new MultiHash(new MD5(), new Sha1());
+			hasher.HashAlgorithms.Add(new RipeMD128());
 			hasher.TransformBlock(TestVectors.s("1234567890"), 0, 10, null, 0);
 			hasher.TransformFinalBlock(new byte[1], 0, 0);
 		}
@@ -79,7 +79,7 @@ namespace Classless.Hasher.Tests {
 
 		[Test]
 		public void ChangeHasherGoodOrderTest() {
-			MultiHash hasher = new MultiHash(new MD5(), new SHA1());
+			MultiHash hasher = new MultiHash(new MD5(), new Sha1());
 			hasher.TransformBlock(TestVectors.s("1234567890"), 0, 10, null, 0);
 			hasher.HashAlgorithms.Reverse();
 			hasher.TransformFinalBlock(new byte[1], 0, 0);
@@ -88,9 +88,9 @@ namespace Classless.Hasher.Tests {
 	
 		[Test, ExpectedException(typeof(System.Security.Cryptography.CryptographicException))]
 		public void ChangeHasherBadTest() {
-			MultiHash hasher = new MultiHash(new MD5(), new SHA1());
+			MultiHash hasher = new MultiHash(new MD5(), new Sha1());
 			hasher.TransformBlock(TestVectors.s("1234567890"), 0, 10, null, 0);
-			hasher.HashAlgorithms.Add(new RIPEMD128());
+			hasher.HashAlgorithms.Add(new RipeMD128());
 			hasher.TransformFinalBlock(new byte[1], 0, 0);
 		}
 	}

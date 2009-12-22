@@ -29,7 +29,7 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the RIPEMD320 hash for the input data using the managed library.</summary>
-	public class RIPEMD320 : BlockHashAlgorithm {
+	public class RipeMD320 : BlockHashAlgorithm {
 		private readonly object syncLock = new object();
 
 		private uint[] accumulator = new uint[] { 0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0, 0x76543210, 0xFEDCBA98, 0x89ABCDEF, 0x01234567, 0x3C2D1E0F };
@@ -71,7 +71,7 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the RIPEMD320 class.</summary>
-		public RIPEMD320() : base(64) {
+		public RipeMD320() : base(64) {
 			HashSizeValue = 320;
 		}
 

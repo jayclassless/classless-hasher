@@ -1,5 +1,3 @@
-// $Id: FNVStandard.cs 2 2004-06-25 23:07:43Z jayclassless $
-
 #region License
 /* ***** BEGIN LICENSE BLOCK *****
  * Version: MPL 1.1
@@ -30,23 +28,23 @@ using System;
 
 namespace Classless.Hasher {
 	/// <summary>Predefined standards for FNV algorithms.</summary>
-	public enum FNVStandard {
+	public enum FnvStandard {
 		/// <summary>A 32bit FNV-0 algorithm.</summary>
-		FNV0_32,
+		Fnv32BitType0,
 
 		/// <summary>A 64bit FNV-0 algorithm.</summary>
-		FNV0_64,
+		Fnv64BitType0,
 
 		/// <summary>A 32bit FNV-1 algorithm.</summary>
-		FNV1_32,
+		Fnv32BitType1,
 
 		/// <summary>A 64bit FNV-1 algorithm.</summary>
-		FNV1_64,
+		Fnv64BitType1,
 
 		/// <summary>A 32bit FNV-1a algorithm.</summary>
-		FNV1A_32,
+		Fnv32BitType1A,
 
 		/// <summary>A 64bit FNV-1a algorithm.</summary>
-		FNV1A_64
+		Fnv64BitType1A
 	}
 }

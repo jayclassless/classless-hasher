@@ -29,14 +29,14 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the JS Hash for the input data using the managed library.</summary>
-	public class JsHash : HashAlgorithm {
+	public class JSHash : HashAlgorithm {
 		private readonly object syncLock = new object();
 
 		private uint checksum = 0x4E67C6A7;
 
 
 		/// <summary>Initializes a new instance of the JsHash class.</summary>
-		public JsHash () : base() {
+		public JSHash () : base() {
 			HashSizeValue = 32;
 		}
 

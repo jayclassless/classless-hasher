@@ -60,8 +60,8 @@ namespace Classless.Hasher {
 			GHashParameters temp = null;
 
 			switch (standard) {
-				case GHashStandard.GHash_3:	temp = new GHashParameters(3);	break;
-				case GHashStandard.GHash_5:	temp = new GHashParameters(5);	break;
+				case GHashStandard.GHash3:	temp = new GHashParameters(3);	break;
+				case GHashStandard.GHash5:	temp = new GHashParameters(5);	break;
 			}
 
 			return temp;

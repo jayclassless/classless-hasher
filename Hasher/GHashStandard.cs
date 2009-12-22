@@ -30,9 +30,9 @@ namespace Classless.Hasher {
 	/// <summary>Predefined standard parameters for GHash algorithms.</summary>
 	public enum GHashStandard {
 		/// <summary>GHash with a shift of 3 bits.</summary>
-		GHash_3,
+		GHash3,
 
 		/// <summary>GHash with a shift of 5 bits.</summary>
-		GHash_5
+		GHash5
 	}
 }

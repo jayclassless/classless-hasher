@@ -62,7 +62,7 @@ namespace Classless.Hasher.Utilities {
 		/// <param name="sender">The HashAlgorithmList object that triggered the event.</param>
 		/// <param name="e">Data about the event.</param>
 		/// <exception cref="CryptographicException">When the type of change that triggered this event will invalidate the hash calculation that is in progress.</exception>
-		override protected void HashAlgorithms_Changed(object sender, ChangedEventArgs e) {
+		override protected void HashAlgorithmsChanged(object sender, ChangedEventArgs e) {
 			if (State != 0) {
 				throw new CryptographicException(Properties.Resources.cantChangeHasherList);
 			}

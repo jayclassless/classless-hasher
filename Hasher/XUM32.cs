@@ -29,7 +29,7 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the XUM32 hash for the input data using the managed library.</summary>
-	public class XUM32 : HashAlgorithm {
+	public class Xum32 : HashAlgorithm {
 		private readonly object syncLock = new object();
 
 		private uint length;
@@ -38,11 +38,11 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the XUM32 class.</summary>
-		public XUM32() : base() {
+		public Xum32() : base() {
 			lock (syncLock) {
 				HashSizeValue = 32;
-				crcHash = new CRC(CRCParameters.GetParameters(CRCStandard.CRC32));
-				elfHash = new ELFHash();
+				crcHash = new Crc(CrcParameters.GetParameters(CrcStandard.Crc32Bit));
+				elfHash = new ElfHash();
 			}
 		}
 

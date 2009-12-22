@@ -29,11 +29,11 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>A class that contains the parameters necessary to initialize a CRC algorithm.</summary>
-	public class CRCParameters : HashAlgorithmParameters {
+	public class CrcParameters : HashAlgorithmParameters {
 		private int order;
 		private long polynomial;
 		private long initial;
-		private long finalXOR;
+		private long finalXor;
 		private bool reflectIn;
 
 
@@ -64,8 +64,8 @@ namespace Classless.Hasher {
 
 		/// <summary>Gets or sets the final value to XOR with the CRC.</summary>
 		public long FinalXorValue {
-			get { return finalXOR; }
-			set { finalXOR = value; }
+			get { return finalXor; }
+			set { finalXor = value; }
 		}
 
 		/// <summary>Gets or sets the value dictating whether or not to reflect the incoming data before calculating. (UART)</summary>
@@ -79,13 +79,13 @@ namespace Classless.Hasher {
 		/// <param name="order">The order of the CRC (e.g., how many bits).</param>
 		/// <param name="polynomial">The polynomial to use in the calculations.</param>
 		/// <param name="initial">The initial value of the CRC.</param>
-		/// <param name="finalXOR">The final value to XOR with the CRC.</param>
+		/// <param name="finalXor">The final value to XOR with the CRC.</param>
 		/// <param name="reflectIn">Whether or not to reflect the incoming data before calculating.</param>
-		public CRCParameters(int order, long polynomial, long initial, long finalXOR, bool reflectIn) {
+		public CrcParameters(int order, long polynomial, long initial, long finalXor, bool reflectIn) {
 			this.Order = order;
 			this.Polynomial = polynomial;
 			this.InitialValue = initial;
-			this.FinalXorValue = finalXOR;
+			this.FinalXorValue = finalXor;
 			this.ReflectInput = reflectIn;
 		}
 
@@ -100,43 +100,43 @@ namespace Classless.Hasher {
 		/// <summary>Retrieves a standard set of CRC parameters.</summary>
 		/// <param name="standard">The name of the standard parameter set to retrieve.</param>
 		/// <returns>The CRC Parameters for the given standard.</returns>
-		public static CRCParameters GetParameters(CRCStandard standard) {
-			CRCParameters param = null;
+		public static CrcParameters GetParameters(CrcStandard standard) {
+			CrcParameters param = null;
 
 			switch (standard) {
-				case CRCStandard.CRC8: param = new CRCParameters(8, 0x07, 0, 0, false); break;
-				case CRCStandard.CRC8_ICODE: param = new CRCParameters(8, 0x1D, 0xFD, 0, false); break;
-				case CRCStandard.CRC8_ITU: param = new CRCParameters(8, 0x07, 0, 0x55, false); break;
-				case CRCStandard.CRC8_MAXIM: param = new CRCParameters(8, 0x31, 0, 0, true); break;
-				case CRCStandard.CRC8_WCDMA: param = new CRCParameters(8, 0x9B, 0, 0, true); break;
-				case CRCStandard.CRC16: param = new CRCParameters(16, 0x8005, 0, 0, true); break;
-				case CRCStandard.CRC16_ARC: goto case CRCStandard.CRC16;
-				case CRCStandard.CRC16_IBM: goto case CRCStandard.CRC16;
-				case CRCStandard.CRC16_LHA: goto case CRCStandard.CRC16;
-				case CRCStandard.CRC16_CCITT: param = new CRCParameters(16, 0x1021, 0, 0, true); break;
-				case CRCStandard.CRC16_KERMIT: goto case CRCStandard.CRC16_CCITT;
-				case CRCStandard.CRC16_CCITT_FALSE: param = new CRCParameters(16, 0x1021, 0xFFFF, 0, false); break;
-				case CRCStandard.CRC16_MAXIM: param = new CRCParameters(16, 0x8005, 0, 0xFFFF, true); break;
-				case CRCStandard.CRC16_USB: param = new CRCParameters(16, 0x8005, 0xFFFF, 0xFFFF, true); break;
-				case CRCStandard.CRC16_X25: param = new CRCParameters(16, 0x1021, 0xFFFF, 0xFFFF, true); break;
-				case CRCStandard.CRC16_XMODEM: param = new CRCParameters(16, 0x1021, 0, 0, false); break;
-				case CRCStandard.CRC16_ZMODEM: goto case CRCStandard.CRC16_XMODEM;
-				case CRCStandard.CRC16_XKERMIT: param = new CRCParameters(16, 0x8408, 0, 0, true); break;
-				case CRCStandard.CRC24: param = new CRCParameters(24, 0x864CFB, 0xB704CE, 0, false); break;
-				case CRCStandard.CRC24_OPENPGP: goto case CRCStandard.CRC24;
-				case CRCStandard.CRC32: param = new CRCParameters(32, 0x04C11DB7, 0xFFFFFFFF, 0xFFFFFFFF, true); break;
-				case CRCStandard.CRC32_PKZIP: goto case CRCStandard.CRC32;
-				case CRCStandard.CRC32_ITU: goto case CRCStandard.CRC32;
-				case CRCStandard.CRC32_BZIP2: param = new CRCParameters(32, 0x04C11DB7, 0xFFFFFFFF, 0xFFFFFFFF, false); break;
-				case CRCStandard.CRC32_ISCSI: param = new CRCParameters(32, 0x1EDC6F41, 0xFFFFFFFF, 0xFFFFFFFF, true); break;
-				case CRCStandard.CRC32_JAM: param = new CRCParameters(32, 0x04C11DB7, 0xFFFFFFFF, 0, true); break;
-				case CRCStandard.CRC32_POSIX: param = new CRCParameters(32, 0x04C11DB7, 0, 0xFFFFFFFF, false); break;
-				case CRCStandard.CRC32_CKSUM: goto case CRCStandard.CRC32_POSIX;
-				case CRCStandard.CRC32_MPEG2: param = new CRCParameters(32, 0x04C11DB7, 0xFFFFFFFF, 0, false); break;
-				case CRCStandard.CRC64: param = new CRCParameters(64, 0x42F0E1EBA9EA3693, 0, 0, false); break;
-				case CRCStandard.CRC64_WE: param = new CRCParameters(64, (long)0x42F0E1EBA9EA3693, -1, -1, false); break;
-				case CRCStandard.CRC64_ISO: param = new CRCParameters(64, 0x000000000000001B, 0, 0, true); break;
-				case CRCStandard.CRC64_JONES: param = new CRCParameters(64, unchecked((long)0xAD93D23594C935A9), 0, 0, true); break;
+				case CrcStandard.Crc8Bit: param = new CrcParameters(8, 0x07, 0, 0, false); break;
+				case CrcStandard.Crc8BitIcode: param = new CrcParameters(8, 0x1D, 0xFD, 0, false); break;
+				case CrcStandard.Crc8BitItu: param = new CrcParameters(8, 0x07, 0, 0x55, false); break;
+				case CrcStandard.Crc8BitMaxim: param = new CrcParameters(8, 0x31, 0, 0, true); break;
+				case CrcStandard.Crc8BitWcdma: param = new CrcParameters(8, 0x9B, 0, 0, true); break;
+				case CrcStandard.Crc16Bit: param = new CrcParameters(16, 0x8005, 0, 0, true); break;
+				case CrcStandard.Crc16BitArc: goto case CrcStandard.Crc16Bit;
+				case CrcStandard.Crc16BitIbm: goto case CrcStandard.Crc16Bit;
+				case CrcStandard.Crc16BitLha: goto case CrcStandard.Crc16Bit;
+				case CrcStandard.Crc16BitCcitt: param = new CrcParameters(16, 0x1021, 0, 0, true); break;
+				case CrcStandard.Crc16BitKermit: goto case CrcStandard.Crc16BitCcitt;
+				case CrcStandard.Crc16BitCcittFalse: param = new CrcParameters(16, 0x1021, 0xFFFF, 0, false); break;
+				case CrcStandard.Crc16BitMaxim: param = new CrcParameters(16, 0x8005, 0, 0xFFFF, true); break;
+				case CrcStandard.Crc16BitUsb: param = new CrcParameters(16, 0x8005, 0xFFFF, 0xFFFF, true); break;
+				case CrcStandard.Crc16BitX25: param = new CrcParameters(16, 0x1021, 0xFFFF, 0xFFFF, true); break;
+				case CrcStandard.Crc16BitXmodem: param = new CrcParameters(16, 0x1021, 0, 0, false); break;
+				case CrcStandard.Crc16BitZmodem: goto case CrcStandard.Crc16BitXmodem;
+				case CrcStandard.Crc16BitXkermit: param = new CrcParameters(16, 0x8408, 0, 0, true); break;
+				case CrcStandard.Crc24Bit: param = new CrcParameters(24, 0x864CFB, 0xB704CE, 0, false); break;
+				case CrcStandard.Crc24BitOpenPgp: goto case CrcStandard.Crc24Bit;
+				case CrcStandard.Crc32Bit: param = new CrcParameters(32, 0x04C11DB7, 0xFFFFFFFF, 0xFFFFFFFF, true); break;
+				case CrcStandard.Crc32BitPkzip: goto case CrcStandard.Crc32Bit;
+				case CrcStandard.Crc32BitItu: goto case CrcStandard.Crc32Bit;
+				case CrcStandard.Crc32BitBzip2: param = new CrcParameters(32, 0x04C11DB7, 0xFFFFFFFF, 0xFFFFFFFF, false); break;
+				case CrcStandard.Crc32BitIscsi: param = new CrcParameters(32, 0x1EDC6F41, 0xFFFFFFFF, 0xFFFFFFFF, true); break;
+				case CrcStandard.Crc32BitJam: param = new CrcParameters(32, 0x04C11DB7, 0xFFFFFFFF, 0, true); break;
+				case CrcStandard.Crc32BitPosix: param = new CrcParameters(32, 0x04C11DB7, 0, 0xFFFFFFFF, false); break;
+				case CrcStandard.Crc32BitCksum: goto case CrcStandard.Crc32BitPosix;
+				case CrcStandard.Crc32BitMpeg2: param = new CrcParameters(32, 0x04C11DB7, 0xFFFFFFFF, 0, false); break;
+				case CrcStandard.Crc64Bit: param = new CrcParameters(64, 0x42F0E1EBA9EA3693, 0, 0, false); break;
+				case CrcStandard.Crc64BitWE: param = new CrcParameters(64, (long)0x42F0E1EBA9EA3693, -1, -1, false); break;
+				case CrcStandard.Crc64BitIso: param = new CrcParameters(64, 0x000000000000001B, 0, 0, true); break;
+				case CrcStandard.Crc64BitJones: param = new CrcParameters(64, unchecked((long)0xAD93D23594C935A9), 0, 0, true); break;
 			}
 
 			return param;

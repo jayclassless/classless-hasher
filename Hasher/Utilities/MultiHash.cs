@@ -58,7 +58,7 @@ namespace Classless.Hasher.Utilities {
 
 		/// <summary>Initializes an instance of MultiHash.</summary>
 		public MultiHash() : base() {
-			hashAlgorithms.Changed += new EventHandler<ChangedEventArgs>(HashAlgorithms_Changed);
+			hashAlgorithms.Changed += new EventHandler<ChangedEventArgs>(HashAlgorithmsChanged);
 		}
 
 		/// <summary>Initializes an instance of MultiHash.</summary>
@@ -69,14 +69,14 @@ namespace Classless.Hasher.Utilities {
 				throw new ArgumentNullException("hashAlgorithms", Properties.Resources.hashListCantBeNull);
 			}
 			this.hashAlgorithms = hashAlgorithms;
-			this.hashAlgorithms.Changed += new EventHandler<ChangedEventArgs>(HashAlgorithms_Changed);
+			this.hashAlgorithms.Changed += new EventHandler<ChangedEventArgs>(HashAlgorithmsChanged);
 		}
 
 		/// <summary>Initializes an instance of MultiHash.</summary>
 		/// <param name="hashAlgorithms">The list of HashAlgorithms to use in the calculations.</param>
 		public MultiHash(params System.Security.Cryptography.HashAlgorithm[] hashAlgorithms) : base() {
 			this.hashAlgorithms.AddRange(hashAlgorithms);
-			this.hashAlgorithms.Changed += new EventHandler<ChangedEventArgs>(HashAlgorithms_Changed);
+			this.hashAlgorithms.Changed += new EventHandler<ChangedEventArgs>(HashAlgorithmsChanged);
 		}
 
 
@@ -84,7 +84,7 @@ namespace Classless.Hasher.Utilities {
 		/// <param name="sender">The HashAlgorithmList object that triggered the event.</param>
 		/// <param name="e">Data about the event.</param>
 		/// <exception cref="CryptographicException">When the type of change that triggered this event will invalidate the hash calculation that is in progress.</exception>
-		protected virtual void HashAlgorithms_Changed(object sender, ChangedEventArgs e) {
+		protected virtual void HashAlgorithmsChanged(object sender, ChangedEventArgs e) {
 			if ((e != null) && (e.ChangeType == ChangedEventType.Element) && (State != 0)) {
 				throw new CryptographicException(Properties.Resources.cantChangeHasherList);
 			}

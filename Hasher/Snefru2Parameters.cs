@@ -83,10 +83,10 @@ namespace Classless.Hasher {
 			Snefru2Parameters temp = null;
 
 			switch (standard) {
-				case Snefru2Standard.Snefru2_4_128:	temp = new Snefru2Parameters(4, 128);	break;
-				case Snefru2Standard.Snefru2_4_256:	temp = new Snefru2Parameters(4, 256);	break;
-				case Snefru2Standard.Snefru2_8_128:	temp = new Snefru2Parameters(8, 128);	break;
-				case Snefru2Standard.Snefru2_8_256:	temp = new Snefru2Parameters(8, 256);	break;
+				case Snefru2Standard.Snefru128Bit4Pass:	temp = new Snefru2Parameters(4, 128);	break;
+				case Snefru2Standard.Snefru256Bit4Pass:	temp = new Snefru2Parameters(4, 256);	break;
+				case Snefru2Standard.Snefru128Bit8Pass:	temp = new Snefru2Parameters(8, 128);	break;
+				case Snefru2Standard.Snefru256Bit8Pass:	temp = new Snefru2Parameters(8, 256);	break;
 			}
 
 			return temp;

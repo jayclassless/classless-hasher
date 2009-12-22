@@ -29,7 +29,7 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the RIPEMD128 hash for the input data using the managed library.</summary>
-	public class RIPEMD128 : BlockHashAlgorithm {
+	public class RipeMD128 : BlockHashAlgorithm {
 		private readonly object syncLock = new object();
 
 		private uint[] accumulator = new uint[] { 0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476 };
@@ -67,7 +67,7 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the RIPEMD128 class.</summary>
-		public RIPEMD128() : base(64) {
+		public RipeMD128() : base(64) {
 			HashSizeValue = 128;
 		}
 

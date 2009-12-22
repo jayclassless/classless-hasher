@@ -28,11 +28,11 @@ using System;
 
 namespace Classless.Hasher {
 	/// <summary>A class that contains the parameters necessary to initialize a FNV algorithm.</summary>
-	public class FNVParameters : HashAlgorithmParameters {
+	public class FnvParameters : HashAlgorithmParameters {
 		private int order;
 		private long prime;
 		private long offsetBasis;
-		private FNVAlgorithmType algorithmType;
+		private FnvAlgorithmType algorithmType;
 
 
 		/// <summary>Gets or sets the order of the FNV (e.g., how many bits).</summary>
@@ -61,7 +61,7 @@ namespace Classless.Hasher {
 		}
 
 		/// <summary>Gets or sets the FNV algorithm variation.</summary>
-		public FNVAlgorithmType AlgorithmType {
+		public FnvAlgorithmType AlgorithmType {
 			get { return algorithmType; }
 			set { algorithmType = value; }
 		}
@@ -72,7 +72,7 @@ namespace Classless.Hasher {
 		/// <param name="prime">The prime number to use in the FNV calculations.</param>
 		/// <param name="offsetBasis">The offset basis of the FNV.</param>
 		/// <param name="type">The FNV algorithm variation.</param>
-		public FNVParameters(int order, long prime, long offsetBasis, FNVAlgorithmType type) {
+		public FnvParameters(int order, long prime, long offsetBasis, FnvAlgorithmType type) {
 			this.Order = order;
 			this.Prime = prime;
 			this.OffsetBasis = offsetBasis;
@@ -90,16 +90,16 @@ namespace Classless.Hasher {
 		/// <summary>Retrieves a standard set of FNV parameters.</summary>
 		/// <param name="standard">The name of the standard parameter set to retrieve.</param>
 		/// <returns>The FNV Parameters for the given standard.</returns>
-		public static FNVParameters GetParameters(FNVStandard standard) {
-			FNVParameters temp = null;
+		public static FnvParameters GetParameters(FnvStandard standard) {
+			FnvParameters temp = null;
 
 			switch (standard) {
-				case FNVStandard.FNV0_32:	temp = new FNVParameters(32, 0x01000193,     0x00000000, FNVAlgorithmType.FNV1); break;
-				case FNVStandard.FNV0_64:	temp = new FNVParameters(64, 0x0100000001B3, 0x00000000, FNVAlgorithmType.FNV1); break;
-				case FNVStandard.FNV1_32:	temp = new FNVParameters(32, 0x01000193,     0x811C9DC5, FNVAlgorithmType.FNV1); break;
-				case FNVStandard.FNV1_64:	temp = new FNVParameters(64, 0x0100000001B3, unchecked((long)0xCBF29CE484222325), FNVAlgorithmType.FNV1); break;
-				case FNVStandard.FNV1A_32:	temp = new FNVParameters(32, 0x01000193,     0x811C9DC5, FNVAlgorithmType.FNV1A); break;
-				case FNVStandard.FNV1A_64:	temp = new FNVParameters(64, 0x0100000001B3, unchecked((long)0xCBF29CE484222325), FNVAlgorithmType.FNV1A); break;
+				case FnvStandard.Fnv32BitType0:	temp = new FnvParameters(32, 0x01000193,     0x00000000, FnvAlgorithmType.Fnv1); break;
+				case FnvStandard.Fnv64BitType0:	temp = new FnvParameters(64, 0x0100000001B3, 0x00000000, FnvAlgorithmType.Fnv1); break;
+				case FnvStandard.Fnv32BitType1:	temp = new FnvParameters(32, 0x01000193,     0x811C9DC5, FnvAlgorithmType.Fnv1); break;
+				case FnvStandard.Fnv64BitType1:	temp = new FnvParameters(64, 0x0100000001B3, unchecked((long)0xCBF29CE484222325), FnvAlgorithmType.Fnv1); break;
+				case FnvStandard.Fnv32BitType1A:	temp = new FnvParameters(32, 0x01000193,     0x811C9DC5, FnvAlgorithmType.Fnv1A); break;
+				case FnvStandard.Fnv64BitType1A:	temp = new FnvParameters(64, 0x0100000001B3, unchecked((long)0xCBF29CE484222325), FnvAlgorithmType.Fnv1A); break;
 			}
 
 			return temp;

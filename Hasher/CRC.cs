@@ -29,12 +29,12 @@ using System.Collections;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the CRC hash for the input data using the managed library.</summary>
-	public class CRC : HashAlgorithm, IParametrizedHashAlgorithm {
+	public class Crc : HashAlgorithm, IParametrizedHashAlgorithm {
 		private readonly object syncLock = new object();
 
 		static private Hashtable lookupTables;
 
-		private CRCParameters parameters;
+		private CrcParameters parameters;
 		private long[] lookup;
 		private long checksum;
 		private long registerMask;
@@ -47,39 +47,39 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the CRC class.</summary>
-		/// <param name="param">The parameters to utilize in the CRC calculation.</param>
+		/// <param name="parameters">The parameters to utilize in the CRC calculation.</param>
 		/// <exception cref="ArgumentNullException">When the specified parameters are null.</exception>
-		public CRC(CRCParameters param) : base() {
+		public Crc(CrcParameters parameters) : base() {
 			lock (syncLock) {
-				if (param == null) { throw new ArgumentNullException("param", Hasher.Properties.Resources.paramCantBeNull); }
-				parameters = param;
-				HashSizeValue = param.Order;
+				if (parameters == null) { throw new ArgumentNullException("parameters", Hasher.Properties.Resources.paramCantBeNull); }
+				this.parameters = parameters;
+				HashSizeValue = this.parameters.Order;
 
-				CRC.BuildLookup(param);
-				lookup = (long[])lookupTables[param];
-				if (param.Order == 64) {
+				Crc.BuildLookup(this.parameters);
+				lookup = (long[])lookupTables[this.parameters];
+				if (this.parameters.Order == 64) {
 					registerMask = 0x00FFFFFFFFFFFFFF;
 				} else {
-					registerMask = (long)(Math.Pow(2, (param.Order - 8)) - 1);
+					registerMask = (long)(Math.Pow(2, (this.parameters.Order - 8)) - 1);
 				}
 
-				checksum = parameters.InitialValue;
-				if (parameters.ReflectInput) {
-					checksum = Reflect(checksum, parameters.Order);
+				checksum = this.parameters.InitialValue;
+				if (this.parameters.ReflectInput) {
+					checksum = Reflect(checksum, this.parameters.Order);
 				}
 			}
 		}
 
 
 		// Pre-build the more popular lookup tables.
-		static CRC() {
+		static Crc() {
 			lookupTables = new Hashtable();
-			BuildLookup(CRCParameters.GetParameters(CRCStandard.CRC32));
+			BuildLookup(CrcParameters.GetParameters(CrcStandard.Crc32Bit));
 		}
 
 
 		/// <summary>Build the CRC lookup table for a given polynomial.</summary>
-		static private void BuildLookup(CRCParameters param) {
+		static private void BuildLookup(CrcParameters param) {
 			if (lookupTables.Contains(param)) {
 				// No sense in creating the table twice.
 				return;

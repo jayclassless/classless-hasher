@@ -29,7 +29,7 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the FCS32 hash for the input data using the managed library.</summary>
-	public class FCS32 : HashAlgorithm {
+	public class Fcs32 : HashAlgorithm {
 		private readonly object syncLock = new object();
 
 		private uint hash = 0xFFFFFFFF;
@@ -74,7 +74,7 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the FCS32 class.</summary>
-		public FCS32() : base() {
+		public Fcs32() : base() {
 			HashSizeValue = 32;
 		}
 

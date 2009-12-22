@@ -29,7 +29,7 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the SHA512 hash for the input data using the managed library.</summary>
-	public class SHA512 : BlockHashAlgorithm {
+	public class Sha512 : BlockHashAlgorithm {
 		private readonly object syncLock = new object();
 
 		private ulong[] accumulator = new ulong[] { 0x6A09E667F3BCC908, 0xBB67AE8584CAA73B, 0x3C6EF372FE94F82B, 0xA54FF53A5F1D36F1, 0x510E527FADE682D1, 0x9B05688C2B3E6C1F, 0x1F83D9ABFB41BD6B, 0x5BE0CD19137E2179 };
@@ -69,7 +69,7 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the SHA512 class.</summary>
-		public SHA512() : base(128) {
+		public Sha512() : base(128) {
 			HashSizeValue = 512;
 		}
 

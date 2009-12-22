@@ -28,14 +28,14 @@ using System;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the XOR8 checksum for the input data using the managed library.</summary>
-	public class XOR8 : HashAlgorithm {
+	public class Xor8 : HashAlgorithm {
 		private readonly object syncLock = new object();
 
 		private byte checksum;
 
 
 		/// <summary>Initializes a new instance of the XOR8 class.</summary>
-		public XOR8() : base() {
+		public Xor8() : base() {
 			HashSizeValue = 8;
 		}
 

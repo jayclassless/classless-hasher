@@ -32,11 +32,11 @@ namespace Classless.Hasher.Tests {
 	[TestFixture]
 	public class ParameterTests {
 		static public object[] Algorithms = {
-			new object[] { typeof(CRC) },
+			new object[] { typeof(Crc) },
 			new object[] { typeof(Fletcher) },
-			new object[] { typeof(FNV) },
+			new object[] { typeof(Fnv) },
 			new object[] { typeof(GHash) },
-			new object[] { typeof(HAVAL) },
+			new object[] { typeof(Haval) },
 			new object[] { typeof(Sum) },
 		};
 
@@ -67,7 +67,7 @@ namespace Classless.Hasher.Tests {
 
 		[Test, TestCaseSource("BadCrcOrders"), ExpectedException(typeof(ArgumentOutOfRangeException))]
 		public void CrcOrderTest(int order) {
-			CRCParameters param = new CRCParameters(order, 1, 1, 1, true);
+			CrcParameters param = new CrcParameters(order, 1, 1, 1, true);
 		}
 
 
@@ -83,7 +83,7 @@ namespace Classless.Hasher.Tests {
 
 		[Test, TestCaseSource("BadFnvOrders"), ExpectedException(typeof(ArgumentOutOfRangeException))]
 		public void FnvOrderTest(int order) {
-			FNVParameters param = new FNVParameters(order, 1, 1, FNVAlgorithmType.FNV1);
+			FnvParameters param = new FnvParameters(order, 1, 1, FnvAlgorithmType.Fnv1);
 		}
 
 
@@ -99,7 +99,7 @@ namespace Classless.Hasher.Tests {
 
 		[Test, TestCaseSource("BadHavalPasses"), ExpectedException(typeof(ArgumentOutOfRangeException))]
 		public void HavalPassesTest(short passes) {
-			HAVALParameters param = new HAVALParameters(passes, 128);
+			HavalParameters param = new HavalParameters(passes, 128);
 		}
 
 
@@ -115,7 +115,7 @@ namespace Classless.Hasher.Tests {
 
 		[Test, TestCaseSource("BadHavalLengths"), ExpectedException(typeof(ArgumentOutOfRangeException))]
 		public void HavalLengthTest(short length) {
-			HAVALParameters param = new HAVALParameters(3, length);
+			HavalParameters param = new HavalParameters(3, length);
 		}
 
 
@@ -152,20 +152,20 @@ namespace Classless.Hasher.Tests {
 
 
 		static public object[] CrcParameterAliases = {
-			new object[] { CRCStandard.CRC16_ARC, CRCStandard.CRC16 },
-			new object[] { CRCStandard.CRC16_IBM, CRCStandard.CRC16 },
-			new object[] { CRCStandard.CRC16_LHA, CRCStandard.CRC16 },
-			new object[] { CRCStandard.CRC16_KERMIT, CRCStandard.CRC16_CCITT },
-			new object[] { CRCStandard.CRC16_ZMODEM, CRCStandard.CRC16_XMODEM },
-			new object[] { CRCStandard.CRC24_OPENPGP, CRCStandard.CRC24 },
-			new object[] { CRCStandard.CRC32_PKZIP, CRCStandard.CRC32 },
-			new object[] { CRCStandard.CRC32_ITU, CRCStandard.CRC32 },
-			new object[] { CRCStandard.CRC32_CKSUM, CRCStandard.CRC32_POSIX },
+			new object[] { CrcStandard.Crc16BitArc, CrcStandard.Crc16Bit },
+			new object[] { CrcStandard.Crc16BitIbm, CrcStandard.Crc16Bit },
+			new object[] { CrcStandard.Crc16BitLha, CrcStandard.Crc16Bit },
+			new object[] { CrcStandard.Crc16BitKermit, CrcStandard.Crc16BitCcitt },
+			new object[] { CrcStandard.Crc16BitZmodem, CrcStandard.Crc16BitXmodem },
+			new object[] { CrcStandard.Crc24BitOpenPgp, CrcStandard.Crc24Bit },
+			new object[] { CrcStandard.Crc32BitPkzip, CrcStandard.Crc32Bit },
+			new object[] { CrcStandard.Crc32BitItu, CrcStandard.Crc32Bit },
+			new object[] { CrcStandard.Crc32BitCksum, CrcStandard.Crc32BitPosix },
 		};
 
 		[Test, TestCaseSource("CrcParameterAliases")]
-		public void CrcParameterAliasesTest(CRCStandard alias, CRCStandard master) {
-			Assert.AreEqual(CRCParameters.GetParameters(master), CRCParameters.GetParameters(alias));
+		public void CrcParameterAliasesTest(CrcStandard alias, CrcStandard master) {
+			Assert.AreEqual(CrcParameters.GetParameters(master), CrcParameters.GetParameters(alias));
 		}
 
 
@@ -203,7 +203,7 @@ namespace Classless.Hasher.Tests {
 
 		[Test]
 		public void EqualsNullTest() {
-			Assert.IsFalse(CRCParameters.GetParameters(CRCStandard.CRC32).Equals(null));
+			Assert.IsFalse(CrcParameters.GetParameters(CrcStandard.Crc32Bit).Equals(null));
 		}
 	}
 }

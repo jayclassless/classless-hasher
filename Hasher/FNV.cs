@@ -29,10 +29,10 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the FNV hash for the input data using the managed library.</summary>
-	public class FNV : HashAlgorithm, IParametrizedHashAlgorithm {
+	public class Fnv : HashAlgorithm, IParametrizedHashAlgorithm {
 		private readonly object syncLock = new object();
 
-		private FNVParameters parameters;
+		private FnvParameters parameters;
 		private ulong hash;
 
 
@@ -43,14 +43,14 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the FNV class.</summary>
-		/// <param name="param">The parameters to utilize in the FNV calculation.</param>
+		/// <param name="parameters">The parameters to utilize in the FNV calculation.</param>
 		/// <exception cref="ArgumentNullException">When the specified parameters are null.</exception>
-		public FNV(FNVParameters param) : base() {
+		public Fnv(FnvParameters parameters) : base() {
 			lock (syncLock) {
-				if (param == null) { throw new ArgumentNullException("param", Hasher.Properties.Resources.paramCantBeNull); }
-				parameters = param;
-				HashSizeValue = (int)param.Order;
-				hash = (ulong)parameters.OffsetBasis;
+				if (parameters == null) { throw new ArgumentNullException("parameters", Hasher.Properties.Resources.paramCantBeNull); }
+				this.parameters = parameters;
+				HashSizeValue = this.parameters.Order;
+				hash = (ulong)this.parameters.OffsetBasis;
 			}
 		}
 
@@ -71,10 +71,10 @@ namespace Classless.Hasher {
 		override protected void HashCore(byte[] array, int ibStart, int cbSize) {
 			lock (syncLock) {
 				for (int i = ibStart; i < (ibStart + cbSize); i++) {
-					if (parameters.AlgorithmType == FNVAlgorithmType.FNV1) {
+					if (parameters.AlgorithmType == FnvAlgorithmType.Fnv1) {
 						hash *= (ulong)parameters.Prime;
 						hash ^= array[i];
-					} else if (parameters.AlgorithmType == FNVAlgorithmType.FNV1A) {
+					} else if (parameters.AlgorithmType == FnvAlgorithmType.Fnv1A) {
 						hash ^= array[i];
 						hash *= (ulong)parameters.Prime;
 					}

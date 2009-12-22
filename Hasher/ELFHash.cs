@@ -29,7 +29,7 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the ELF hash for the input data using the managed library.</summary>
-	public class ELFHash : HashAlgorithm {
+	public class ElfHash : HashAlgorithm {
 		private readonly object syncLock = new object();
 
 		private uint hash;
@@ -37,7 +37,7 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the ElfHash class.</summary>
-		public ELFHash() : base() {
+		public ElfHash() : base() {
 			HashSizeValue = 32;
 		}
 

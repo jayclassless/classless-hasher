@@ -28,9 +28,9 @@ using System;
 using System.Security.Cryptography;
 using Classless.Hasher.Utilities;
 
-namespace Classless.Hasher.MAC {
+namespace Classless.Hasher.Mac {
 	/// <summary>Implements the HMAC keyed message authentication code algorithm.</summary>
-	public class HMAC : KeyedHashAlgorithm {
+	public class Hmac : KeyedHashAlgorithm {
 		private readonly object syncLock = new object();
 
 		private BlockHashAlgorithm hashAlgorithm;
@@ -79,30 +79,30 @@ namespace Classless.Hasher.MAC {
 
 		/// <summary>Initializes a new instance of the HMAC class.</summary>
 		/// <remarks>The default HashAlgorithm will be used, and a random key will be generated.</remarks>
-		public HMAC() : this((BlockHashAlgorithm)Classless.Hasher.HashAlgorithm.Create(), null) { }
+		public Hmac() : this((BlockHashAlgorithm)Classless.Hasher.HashAlgorithm.Create(), null) { }
 
 		/// <summary>Initializes a new instance of the HMAC class.</summary>
 		/// <param name="hashAlgorithm">The base hash algorithm to use.</param>
 		/// <remarks>A random key will be generated.</remarks>
-		public HMAC(BlockHashAlgorithm hashAlgorithm) : this(hashAlgorithm, null) { }
+		public Hmac(BlockHashAlgorithm hashAlgorithm) : this(hashAlgorithm, null) { }
 
 		/// <summary>Initializes a new instance of the HMAC class.</summary>
 		/// <param name="hashAlgorithm">The base hash algorithm to use.</param>
-		/// <param name="rgbKey">The key to use for the HMAC.</param>
+		/// <param name="key">The key to use for the HMAC.</param>
 		/// <exception cref="ArgumentNullException">When the specified HashAlgorithm is null.</exception>
-		/// <remarks>If rgbKey is null, a random key will be used.</remarks>
-		public HMAC(BlockHashAlgorithm hashAlgorithm, byte[] rgbKey) {
+		/// <remarks>If the specified key is null, a random key will be generated and used.</remarks>
+		public Hmac(BlockHashAlgorithm hashAlgorithm, byte[] key) {
 			lock (syncLock) {
 				if (hashAlgorithm == null) { throw new ArgumentNullException("hashAlgorithm", Properties.Resources.hashCantBeNull); }
 				this.hashAlgorithm = hashAlgorithm;
 
-				if (rgbKey == null) {
+				if (key == null) {
 					Random r = new Random((int)System.DateTime.Now.Ticks);
 					byte[] temp = new byte[HashAlgorithm.BlockSize];
 					r.NextBytes(temp);
 					InitializeKey(temp);
 				} else {
-					InitializeKey(rgbKey);
+					InitializeKey(key);
 				}
 			}
 		}
@@ -111,7 +111,7 @@ namespace Classless.Hasher.MAC {
 		/// <summary>Returns a String that represents the current Object.</summary>
 		/// <returns>A String that represents the current Object.</returns>
 		override public string ToString() {
-			return string.Format(System.Globalization.CultureInfo.InvariantCulture, "HMAC-{0}", hashAlgorithm.ToString());
+			return string.Format(System.Globalization.CultureInfo.InvariantCulture, "Hmac-{0}", hashAlgorithm.ToString());
 		}
 
 

@@ -29,14 +29,14 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the SHA0 hash for the input data using the managed library.</summary>
-	public class SHA0 : BlockHashAlgorithm {
+	public class Sha0 : BlockHashAlgorithm {
 		private readonly object syncLock = new object();
 
 		private uint[] accumulator = new uint[] { 0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0 };
 
 
 		/// <summary>Initializes a new instance of the SHA0 class.</summary>
-		public SHA0() : base(64) {
+		public Sha0() : base(64) {
 			HashSizeValue = 160;
 		}
 

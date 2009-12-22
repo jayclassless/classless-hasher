@@ -28,11 +28,11 @@ using System;
 
 namespace Classless.Hasher {
 	/// <summary>Represents a variation of the FNV hashing algorithm.</summary>
-	public enum FNVAlgorithmType {
+	public enum FnvAlgorithmType {
 		/// <summary>The mainstream FNV algorithm.</summary>
-		FNV1,
+		Fnv1,
 
 		/// <summary>The alternate FNV algorithm.</summary>
-		FNV1A
+		Fnv1A
 	}
 }

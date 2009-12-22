@@ -45,14 +45,14 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the Fletcher class.</summary>
-		/// <param name="param">The parameters to utilize in the Fletcher calculation.</param>
+		/// <param name="parameters">The parameters to utilize in the Fletcher calculation.</param>
 		/// <exception cref="ArgumentNullException">When the specified parameters are null.</exception>
-		public Fletcher(FletcherParameters param) : base() {
+		public Fletcher(FletcherParameters parameters) : base() {
 			lock (syncLock) {
-				if (param == null) { throw new ArgumentNullException("param", Properties.Resources.paramCantBeNull); }
-				HashSizeValue = param.Order;
-				parameters = param;
-				modulo = (uint)(Math.Pow(2, (param.Order / 2)) - 1);
+				if (parameters == null) { throw new ArgumentNullException("parameters", Properties.Resources.paramCantBeNull); }
+				this.parameters = parameters;
+				HashSizeValue = this.parameters.Order;
+				modulo = (uint)(Math.Pow(2, (this.parameters.Order / 2)) - 1);
 			}
 		}
 

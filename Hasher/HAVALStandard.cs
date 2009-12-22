@@ -28,50 +28,50 @@ using System;
 
 namespace Classless.Hasher {
 	/// <summary>Predefined standard parameters for HAVAL algorithms.</summary>
-	public enum HAVALStandard {
+	public enum HavalStandard {
 		/// <summary>Three passes with a 128bit result hash.</summary>
-		HAVAL_3_128,
+		Haval128Bit3Pass,
 
 		/// <summary>Three passes with a 160bit result hash.</summary>
-		HAVAL_3_160,
+		Haval160Bit3Pass,
 
 		/// <summary>Three passes with a 192bit result hash.</summary>
-		HAVAL_3_192,
+		Haval192Bit3Pass,
 		
 		/// <summary>Three passes with a 224bit result hash.</summary>
-		HAVAL_3_224,
+		Haval224Bit3Pass,
 		
 		/// <summary>Three passes with a 256bit result hash.</summary>
-		HAVAL_3_256,
+		Haval256Bit3Pass,
 
 		/// <summary>Four passes with a 128bit result hash.</summary>
-		HAVAL_4_128,
+		Haval128Bit4Pass,
 
 		/// <summary>Four passes with a 160bit result hash.</summary>
-		HAVAL_4_160,
+		Haval160Bit4Pass,
 
 		/// <summary>Four passes with a 192bit result hash.</summary>
-		HAVAL_4_192,
+		Haval192Bit4Pass,
 		
 		/// <summary>Four passes with a 224bit result hash.</summary>
-		HAVAL_4_224,
+		Haval224Bit4Pass,
 		
 		/// <summary>Four passes with a 256bit result hash.</summary>
-		HAVAL_4_256,
+		Haval256Bit4Pass,
 	
 		/// <summary>Five passes with a 128bit result hash.</summary>
-		HAVAL_5_128,
+		Haval128Bit5Pass,
 
 		/// <summary>Five passes with a 160bit result hash.</summary>
-		HAVAL_5_160,
+		Haval160Bit5Pass,
 
 		/// <summary>Five passes with a 192bit result hash.</summary>
-		HAVAL_5_192,
+		Haval192Bit5Pass,
 		
 		/// <summary>Five passes with a 224bit result hash.</summary>
-		HAVAL_5_224,
+		Haval224Bit5Pass,
 		
 		/// <summary>Five passes with a 256bit result hash.</summary>
-		HAVAL_5_256
+		Haval256Bit5Pass
 	}
 }

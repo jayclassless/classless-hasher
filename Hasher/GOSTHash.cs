@@ -29,7 +29,7 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the GOSTHash hash for the input data using the managed library.</summary>
-	public class GOSTHash : BlockHashAlgorithm {
+	public class GostHash : BlockHashAlgorithm {
 		private readonly object syncLock = new object();
 
 		static private uint[] SBox1;
@@ -41,12 +41,12 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the GOSTHash class.</summary>
-		public GOSTHash() : base(32) {
+		public GostHash() : base(32) {
 			HashSizeValue = 256;
 		}
 
 		/// <summary>Initializes the substitution boxes.</summary>
-		static GOSTHash() {
+		static GostHash() {
 			int a, b, i;
 			uint ax, bx, cx, dx;
 

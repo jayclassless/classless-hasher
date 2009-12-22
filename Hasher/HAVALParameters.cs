@@ -28,7 +28,7 @@ using System;
 
 namespace Classless.Hasher {
 	/// <summary>A class that contains the parameters necessary to initialize a HAVAL algorithm.</summary>
-	public class HAVALParameters : HashAlgorithmParameters {
+	public class HavalParameters : HashAlgorithmParameters {
 		private short passes;
 		private short length;
 
@@ -63,7 +63,7 @@ namespace Classless.Hasher {
 		/// <summary>Initializes a new instance of the HAVALParamters class.</summary>
 		/// <param name="passes">How many transformation passes to do.</param>
 		/// <param name="length">The bit length of the final hash.</param>
-		public HAVALParameters(short passes, short length) {
+		public HavalParameters(short passes, short length) {
 			this.Passes = passes;
 			this.Length = length;
 		}
@@ -79,25 +79,25 @@ namespace Classless.Hasher {
 		/// <summary>Retrieves a standard set of HAVAL parameters.</summary>
 		/// <param name="standard">The name of the standard parameter set to retrieve.</param>
 		/// <returns>The HAVAL Parameters for the given standard.</returns>
-		public static HAVALParameters GetParameters(HAVALStandard standard) {
-			HAVALParameters temp = null;
+		public static HavalParameters GetParameters(HavalStandard standard) {
+			HavalParameters temp = null;
 
 			switch (standard) {
-				case HAVALStandard.HAVAL_3_128:	temp = new HAVALParameters(3, 128);	break;
-				case HAVALStandard.HAVAL_3_160:	temp = new HAVALParameters(3, 160);	break;
-				case HAVALStandard.HAVAL_3_192:	temp = new HAVALParameters(3, 192);	break;
-				case HAVALStandard.HAVAL_3_224:	temp = new HAVALParameters(3, 224);	break;
-				case HAVALStandard.HAVAL_3_256:	temp = new HAVALParameters(3, 256);	break;
-				case HAVALStandard.HAVAL_4_128:	temp = new HAVALParameters(4, 128);	break;
-				case HAVALStandard.HAVAL_4_160:	temp = new HAVALParameters(4, 160);	break;
-				case HAVALStandard.HAVAL_4_192:	temp = new HAVALParameters(4, 192);	break;
-				case HAVALStandard.HAVAL_4_224:	temp = new HAVALParameters(4, 224);	break;
-				case HAVALStandard.HAVAL_4_256:	temp = new HAVALParameters(4, 256);	break;
-				case HAVALStandard.HAVAL_5_128:	temp = new HAVALParameters(5, 128);	break;
-				case HAVALStandard.HAVAL_5_160:	temp = new HAVALParameters(5, 160);	break;
-				case HAVALStandard.HAVAL_5_192:	temp = new HAVALParameters(5, 192);	break;
-				case HAVALStandard.HAVAL_5_224:	temp = new HAVALParameters(5, 224);	break;
-				case HAVALStandard.HAVAL_5_256:	temp = new HAVALParameters(5, 256);	break;
+				case HavalStandard.Haval128Bit3Pass:	temp = new HavalParameters(3, 128);	break;
+				case HavalStandard.Haval160Bit3Pass:	temp = new HavalParameters(3, 160);	break;
+				case HavalStandard.Haval192Bit3Pass:	temp = new HavalParameters(3, 192);	break;
+				case HavalStandard.Haval224Bit3Pass:	temp = new HavalParameters(3, 224);	break;
+				case HavalStandard.Haval256Bit3Pass:	temp = new HavalParameters(3, 256);	break;
+				case HavalStandard.Haval128Bit4Pass:	temp = new HavalParameters(4, 128);	break;
+				case HavalStandard.Haval160Bit4Pass:	temp = new HavalParameters(4, 160);	break;
+				case HavalStandard.Haval192Bit4Pass:	temp = new HavalParameters(4, 192);	break;
+				case HavalStandard.Haval224Bit4Pass:	temp = new HavalParameters(4, 224);	break;
+				case HavalStandard.Haval256Bit4Pass:	temp = new HavalParameters(4, 256);	break;
+				case HavalStandard.Haval128Bit5Pass:	temp = new HavalParameters(5, 128);	break;
+				case HavalStandard.Haval160Bit5Pass:	temp = new HavalParameters(5, 160);	break;
+				case HavalStandard.Haval192Bit5Pass:	temp = new HavalParameters(5, 192);	break;
+				case HavalStandard.Haval224Bit5Pass:	temp = new HavalParameters(5, 224);	break;
+				case HavalStandard.Haval256Bit5Pass:	temp = new HavalParameters(5, 256);	break;
 			}
 
 			return temp;

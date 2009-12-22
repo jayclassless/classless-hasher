@@ -29,7 +29,7 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the RS Hash for the input data using the managed library.</summary>
-	public class RsHash : HashAlgorithm {
+	public class RSHash : HashAlgorithm {
 		private readonly object syncLock = new object();
 
 		private static uint VB = 0x0005C6B7;
@@ -39,7 +39,7 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the RsHash class.</summary>
-		public RsHash () : base() {
+		public RSHash () : base() {
 			HashSizeValue = 32;
 		}
 

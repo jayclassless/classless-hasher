@@ -67,9 +67,9 @@ namespace Classless.Hasher {
 			FletcherParameters temp = null;
 
 			switch (standard) {
-				case FletcherStandard.FLETCHER8: temp = new FletcherParameters(8); break;
-				case FletcherStandard.FLETCHER16: temp = new FletcherParameters(16); break;
-				case FletcherStandard.FLETCHER32: temp = new FletcherParameters(32); break;
+				case FletcherStandard.Fletcher8Bit: temp = new FletcherParameters(8); break;
+				case FletcherStandard.Fletcher16Bit: temp = new FletcherParameters(16); break;
+				case FletcherStandard.Fletcher32Bit: temp = new FletcherParameters(32); break;
 			}
 
 			return temp;
