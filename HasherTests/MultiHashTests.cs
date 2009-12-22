@@ -27,7 +27,7 @@
 using System;
 using System.Collections;
 using NUnit.Framework;
-using Classless.Hasher.Utilities;
+using Classless.Hasher.Methods;
 
 namespace Classless.Hasher.Tests {
 	[TestFixture]

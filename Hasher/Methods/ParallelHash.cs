@@ -27,7 +27,7 @@
 using System;
 using System.Security.Cryptography;
 
-namespace Classless.Hasher.Utilities {
+namespace Classless.Hasher.Methods {
 	/// <summary>Computes the Parallel hash for the input data using the managed libraries.</summary>
 	public class ParallelHash : MultiHash {
 		private readonly object syncLock = new object();

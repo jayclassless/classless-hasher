@@ -91,9 +91,9 @@
     <Compile Include="SumStandard.cs" />
     <Compile Include="Utilities\BitTools.cs" />
     <Compile Include="HashAlgorithmCollection.cs" />
-    <Compile Include="Utilities\MultiHash.cs" />
+    <Compile Include="Methods\MultiHash.cs" />
     <Compile Include="Panama.cs" />
-    <Compile Include="Utilities\ParallelHash.cs" />
+    <Compile Include="Methods\ParallelHash.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RIPEMD128.cs" />
     <Compile Include="RIPEMD160.cs" />

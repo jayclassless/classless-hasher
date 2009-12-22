@@ -25,6 +25,7 @@
 #endregion
 
 using System;
+using Classless.Hasher.Methods;
 using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
@@ -104,8 +105,8 @@ namespace Classless.Hasher {
 				case "Classless.Hasher.Whirlpool": return new Whirlpool();
 				case "Classless.Hasher.Xor8": return new Xor8();
 				case "Classless.Hasher.Xum32": return new Xum32();
-				case "Classless.Hasher.Utilities.MultiHash": return new MultiHash();
-				case "Classless.Hasher.Utilities.ParallelHash": return new ParallelHash();
+				case "Classless.Hasher.Methods.MultiHash": return new MultiHash();
+				case "Classless.Hasher.Methods.ParallelHash": return new ParallelHash();
 				case "Classless.Hasher.HashAlgorithm": return new Sha1();
 
 				// Look up by class name.

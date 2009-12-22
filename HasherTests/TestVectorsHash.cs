@@ -26,7 +26,7 @@
 
 using System;
 using Classless.Hasher;
-using Classless.Hasher.Utilities;
+using Classless.Hasher.Methods;
 
 namespace Classless.Hasher.Tests {
 	public class TestVectorsHash : TestVectors {

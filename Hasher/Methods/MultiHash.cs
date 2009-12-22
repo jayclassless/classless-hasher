@@ -27,7 +27,7 @@
 using System;
 using System.Security.Cryptography;
 
-namespace Classless.Hasher.Utilities {
+namespace Classless.Hasher.Methods {
 	/// <summary>Computes multiple hashes/checksums at once.</summary>
 	public class MultiHash : HashAlgorithm {
 		private readonly object syncLock = new object();
