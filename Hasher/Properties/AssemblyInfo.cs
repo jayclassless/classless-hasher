@@ -26,6 +26,7 @@
 
 using System;
 using System.Reflection;
+using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -37,6 +38,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("(c)2004-2009 Classless.net")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+[assembly: NeutralResourcesLanguageAttribute("en-US")]
 
 [assembly: ComVisible(false)]
 [assembly: Guid("052cca43-7147-4dd5-acf9-29e7ab6f6c68")]
