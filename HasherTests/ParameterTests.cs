@@ -33,6 +33,7 @@ namespace Classless.Hasher.Tests {
 	public class ParameterTests {
 		static public object[] Algorithms = {
 			new object[] { typeof(CRC) },
+			new object[] { typeof(Fletcher) },
 			new object[] { typeof(FNV) },
 			new object[] { typeof(GHash) },
 			new object[] { typeof(HAVAL) },
@@ -181,6 +182,22 @@ namespace Classless.Hasher.Tests {
 		[Test, TestCaseSource("BadSumOrders"), ExpectedException(typeof(ArgumentOutOfRangeException))]
 		public void SumOrderTest(int order) {
 			SumParameters param = new SumParameters(order);
+		}
+
+
+		static public IEnumerable BadFletcherOrders {
+			get {
+				for (int i = -500; i <= 500; i++) {
+					if ((i != 8) && (i != 16) && (i != 32)) {
+						yield return new TestCaseData(i);
+					}
+				}
+			}
+		} 
+
+		[Test, TestCaseSource("BadFletcherOrders"), ExpectedException(typeof(ArgumentOutOfRangeException))]
+		public void FletcherOrderTest(int order) {
+			FletcherParameters param = new FletcherParameters(order);
 		}
 
 

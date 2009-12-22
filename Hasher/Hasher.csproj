@@ -54,6 +54,9 @@
     <Compile Include="EndianType.cs" />
     <Compile Include="FCS16.cs" />
     <Compile Include="FCS32.cs" />
+    <Compile Include="Fletcher.cs" />
+    <Compile Include="FletcherParameters.cs" />
+    <Compile Include="FletcherStandard.cs" />
     <Compile Include="FNV.cs" />
     <Compile Include="FNVAlgorithmType.cs" />
     <Compile Include="FNVParameters.cs" />

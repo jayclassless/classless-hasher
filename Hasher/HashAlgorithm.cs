@@ -72,6 +72,7 @@ namespace Classless.Hasher {
 				case "Classless.Hasher.ELFHash": return new ELFHash();
 				case "Classless.Hasher.FCS16": return new FCS16();
 				case "Classless.Hasher.FCS32": return new FCS32();
+				case "Classless.Hasher.Fletcher": return new Fletcher(FletcherParameters.GetParameters(FletcherStandard.FLETCHER32));
 				case "Classless.Hasher.FNV": return new FNV(FNVParameters.GetParameters(FNVStandard.FNV1A_32));
 				case "Classless.Hasher.GHash": return new GHash(GHashParameters.GetParameters(GHashStandard.GHash_5));
 				case "Classless.Hasher.GOSTHash": return new GOSTHash();
@@ -117,6 +118,7 @@ namespace Classless.Hasher {
 				case "ELFHash": return new ELFHash();
 				case "FCS16": return new FCS16();
 				case "FCS32": return new FCS32();
+				case "Fletcher": return new Fletcher(FletcherParameters.GetParameters(FletcherStandard.FLETCHER32));
 				case "FNV": return new FNV(FNVParameters.GetParameters(FNVStandard.FNV1A_32));
 				case "GHash": return new GHash(GHashParameters.GetParameters(GHashStandard.GHash_5));
 				case "GOSTHash": return new GOSTHash();
@@ -240,6 +242,12 @@ namespace Classless.Hasher {
 				case "CRC-64-ISO": return new CRC(CRCParameters.GetParameters(CRCStandard.CRC64_ISO));
 				case "CRC64-JONES": return new CRC(CRCParameters.GetParameters(CRCStandard.CRC64_JONES));
 				case "CRC-64-JONES": return new CRC(CRCParameters.GetParameters(CRCStandard.CRC64_JONES));
+				case "Fletcher32": return new Fletcher(FletcherParameters.GetParameters(FletcherStandard.FLETCHER32));
+				case "Fletcher-32": return new Fletcher(FletcherParameters.GetParameters(FletcherStandard.FLETCHER32));
+				case "Fletcher16": return new Fletcher(FletcherParameters.GetParameters(FletcherStandard.FLETCHER16));
+				case "Fletcher-16": return new Fletcher(FletcherParameters.GetParameters(FletcherStandard.FLETCHER16));
+				case "Fletcher8": return new Fletcher(FletcherParameters.GetParameters(FletcherStandard.FLETCHER8));
+				case "Fletcher-8": return new Fletcher(FletcherParameters.GetParameters(FletcherStandard.FLETCHER8));
 				case "FNV32": return new FNV(FNVParameters.GetParameters(FNVStandard.FNV1A_32));
 				case "FNV-32": return new FNV(FNVParameters.GetParameters(FNVStandard.FNV1A_32));
 				case "FNV64": return new FNV(FNVParameters.GetParameters(FNVStandard.FNV1A_64));

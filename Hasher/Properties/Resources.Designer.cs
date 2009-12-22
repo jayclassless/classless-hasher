@@ -115,6 +115,15 @@ namespace Classless.Hasher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The FletcherOrder can only be 8, 16, or 32 bits long..
+        /// </summary>
+        internal static string invalidFletcherOrder {
+            get {
+                return ResourceManager.GetString("invalidFletcherOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The FNV Order can only be 32 or 64 bits long..
         /// </summary>
         internal static string invalidFnvOrder {

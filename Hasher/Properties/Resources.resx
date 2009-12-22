@@ -135,6 +135,9 @@
   <data name="invalidCrcOrder" xml:space="preserve">
     <value>The CRC Order must represent full bytes and be between 8 and 64.</value>
   </data>
+  <data name="invalidFletcherOrder" xml:space="preserve">
+    <value>The FletcherOrder can only be 8, 16, or 32 bits long.</value>
+  </data>
   <data name="invalidFnvOrder" xml:space="preserve">
     <value>The FNV Order can only be 32 or 64 bits long.</value>
   </data>

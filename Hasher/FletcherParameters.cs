@@ -27,18 +27,18 @@
 using System;
 
 namespace Classless.Hasher {
-	/// <summary>A class that contains the parameters necessary to initialize a Sum algorithm.</summary>
-	public class SumParameters : HashAlgorithmParameters {
+	/// <summary>A class that contains the parameters necessary to initialize a Fletcher algorithm.</summary>
+	public class FletcherParameters : HashAlgorithmParameters {
 		private int order;
 
 
 		/// <summary>Gets or sets the order of the Sum (e.g., how many bits).</summary>
-		/// <exception cref="ArgumentOutOfRangeException">When the specified value is not a multiple of 8, is less than 8, or is greater than 64.</exception>
+		/// <exception cref="ArgumentOutOfRangeException">When the specified value is not 8, 16, or 32.</exception>
 		public int Order {
 			get { return order; }
 			set {
-				if (((value % 8) != 0) || (value < 8) || (value > 64)) {
-					throw new ArgumentOutOfRangeException("value", value, Properties.Resources.invalidSumOrder);
+				if ((value != 8) && (value != 16) && (value != 32)) {
+					throw new ArgumentOutOfRangeException("value", value, Properties.Resources.invalidFletcherOrder);
 				} else {
 					order = value;
 				}
@@ -46,9 +46,9 @@ namespace Classless.Hasher {
 		}
 
 
-		/// <summary>Initializes a new instance of the SumParameters class.</summary>
-		/// <param name="order">The order of the Sum (e.g., how many bits).</param>
-		public SumParameters(int order) {
+		/// <summary>Initializes a new instance of the FletcherParameters class.</summary>
+		/// <param name="order">The order of the Fletcher (e.g., how many bits).</param>
+		public FletcherParameters(int order) {
 			Order = order;
 		}
 
@@ -60,18 +60,16 @@ namespace Classless.Hasher {
 		}
 
 
-		/// <summary>Retrieves a standard set of Sum parameters.</summary>
+		/// <summary>Retrieves a standard set of Fletcher parameters.</summary>
 		/// <param name="standard">The name of the standard parameter set to retrieve.</param>
-		/// <returns>The Sum Parameters for the given standard.</returns>
-		public static SumParameters GetParameters(SumStandard standard) {
-			SumParameters temp = null;
+		/// <returns>The Fletcher Parameters for the given standard.</returns>
+		public static FletcherParameters GetParameters(FletcherStandard standard) {
+			FletcherParameters temp = null;
 
 			switch (standard) {
-				case SumStandard.SUM8: temp = new SumParameters(8); break;
-				case SumStandard.SUM16: temp = new SumParameters(16); break;
-				case SumStandard.SUM24: temp = new SumParameters(24); break;
-				case SumStandard.SUM32: temp = new SumParameters(32); break;
-				case SumStandard.SUM64: temp = new SumParameters(64); break;
+				case FletcherStandard.FLETCHER8: temp = new FletcherParameters(8); break;
+				case FletcherStandard.FLETCHER16: temp = new FletcherParameters(16); break;
+				case FletcherStandard.FLETCHER32: temp = new FletcherParameters(32); break;
 			}
 
 			return temp;
