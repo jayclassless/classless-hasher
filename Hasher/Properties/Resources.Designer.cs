@@ -106,6 +106,15 @@ namespace Classless.Hasher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The index specified was out of range..
+        /// </summary>
+        internal static string indexOutOfRange {
+            get {
+                return ResourceManager.GetString("indexOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The CRC Order must represent full bytes and be between 8 and 64..
         /// </summary>
         internal static string invalidCrcOrder {
@@ -129,6 +138,15 @@ namespace Classless.Hasher.Properties {
         internal static string invalidFnvOrder {
             get {
                 return ResourceManager.GetString("invalidFnvOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The HashChain must initialize at least one iteration..
+        /// </summary>
+        internal static string invalidHashChainInit {
+            get {
+                return ResourceManager.GetString("invalidHashChainInit", resourceCulture);
             }
         }
         

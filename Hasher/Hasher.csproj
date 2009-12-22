@@ -77,6 +77,7 @@
     <Compile Include="MD2.cs" />
     <Compile Include="MD4.cs" />
     <Compile Include="MD5.cs" />
+    <Compile Include="Methods\HashChain.cs" />
     <Compile Include="Pjw32.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

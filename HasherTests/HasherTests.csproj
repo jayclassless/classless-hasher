@@ -39,7 +39,9 @@
   <ItemGroup>
     <Compile Include="BitToolsTests.cs" />
     <Compile Include="BlockHashAlgorithmTests.cs" />
+    <Compile Include="CustomAssert.cs" />
     <Compile Include="HashAlgorithmTests.cs" />
+    <Compile Include="HashChainTests.cs" />
     <Compile Include="MultiHashTests.cs" />
     <Compile Include="ParallelHashTest.cs" />
     <Compile Include="ParameterTests.cs" />

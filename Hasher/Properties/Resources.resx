@@ -132,6 +132,9 @@
   <data name="hashListCantBeNull" xml:space="preserve">
     <value>The HashAlgorithmList cannot be null.</value>
   </data>
+  <data name="indexOutOfRange" xml:space="preserve">
+    <value>The index specified was out of range.</value>
+  </data>
   <data name="invalidCrcOrder" xml:space="preserve">
     <value>The CRC Order must represent full bytes and be between 8 and 64.</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="invalidFnvOrder" xml:space="preserve">
     <value>The FNV Order can only be 32 or 64 bits long.</value>
+  </data>
+  <data name="invalidHashChainInit" xml:space="preserve">
+    <value>The HashChain must initialize at least one iteration.</value>
   </data>
   <data name="invalidHavalLength" xml:space="preserve">
     <value>The HAVAL Length can only be 128, 160, 192, 224, or 256 bits long.</value>
