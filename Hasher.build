@@ -139,6 +139,10 @@
 				<exclude name="*Tests.dll" />
 				<exclude name="*TestResults.xml" />
 			</fileset>
+			<fileset basedir="${project::get-base-directory()}">
+				<include name="readme.txt" />
+				<include name="MPL-1.1.txt" />
+			</fileset>
 		</zip>
 	</target>
 
@@ -165,6 +169,9 @@
 		<zip zipfile="${project::get-base-directory()}/build/${project::get-name()}.${project.version}-doc.zip" ziplevel="9">
 			<fileset basedir="${project::get-base-directory()}/doc">
 				<include name="**/*" />
+			</fileset>
+			<fileset basedir="${project::get-base-directory()}">
+				<include name="readme.txt" />
 			</fileset>
 		</zip>
 	</target>
