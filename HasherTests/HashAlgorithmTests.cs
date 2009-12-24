@@ -67,6 +67,42 @@ namespace Classless.Hasher.Tests {
 		}
 
 
+		[Test, TestCaseSource("HashCreateNames")]
+		public void ReusableTest(string name, Type expectedType) {
+			System.Security.Cryptography.HashAlgorithm hashRepeater = HashAlgorithm.Create(name);
+			System.Security.Cryptography.HashAlgorithm hashFresh = null;
+
+			for (int i = 0; i < TestVectors.Battery.All.Length - 1; i++) {
+				hashFresh = HashAlgorithm.Create(name);
+				CustomAssert.AreEqual(hashFresh.ComputeHash(TestVectors.Battery.All[i]), hashRepeater.ComputeHash(TestVectors.Battery.All[i]));
+			}
+		}
+
+
+		[Test, TestCaseSource("HashCreateNames")]
+		public void ReusableInputArrayTest(string name, Type expectedType) {
+			System.Security.Cryptography.HashAlgorithm hashRepeater = HashAlgorithm.Create(name);
+			System.Security.Cryptography.HashAlgorithm hashFresh = null;
+			byte[] input = (byte[])TestVectors.Battery.NumericRepeated.Clone();
+
+			for (int i = 0; i < input.Length; i += 10) {
+				hashFresh = HashAlgorithm.Create(name);
+				CustomAssert.AreEqual(hashFresh.ComputeHash(TestVectors.Battery.Numeric), hashRepeater.ComputeHash(input, i, 10));
+			}
+		}
+
+
+		[Test, TestCaseSource("HashCreateNames")]
+		public void EnsureInputUnchangedTest(string name, Type expectedType) {
+			System.Security.Cryptography.HashAlgorithm hasher = HashAlgorithm.Create(name);
+			byte[] originalInput = (byte[])TestVectors.Battery.NumericRepeated.Clone();
+			byte[] input = (byte[])TestVectors.Battery.NumericRepeated.Clone();
+
+			byte[] output = hasher.ComputeHash(input);
+			CustomAssert.AreEqual(originalInput, input);
+		}
+
+
 		static public object[] HashCreateParametrizedNames = {
 			new object[] { "Crc8", typeof(Crc), CrcParameters.GetParameters(CrcStandard.Crc8Bit) },
 			new object[] { "Crc-8", typeof(Crc), CrcParameters.GetParameters(CrcStandard.Crc8Bit) },
