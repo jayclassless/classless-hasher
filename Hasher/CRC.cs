@@ -133,7 +133,7 @@ namespace Classless.Hasher {
 		/// <param name="cbSize">How many bytes in the array to read.</param>
 		override protected void HashCore(byte[] array, int ibStart, int cbSize) {
 			lock (syncLock) {
-				for (int i = ibStart; i < (cbSize - ibStart); i++) {
+				for (int i = ibStart; i < (cbSize + ibStart); i++) {
 					if (parameters.ReflectInput) {
 						checksum = ((checksum >> 8) & registerMask) ^ lookup[(checksum ^ array[i]) & 0xFF];
 					} else {
