@@ -53,6 +53,7 @@ namespace Classless.Hasher {
 				base.Initialize();
 				crcHash.Initialize();
 				elfHash.Initialize();
+				length = 0;
 			}
 		}
 
@@ -63,13 +64,9 @@ namespace Classless.Hasher {
 		/// <param name="cbSize">How many bytes in the array to read.</param>
 		override protected void HashCore(byte[] array, int ibStart, int cbSize) {
 			lock (syncLock) {
-				byte[] temp = new byte[array.Length];
-				Array.Copy(array, temp, array.Length);
-
+				elfHash.TransformBlock(array, ibStart, cbSize, null, 0);
+				crcHash.TransformBlock(array, ibStart, cbSize, null, 0);
 				length += (uint)cbSize;
-
-				elfHash.TransformBlock(array, ibStart, cbSize, temp, 0);
-				crcHash.TransformBlock(array, ibStart, cbSize, temp, 0);
 			}
 		}
 
