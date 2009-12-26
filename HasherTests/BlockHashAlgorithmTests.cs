@@ -26,6 +26,7 @@
 
 using System;
 using NUnit.Framework;
+using Classless.Hasher.Methods;
 using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher.Tests {
@@ -81,6 +82,12 @@ namespace Classless.Hasher.Tests {
 			hasher.TransformFinalBlock(inputChunks[inputChunks.Length - 1], 0, inputChunks[inputChunks.Length - 1].Length);
 
 			CustomAssert.AreEqual(expectedHash, hasher.Hash);
+		}
+
+
+		[Test, ExpectedException(typeof(ArgumentException)), TestCase(0), TestCase(-1), TestCase(-100)]
+		public void BadBlockSizeTest(int blockSize) {
+			HashList list = new HashList(new MD5(), blockSize);
 		}
 	}
 }

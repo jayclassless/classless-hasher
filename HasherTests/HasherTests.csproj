@@ -42,6 +42,8 @@
     <Compile Include="CustomAssert.cs" />
     <Compile Include="HashAlgorithmTests.cs" />
     <Compile Include="HashChainTests.cs" />
+    <Compile Include="HashListTests.cs" />
+    <Compile Include="HashNodeTests.cs" />
     <Compile Include="MultiHashTests.cs" />
     <Compile Include="ParallelHashTest.cs" />
     <Compile Include="ParameterTests.cs" />

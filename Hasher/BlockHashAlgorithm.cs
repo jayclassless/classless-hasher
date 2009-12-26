@@ -57,6 +57,9 @@ namespace Classless.Hasher {
 		/// <summary>Initializes a new instance of the BlockHashAlgorithm class.</summary>
 		/// <param name="blockSize">The size in bytes of an individual block.</param>
 		protected BlockHashAlgorithm(int blockSize) : base() {
+			if (blockSize < 1) {
+				throw new ArgumentException(Hasher.Properties.Resources.invalidBlockSize, "blockSize");
+			}
 			this.blockSize = blockSize;
 			buffer = new byte[BlockSize];
 		}

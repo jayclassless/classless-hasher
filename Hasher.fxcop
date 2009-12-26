@@ -1993,9 +1993,107 @@
           <Members>
            <Member Name="#Item[System.Int32]">
             <Messages>
-             <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Created="2009-12-22 18:17:52Z">
+             <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Excluded" Created="2009-12-22 18:17:52Z">
               <Issue>
                <Item>'HashChain.this[int]'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="12" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="HashList">
+          <Messages>
+           <Message TypeName="IdentifiersShouldHaveCorrectSuffix" Category="Microsoft.Naming" CheckId="CA1710" Status="Excluded" Created="2009-12-26 03:03:04Z">
+            <Issue>
+             <Item>'HashList'</Item>
+             <Item>Collection</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="11" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
+         <Type Name="HashNode">
+          <Members>
+           <Member Name="#Hash">
+            <Messages>
+             <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Excluded" Created="2009-12-26 03:03:04Z">
+              <Issue>
+               <Item>'HashNode.Hash'</Item>
+              </Issue>
+              <Notes>
+               <User Name="jay">
+                <Note Id="12" />
+               </User>
+              </Notes>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="MultiHash">
+          <Messages>
+           <Message Id="Multi" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-26 03:03:04Z">
+            <Issue Name="Type">
+             <Item>Multi</Item>
+             <Item>'MultiHash'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="1" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+          <Members>
+           <Member Name="#.ctor(Classless.Hasher.HashAlgorithmCollection)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2009-12-26 03:03:04Z">
+              <Issue>
+               <Item>'HashAlgorithmCollection'</Item>
+               <Item>'MultiHash.MultiHash(HashAlgorithmCollection)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#HashAlgorithms">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2009-12-26 03:03:04Z">
+              <Issue>
+               <Item>'HashAlgorithmCollection'</Item>
+               <Item>'MultiHash.HashAlgorithms'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+           <Member Name="#HashAlgorithmsChanged(System.Object,Classless.Hasher.ChangedEventArgs)">
+            <Messages>
+             <Message TypeName="ReviewVisibleEventHandlers" Category="Microsoft.Security" CheckId="CA2109" Created="2009-12-26 03:03:04Z">
+              <Issue>
+               <Item>'MultiHash.HashAlgorithmsChanged(object, ChangedEventArgs)'</Item>
+              </Issue>
+             </Message>
+            </Messages>
+           </Member>
+          </Members>
+         </Type>
+         <Type Name="ParallelHash">
+          <Members>
+           <Member Name="#.ctor(Classless.Hasher.HashAlgorithmCollection)">
+            <Messages>
+             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2009-12-26 03:03:04Z">
+              <Issue>
+               <Item>'HashAlgorithmCollection'</Item>
+               <Item>'ParallelHash.ParallelHash(HashAlgorithmCollection)'</Item>
               </Issue>
              </Message>
             </Messages>
@@ -2100,66 +2198,6 @@
            </Member>
           </Members>
          </Type>
-         <Type Name="MultiHash">
-          <Messages>
-           <Message Id="Multi" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:06:33Z">
-            <Issue Name="Type">
-             <Item>Multi</Item>
-             <Item>'MultiHash'</Item>
-            </Issue>
-            <Notes>
-             <User Name="jay">
-              <Note Id="7" />
-             </User>
-            </Notes>
-           </Message>
-          </Messages>
-          <Members>
-           <Member Name="#.ctor(Classless.Hasher.HashAlgorithmCollection)">
-            <Messages>
-             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2009-11-27 18:52:13Z">
-              <Issue>
-               <Item>'HashAlgorithmCollection'</Item>
-               <Item>'MultiHash.MultiHash(HashAlgorithmCollection)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#HashAlgorithms">
-            <Messages>
-             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2009-11-27 18:17:36Z">
-              <Issue>
-               <Item>'HashAlgorithmCollection'</Item>
-               <Item>'MultiHash.HashAlgorithms'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-           <Member Name="#HashAlgorithmsChanged(System.Object,Classless.Hasher.ChangedEventArgs)">
-            <Messages>
-             <Message TypeName="ReviewVisibleEventHandlers" Category="Microsoft.Security" CheckId="CA2109" Created="2009-12-22 15:41:47Z">
-              <Issue>
-               <Item>'MultiHash.HashAlgorithmsChanged(object, ChangedEventArgs)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
-         <Type Name="ParallelHash">
-          <Members>
-           <Member Name="#.ctor(Classless.Hasher.HashAlgorithmCollection)">
-            <Messages>
-             <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Created="2009-11-27 18:52:13Z">
-              <Issue>
-               <Item>'HashAlgorithmCollection'</Item>
-               <Item>'ParallelHash.ParallelHash(HashAlgorithmCollection)'</Item>
-              </Issue>
-             </Message>
-            </Messages>
-           </Member>
-          </Members>
-         </Type>
         </Types>
        </Namespace>
       </Namespaces>
@@ -2195,6 +2233,7 @@
   <Notes>
    <User Name="jay">
     <Note Id="0" Modified="2009-12-22 19:06:07Z">Not everything makes sense being labelled as a "Collection".</Note>
+    <Note Id="1" Modified="2009-12-26 03:04:07Z">This is spelled how I intended it to be spelled.</Note>
     <Note Id="2" Modified="2009-11-27 18:55:00Z">In production release, the assembly will be signed. This is just a debug assembly.</Note>
     <Note Id="3" Modified="2009-11-29 02:41:48Z">There's no need to generate the tables unless the user actually wants to invoke these algorithms.</Note>
     <Note Id="4" Modified="2009-11-29 15:54:13Z">Overflow is expected or desired when using these methods.</Note>
@@ -2204,6 +2243,8 @@
     <Note Id="8" Modified="2009-12-22 16:08:10Z">These are spelled correctly (either acronyms or wierd names).</Note>
     <Note Id="9" Modified="2009-12-22 16:09:01Z">There's no need to generate the tables unless the user actually wants to invoke these algorithms.</Note>
     <Note Id="10" Modified="2009-12-22 16:27:37Z">These are spelled correctly (either acronyms or wierd names).</Note>
+    <Note Id="11" Modified="2009-12-26 03:04:37Z">Not everything makes sense being labeled as a 'collection', even if it is.</Note>
+    <Note Id="12" Modified="2009-12-26 03:06:33Z">This library revolves around byte arrays, returning a collection seems inefficient.</Note>
    </User>
   </Notes>
   <Rules>

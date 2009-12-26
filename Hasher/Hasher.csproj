@@ -78,6 +78,8 @@
     <Compile Include="MD4.cs" />
     <Compile Include="MD5.cs" />
     <Compile Include="Methods\HashChain.cs" />
+    <Compile Include="Methods\HashList.cs" />
+    <Compile Include="Methods\HashNode.cs" />
     <Compile Include="Pjw32.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

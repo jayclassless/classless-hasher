@@ -135,6 +135,9 @@
   <data name="indexOutOfRange" xml:space="preserve">
     <value>The index specified was out of range.</value>
   </data>
+  <data name="invalidBlockSize" xml:space="preserve">
+    <value>The Block Size must be greater than 0.</value>
+  </data>
   <data name="invalidCrcOrder" xml:space="preserve">
     <value>The CRC Order must represent full bytes and be between 8 and 64.</value>
   </data>

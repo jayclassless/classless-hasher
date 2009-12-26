@@ -115,6 +115,15 @@ namespace Classless.Hasher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Block Size must be greater than 0..
+        /// </summary>
+        internal static string invalidBlockSize {
+            get {
+                return ResourceManager.GetString("invalidBlockSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The CRC Order must represent full bytes and be between 8 and 64..
         /// </summary>
         internal static string invalidCrcOrder {
