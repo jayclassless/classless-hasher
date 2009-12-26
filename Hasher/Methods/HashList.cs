@@ -88,7 +88,7 @@ namespace Classless.Hasher.Methods {
 		/// <param name="inputOffset">Where to start in the block.</param>
 		override protected void ProcessBlock(byte[] inputBuffer, int inputOffset) {
 			lock (syncLock) {
-				workingNodes.Add(new HashNode(hashAlgorithm.ComputeHash(inputBuffer, inputOffset, BlockSize), Count, (Count + BlockSize)));
+				workingNodes.Add(new HashNode(hashAlgorithm.ComputeHash(inputBuffer, inputOffset, BlockSize), Count, (Count + BlockSize - 1)));
 			}
 		}
 
@@ -101,7 +101,7 @@ namespace Classless.Hasher.Methods {
 		override protected byte[] ProcessFinalBlock(byte[] inputBuffer, int inputOffset, int inputCount) {
 			lock (syncLock) {
 				if (inputCount > 0) {
-					workingNodes.Add(new HashNode(hashAlgorithm.ComputeHash(inputBuffer, inputOffset, inputCount), Count, (Count + inputCount)));
+					workingNodes.Add(new HashNode(hashAlgorithm.ComputeHash(inputBuffer, inputOffset, inputCount), Count, (Count + inputCount - 1)));
 				}
 				finalNodes = workingNodes;
 
