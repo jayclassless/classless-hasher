@@ -688,6 +688,19 @@ namespace Classless.Hasher.Tests {
 			new object[] { new GostHash(), s("Suppose the original message has length = 50 bytes"), h("471ABA57A60A770D3A76130635C1FBEA4EF14DE51F78B4AE57DD893B62F55208") },
 
 
+			// HAS-160
+			new object[] { new Has160(), Battery.Empty, h("307964EF34151D37C8047ADEC7AB50F4FF89762D") },
+			new object[] { new Has160(), Battery.A, h("4872BCBC4CD0F0A9DC7C2F7045E5B43B6C830DB8") },
+			new object[] { new Has160(), Battery.ABC, h("975E810488CF2A3D49838478124AFCE4B1C78804") },
+			new object[] { new Has160(), Battery.Alphabet, h("596185C9AB6703D0D0DBB98702BC0F5729CD1D3C") },
+			new object[] { new Has160(), Battery.Alphanumeric, h("CB5D7EFBCA2F02E0FB7167CABB123AF5795764E5") },
+			new object[] { new Has160(), Battery.Numeric, h("9B895C58695130EF817C6C456BCF83A898541250") },
+			new object[] { new Has160(), Battery.NumericRepeated, h("07F05C8C0773C55CA3A5A695CE6ACA4C438911B5") },
+			new object[] { new Has160(), Battery.Message, h("2338DBC8638D31225F73086246BA529F96710BC6") },
+			new object[] { new Has160(), Battery.QuickFox, h("ABE2B8C711F9E8579AA8EB40757A27B4EF14A7EA") },
+			new object[] { new Has160(), Battery.MillionAs, h("D6AD6F0608B878DA9B87999C2525CC84F4C9F18D") },
+
+
 			// HAVAL
 			new object[] { new Haval(HavalParameters.GetParameters(HavalStandard.Haval128Bit3Pass)), Battery.Empty, h("C68F39913F901F3DDF44C707357A7D70") },
 			new object[] { new Haval(HavalParameters.GetParameters(HavalStandard.Haval128Bit3Pass)), Battery.A, h("0CD40739683E15F01CA5DBCEEF4059F1") },

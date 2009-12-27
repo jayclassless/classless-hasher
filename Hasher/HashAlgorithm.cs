@@ -77,6 +77,7 @@ namespace Classless.Hasher {
 				case "Classless.Hasher.Fnv": return new Fnv(FnvParameters.GetParameters(FnvStandard.Fnv32BitType1A));
 				case "Classless.Hasher.GHash": return new GHash(GHashParameters.GetParameters(GHashStandard.GHash5));
 				case "Classless.Hasher.GostHash": return new GostHash();
+				case "Classless.Hasher.Has160": return new Has160();
 				case "Classless.Hasher.Haval": return new Haval(HavalParameters.GetParameters(HavalStandard.Haval256Bit5Pass));
 				case "Classless.Hasher.JenkinsHash": return new JenkinsHash();
 				case "Classless.Hasher.JSHash": return new JSHash();
@@ -125,6 +126,7 @@ namespace Classless.Hasher {
 				case "Fnv": return new Fnv(FnvParameters.GetParameters(FnvStandard.Fnv32BitType1A));
 				case "GHash": return new GHash(GHashParameters.GetParameters(GHashStandard.GHash5));
 				case "GostHash": return new GostHash();
+				case "Has160": return new Has160();
 				case "Haval": return new Haval(HavalParameters.GetParameters(HavalStandard.Haval256Bit5Pass));
 				case "JenkinsHash": return new JenkinsHash();
 				case "JSHash": return new JSHash();

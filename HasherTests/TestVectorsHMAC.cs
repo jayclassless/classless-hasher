@@ -78,6 +78,15 @@ namespace Classless.Hasher.Tests {
 			new object[] { new Sha256(), h("0C", 32), s("Test With Truncation"), h("7546AF01841FC09B1AB9C3749A5F1C17D4F589668A587B2700A9C97C1193CF42") },
 			new object[] { new Sha256(), h("AA", 80), s("Test Using Larger Than Block-Size Key - Hash Key First"), h("6953025ED96F0C09F80A96F78E6538DBE2E7B820E3DD970E7DDD39091B32352F") },
 			new object[] { new Sha256(), h("AA", 80), s("Test Using Larger Than Block-Size Key and Larger Than One Block-Size Data"), h("6355AC22E890D0A3C8481A5CA4825BC884D3E7A1FF98A2FC2AC7D8E064C3B2E6") },
+
+			// http://www.randombit.net/text/has160.html
+			new object[] { new Has160(), h("0B", 20), s("Hi There"), h("F5B44115A53F716B6F488DE1098EE7C251418623") },
+			new object[] { new Has160(), s("Jefe"), s("what do ya want for nothing?"), h("A74547C1EF0AA147C7428AB7E71664549BE2A412") },
+			new object[] { new Has160(), h("AA", 20), h("DD", 50), h("E4C91BC71782FA44A56BE1A34AAE167E8FFC9734") },
+			new object[] { new Has160(), h("0102030405060708090A0B0C0D0E0F10111213141516171819"), h("CD", 50), h("14D1055DA875222053BF1180BBEF8892EBA3AC30") },
+			new object[] { new Has160(), h("0C", 20), s("Test With Truncation"), h("124131A293F1FDF3D6B11E2B7F7A1F5B12E42D58") },
+			new object[] { new Has160(), h("AA", 80), s("Test Using Larger Than Block-Size Key - Hash Key First"), h("63750D67AF40E3FDE33526545D300972A1527053") },
+			new object[] { new Has160(), h("AA", 80), s("Test Using Larger Than Block-Size Key and Larger Than One Block-Size Data"), h("1BDB821E399E208352C64F0655F6601E2A8A087C") },
 		};
 	}
 }

@@ -65,6 +65,7 @@
     <Compile Include="GHashParameters.cs" />
     <Compile Include="GHashStandard.cs" />
     <Compile Include="GOSTHash.cs" />
+    <Compile Include="Has160.cs" />
     <Compile Include="HashAlgorithm.cs" />
     <Compile Include="HashAlgorithmParameters.cs" />
     <Compile Include="HAVAL.cs" />
