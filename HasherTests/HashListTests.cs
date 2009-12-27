@@ -59,6 +59,12 @@ namespace Classless.Hasher.Tests {
 
 
 		[Test]
+		public void Constructor1Test() {
+			HashList list = new HashList(new MD5());
+			Assert.AreEqual(1024, list.BlockSize);
+		}
+
+		[Test]
 		public void Constructor2Test() {
 			HashList list = new HashList(new Crc(CrcParameters.GetParameters(CrcStandard.Crc32Bit)), 10);
 
@@ -67,9 +73,10 @@ namespace Classless.Hasher.Tests {
 			for (int i = 0; i < AlphanumericCrc32VectorList.Length; i++) {
 				CustomAssert.AreEqual(AlphanumericCrc32VectorList[i], list[i].Hash);
 			}
+
+			Assert.AreEqual(10, list.BlockSize);
 		}
 
-	
 		[Test]
 		public void Constructor2BTest() {
 			HashList list = new HashList(new MD5(), 10);
@@ -79,14 +86,14 @@ namespace Classless.Hasher.Tests {
 			for (int i = 0; i < AlphanumericMD5VectorList.Length; i++) {
 				CustomAssert.AreEqual(AlphanumericMD5VectorList[i], list[i].Hash);
 			}
-		}
 
+			Assert.AreEqual(10, list.BlockSize);
+		}
 
 		[Test, ExpectedException(typeof(ArgumentNullException))]
 		public void ConstructorBadHasherTest() {
 			HashList list = new HashList(null);
 		}
-
 
 		[Test, ExpectedException(typeof(ArgumentNullException))]
 		public void ConstructorBadHasher2Test() {

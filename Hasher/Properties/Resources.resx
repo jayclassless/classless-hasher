@@ -156,6 +156,9 @@
   <data name="invalidHavalPasses" xml:space="preserve">
     <value>The number of HAVAL Passes can only be 3, 4, or 5.</value>
   </data>
+  <data name="invalidNodeRange" xml:space="preserve">
+    <value>The Range properties of a Node cannot be less than 0.</value>
+  </data>
   <data name="invalidSnefruLength" xml:space="preserve">
     <value>The Snefru2 Length can only be 128 or 256 bits long.</value>
   </data>
@@ -173,6 +176,9 @@
   </data>
   <data name="lengthWayTooLong" xml:space="preserve">
     <value>The Length specified is larger than this implementation allows.</value>
+  </data>
+  <data name="nodeCantLoop" xml:space="preserve">
+    <value>Nodes cannot have more than one relationship between each other.</value>
   </data>
   <data name="noDupeHashers" xml:space="preserve">
     <value>A HashAlgorithm cannot be placed in the collection more than once.</value>

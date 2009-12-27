@@ -178,6 +178,15 @@ namespace Classless.Hasher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Range properties of a Node cannot be less than 0..
+        /// </summary>
+        internal static string invalidNodeRange {
+            get {
+                return ResourceManager.GetString("invalidNodeRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Snefru2 Length can only be 128 or 256 bits long..
         /// </summary>
         internal static string invalidSnefruLength {
@@ -228,6 +237,15 @@ namespace Classless.Hasher.Properties {
         internal static string lengthWayTooLong {
             get {
                 return ResourceManager.GetString("lengthWayTooLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nodes cannot have more than one relationship between each other..
+        /// </summary>
+        internal static string nodeCantLoop {
+            get {
+                return ResourceManager.GetString("nodeCantLoop", resourceCulture);
             }
         }
         

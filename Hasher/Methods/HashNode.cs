@@ -34,34 +34,55 @@ namespace Classless.Hasher.Methods {
 		private long rangeEnd;
 
 
-		/// <summary>Gets the hash of the data represented by this node.</summary>
+		/// <summary>Gets or sets the hash of the data represented by this node.</summary>
 		public byte[] Hash {
-			get { return (byte[])hash.Clone(); }
+			get { return hash; }
+			set { hash = value; }
 		}
 
-		/// <summary>Gets the index of the beginning of the range of data represented by this node.</summary>
+		/// <summary>Gets or sets the index of the beginning of the range of data represented by this node.</summary>
 		public long RangeStart {
 			get { return rangeStart; }
+			set {
+				if (value < 0) {
+					throw new ArgumentException(Hasher.Properties.Resources.invalidNodeRange, "value");
+				}
+				rangeStart = value;
+			}
 		}
 
-		/// <summary>Gets the index of the end of the range of data represented by this node.</summary>
+		/// <summary>Gets or sets the index of the end of the range of data represented by this node.</summary>
 		public long RangeEnd {
 			get { return rangeEnd; }
+			set {
+				if (value < 0) {
+					throw new ArgumentException(Hasher.Properties.Resources.invalidNodeRange, "value");
+				}
+				rangeEnd = value;
+			}
+		}
+
+		/// <summary>Gets the number of bytes included in the range of data represented by this node.</summary>
+		public long Count {
+			get { return (RangeEnd - RangeStart) + 1;  }
 		}
 
 
 		/// <summary>Initializes a new instance of the HashNode class.</summary>
+		public HashNode() : this(null, 0, 0) { }
+
+		/// <summary>Initializes a new instance of the HashNode class.</summary>
 		/// <param name="hash">The hash of the data represented by this node.</param>
-		public HashNode(byte[] hash) : this(hash, -1, 0) { }
+		public HashNode(byte[] hash) : this(hash, 0, 0) { }
 
 		/// <summary>Initializes a new instance of the HashNode class.</summary>
 		/// <param name="hash">The hash of the data represented by this node.</param>
 		/// <param name="rangeStart">The index of the beginning of the range of data represented by this node.</param>
 		/// <param name="rangeEnd">The index of the end of the range of data represented by this node.</param>
 		public HashNode(byte[] hash, long rangeStart, long rangeEnd) {
-			this.hash = (byte[])hash.Clone();
-			this.rangeStart = rangeStart;
-			this.rangeEnd = rangeEnd;
+			Hash = hash;
+			RangeStart = rangeStart;
+			RangeEnd = rangeEnd;
 		}
 	}
 }

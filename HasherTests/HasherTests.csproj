@@ -44,6 +44,8 @@
     <Compile Include="HashChainTests.cs" />
     <Compile Include="HashListTests.cs" />
     <Compile Include="HashNodeTests.cs" />
+    <Compile Include="HashTreeNodeTests.cs" />
+    <Compile Include="HashTreeTests.cs" />
     <Compile Include="MultiHashTests.cs" />
     <Compile Include="ParallelHashTest.cs" />
     <Compile Include="ParameterTests.cs" />

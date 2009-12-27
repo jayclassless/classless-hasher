@@ -106,6 +106,7 @@ namespace Classless.Hasher {
 				case "Classless.Hasher.Xor8": return new Xor8();
 				case "Classless.Hasher.Xum32": return new Xum32();
 				case "Classless.Hasher.Methods.HashList": return new HashList(HashAlgorithm.Create());
+				case "Classless.Hasher.Methods.HashTree": return new HashTree(new Tiger(), 1024);
 				case "Classless.Hasher.Methods.MultiHash": return new MultiHash();
 				case "Classless.Hasher.Methods.ParallelHash": return new ParallelHash();
 				case "Classless.Hasher.HashAlgorithm": return new Sha1();
@@ -153,6 +154,7 @@ namespace Classless.Hasher {
 				case "Xor8": return new Xor8();
 				case "Xum32": return new Xum32();
 				case "HashList": return new HashList(HashAlgorithm.Create());
+				case "HashTree": return new HashTree(new Tiger(), 1024);
 				case "MultiHash": return new MultiHash();
 				case "ParallelHash": return new ParallelHash();
 				case "HashAlgorithm": return new Sha1();

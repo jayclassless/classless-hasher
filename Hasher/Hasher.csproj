@@ -80,6 +80,8 @@
     <Compile Include="Methods\HashChain.cs" />
     <Compile Include="Methods\HashList.cs" />
     <Compile Include="Methods\HashNode.cs" />
+    <Compile Include="Methods\HashTree.cs" />
+    <Compile Include="Methods\HashTreeNode.cs" />
     <Compile Include="Pjw32.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
