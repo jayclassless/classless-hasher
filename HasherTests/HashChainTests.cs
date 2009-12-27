@@ -89,7 +89,7 @@ namespace Classless.Hasher.Tests {
 		}
 
 
-		[Test, ExpectedException(typeof(ArgumentException))]
+		[Test, ExpectedException(typeof(ArgumentNullException))]
 		public void ConstructorBadHasherTest() {
 			HashChain chain = new HashChain(null, TestVectors.Battery.Numeric);
 		}

@@ -60,14 +60,16 @@ namespace Classless.Hasher.Methods {
 		/// <summary>Initializes a new instance of the HashChain class.</summary>
 		/// <param name="hashAlgorithm">The HashAlgorithm to calculate the chain iterations with.</param>
 		/// <param name="data">The value to initialize the chain with.</param>
-		/// <exception cref="ArgumentException">When the specified HashAlgorithm is null, or if the range specified for the array is invalid, or if the initialization value is less than 1.</exception>
+		/// <exception cref="ArgumentNullException">When the specified HashALgorithm is null.</exception>
+		/// <exception cref="ArgumentException">When the range specified for the array is invalid or the initialization value is less than 1.</exception>
 		public HashChain(System.Security.Cryptography.HashAlgorithm hashAlgorithm, byte[] data) : this(hashAlgorithm, data, 0, data.Length, DefaultInitialization) { }
 
 		/// <summary>Initializes a new instance of the HashChain class.</summary>
 		/// <param name="hashAlgorithm">The HashAlgorithm to calculate the chain iterations with.</param>
 		/// <param name="data">The value to initialize the chain with.</param>
 		/// <param name="initialize">How many iterations to calculate during instantiation.</param>
-		/// <exception cref="ArgumentException">When the specified HashAlgorithm is null, or if the range specified for the array is invalid, or if the initialization value is less than 1.</exception>
+		/// <exception cref="ArgumentNullException">When the specified HashALgorithm is null.</exception>
+		/// <exception cref="ArgumentException">When the range specified for the array is invalid or the initialization value is less than 1.</exception>
 		public HashChain(System.Security.Cryptography.HashAlgorithm hashAlgorithm, byte[] data, int initialize) : this(hashAlgorithm, data, 0, data.Length, initialize) { }
 
 		/// <summary>Initializes a new instance of the HashChain class.</summary>
@@ -75,7 +77,8 @@ namespace Classless.Hasher.Methods {
 		/// <param name="data">The value to initialize the chain with.</param>
 		/// <param name="offset">Position in the byte array to begin the conversion.</param>
 		/// <param name="length">How many bytes in the array to use.</param>
-		/// <exception cref="ArgumentException">When the specified HashAlgorithm is null, or if the range specified for the array is invalid, or if the initialization value is less than 1.</exception>
+		/// <exception cref="ArgumentNullException">When the specified HashALgorithm is null.</exception>
+		/// <exception cref="ArgumentException">When the range specified for the array is invalid or the initialization value is less than 1.</exception>
 		public HashChain(System.Security.Cryptography.HashAlgorithm hashAlgorithm, byte[] data, int offset, int length) : this(hashAlgorithm, data, offset, length, DefaultInitialization) { }
 
 		/// <summary>Initializes a new instance of the HashChain class.</summary>
@@ -84,10 +87,11 @@ namespace Classless.Hasher.Methods {
 		/// <param name="offset">Position in the byte array to begin the conversion.</param>
 		/// <param name="length">How many bytes in the array to use.</param>
 		/// <param name="initialize">How many iterations to calculate during instantiation.</param>
-		/// <exception cref="ArgumentException">When the specified HashAlgorithm is null, or if the range specified for the array is invalid, or if the initialization value is less than 1.</exception>
+		/// <exception cref="ArgumentNullException">When the specified HashALgorithm is null.</exception>
+		/// <exception cref="ArgumentException">When the range specified for the array is invalid or the initialization value is less than 1.</exception>
 		public HashChain(System.Security.Cryptography.HashAlgorithm hashAlgorithm, byte[] data, int offset, int length, int initialize) {
 			if (hashAlgorithm == null) {
-				throw new ArgumentException(Hasher.Properties.Resources.hashCantBeNull, "hashAlgorithm");
+				throw new ArgumentNullException("hashAlgorithm", Hasher.Properties.Resources.hashCantBeNull);
 			}
 			if ((length + offset) > data.Length) {
 				throw new ArgumentException(Hasher.Properties.Resources.lengthOffsetOutOfBounds);
