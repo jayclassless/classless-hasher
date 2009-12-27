@@ -49,6 +49,7 @@
     <Compile Include="CRC.cs" />
     <Compile Include="CRCParameters.cs" />
     <Compile Include="CRCStandard.cs" />
+    <Compile Include="Dha256.cs" />
     <Compile Include="DjbHash.cs" />
     <Compile Include="ELFHash.cs" />
     <Compile Include="EndianType.cs" />

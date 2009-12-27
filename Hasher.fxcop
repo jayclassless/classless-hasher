@@ -889,6 +889,21 @@
            </Member>
           </Members>
          </Type>
+         <Type Name="Dha256">
+          <Messages>
+           <Message Id="Dha" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-27 16:40:17Z">
+            <Issue Name="Type">
+             <Item>Dha</Item>
+             <Item>'Dha256'</Item>
+            </Issue>
+            <Notes>
+             <User Name="jay">
+              <Note Id="13" />
+             </User>
+            </Notes>
+           </Message>
+          </Messages>
+         </Type>
          <Type Name="DjbHash">
           <Messages>
            <Message Id="Djb" TypeName="IdentifiersShouldBeSpelledCorrectly" Category="Microsoft.Naming" CheckId="CA1704" Status="Excluded" Created="2009-12-22 15:06:33Z">
@@ -2245,6 +2260,7 @@
     <Note Id="10" Modified="2009-12-22 16:27:37Z">These are spelled correctly (either acronyms or wierd names).</Note>
     <Note Id="11" Modified="2009-12-26 03:04:37Z">Not everything makes sense being labeled as a 'collection', even if it is.</Note>
     <Note Id="12" Modified="2009-12-26 03:06:33Z">This library revolves around byte arrays, returning a collection seems inefficient.</Note>
+    <Note Id="13" Modified="2009-12-27 16:40:40Z">This is an acronym.</Note>
    </User>
   </Notes>
   <Rules>

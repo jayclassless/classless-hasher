@@ -69,6 +69,7 @@ namespace Classless.Hasher {
 				case "Classless.Hasher.BkdrHash": return new BkdrHash();
 				case "Classless.Hasher.Cksum": return new Cksum();
 				case "Classless.Hasher.Crc": return new Crc(CrcParameters.GetParameters(CrcStandard.Crc32Bit));
+				case "Classless.Hasher.Dha256": return new Dha256();
 				case "Classless.Hasher.DjbHash": return new DjbHash();
 				case "Classless.Hasher.ElfHash": return new ElfHash();
 				case "Classless.Hasher.Fcs16": return new Fcs16();
@@ -118,6 +119,7 @@ namespace Classless.Hasher {
 				case "BkdrHash": return new BkdrHash();
 				case "Cksum": return new Cksum();
 				case "Crc": return new Crc(CrcParameters.GetParameters(CrcStandard.Crc32Bit));
+				case "Dha256": return new Dha256();
 				case "DjbHash": return new DjbHash();
 				case "ElfHash": return new ElfHash();
 				case "Fcs16": return new Fcs16();

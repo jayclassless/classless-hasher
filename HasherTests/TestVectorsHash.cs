@@ -448,6 +448,19 @@ namespace Classless.Hasher.Tests {
 			new object[] { new Crc(CrcParameters.GetParameters(CrcStandard.Crc64BitJones)), s("123456789"), h("E9C6D914C4B8D9CA") },
 
 
+			// Dha256
+			new object[] { new Dha256(), Battery.Empty, h("98FFCD13F5ECDD851387F64B81F64D1B7687F68F8807ACD2A5606F421EC9AF22") },
+			new object[] { new Dha256(), Battery.A, h("36002D9DFA6CE0FA59CB1AFC9E31B2520DEC0852499142B0439DF91D3B4FDBE6") },
+			new object[] { new Dha256(), Battery.ABC, h("6D8994B6C8978117252F2C51847ED116B0DEFEBF2BCA96C349786F419907DE62") },
+			new object[] { new Dha256(), Battery.Alphabet, h("E770576926A414A4DF15821BDD71919FFE2D85D07EFFBF6A522F0ACD23C2C9CB") },
+			new object[] { new Dha256(), Battery.Alphanumeric, h("C251F9C0064070147E5488D7DF3EEAC239C71566414277BA07548AE95E338D11") },
+			new object[] { new Dha256(), Battery.Numeric, h("4C12497351E7E60EA6172F6264D1E247BDEF17D0ADF174B36BADB456470CFEEC") },
+			new object[] { new Dha256(), Battery.NumericRepeated, h("800C5A0961D26B52BFE3100307BA13490BF1448CFF5E142768CE0AB10F19C4BA") },
+			new object[] { new Dha256(), Battery.Message, h("0CC414721B7578ECC9EDB0C0592BB8213C596BCCC85DD661980906DA6BB6CD5C") },
+			new object[] { new Dha256(), Battery.QuickFox, h("5EA7E06AF0A6E3DC53973EC5A0D95CBADCA4ECD69D5D4F3C4D5879D853567955") },
+			new object[] { new Dha256(), Battery.MillionAs, h("5DE4B32EA2B97B353EB09A3283CC49D071F3657048DE85477B5DE4D927E175EE") },
+
+
 			// DjbHash
 			new object[] { new DjbHash(), Battery.Empty, h("00001505") },
 			new object[] { new DjbHash(), Battery.A, h("0002B606") },
