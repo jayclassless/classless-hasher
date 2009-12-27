@@ -128,7 +128,11 @@ namespace Classless.Hasher {
 				// Create the final, padded block(s).
 				temp = new byte[inputCount + paddingSize + 8];
 				Array.Copy(inputBuffer, inputOffset, temp, 0, inputCount);
-				temp[inputCount] = 0x01;
+				if (parameters.AlgorithmType == TigerAlgorithmType.Tiger1) {
+					temp[inputCount] = 0x01;
+				} else if (parameters.AlgorithmType == TigerAlgorithmType.Tiger2) {
+					temp[inputCount] = 0x80;
+				}
 				size = ((ulong)Count + (ulong)inputCount) * 8;
 				Array.Copy(Conversions.ULongToByte(size), 0, temp, (inputCount + paddingSize), 8);
 

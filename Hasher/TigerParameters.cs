@@ -30,6 +30,7 @@ namespace Classless.Hasher {
 	/// <summary>A class that contains the parameters necessary to initialize a Tiger algorithm.</summary>
 	public class TigerParameters : HashAlgorithmParameters {
 		private short length;
+		private TigerAlgorithmType algorithmType;
 
 
 		/// <summary>Gets or sets the bit length of the result hash.</summary>
@@ -45,18 +46,26 @@ namespace Classless.Hasher {
 			}
 		}
 
+		/// <summary>Gets or sets the Tiger algorithm variation.</summary>
+		public TigerAlgorithmType AlgorithmType {
+			get { return algorithmType; }
+			set { algorithmType = value; }
+		}
+
 
 		/// <summary>Initializes a new instance of the TigerParameters class.</summary>
 		/// <param name="length">The bit length of the final hash.</param>
-		public TigerParameters(short length) {
+		/// <param name="type">The Tiger algorithm variation.</param>
+		public TigerParameters(short length, TigerAlgorithmType type) {
 			this.Length = length;
+			this.algorithmType = type;
 		}
 
 
 		/// <summary>Returns a String that represents the current Object.</summary>
 		/// <returns>A String that represents the current Object.</returns>
 		override public string ToString() {
-			return string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}({1:d})", this.GetType().Name, Length);
+			return string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}({1:d}:{2})", this.GetType().Name, Length, AlgorithmType);
 		}
 
 
@@ -67,9 +76,12 @@ namespace Classless.Hasher {
 			TigerParameters temp = null;
 
 			switch (standard) {
-				case TigerStandard.Tiger128Bit: temp = new TigerParameters(128); break;
-				case TigerStandard.Tiger160Bit: temp = new TigerParameters(160); break;
-				case TigerStandard.Tiger192Bit: temp = new TigerParameters(192); break;
+				case TigerStandard.Tiger128BitVersion1: temp = new TigerParameters(128, TigerAlgorithmType.Tiger1); break;
+				case TigerStandard.Tiger160BitVersion1: temp = new TigerParameters(160, TigerAlgorithmType.Tiger1); break;
+				case TigerStandard.Tiger192BitVersion1: temp = new TigerParameters(192, TigerAlgorithmType.Tiger1); break;
+				case TigerStandard.Tiger128BitVersion2: temp = new TigerParameters(128, TigerAlgorithmType.Tiger2); break;
+				case TigerStandard.Tiger160BitVersion2: temp = new TigerParameters(160, TigerAlgorithmType.Tiger2); break;
+				case TigerStandard.Tiger192BitVersion2: temp = new TigerParameters(192, TigerAlgorithmType.Tiger2); break;
 			}
 
 			return temp;

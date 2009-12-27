@@ -103,12 +103,12 @@ namespace Classless.Hasher {
 				case "Classless.Hasher.Sum": return new Sum(SumParameters.GetParameters(SumStandard.Sum32Bit));
 				case "Classless.Hasher.SumBsd": return new SumBsd();
 				case "Classless.Hasher.SumSysV": return new SumSysV();
-				case "Classless.Hasher.Tiger": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit));
+				case "Classless.Hasher.Tiger": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192BitVersion1));
 				case "Classless.Hasher.Whirlpool": return new Whirlpool();
 				case "Classless.Hasher.Xor8": return new Xor8();
 				case "Classless.Hasher.Xum32": return new Xum32();
 				case "Classless.Hasher.Methods.HashList": return new HashList(HashAlgorithm.Create());
-				case "Classless.Hasher.Methods.HashTree": return new HashTree(new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)), 1024);
+				case "Classless.Hasher.Methods.HashTree": return new HashTree(new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192BitVersion1)), 1024);
 				case "Classless.Hasher.Methods.MultiHash": return new MultiHash();
 				case "Classless.Hasher.Methods.ParallelHash": return new ParallelHash();
 				case "Classless.Hasher.HashAlgorithm": return new Sha1();
@@ -153,12 +153,12 @@ namespace Classless.Hasher {
 				case "Sum": return new Sum(SumParameters.GetParameters(SumStandard.Sum32Bit));
 				case "SumBsd": return new SumBsd();
 				case "SumSysV": return new SumSysV();
-				case "Tiger": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit));
+				case "Tiger": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192BitVersion1));
 				case "Whirlpool": return new Whirlpool();
 				case "Xor8": return new Xor8();
 				case "Xum32": return new Xum32();
 				case "HashList": return new HashList(HashAlgorithm.Create());
-				case "HashTree": return new HashTree(new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)), 1024);
+				case "HashTree": return new HashTree(new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192BitVersion1)), 1024);
 				case "MultiHash": return new MultiHash();
 				case "ParallelHash": return new ParallelHash();
 				case "HashAlgorithm": return new Sha1();
@@ -314,12 +314,18 @@ namespace Classless.Hasher {
 				case "Sum-32": return new Sum(SumParameters.GetParameters(SumStandard.Sum32Bit));
 				case "Sum64": return new Sum(SumParameters.GetParameters(SumStandard.Sum64Bit));
 				case "Sum-64": return new Sum(SumParameters.GetParameters(SumStandard.Sum64Bit));
-				case "Tiger128": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger128Bit));
-				case "Tiger-128": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger128Bit));
-				case "Tiger160": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger160Bit));
-				case "Tiger-160": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger160Bit));
-				case "Tiger192": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit));
-				case "Tiger-192": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit));
+				case "Tiger128": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger128BitVersion1));
+				case "Tiger-128": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger128BitVersion1));
+				case "Tiger160": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger160BitVersion1));
+				case "Tiger-160": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger160BitVersion1));
+				case "Tiger192": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192BitVersion1));
+				case "Tiger-192": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192BitVersion1));
+				case "Tiger2128": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger128BitVersion2));
+				case "Tiger2-128": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger128BitVersion2));
+				case "Tiger2160": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger160BitVersion2));
+				case "Tiger2-160": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger160BitVersion2));
+				case "Tiger2192": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192BitVersion2));
+				case "Tiger2-192": return new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192BitVersion2));
 
 				// When in doubt, let the host framework try to figure it out.
 				default: return System.Security.Cryptography.HashAlgorithm.Create(hashName);

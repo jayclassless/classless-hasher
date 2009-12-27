@@ -27,24 +27,12 @@
 using System;
 
 namespace Classless.Hasher {
-	/// <summary>Predefined standards for Tiger algorithms.</summary>
-	public enum TigerStandard {
-		/// <summary>Tiger with a 128 bit result hash.</summary>
-		Tiger128BitVersion1,
+	/// <summary>Represents a variation of the Tiger hashing algorithm.</summary>
+	public enum TigerAlgorithmType {
+		/// <summary>The first Tiger algorithm.</summary>
+		Tiger1,
 
-		/// <summary>Tiger with a 160 bit result hash.</summary>
-		Tiger160BitVersion1,
-
-		/// <summary>Tiger with a 192 bit result hash.</summary>
-		Tiger192BitVersion1,
-
-		/// <summary>Tiger2 with a 128 bit result hash.</summary>
-		Tiger128BitVersion2,
-
-		/// <summary>Tiger2 with a 160 bit result hash.</summary>
-		Tiger160BitVersion2,
-
-		/// <summary>Tiger2 with a 192 bit result hash.</summary>
-		Tiger192BitVersion2,
+		/// <summary>The revised Tiger algorithm.</summary>
+		Tiger2,
 	}
 }

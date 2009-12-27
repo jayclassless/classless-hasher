@@ -164,7 +164,7 @@ namespace Classless.Hasher.Tests {
 
 		[Test, TestCaseSource("BadTigerLengths"), ExpectedException(typeof(ArgumentOutOfRangeException))]
 		public void TigerLengthTest(short length) {
-			TigerParameters param = new TigerParameters(length);
+			TigerParameters param = new TigerParameters(length, TigerAlgorithmType.Tiger1);
 		}
 
 

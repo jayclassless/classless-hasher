@@ -95,6 +95,7 @@
     <Compile Include="Sum.cs" />
     <Compile Include="SumParameters.cs" />
     <Compile Include="SumStandard.cs" />
+    <Compile Include="TigerAlgorithmType.cs" />
     <Compile Include="TigerParameters.cs" />
     <Compile Include="TigerStandard.cs" />
     <Compile Include="Utilities\BitTools.cs" />

@@ -72,7 +72,7 @@ namespace Classless.Hasher.Tests {
 		static public object[] HashSizeHashers = {
 			new object[] { new MD5() },
 			new object[] { new Sha1() },
-			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)) },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192BitVersion1)) },
 			new object[] { new Whirlpool() },
 			new object[] { new Sha384() },
 			new object[] { new Sha224() },

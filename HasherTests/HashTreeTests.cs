@@ -54,7 +54,7 @@ namespace Classless.Hasher.Tests {
 
 		[Test, TestCaseSource("TigerTreeVectors")]
 		public void TigerTreeVectorTest(byte[] input, byte[] expectedOutput) {
-			HashTree tree = new HashTree(new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)), 1024);
+			HashTree tree = new HashTree(new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192BitVersion1)), 1024);
 			CustomAssert.AreEqual(expectedOutput, tree.ComputeHash(input));
 		}
 
@@ -84,7 +84,7 @@ namespace Classless.Hasher.Tests {
 
 		[Test]
 		public void RootTest() {
-			HashTree tree = new HashTree(new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)), 1024);
+			HashTree tree = new HashTree(new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192BitVersion1)), 1024);
 			byte[] topHash = tree.ComputeHash(TestVectors.Battery.MillionAs);
 			CustomAssert.AreEqual(TestVectors.h("511F341A7C14145FCBA4A55A9CCAF743DAC0EEF270010973"), tree.Root.Hash);
 			Assert.AreEqual(0, tree.Root.RangeStart);
