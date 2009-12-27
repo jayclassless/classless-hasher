@@ -43,6 +43,10 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the Snefru2 class.</summary>
+		/// <remarks>This constructor implements the default parameters of Snefru256Bit8Pass.</remarks>
+		public Snefru2() : this(Snefru2Parameters.GetParameters(Snefru2Standard.Snefru256Bit8Pass)) { }
+
+		/// <summary>Initializes a new instance of the Snefru2 class.</summary>
 		/// <param name="parameters">The parameters to utilize in the Snefru calculation.</param>
 		public Snefru2(Snefru2Parameters parameters) : base(64 - (parameters.Length / 8)) {
 			lock (syncLock) {

@@ -47,6 +47,10 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the CRC class.</summary>
+		/// <remarks>This constructor implements the default parameters of Crc32Bit.</remarks>
+		public Crc() : this(CrcParameters.GetParameters(CrcStandard.Crc32Bit)) { }
+
+		/// <summary>Initializes a new instance of the CRC class.</summary>
 		/// <param name="parameters">The parameters to utilize in the CRC calculation.</param>
 		/// <exception cref="ArgumentNullException">When the specified parameters are null.</exception>
 		public Crc(CrcParameters parameters) : base() {

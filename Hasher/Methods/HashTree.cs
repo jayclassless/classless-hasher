@@ -50,6 +50,10 @@ namespace Classless.Hasher.Methods {
 
 
 		/// <summary>Initializes a new instance of the HashTree class.</summary>
+		/// <remarks>This constructor uses the default Tiger implementation.</remarks>
+		public HashTree() : this(new Tiger(), DefaultBlockSize) { }
+
+		/// <summary>Initializes a new instance of the HashTree class.</summary>
 		/// <param name="hashAlgorithm">The HashAlgorithm to calculate the HashTreeNodes with.</param>
 		/// <exception cref="ArgumentNullException">When the specified HashAlgorithm is null.</exception>
 		public HashTree(System.Security.Cryptography.HashAlgorithm hashAlgorithm) : this(hashAlgorithm, DefaultBlockSize) { }

@@ -43,6 +43,12 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the Tiger class.</summary>
+		/// <remarks>This constructor implements the default parameters of Tiger192BitVersion1.</remarks>
+		public Tiger() : this(TigerParameters.GetParameters(TigerStandard.Tiger192BitVersion1)) { }
+
+		/// <summary>Initializes a new instance of the Tiger class.</summary>
+		/// <param name="parameters">The parameters to utilize in the Tiger calculation.</param>
+		/// <exception cref="ArgumentNullException">When the specified parameters are null.</exception>
 		public Tiger(TigerParameters parameters) : base(64) {
 			lock (syncLock) {
 				if (parameters == null) { throw new ArgumentNullException("parameters", Hasher.Properties.Resources.paramCantBeNull); }

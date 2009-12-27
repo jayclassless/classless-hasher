@@ -54,6 +54,10 @@ namespace Classless.Hasher.Methods {
 
 
 		/// <summary>Initializes a new instance of the HashList class.</summary>
+		/// <remarks>This constructor implements the default HashAlgorithm.</remarks>
+		public HashList() : this(HashAlgorithm.Create()) { }
+
+		/// <summary>Initializes a new instance of the HashList class.</summary>
 		/// <param name="hashAlgorithm">The HashAlgorithm to calculate the HashNodes with.</param>
 		/// <exception cref="ArgumentNullException">When the specified HashAlgorithm is null.</exception>
 		public HashList(System.Security.Cryptography.HashAlgorithm hashAlgorithm) : this(hashAlgorithm, DefaultBlockSize) { }

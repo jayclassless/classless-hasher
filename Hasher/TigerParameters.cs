@@ -58,7 +58,7 @@ namespace Classless.Hasher {
 		/// <param name="type">The Tiger algorithm variation.</param>
 		public TigerParameters(short length, TigerAlgorithmType type) {
 			this.Length = length;
-			this.algorithmType = type;
+			this.AlgorithmType = type;
 		}
 
 

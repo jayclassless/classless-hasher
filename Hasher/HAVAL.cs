@@ -43,6 +43,10 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the HAVAL class.</summary>
+		/// <remarks>This constructor implements the default parameters of Haval256Bit5Pass.</remarks>
+		public Haval() : this(HavalParameters.GetParameters(HavalStandard.Haval256Bit5Pass)) { }
+
+		/// <summary>Initializes a new instance of the HAVAL class.</summary>
 		/// <param name="parameters">The parameters to utilize in the HAVAL calculation.</param>
 		/// <exception cref="ArgumentNullException">When the specified parameters are null.</exception>
 		public Haval(HavalParameters parameters) : base(128) {

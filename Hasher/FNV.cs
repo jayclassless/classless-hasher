@@ -43,6 +43,10 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the FNV class.</summary>
+		/// <remarks>This constructor implements the default parameters of Fnv32BitType1A.</remarks>
+		public Fnv() : this(FnvParameters.GetParameters(FnvStandard.Fnv32BitType1A)) { }
+
+		/// <summary>Initializes a new instance of the FNV class.</summary>
 		/// <param name="parameters">The parameters to utilize in the FNV calculation.</param>
 		/// <exception cref="ArgumentNullException">When the specified parameters are null.</exception>
 		public Fnv(FnvParameters parameters) : base() {

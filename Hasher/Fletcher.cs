@@ -45,6 +45,10 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the Fletcher class.</summary>
+		/// <remarks>This constructor implements the default parameters of Fletcher32Bit.</remarks>
+		public Fletcher() : this(FletcherParameters.GetParameters(FletcherStandard.Fletcher32Bit)) { }
+
+		/// <summary>Initializes a new instance of the Fletcher class.</summary>
 		/// <param name="parameters">The parameters to utilize in the Fletcher calculation.</param>
 		/// <exception cref="ArgumentNullException">When the specified parameters are null.</exception>
 		public Fletcher(FletcherParameters parameters) : base() {

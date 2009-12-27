@@ -43,6 +43,10 @@ namespace Classless.Hasher {
 
 
 		/// <summary>Initializes a new instance of the Sum class.</summary>
+		/// <remarks>This constructor implements the default parameters of Sum32Bit.</remarks>
+		public Sum() : this(SumParameters.GetParameters(SumStandard.Sum32Bit)) { }
+
+		/// <summary>Initializes a new instance of the Sum class.</summary>
 		/// <param name="parameters">The parameters to utilize in the Sum calculation.</param>
 		/// <exception cref="ArgumentNullException">When the specified parameters are null.</exception>
 		public Sum(SumParameters parameters) : base() {
