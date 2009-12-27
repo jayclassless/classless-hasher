@@ -56,8 +56,8 @@ namespace Classless.Hasher.Tests {
 
 
 		static public object[] HashSizeTests = {
-			new object[] { new System.Security.Cryptography.HashAlgorithm[] { new Whirlpool(), new Tiger() }, 512 },
-			new object[] { new System.Security.Cryptography.HashAlgorithm[] { new MD5(), new Tiger() }, 192 },
+			new object[] { new System.Security.Cryptography.HashAlgorithm[] { new Whirlpool(), new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)) }, 512 },
+			new object[] { new System.Security.Cryptography.HashAlgorithm[] { new MD5(), new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)) }, 192 },
 			new object[] { new System.Security.Cryptography.HashAlgorithm[] { new MD5(), new SumBsd(), new Xor8() }, 128 },
 		};
 

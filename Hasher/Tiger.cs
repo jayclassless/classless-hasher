@@ -29,15 +29,26 @@ using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the Tiger hash for the input data using the managed library.</summary>
-	public class Tiger : BlockHashAlgorithm {
+	public class Tiger : BlockHashAlgorithm, IParametrizedHashAlgorithm {
 		private readonly object syncLock = new object();
 
+		private TigerParameters parameters;
 		private ulong[] accumulator = new ulong[] { 0x0123456789ABCDEF, 0xFEDCBA9876543210, 0xF096A5B4C3B2E187 };
 
 
+		/// <summary>Gets the HashAlgorithmParameters being used by this HashAlgorithm.</summary>
+		public HashAlgorithmParameters Parameters {
+			get { return parameters; }
+		}
+
+
 		/// <summary>Initializes a new instance of the Tiger class.</summary>
-		public Tiger() : base(64) {
-			HashSizeValue = 192;
+		public Tiger(TigerParameters parameters) : base(64) {
+			lock (syncLock) {
+				if (parameters == null) { throw new ArgumentNullException("parameters", Hasher.Properties.Resources.paramCantBeNull); }
+				this.parameters = parameters;
+				HashSizeValue = this.parameters.Length;
+			}
 		}
 
 
@@ -127,7 +138,16 @@ namespace Classless.Hasher {
 					ProcessBlock(temp, BlockSize);
 				}
 
-				return Conversions.ULongToByte(accumulator);
+				temp = null;
+				if (HashSize == 192) {
+					temp = Conversions.ULongToByte(accumulator);
+				} else if (HashSize == 160) {
+					temp = new byte[20];
+					Array.Copy(Conversions.ULongToByte(accumulator), 0, temp, 0, 20);
+				} else if (HashSize == 128) {
+					temp = Conversions.ULongToByte(accumulator, 0, 2);
+				}
+				return temp;
 			}
 		}
 

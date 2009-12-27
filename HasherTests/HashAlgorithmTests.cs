@@ -223,16 +223,22 @@ namespace Classless.Hasher.Tests {
 			new object[] { "Snefru2-4-256", typeof(Snefru2), Snefru2Parameters.GetParameters(Snefru2Standard.Snefru256Bit4Pass) },
 			new object[] { "Snefru2-8-128", typeof(Snefru2), Snefru2Parameters.GetParameters(Snefru2Standard.Snefru128Bit8Pass) },
 			new object[] { "Snefru2-8-256", typeof(Snefru2), Snefru2Parameters.GetParameters(Snefru2Standard.Snefru256Bit8Pass) },
-			new object[] { "Sum8Bit", typeof(Sum), SumParameters.GetParameters(SumStandard.Sum8Bit) },
+			new object[] { "Sum8", typeof(Sum), SumParameters.GetParameters(SumStandard.Sum8Bit) },
 			new object[] { "Sum-8", typeof(Sum), SumParameters.GetParameters(SumStandard.Sum8Bit) },
-			new object[] { "Sum16Bit", typeof(Sum), SumParameters.GetParameters(SumStandard.Sum16Bit) },
+			new object[] { "Sum16", typeof(Sum), SumParameters.GetParameters(SumStandard.Sum16Bit) },
 			new object[] { "Sum-16", typeof(Sum), SumParameters.GetParameters(SumStandard.Sum16Bit) },
-			new object[] { "Sum24Bit", typeof(Sum), SumParameters.GetParameters(SumStandard.Sum24Bit) },
+			new object[] { "Sum24", typeof(Sum), SumParameters.GetParameters(SumStandard.Sum24Bit) },
 			new object[] { "Sum-24", typeof(Sum), SumParameters.GetParameters(SumStandard.Sum24Bit) },
-			new object[] { "Sum32Bit", typeof(Sum), SumParameters.GetParameters(SumStandard.Sum32Bit) },
+			new object[] { "Sum32", typeof(Sum), SumParameters.GetParameters(SumStandard.Sum32Bit) },
 			new object[] { "Sum-32", typeof(Sum), SumParameters.GetParameters(SumStandard.Sum32Bit) },
-			new object[] { "Sum64Bit", typeof(Sum), SumParameters.GetParameters(SumStandard.Sum64Bit) },
+			new object[] { "Sum64", typeof(Sum), SumParameters.GetParameters(SumStandard.Sum64Bit) },
 			new object[] { "Sum-64", typeof(Sum), SumParameters.GetParameters(SumStandard.Sum64Bit) },
+			new object[] { "Tiger128", typeof(Tiger), TigerParameters.GetParameters(TigerStandard.Tiger128Bit) },
+			new object[] { "Tiger-128", typeof(Tiger), TigerParameters.GetParameters(TigerStandard.Tiger128Bit) },
+			new object[] { "Tiger160", typeof(Tiger), TigerParameters.GetParameters(TigerStandard.Tiger160Bit) },
+			new object[] { "Tiger-160", typeof(Tiger), TigerParameters.GetParameters(TigerStandard.Tiger160Bit) },
+			new object[] { "Tiger192", typeof(Tiger), TigerParameters.GetParameters(TigerStandard.Tiger192Bit) },
+			new object[] { "Tiger-192", typeof(Tiger), TigerParameters.GetParameters(TigerStandard.Tiger192Bit) },
 		};
 
 		static public object[] HashCreateDefaultedParametrizedNames = {
@@ -250,6 +256,8 @@ namespace Classless.Hasher.Tests {
 			new object[] { "Classless.Hasher.Snefru2", typeof(Snefru2), Snefru2Parameters.GetParameters(Snefru2Standard.Snefru256Bit8Pass) },
 			new object[] { "Sum", typeof(Sum), SumParameters.GetParameters(SumStandard.Sum32Bit) },
 			new object[] { "Classless.Hasher.Sum", typeof(Sum), SumParameters.GetParameters(SumStandard.Sum32Bit) },
+			new object[] { "Tiger", typeof(Tiger), TigerParameters.GetParameters(TigerStandard.Tiger192Bit) },
+			new object[] { "Classless.Hasher.Tiger", typeof(Tiger), TigerParameters.GetParameters(TigerStandard.Tiger192Bit) },
 		};
 
 		[Test, TestCaseSource("HashCreateParametrizedNames"), TestCaseSource("HashCreateDefaultedParametrizedNames")]

@@ -38,6 +38,7 @@ namespace Classless.Hasher.Tests {
 			new object[] { typeof(GHash) },
 			new object[] { typeof(Haval) },
 			new object[] { typeof(Sum) },
+			new object[] { typeof(Tiger) },
 		};
 
 		[Test, TestCaseSource("Algorithms"), ExpectedException(typeof(ArgumentNullException))]
@@ -148,6 +149,22 @@ namespace Classless.Hasher.Tests {
 		[Test, TestCaseSource("BadSnefruLengths"), ExpectedException(typeof(ArgumentOutOfRangeException))]
 		public void SnefruLengthTest(short length) {
 			Snefru2Parameters param = new Snefru2Parameters(4, length);
+		}
+
+
+		static public IEnumerable BadTigerLengths {
+			get {
+				for (short i = -500; i <= 500; i++) {
+					if ((i != 128) && (i != 160) && (i != 192)) {
+						yield return new TestCaseData(i);
+					}
+				}
+			}
+		}
+
+		[Test, TestCaseSource("BadTigerLengths"), ExpectedException(typeof(ArgumentOutOfRangeException))]
+		public void TigerLengthTest(short length) {
+			TigerParameters param = new TigerParameters(length);
 		}
 
 

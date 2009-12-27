@@ -186,4 +186,7 @@
   <data name="paramCantBeNull" xml:space="preserve">
     <value>The hash Parameters cannot be null.</value>
   </data>
+  <data name="invalidTigerLength" xml:space="preserve">
+    <value>The Tiger Length can only be 128, 160, or 192 bits long.</value>
+  </data>
 </root>

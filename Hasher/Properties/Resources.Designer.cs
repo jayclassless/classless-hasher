@@ -214,6 +214,15 @@ namespace Classless.Hasher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Tiger Length can only be 128, 160, or 192 bits long..
+        /// </summary>
+        internal static string invalidTigerLength {
+            get {
+                return ResourceManager.GetString("invalidTigerLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The number of bytes to convert must be a multiple of the size of the type..
         /// </summary>
         internal static string lengthMultipleOfTypeSize {

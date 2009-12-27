@@ -1289,20 +1289,40 @@ namespace Classless.Hasher.Tests {
 
 
 			// Tiger
-			new object[] { new Tiger(), Battery.Empty, h("3293AC630C13F0245F92BBB1766E16167A4E58492DDE73F3") },
-			new object[] { new Tiger(), Battery.A, h("77BEFBEF2E7EF8AB2EC8F93BF587A7FC613E247F5F247809") },
-			new object[] { new Tiger(), Battery.ABC, h("2AAB1484E8C158F2BFB8C5FF41B57A525129131C957B5F93") },
-			new object[] { new Tiger(), Battery.Alphabet, h("1714A472EEE57D30040412BFCC55032A0B11602FF37BEEE9") },
-			new object[] { new Tiger(), Battery.Alphanumeric, h("8DCEA680A17583EE502BA38A3C368651890FFBCCDC49A8CC") },
-			new object[] { new Tiger(), Battery.Numeric, h("875AAAB2A36537F895A5944B426754CD1C424277EAC4A29F") },
-			new object[] { new Tiger(), Battery.NumericRepeated, h("1C14795529FD9F207A958F84C52F11E887FA0CABDFD91BFD") },
-			new object[] { new Tiger(), Battery.Message, h("D981F8CB78201A950DCF3048751E441C517FCA1AA55A29F6") },
-			new object[] { new Tiger(), Battery.QuickFox, h("6D12A41E72E644F017B6F0E2F7B44C6285F06DD5D2C5B075") },
-			new object[] { new Tiger(), Battery.MillionAs, h("6DB0E2729CBEAD93D715C6A7D36302E9B3CEE0D2BC314B41") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger128Bit)), Battery.Empty, h("3293AC630C13F0245F92BBB1766E1616") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger128Bit)), Battery.A, h("77BEFBEF2E7EF8AB2EC8F93BF587A7FC") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger128Bit)), Battery.ABC, h("2AAB1484E8C158F2BFB8C5FF41B57A52") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger128Bit)), Battery.Alphabet, h("1714A472EEE57D30040412BFCC55032A") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger128Bit)), Battery.Alphanumeric, h("8DCEA680A17583EE502BA38A3C368651") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger128Bit)), Battery.Numeric, h("875AAAB2A36537F895A5944B426754CD") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger128Bit)), Battery.NumericRepeated, h("1C14795529FD9F207A958F84C52F11E8") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger128Bit)), Battery.Message, h("D981F8CB78201A950DCF3048751E441C") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger128Bit)), Battery.QuickFox, h("6D12A41E72E644F017B6F0E2F7B44C62") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger128Bit)), Battery.MillionAs, h("6DB0E2729CBEAD93D715C6A7D36302E9") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger160Bit)), Battery.Empty, h("3293AC630C13F0245F92BBB1766E16167A4E5849") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger160Bit)), Battery.A, h("77BEFBEF2E7EF8AB2EC8F93BF587A7FC613E247F") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger160Bit)), Battery.ABC, h("2AAB1484E8C158F2BFB8C5FF41B57A525129131C") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger160Bit)), Battery.Alphabet, h("1714A472EEE57D30040412BFCC55032A0B11602F") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger160Bit)), Battery.Alphanumeric, h("8DCEA680A17583EE502BA38A3C368651890FFBCC") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger160Bit)), Battery.Numeric, h("875AAAB2A36537F895A5944B426754CD1C424277") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger160Bit)), Battery.NumericRepeated, h("1C14795529FD9F207A958F84C52F11E887FA0CAB") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger160Bit)), Battery.Message, h("D981F8CB78201A950DCF3048751E441C517FCA1A") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger160Bit)), Battery.QuickFox, h("6D12A41E72E644F017B6F0E2F7B44C6285F06DD5") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger160Bit)), Battery.MillionAs, h("6DB0E2729CBEAD93D715C6A7D36302E9B3CEE0D2") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)), Battery.Empty, h("3293AC630C13F0245F92BBB1766E16167A4E58492DDE73F3") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)), Battery.A, h("77BEFBEF2E7EF8AB2EC8F93BF587A7FC613E247F5F247809") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)), Battery.ABC, h("2AAB1484E8C158F2BFB8C5FF41B57A525129131C957B5F93") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)), Battery.Alphabet, h("1714A472EEE57D30040412BFCC55032A0B11602FF37BEEE9") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)), Battery.Alphanumeric, h("8DCEA680A17583EE502BA38A3C368651890FFBCCDC49A8CC") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)), Battery.Numeric, h("875AAAB2A36537F895A5944B426754CD1C424277EAC4A29F") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)), Battery.NumericRepeated, h("1C14795529FD9F207A958F84C52F11E887FA0CABDFD91BFD") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)), Battery.Message, h("D981F8CB78201A950DCF3048751E441C517FCA1AA55A29F6") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)), Battery.QuickFox, h("6D12A41E72E644F017B6F0E2F7B44C6285F06DD5D2C5B075") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)), Battery.MillionAs, h("6DB0E2729CBEAD93D715C6A7D36302E9B3CEE0D2BC314B41") },
 
 			// http://www.cs.technion.ac.il/~biham/Reports/Tiger/
-			new object[] { new Tiger(), new byte[100], h("A5A54E12A9538A158E78AE09896DCB2CE31F14150625E615") },
-			new object[] { new Tiger(), s("abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq"), h("0F7BF9A19B9C58F2B7610DF7E84F0AC3A71C631E7B53F78E") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)), new byte[100], h("A5A54E12A9538A158E78AE09896DCB2CE31F14150625E615") },
+			new object[] { new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)), s("abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq"), h("0F7BF9A19B9C58F2B7610DF7E84F0AC3A71C631E7B53F78E") },
 
 
 			// Whirlpool
@@ -1350,13 +1370,13 @@ namespace Classless.Hasher.Tests {
 			// MultiHash
 			new object[] { new MultiHash(new HashAlgorithm[] { new Whirlpool() }), Battery.Alphabet, h("F1D754662636FFE92C82EBB9212A484A8D38631EAD4238F5442EE13B8054E41B08BF2A9251C30B6A0B8AAE86177AB4A6F68F673E7207865D5D9819A3DBA4EB3B") },
 			new object[] { new MultiHash(new HashAlgorithm[] { new Crc(CrcParameters.GetParameters(CrcStandard.Crc32Bit)), new MD5(), new Sha1() }), Battery.Alphabet, h("4C2750BD") },
-			new object[] { new MultiHash(new HashAlgorithm[] { new Adler32(), new Tiger(), new Sha512() }), Battery.Alphabet, h("90860B20") },
+			new object[] { new MultiHash(new HashAlgorithm[] { new Adler32(), new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)), new Sha512() }), Battery.Alphabet, h("90860B20") },
 
 
 			// Parallel
 			new object[] { new ParallelHash(new HashAlgorithm[] { new Whirlpool() }), Battery.Alphabet, h("F1D754662636FFE92C82EBB9212A484A8D38631EAD4238F5442EE13B8054E41B08BF2A9251C30B6A0B8AAE86177AB4A6F68F673E7207865D5D9819A3DBA4EB3B") },
 			new object[] { new ParallelHash(new HashAlgorithm[] { new Crc(CrcParameters.GetParameters(CrcStandard.Crc32Bit)), new MD5(), new Sha1() }), Battery.Alphabet, h("4C2750BDC3FCD3D76192E4007DFB496CCA67E13B32D10C7B8CF96570CA04CE37F2A19D84240D3A89") },
-			new object[] { new ParallelHash(new HashAlgorithm[] { new Adler32(), new Tiger(), new Sha512() }), Battery.Alphabet, h("90860B201714A472EEE57D30040412BFCC55032A0B11602FF37BEEE94DBFF86CC2CA1BAE1E16468A05CB9881C97F1753BCE3619034898FAA1AABE429955A1BF8EC483D7421FE3C1646613A59ED5441FB0F321389F77F48A879C7B1F1") },
+			new object[] { new ParallelHash(new HashAlgorithm[] { new Adler32(), new Tiger(TigerParameters.GetParameters(TigerStandard.Tiger192Bit)), new Sha512() }), Battery.Alphabet, h("90860B201714A472EEE57D30040412BFCC55032A0B11602FF37BEEE94DBFF86CC2CA1BAE1E16468A05CB9881C97F1753BCE3619034898FAA1AABE429955A1BF8EC483D7421FE3C1646613A59ED5441FB0F321389F77F48A879C7B1F1") },
 		};
 	}
 }
