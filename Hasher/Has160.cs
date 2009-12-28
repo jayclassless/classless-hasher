@@ -72,7 +72,7 @@ namespace Classless.Hasher {
 			w[18] = w[ 8] ^ w[ 9] ^ w[10] ^ w[11];
 			w[19] = w[12] ^ w[13] ^ w[14] ^ w[15];
 			for (i = 0; i < 20; i++) {
-				T = (A << rot[i] | A >> tor[i]) + ((B & C) | (~B & D)) + E + w[ndx[i]];
+				T = BitTools.RotateLeft(A, rot[i]) + ((B & C) | (~B & D)) + E + w[ndx[i]];
 				E = D;
 				D = C;
 				C = B << 10 | B >> 22;
@@ -85,7 +85,7 @@ namespace Classless.Hasher {
 			w[18] = w[ 1] ^ w[ 4] ^ w[11] ^ w[14];
 			w[19] = w[ 0] ^ w[ 7] ^ w[10] ^ w[13];
 			for (i = 20; i < 40; i++) {
-				T = (A << rot[i - 20] | A >> tor[i - 20]) + (B ^ C ^ D) + E + w[ndx[i]] + 0x5A827999;
+				T = BitTools.RotateLeft(A, rot[i - 20]) + (B ^ C ^ D) + E + w[ndx[i]] + 0x5A827999;
 				E = D;
 				D = C;
 				C = B << 17 | B >> 15;
@@ -98,7 +98,7 @@ namespace Classless.Hasher {
 			w[18] = w[ 4] ^ w[ 6] ^ w[13] ^ w[15];
 			w[19] = w[ 1] ^ w[ 3] ^ w[ 8] ^ w[10];
 			for (i = 40; i < 60; i++) {
-				T = (A << rot[i - 40] | A >> tor[i - 40]) + (C ^ (B | ~D)) + E + w[ndx[i]] + 0x6ED9EBA1;
+				T = BitTools.RotateLeft(A, rot[i - 40]) + (C ^ (B | ~D)) + E + w[ndx[i]] + 0x6ED9EBA1;
 				E = D;
 				D = C;
 				C = B << 25 | B >> 7;
@@ -111,7 +111,7 @@ namespace Classless.Hasher {
 			w[18] = w[ 0] ^ w[ 5] ^ w[10] ^ w[15];
 			w[19] = w[ 1] ^ w[ 6] ^ w[11] ^ w[12];
 			for (i = 60; i < 80; i++) {
-				T = (A << rot[i - 60] | A >> tor[i - 60]) + (B ^ C ^ D) + E + w[ndx[i]] + 0x8F1BBCDC;
+				T = BitTools.RotateLeft(A, rot[i - 60]) + (B ^ C ^ D) + E + w[ndx[i]] + 0x8F1BBCDC;
 				E = D;
 				D = C;
 				C = B << 30 | B >> 2;
@@ -164,10 +164,6 @@ namespace Classless.Hasher {
 		#region Tables
 		private static int[] rot = new int[] {
 			5, 11,  7, 15,  6, 13,  8, 14,  7, 12,  9, 11,  8, 15,  6, 12,  9, 14,  5, 13
-		};
-
-		private static int[] tor = new int[] {
-			27, 21, 25, 17, 26, 19, 24, 18, 25, 20, 23, 21, 24, 17, 26, 20, 23, 18, 27, 19
 		};
 
 		private static int[] ndx = new int[] {
