@@ -6,7 +6,7 @@
 	<property name="project.version" value="0.8" />
 
 	<!-- Build properties. -->
-	<property name="build.keyfile" value="../../Classless.Hasher.snk" />
+	<property name="build.keyfile" value="../../classless.snk" />
 	<property name="msbuild.location" value="C:\Windows\Microsoft.NET\Framework\v3.5" />
 	<property name="nunit.location" value="C:\Program Files (x86)\TestDriven.NET 2.0\NUnit\2.5\net-2.0" />
 	<property name="build.defines" value="" />
