@@ -3,12 +3,12 @@
 	<description>.NET Hash and Checksum Algorithm Library</description>
 
 	<!-- Project properties. -->
-	<property name="project.version" value="0.8" />
+	<property name="project.version" value="0.9" />
 
 	<!-- Build properties. -->
-	<property name="build.keyfile" value="../../classless.snk" />
-	<property name="msbuild.location" value="C:\Windows\Microsoft.NET\Framework\v3.5" />
-	<property name="nunit.location" value="C:\Program Files (x86)\TestDriven.NET 2.0\NUnit\2.5\net-2.0" />
+	<property name="build.keyfile" value="c:\temp\classless.snk" />
+	<property name="msbuild.location" value="c:\Windows\Microsoft.NET\Framework\v3.5" />
+	<property name="nunit.location" value="c:\Program Files (x86)\TestDriven.NET 2.0\NUnit\2.5\net-2.0" />
 	<property name="build.defines" value="" />
 	<if test="${not property::exists('build.config')}">
 		<property name="build.config" value="release" />
