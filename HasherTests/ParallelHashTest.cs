@@ -32,6 +32,12 @@ using Classless.Hasher.Methods;
 namespace Classless.Hasher.Tests {
 	[TestFixture]
 	public class ParallelHashTests {
+		[Test]
+		public void DefaultConstructorTest() {
+			ParallelHash hasher = new ParallelHash();
+			Assert.AreEqual(0, hasher.HashSize);
+		}
+
 		[Test, ExpectedException(typeof(ArgumentNullException))]
 		public void ConstructorNullTest() {
 			HashAlgorithmCollection hashCollection = null;

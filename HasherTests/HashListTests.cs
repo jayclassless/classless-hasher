@@ -59,6 +59,12 @@ namespace Classless.Hasher.Tests {
 
 
 		[Test]
+		public void DefaultConstructorTest() {
+			HashList list = new HashList();
+			Assert.AreEqual(1024, list.BlockSize);
+		}
+
+		[Test]
 		public void Constructor1Test() {
 			HashList list = new HashList(new MD5());
 			Assert.AreEqual(1024, list.BlockSize);

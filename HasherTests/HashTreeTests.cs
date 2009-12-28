@@ -60,6 +60,12 @@ namespace Classless.Hasher.Tests {
 
 
 		[Test]
+		public void DefaultConstructorTest() {
+			HashTree tree = new HashTree();
+			Assert.AreEqual(1024, tree.BlockSize);
+		}
+
+		[Test]
 		public void Constructor1Test() {
 			HashTree tree = new HashTree(new MD5());
 			Assert.AreEqual(1024, tree.BlockSize);
