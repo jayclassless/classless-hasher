@@ -108,6 +108,42 @@
 	</target>
 
 
+	<!-- Speed Testing application. -->
+	<target name="buildspeedtest" depends="build" description="Builds the speed test application.">
+		<echo message="Building the Speed Test application." />
+
+		<fileset id="testcode">
+			<include name="${project::get-base-directory()}/HasherSpeedTests/*.cs" />
+			<include name="${project::get-base-directory()}/HasherSpeedTests/*/*.cs" />
+		</fileset>
+
+		<csc
+			target="exe"
+			output="${build.dir}/${project::get-name()}.SpeedTests.exe"
+			debug="${build.debug}"
+			warnaserror="${build.warnaserror}"
+			define="${build.defines}"
+			optimize="${build.optimize}"
+			>
+
+			<references>
+				<include name="${build.dir}/${project::get-name()}.dll" />
+			</references>
+
+			<sources refid="testcode" />
+		</csc>
+	</target>
+
+	<target name="speedtest" depends="buildspeedtest" description="Executes the speed test application.">
+		<echo message="Executing the Speed Test application." />
+
+		<exec
+			program="${build.dir}/${project::get-name()}.SpeedTests.exe"
+			failonerror="true"
+		/>
+	</target>
+
+
 	<!-- Documentation. -->
 	<target name="doc" depends="build" description="Generates the library documentation.">
 		<echo message="Generating documentation." />
