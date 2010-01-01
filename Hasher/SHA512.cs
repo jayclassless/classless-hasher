@@ -103,12 +103,17 @@ namespace Classless.Hasher {
 				ulong[] temp = Conversions.ByteToULong(inputBuffer, inputOffset, BlockSize, EndianType.BigEndian);
 				Array.Copy(temp, 0, workBuffer, 0, temp.Length);
 				for (int i = 16; i < 80; i++) {
-					workBuffer[i] = Sig1R(workBuffer[i - 2]) + workBuffer[i - 7] + Sig0R(workBuffer[i - 15]) + workBuffer[i - 16];
+					workBuffer[i] =
+						(((workBuffer[i - 2] >> 19) | (workBuffer[i - 2] << 45)) ^ ((workBuffer[i - 2] >> 61) | (workBuffer[i - 2] << 3)) ^ (workBuffer[i - 2] >> 6))
+						+ workBuffer[i - 7]
+						+ (((workBuffer[i - 15] >> 1) | (workBuffer[i - 15] << 63)) ^ ((workBuffer[i - 15] >> 8) | (workBuffer[i - 15] << 56)) ^ (workBuffer[i - 15] >> 7))
+						+ workBuffer[i - 16]
+					;
 				}
 
 				for (int i = 0; i < 80; i++) {
-					T1 = h + Sig1(e) + Ch(e, f, g) + K[i] + workBuffer[i];
-					T2 = Sig0(a) + Maj(a, b, c);
+					T1 = h + (((e >> 14) | (e << 50)) ^ ((e >> 18) | (e << 46)) ^ ((e >> 41) | (e << 23))) + ((e & f) ^ (~e & g)) + K[i] + workBuffer[i];
+					T2 = (((a >> 28) | (a << 36)) ^ ((a >> 34) | (a << 30)) ^ ((a >> 39) | (a << 25))) + ((a & b) ^ (a & c) ^ (b & c));
 
 					h = g; g = f; f = e;
 					e = d + T1;
@@ -159,35 +164,6 @@ namespace Classless.Hasher {
 
 				return Conversions.ULongToByte(accumulator, EndianType.BigEndian);
 			}
-		}
-
-
-		static private ulong Ch(ulong x, ulong y, ulong z) {
-			return (x & y) ^ ((~x) & z);
-		}
-
-		static private ulong Maj(ulong x, ulong y, ulong z) {
-			return (x & y) ^ (x & z) ^ (y & z);
-		}
-
-		static private ulong Sig0(ulong x) {
-			return BitTools.RotateRight(x, 28) ^ BitTools.RotateRight(x, 34) ^ BitTools.RotateRight(x, 39);
-		}
-
-		static private ulong Sig1(ulong x) {
-			return BitTools.RotateRight(x, 14) ^ BitTools.RotateRight(x, 18) ^ BitTools.RotateRight(x, 41);
-		}
-
-		static private ulong Sig0R(ulong x) {
-			return BitTools.RotateRight(x, 1) ^ BitTools.RotateRight(x, 8) ^ R(7, x);
-		}
-
-		static private ulong Sig1R(ulong x) {
-			return BitTools.RotateRight(x, 19) ^ BitTools.RotateRight(x, 61) ^ R(6, x);
-		}
-
-		static private ulong R(int offset, ulong x) {
-			return (x >> offset);
 		}
 	}
 }

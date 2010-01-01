@@ -71,95 +71,95 @@ namespace Classless.Hasher {
 				}
 
 				#region Round 1
-				E += BitTools.RotateLeft(A, 5) + F1(B, C, D) + workBuffer[0];  B = BitTools.RotateLeft(B, 30);
-				D += BitTools.RotateLeft(E, 5) + F1(A, B, C) + workBuffer[1];  A = BitTools.RotateLeft(A, 30);
-				C += BitTools.RotateLeft(D, 5) + F1(E, A, B) + workBuffer[2];  E = BitTools.RotateLeft(E, 30);
-				B += BitTools.RotateLeft(C, 5) + F1(D, E, A) + workBuffer[3];  D = BitTools.RotateLeft(D, 30);
-				A += BitTools.RotateLeft(B, 5) + F1(C, D, E) + workBuffer[4];  C = BitTools.RotateLeft(C, 30);
-				E += BitTools.RotateLeft(A, 5) + F1(B, C, D) + workBuffer[5];  B = BitTools.RotateLeft(B, 30);
-				D += BitTools.RotateLeft(E, 5) + F1(A, B, C) + workBuffer[6];  A = BitTools.RotateLeft(A, 30);
-				C += BitTools.RotateLeft(D, 5) + F1(E, A, B) + workBuffer[7];  E = BitTools.RotateLeft(E, 30);
-				B += BitTools.RotateLeft(C, 5) + F1(D, E, A) + workBuffer[8];  D = BitTools.RotateLeft(D, 30);
-				A += BitTools.RotateLeft(B, 5) + F1(C, D, E) + workBuffer[9];  C = BitTools.RotateLeft(C, 30);
-				E += BitTools.RotateLeft(A, 5) + F1(B, C, D) + workBuffer[10]; B = BitTools.RotateLeft(B, 30);
-				D += BitTools.RotateLeft(E, 5) + F1(A, B, C) + workBuffer[11]; A = BitTools.RotateLeft(A, 30);
-				C += BitTools.RotateLeft(D, 5) + F1(E, A, B) + workBuffer[12]; E = BitTools.RotateLeft(E, 30);
-				B += BitTools.RotateLeft(C, 5) + F1(D, E, A) + workBuffer[13]; D = BitTools.RotateLeft(D, 30);
-				A += BitTools.RotateLeft(B, 5) + F1(C, D, E) + workBuffer[14]; C = BitTools.RotateLeft(C, 30);
-				E += BitTools.RotateLeft(A, 5) + F1(B, C, D) + workBuffer[15]; B = BitTools.RotateLeft(B, 30);
-				D += BitTools.RotateLeft(E, 5) + F1(A, B, C) + workBuffer[16]; A = BitTools.RotateLeft(A, 30);
-				C += BitTools.RotateLeft(D, 5) + F1(E, A, B) + workBuffer[17]; E = BitTools.RotateLeft(E, 30);
-				B += BitTools.RotateLeft(C, 5) + F1(D, E, A) + workBuffer[18]; D = BitTools.RotateLeft(D, 30);
-				A += BitTools.RotateLeft(B, 5) + F1(C, D, E) + workBuffer[19]; C = BitTools.RotateLeft(C, 30);
+				E += ((A << 5) | (A >> 27)) + ((D ^ (B & (C ^ D))) + 0x5A827999) + workBuffer[0];  B = ((B << 30) | (B >> 2));
+				D += ((E << 5) | (E >> 27)) + ((C ^ (A & (B ^ C))) + 0x5A827999) + workBuffer[1];  A = ((A << 30) | (A >> 2));
+				C += ((D << 5) | (D >> 27)) + ((B ^ (E & (A ^ B))) + 0x5A827999) + workBuffer[2];  E = ((E << 30) | (E >> 2));
+				B += ((C << 5) | (C >> 27)) + ((A ^ (D & (E ^ A))) + 0x5A827999) + workBuffer[3];  D = ((D << 30) | (D >> 2));
+				A += ((B << 5) | (B >> 27)) + ((E ^ (C & (D ^ E))) + 0x5A827999) + workBuffer[4];  C = ((C << 30) | (C >> 2));
+				E += ((A << 5) | (A >> 27)) + ((D ^ (B & (C ^ D))) + 0x5A827999) + workBuffer[5];  B = ((B << 30) | (B >> 2));
+				D += ((E << 5) | (E >> 27)) + ((C ^ (A & (B ^ C))) + 0x5A827999) + workBuffer[6];  A = ((A << 30) | (A >> 2));
+				C += ((D << 5) | (D >> 27)) + ((B ^ (E & (A ^ B))) + 0x5A827999) + workBuffer[7];  E = ((E << 30) | (E >> 2));
+				B += ((C << 5) | (C >> 27)) + ((A ^ (D & (E ^ A))) + 0x5A827999) + workBuffer[8];  D = ((D << 30) | (D >> 2));
+				A += ((B << 5) | (B >> 27)) + ((E ^ (C & (D ^ E))) + 0x5A827999) + workBuffer[9];  C = ((C << 30) | (C >> 2));
+				E += ((A << 5) | (A >> 27)) + ((D ^ (B & (C ^ D))) + 0x5A827999) + workBuffer[10]; B = ((B << 30) | (B >> 2));
+				D += ((E << 5) | (E >> 27)) + ((C ^ (A & (B ^ C))) + 0x5A827999) + workBuffer[11]; A = ((A << 30) | (A >> 2));
+				C += ((D << 5) | (D >> 27)) + ((B ^ (E & (A ^ B))) + 0x5A827999) + workBuffer[12]; E = ((E << 30) | (E >> 2));
+				B += ((C << 5) | (C >> 27)) + ((A ^ (D & (E ^ A))) + 0x5A827999) + workBuffer[13]; D = ((D << 30) | (D >> 2));
+				A += ((B << 5) | (B >> 27)) + ((E ^ (C & (D ^ E))) + 0x5A827999) + workBuffer[14]; C = ((C << 30) | (C >> 2));
+				E += ((A << 5) | (A >> 27)) + ((D ^ (B & (C ^ D))) + 0x5A827999) + workBuffer[15]; B = ((B << 30) | (B >> 2));
+				D += ((E << 5) | (E >> 27)) + ((C ^ (A & (B ^ C))) + 0x5A827999) + workBuffer[16]; A = ((A << 30) | (A >> 2));
+				C += ((D << 5) | (D >> 27)) + ((B ^ (E & (A ^ B))) + 0x5A827999) + workBuffer[17]; E = ((E << 30) | (E >> 2));
+				B += ((C << 5) | (C >> 27)) + ((A ^ (D & (E ^ A))) + 0x5A827999) + workBuffer[18]; D = ((D << 30) | (D >> 2));
+				A += ((B << 5) | (B >> 27)) + ((E ^ (C & (D ^ E))) + 0x5A827999) + workBuffer[19]; C = ((C << 30) | (C >> 2));
 				#endregion
 
 				#region Round 2
-				E += BitTools.RotateLeft(A, 5) + F2(B, C, D) + workBuffer[20]; B = BitTools.RotateLeft(B, 30);
-				D += BitTools.RotateLeft(E, 5) + F2(A, B, C) + workBuffer[21]; A = BitTools.RotateLeft(A, 30);
-				C += BitTools.RotateLeft(D, 5) + F2(E, A, B) + workBuffer[22]; E = BitTools.RotateLeft(E, 30);
-				B += BitTools.RotateLeft(C, 5) + F2(D, E, A) + workBuffer[23]; D = BitTools.RotateLeft(D, 30);
-				A += BitTools.RotateLeft(B, 5) + F2(C, D, E) + workBuffer[24]; C = BitTools.RotateLeft(C, 30);
-				E += BitTools.RotateLeft(A, 5) + F2(B, C, D) + workBuffer[25]; B = BitTools.RotateLeft(B, 30);
-				D += BitTools.RotateLeft(E, 5) + F2(A, B, C) + workBuffer[26]; A = BitTools.RotateLeft(A, 30);
-				C += BitTools.RotateLeft(D, 5) + F2(E, A, B) + workBuffer[27]; E = BitTools.RotateLeft(E, 30);
-				B += BitTools.RotateLeft(C, 5) + F2(D, E, A) + workBuffer[28]; D = BitTools.RotateLeft(D, 30);
-				A += BitTools.RotateLeft(B, 5) + F2(C, D, E) + workBuffer[29]; C = BitTools.RotateLeft(C, 30);
-				E += BitTools.RotateLeft(A, 5) + F2(B, C, D) + workBuffer[30]; B = BitTools.RotateLeft(B, 30);
-				D += BitTools.RotateLeft(E, 5) + F2(A, B, C) + workBuffer[31]; A = BitTools.RotateLeft(A, 30);
-				C += BitTools.RotateLeft(D, 5) + F2(E, A, B) + workBuffer[32]; E = BitTools.RotateLeft(E, 30);
-				B += BitTools.RotateLeft(C, 5) + F2(D, E, A) + workBuffer[33]; D = BitTools.RotateLeft(D, 30);
-				A += BitTools.RotateLeft(B, 5) + F2(C, D, E) + workBuffer[34]; C = BitTools.RotateLeft(C, 30);
-				E += BitTools.RotateLeft(A, 5) + F2(B, C, D) + workBuffer[35]; B = BitTools.RotateLeft(B, 30);
-				D += BitTools.RotateLeft(E, 5) + F2(A, B, C) + workBuffer[36]; A = BitTools.RotateLeft(A, 30);
-				C += BitTools.RotateLeft(D, 5) + F2(E, A, B) + workBuffer[37]; E = BitTools.RotateLeft(E, 30);
-				B += BitTools.RotateLeft(C, 5) + F2(D, E, A) + workBuffer[38]; D = BitTools.RotateLeft(D, 30);
-				A += BitTools.RotateLeft(B, 5) + F2(C, D, E) + workBuffer[39]; C = BitTools.RotateLeft(C, 30);
+				E += ((A << 5) | (A >> 27)) + ((B ^ C ^ D) + 0x6ED9EBA1) + workBuffer[20]; B = ((B << 30) | (B >> 2));
+				D += ((E << 5) | (E >> 27)) + ((A ^ B ^ C) + 0x6ED9EBA1) + workBuffer[21]; A = ((A << 30) | (A >> 2));
+				C += ((D << 5) | (D >> 27)) + ((E ^ A ^ B) + 0x6ED9EBA1) + workBuffer[22]; E = ((E << 30) | (E >> 2));
+				B += ((C << 5) | (C >> 27)) + ((D ^ E ^ A) + 0x6ED9EBA1) + workBuffer[23]; D = ((D << 30) | (D >> 2));
+				A += ((B << 5) | (B >> 27)) + ((C ^ D ^ E) + 0x6ED9EBA1) + workBuffer[24]; C = ((C << 30) | (C >> 2));
+				E += ((A << 5) | (A >> 27)) + ((B ^ C ^ D) + 0x6ED9EBA1) + workBuffer[25]; B = ((B << 30) | (B >> 2));
+				D += ((E << 5) | (E >> 27)) + ((A ^ B ^ C) + 0x6ED9EBA1) + workBuffer[26]; A = ((A << 30) | (A >> 2));
+				C += ((D << 5) | (D >> 27)) + ((E ^ A ^ B) + 0x6ED9EBA1) + workBuffer[27]; E = ((E << 30) | (E >> 2));
+				B += ((C << 5) | (C >> 27)) + ((D ^ E ^ A) + 0x6ED9EBA1) + workBuffer[28]; D = ((D << 30) | (D >> 2));
+				A += ((B << 5) | (B >> 27)) + ((C ^ D ^ E) + 0x6ED9EBA1) + workBuffer[29]; C = ((C << 30) | (C >> 2));
+				E += ((A << 5) | (A >> 27)) + ((B ^ C ^ D) + 0x6ED9EBA1) + workBuffer[30]; B = ((B << 30) | (B >> 2));
+				D += ((E << 5) | (E >> 27)) + ((A ^ B ^ C) + 0x6ED9EBA1) + workBuffer[31]; A = ((A << 30) | (A >> 2));
+				C += ((D << 5) | (D >> 27)) + ((E ^ A ^ B) + 0x6ED9EBA1) + workBuffer[32]; E = ((E << 30) | (E >> 2));
+				B += ((C << 5) | (C >> 27)) + ((D ^ E ^ A) + 0x6ED9EBA1) + workBuffer[33]; D = ((D << 30) | (D >> 2));
+				A += ((B << 5) | (B >> 27)) + ((C ^ D ^ E) + 0x6ED9EBA1) + workBuffer[34]; C = ((C << 30) | (C >> 2));
+				E += ((A << 5) | (A >> 27)) + ((B ^ C ^ D) + 0x6ED9EBA1) + workBuffer[35]; B = ((B << 30) | (B >> 2));
+				D += ((E << 5) | (E >> 27)) + ((A ^ B ^ C) + 0x6ED9EBA1) + workBuffer[36]; A = ((A << 30) | (A >> 2));
+				C += ((D << 5) | (D >> 27)) + ((E ^ A ^ B) + 0x6ED9EBA1) + workBuffer[37]; E = ((E << 30) | (E >> 2));
+				B += ((C << 5) | (C >> 27)) + ((D ^ E ^ A) + 0x6ED9EBA1) + workBuffer[38]; D = ((D << 30) | (D >> 2));
+				A += ((B << 5) | (B >> 27)) + ((C ^ D ^ E) + 0x6ED9EBA1) + workBuffer[39]; C = ((C << 30) | (C >> 2));
 				#endregion
 
 				#region Round 3
-				E += BitTools.RotateLeft(A, 5) + F3(B, C, D) + workBuffer[40]; B = BitTools.RotateLeft(B, 30);
-				D += BitTools.RotateLeft(E, 5) + F3(A, B, C) + workBuffer[41]; A = BitTools.RotateLeft(A, 30);
-				C += BitTools.RotateLeft(D, 5) + F3(E, A, B) + workBuffer[42]; E = BitTools.RotateLeft(E, 30);
-				B += BitTools.RotateLeft(C, 5) + F3(D, E, A) + workBuffer[43]; D = BitTools.RotateLeft(D, 30);
-				A += BitTools.RotateLeft(B, 5) + F3(C, D, E) + workBuffer[44]; C = BitTools.RotateLeft(C, 30);
-				E += BitTools.RotateLeft(A, 5) + F3(B, C, D) + workBuffer[45]; B = BitTools.RotateLeft(B, 30);
-				D += BitTools.RotateLeft(E, 5) + F3(A, B, C) + workBuffer[46]; A = BitTools.RotateLeft(A, 30);
-				C += BitTools.RotateLeft(D, 5) + F3(E, A, B) + workBuffer[47]; E = BitTools.RotateLeft(E, 30);
-				B += BitTools.RotateLeft(C, 5) + F3(D, E, A) + workBuffer[48]; D = BitTools.RotateLeft(D, 30);
-				A += BitTools.RotateLeft(B, 5) + F3(C, D, E) + workBuffer[49]; C = BitTools.RotateLeft(C, 30);
-				E += BitTools.RotateLeft(A, 5) + F3(B, C, D) + workBuffer[50]; B = BitTools.RotateLeft(B, 30);
-				D += BitTools.RotateLeft(E, 5) + F3(A, B, C) + workBuffer[51]; A = BitTools.RotateLeft(A, 30);
-				C += BitTools.RotateLeft(D, 5) + F3(E, A, B) + workBuffer[52]; E = BitTools.RotateLeft(E, 30);
-				B += BitTools.RotateLeft(C, 5) + F3(D, E, A) + workBuffer[53]; D = BitTools.RotateLeft(D, 30);
-				A += BitTools.RotateLeft(B, 5) + F3(C, D, E) + workBuffer[54]; C = BitTools.RotateLeft(C, 30);
-				E += BitTools.RotateLeft(A, 5) + F3(B, C, D) + workBuffer[55]; B = BitTools.RotateLeft(B, 30);
-				D += BitTools.RotateLeft(E, 5) + F3(A, B, C) + workBuffer[56]; A = BitTools.RotateLeft(A, 30);
-				C += BitTools.RotateLeft(D, 5) + F3(E, A, B) + workBuffer[57]; E = BitTools.RotateLeft(E, 30);
-				B += BitTools.RotateLeft(C, 5) + F3(D, E, A) + workBuffer[58]; D = BitTools.RotateLeft(D, 30);
-				A += BitTools.RotateLeft(B, 5) + F3(C, D, E) + workBuffer[59]; C = BitTools.RotateLeft(C, 30);
+				E += ((A << 5) | (A >> 27)) + (((B & C) | (D & (B | C))) + 0x8F1BBCDC) + workBuffer[40]; B = ((B << 30) | (B >> 2));
+				D += ((E << 5) | (E >> 27)) + (((A & B) | (C & (A | B))) + 0x8F1BBCDC) + workBuffer[41]; A = ((A << 30) | (A >> 2));
+				C += ((D << 5) | (D >> 27)) + (((E & A) | (B & (E | A))) + 0x8F1BBCDC) + workBuffer[42]; E = ((E << 30) | (E >> 2));
+				B += ((C << 5) | (C >> 27)) + (((D & E) | (A & (D | E))) + 0x8F1BBCDC) + workBuffer[43]; D = ((D << 30) | (D >> 2));
+				A += ((B << 5) | (B >> 27)) + (((C & D) | (E & (C | D))) + 0x8F1BBCDC) + workBuffer[44]; C = ((C << 30) | (C >> 2));
+				E += ((A << 5) | (A >> 27)) + (((B & C) | (D & (B | C))) + 0x8F1BBCDC) + workBuffer[45]; B = ((B << 30) | (B >> 2));
+				D += ((E << 5) | (E >> 27)) + (((A & B) | (C & (A | B))) + 0x8F1BBCDC) + workBuffer[46]; A = ((A << 30) | (A >> 2));
+				C += ((D << 5) | (D >> 27)) + (((E & A) | (B & (E | A))) + 0x8F1BBCDC) + workBuffer[47]; E = ((E << 30) | (E >> 2));
+				B += ((C << 5) | (C >> 27)) + (((D & E) | (A & (D | E))) + 0x8F1BBCDC) + workBuffer[48]; D = ((D << 30) | (D >> 2));
+				A += ((B << 5) | (B >> 27)) + (((C & D) | (E & (C | D))) + 0x8F1BBCDC) + workBuffer[49]; C = ((C << 30) | (C >> 2));
+				E += ((A << 5) | (A >> 27)) + (((B & C) | (D & (B | C))) + 0x8F1BBCDC) + workBuffer[50]; B = ((B << 30) | (B >> 2));
+				D += ((E << 5) | (E >> 27)) + (((A & B) | (C & (A | B))) + 0x8F1BBCDC) + workBuffer[51]; A = ((A << 30) | (A >> 2));
+				C += ((D << 5) | (D >> 27)) + (((E & A) | (B & (E | A))) + 0x8F1BBCDC) + workBuffer[52]; E = ((E << 30) | (E >> 2));
+				B += ((C << 5) | (C >> 27)) + (((D & E) | (A & (D | E))) + 0x8F1BBCDC) + workBuffer[53]; D = ((D << 30) | (D >> 2));
+				A += ((B << 5) | (B >> 27)) + (((C & D) | (E & (C | D))) + 0x8F1BBCDC) + workBuffer[54]; C = ((C << 30) | (C >> 2));
+				E += ((A << 5) | (A >> 27)) + (((B & C) | (D & (B | C))) + 0x8F1BBCDC) + workBuffer[55]; B = ((B << 30) | (B >> 2));
+				D += ((E << 5) | (E >> 27)) + (((A & B) | (C & (A | B))) + 0x8F1BBCDC) + workBuffer[56]; A = ((A << 30) | (A >> 2));
+				C += ((D << 5) | (D >> 27)) + (((E & A) | (B & (E | A))) + 0x8F1BBCDC) + workBuffer[57]; E = ((E << 30) | (E >> 2));
+				B += ((C << 5) | (C >> 27)) + (((D & E) | (A & (D | E))) + 0x8F1BBCDC) + workBuffer[58]; D = ((D << 30) | (D >> 2));
+				A += ((B << 5) | (B >> 27)) + (((C & D) | (E & (C | D))) + 0x8F1BBCDC) + workBuffer[59]; C = ((C << 30) | (C >> 2));
 				#endregion
 
 				#region Round 4
-				E += BitTools.RotateLeft(A, 5) + F4(B, C, D) + workBuffer[60]; B = BitTools.RotateLeft(B, 30);
-				D += BitTools.RotateLeft(E, 5) + F4(A, B, C) + workBuffer[61]; A = BitTools.RotateLeft(A, 30);
-				C += BitTools.RotateLeft(D, 5) + F4(E, A, B) + workBuffer[62]; E = BitTools.RotateLeft(E, 30);
-				B += BitTools.RotateLeft(C, 5) + F4(D, E, A) + workBuffer[63]; D = BitTools.RotateLeft(D, 30);
-				A += BitTools.RotateLeft(B, 5) + F4(C, D, E) + workBuffer[64]; C = BitTools.RotateLeft(C, 30);
-				E += BitTools.RotateLeft(A, 5) + F4(B, C, D) + workBuffer[65]; B = BitTools.RotateLeft(B, 30);
-				D += BitTools.RotateLeft(E, 5) + F4(A, B, C) + workBuffer[66]; A = BitTools.RotateLeft(A, 30);
-				C += BitTools.RotateLeft(D, 5) + F4(E, A, B) + workBuffer[67]; E = BitTools.RotateLeft(E, 30);
-				B += BitTools.RotateLeft(C, 5) + F4(D, E, A) + workBuffer[68]; D = BitTools.RotateLeft(D, 30);
-				A += BitTools.RotateLeft(B, 5) + F4(C, D, E) + workBuffer[69]; C = BitTools.RotateLeft(C, 30);
-				E += BitTools.RotateLeft(A, 5) + F4(B, C, D) + workBuffer[70]; B = BitTools.RotateLeft(B, 30);
-				D += BitTools.RotateLeft(E, 5) + F4(A, B, C) + workBuffer[71]; A = BitTools.RotateLeft(A, 30);
-				C += BitTools.RotateLeft(D, 5) + F4(E, A, B) + workBuffer[72]; E = BitTools.RotateLeft(E, 30);
-				B += BitTools.RotateLeft(C, 5) + F4(D, E, A) + workBuffer[73]; D = BitTools.RotateLeft(D, 30);
-				A += BitTools.RotateLeft(B, 5) + F4(C, D, E) + workBuffer[74]; C = BitTools.RotateLeft(C, 30);
-				E += BitTools.RotateLeft(A, 5) + F4(B, C, D) + workBuffer[75]; B = BitTools.RotateLeft(B, 30);
-				D += BitTools.RotateLeft(E, 5) + F4(A, B, C) + workBuffer[76]; A = BitTools.RotateLeft(A, 30);
-				C += BitTools.RotateLeft(D, 5) + F4(E, A, B) + workBuffer[77]; E = BitTools.RotateLeft(E, 30);
-				B += BitTools.RotateLeft(C, 5) + F4(D, E, A) + workBuffer[78]; D = BitTools.RotateLeft(D, 30);
-				A += BitTools.RotateLeft(B, 5) + F4(C, D, E) + workBuffer[79]; C = BitTools.RotateLeft(C, 30);
+				E += ((A << 5) | (A >> 27)) + ((B ^ C ^ D) + 0xCA62C1D6) + workBuffer[60]; B = ((B << 30) | (B >> 2));
+				D += ((E << 5) | (E >> 27)) + ((A ^ B ^ C) + 0xCA62C1D6) + workBuffer[61]; A = ((A << 30) | (A >> 2));
+				C += ((D << 5) | (D >> 27)) + ((E ^ A ^ B) + 0xCA62C1D6) + workBuffer[62]; E = ((E << 30) | (E >> 2));
+				B += ((C << 5) | (C >> 27)) + ((D ^ E ^ A) + 0xCA62C1D6) + workBuffer[63]; D = ((D << 30) | (D >> 2));
+				A += ((B << 5) | (B >> 27)) + ((C ^ D ^ E) + 0xCA62C1D6) + workBuffer[64]; C = ((C << 30) | (C >> 2));
+				E += ((A << 5) | (A >> 27)) + ((B ^ C ^ D) + 0xCA62C1D6) + workBuffer[65]; B = ((B << 30) | (B >> 2));
+				D += ((E << 5) | (E >> 27)) + ((A ^ B ^ C) + 0xCA62C1D6) + workBuffer[66]; A = ((A << 30) | (A >> 2));
+				C += ((D << 5) | (D >> 27)) + ((E ^ A ^ B) + 0xCA62C1D6) + workBuffer[67]; E = ((E << 30) | (E >> 2));
+				B += ((C << 5) | (C >> 27)) + ((D ^ E ^ A) + 0xCA62C1D6) + workBuffer[68]; D = ((D << 30) | (D >> 2));
+				A += ((B << 5) | (B >> 27)) + ((C ^ D ^ E) + 0xCA62C1D6) + workBuffer[69]; C = ((C << 30) | (C >> 2));
+				E += ((A << 5) | (A >> 27)) + ((B ^ C ^ D) + 0xCA62C1D6) + workBuffer[70]; B = ((B << 30) | (B >> 2));
+				D += ((E << 5) | (E >> 27)) + ((A ^ B ^ C) + 0xCA62C1D6) + workBuffer[71]; A = ((A << 30) | (A >> 2));
+				C += ((D << 5) | (D >> 27)) + ((E ^ A ^ B) + 0xCA62C1D6) + workBuffer[72]; E = ((E << 30) | (E >> 2));
+				B += ((C << 5) | (C >> 27)) + ((D ^ E ^ A) + 0xCA62C1D6) + workBuffer[73]; D = ((D << 30) | (D >> 2));
+				A += ((B << 5) | (B >> 27)) + ((C ^ D ^ E) + 0xCA62C1D6) + workBuffer[74]; C = ((C << 30) | (C >> 2));
+				E += ((A << 5) | (A >> 27)) + ((B ^ C ^ D) + 0xCA62C1D6) + workBuffer[75]; B = ((B << 30) | (B >> 2));
+				D += ((E << 5) | (E >> 27)) + ((A ^ B ^ C) + 0xCA62C1D6) + workBuffer[76]; A = ((A << 30) | (A >> 2));
+				C += ((D << 5) | (D >> 27)) + ((E ^ A ^ B) + 0xCA62C1D6) + workBuffer[77]; E = ((E << 30) | (E >> 2));
+				B += ((C << 5) | (C >> 27)) + ((D ^ E ^ A) + 0xCA62C1D6) + workBuffer[78]; D = ((D << 30) | (D >> 2));
+				A += ((B << 5) | (B >> 27)) + ((C ^ D ^ E) + 0xCA62C1D6) + workBuffer[79]; C = ((C << 30) | (C >> 2));
 				#endregion
 
 				accumulator[0] += A;
@@ -202,23 +202,6 @@ namespace Classless.Hasher {
 
 				return Conversions.UIntToByte(accumulator, EndianType.BigEndian);
 			}
-		}
-
-
-		static private uint F1(uint a, uint b, uint c) {
-			return (c ^ (a & (b ^ c))) + 0x5A827999;
-		}
-
-		static private uint F2(uint a, uint b, uint c) {
-			return (a ^ b ^ c) + 0x6ED9EBA1;
-		}
-
-		static private uint F3(uint a, uint b, uint c) {
-			return ((a & b) | (c & (a | b))) + 0x8F1BBCDC;
-		}
-
-		static private uint F4(uint a, uint b, uint c) {
-			return (a ^ b ^ c) + 0xCA62C1D6;
 		}
 	}
 }

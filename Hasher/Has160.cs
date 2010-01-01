@@ -55,75 +55,75 @@ namespace Classless.Hasher {
 		/// <param name="inputOffset">Where to start in the block.</param>
 		override protected void ProcessBlock(byte[] inputBuffer, int inputOffset) {
 			lock (syncLock) {
-			uint A = accumulator[0];
-			uint B = accumulator[1];
-			uint C = accumulator[2];
-			uint D = accumulator[3];
-			uint E = accumulator[4];
-			uint T, i;
-			uint[] w = new uint[20];
+				uint A = accumulator[0];
+				uint B = accumulator[1];
+				uint C = accumulator[2];
+				uint D = accumulator[3];
+				uint E = accumulator[4];
+				uint T, i;
+				uint[] w = new uint[20];
 
-			for (i = 0; i < 16; i++) {
-				w[i] = (uint)(inputBuffer[inputOffset + (i * 4)] | (inputBuffer[inputOffset + (i * 4) + 1] << 8) | (inputBuffer[inputOffset + (i * 4) + 2] << 16) | (inputBuffer[inputOffset + (i * 4) + 3] << 24));
-			}
+				for (i = 0; i < 16; i++) {
+					w[i] = (uint)(inputBuffer[inputOffset + (i * 4)] | (inputBuffer[inputOffset + (i * 4) + 1] << 8) | (inputBuffer[inputOffset + (i * 4) + 2] << 16) | (inputBuffer[inputOffset + (i * 4) + 3] << 24));
+				}
 
-			w[16] = w[ 0] ^ w[ 1] ^ w[ 2] ^ w[ 3];
-			w[17] = w[ 4] ^ w[ 5] ^ w[ 6] ^ w[ 7];
-			w[18] = w[ 8] ^ w[ 9] ^ w[10] ^ w[11];
-			w[19] = w[12] ^ w[13] ^ w[14] ^ w[15];
-			for (i = 0; i < 20; i++) {
-				T = BitTools.RotateLeft(A, rot[i]) + ((B & C) | (~B & D)) + E + w[ndx[i]];
-				E = D;
-				D = C;
-				C = B << 10 | B >> 22;
-				B = A;
-				A = T;
-			}
+				w[16] = w[ 0] ^ w[ 1] ^ w[ 2] ^ w[ 3];
+				w[17] = w[ 4] ^ w[ 5] ^ w[ 6] ^ w[ 7];
+				w[18] = w[ 8] ^ w[ 9] ^ w[10] ^ w[11];
+				w[19] = w[12] ^ w[13] ^ w[14] ^ w[15];
+				for (i = 0; i < 20; i++) {
+					T = ((A << rot[i]) | (A >> (32 - rot[i]))) + ((B & C) | (~B & D)) + E + w[ndx[i]];
+					E = D;
+					D = C;
+					C = ((B << 10) | (B >> 22));
+					B = A;
+					A = T;
+				}
 
-			w[16] = w[ 3] ^ w[ 6] ^ w[ 9] ^ w[12];
-			w[17] = w[ 2] ^ w[ 5] ^ w[ 8] ^ w[15];
-			w[18] = w[ 1] ^ w[ 4] ^ w[11] ^ w[14];
-			w[19] = w[ 0] ^ w[ 7] ^ w[10] ^ w[13];
-			for (i = 20; i < 40; i++) {
-				T = BitTools.RotateLeft(A, rot[i - 20]) + (B ^ C ^ D) + E + w[ndx[i]] + 0x5A827999;
-				E = D;
-				D = C;
-				C = B << 17 | B >> 15;
-				B = A;
-				A = T;
-			}
+				w[16] = w[ 3] ^ w[ 6] ^ w[ 9] ^ w[12];
+				w[17] = w[ 2] ^ w[ 5] ^ w[ 8] ^ w[15];
+				w[18] = w[ 1] ^ w[ 4] ^ w[11] ^ w[14];
+				w[19] = w[ 0] ^ w[ 7] ^ w[10] ^ w[13];
+				for (i = 20; i < 40; i++) {
+					T = ((A << rot[i - 20]) | (A >> (32 - rot[i - 20]))) + (B ^ C ^ D) + E + w[ndx[i]] + 0x5A827999;
+					E = D;
+					D = C;
+					C = ((B << 17) | (B >> 15));
+					B = A;
+					A = T;
+				}
 
-			w[16] = w[ 5] ^ w[ 7] ^ w[12] ^ w[14];
-			w[17] = w[ 0] ^ w[ 2] ^ w[ 9] ^ w[11];
-			w[18] = w[ 4] ^ w[ 6] ^ w[13] ^ w[15];
-			w[19] = w[ 1] ^ w[ 3] ^ w[ 8] ^ w[10];
-			for (i = 40; i < 60; i++) {
-				T = BitTools.RotateLeft(A, rot[i - 40]) + (C ^ (B | ~D)) + E + w[ndx[i]] + 0x6ED9EBA1;
-				E = D;
-				D = C;
-				C = B << 25 | B >> 7;
-				B = A;
-				A = T;
-			}
+				w[16] = w[ 5] ^ w[ 7] ^ w[12] ^ w[14];
+				w[17] = w[ 0] ^ w[ 2] ^ w[ 9] ^ w[11];
+				w[18] = w[ 4] ^ w[ 6] ^ w[13] ^ w[15];
+				w[19] = w[ 1] ^ w[ 3] ^ w[ 8] ^ w[10];
+				for (i = 40; i < 60; i++) {
+					T = ((A << rot[i - 40]) | (A >> (32 - rot[i - 40]))) + (C ^ (B | ~D)) + E + w[ndx[i]] + 0x6ED9EBA1;
+					E = D;
+					D = C;
+					C = ((B << 25) | (B >> 7));
+					B = A;
+					A = T;
+				}
 
-			w[16] = w[ 2] ^ w[ 7] ^ w[ 8] ^ w[13];
-			w[17] = w[ 3] ^ w[ 4] ^ w[ 9] ^ w[14];
-			w[18] = w[ 0] ^ w[ 5] ^ w[10] ^ w[15];
-			w[19] = w[ 1] ^ w[ 6] ^ w[11] ^ w[12];
-			for (i = 60; i < 80; i++) {
-				T = BitTools.RotateLeft(A, rot[i - 60]) + (B ^ C ^ D) + E + w[ndx[i]] + 0x8F1BBCDC;
-				E = D;
-				D = C;
-				C = B << 30 | B >> 2;
-				B = A;
-				A = T;
-			}
+				w[16] = w[ 2] ^ w[ 7] ^ w[ 8] ^ w[13];
+				w[17] = w[ 3] ^ w[ 4] ^ w[ 9] ^ w[14];
+				w[18] = w[ 0] ^ w[ 5] ^ w[10] ^ w[15];
+				w[19] = w[ 1] ^ w[ 6] ^ w[11] ^ w[12];
+				for (i = 60; i < 80; i++) {
+					T = ((A << rot[i - 60]) | (A >> (32 - rot[i - 60]))) + (B ^ C ^ D) + E + w[ndx[i]] + 0x8F1BBCDC;
+					E = D;
+					D = C;
+					C = ((B << 30) | (B >> 2));
+					B = A;
+					A = T;
+				}
 
-			accumulator[0] += A;
-			accumulator[1] += B;
-			accumulator[2] += C;
-			accumulator[3] += D;
-			accumulator[4] += E;
+				accumulator[0] += A;
+				accumulator[1] += B;
+				accumulator[2] += C;
+				accumulator[3] += D;
+				accumulator[4] += E;
 			}
 		}
 

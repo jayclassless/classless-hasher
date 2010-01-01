@@ -64,79 +64,143 @@ namespace Classless.Hasher {
 				workBuffer = Conversions.ByteToUInt(inputBuffer, inputOffset, BlockSize);
 
 				#region Round 1
-				a = FF(a, b, c, d, workBuffer[ 0],  7, 0xD76AA478);
-				d = FF(d, a, b, c, workBuffer[ 1], 12, 0xE8C7B756);
-				c = FF(c, d, a, b, workBuffer[ 2], 17, 0x242070DB);
-				b = FF(b, c, d, a, workBuffer[ 3], 22, 0xC1BDCEEE);
-				a = FF(a, b, c, d, workBuffer[ 4],  7, 0xF57C0FAF);
-				d = FF(d, a, b, c, workBuffer[ 5], 12, 0x4787C62A);
-				c = FF(c, d, a, b, workBuffer[ 6], 17, 0xA8304613);
-				b = FF(b, c, d, a, workBuffer[ 7], 22, 0xFD469501);
-				a = FF(a, b, c, d, workBuffer[ 8],  7, 0x698098D8);
-				d = FF(d, a, b, c, workBuffer[ 9], 12, 0x8B44F7AF);
-				c = FF(c, d, a, b, workBuffer[10], 17, 0xFFFF5BB1);
-				b = FF(b, c, d, a, workBuffer[11], 22, 0x895CD7BE);
-				a = FF(a, b, c, d, workBuffer[12],  7, 0x6B901122);
-				d = FF(d, a, b, c, workBuffer[13], 12, 0xFD987193);
-				c = FF(c, d, a, b, workBuffer[14], 17, 0xA679438E);
-				b = FF(b, c, d, a, workBuffer[15], 22, 0x49B40821);
+				a += workBuffer[ 0] + 0xD76AA478 + (d ^ (b & (c ^ d)));
+				a = ((a <<  7) | (a >> (32 -  7))) + b;
+				d += workBuffer[ 1] + 0xE8C7B756 + (c ^ (a & (b ^ c)));
+				d = ((d << 12) | (d >> (32 - 12))) + a;
+				c += workBuffer[ 2] + 0x242070DB + (b ^ (d & (a ^ b)));
+				c = ((c << 17) | (c >> (32 - 17))) + d;
+				b += workBuffer[ 3] + 0xC1BDCEEE + (a ^ (c & (d ^ a)));
+				b = ((b << 22) | (b >> (32 - 22))) + c;
+				a += workBuffer[ 4] + 0xF57C0FAF + (d ^ (b & (c ^ d)));
+				a = ((a <<  7) | (a >> (32 -  7))) + b;
+				d += workBuffer[ 5] + 0x4787C62A + (c ^ (a & (b ^ c)));
+				d = ((d << 12) | (d >> (32 - 12))) + a;
+				c += workBuffer[ 6] + 0xA8304613 + (b ^ (d & (a ^ b)));
+				c = ((c << 17) | (c >> (32 - 17))) + d;
+				b += workBuffer[ 7] + 0xFD469501 + (a ^ (c & (d ^ a)));
+				b = ((b << 22) | (b >> (32 - 22))) + c;
+				a += workBuffer[ 8] + 0x698098D8 + (d ^ (b & (c ^ d)));
+				a = ((a <<  7) | (a >> (32 -  7))) + b;
+				d += workBuffer[ 9] + 0x8B44F7AF + (c ^ (a & (b ^ c)));
+				d = ((d << 12) | (d >> (32 - 12))) + a;
+				c += workBuffer[10] + 0xFFFF5BB1 + (b ^ (d & (a ^ b)));
+				c = ((c << 17) | (c >> (32 - 17))) + d;
+				b += workBuffer[11] + 0x895CD7BE + (a ^ (c & (d ^ a)));
+				b = ((b << 22) | (b >> (32 - 22))) + c;
+				a += workBuffer[12] + 0x6B901122 + (d ^ (b & (c ^ d)));
+				a = ((a <<  7) | (a >> (32 -  7))) + b;
+				d += workBuffer[13] + 0xFD987193 + (c ^ (a & (b ^ c)));
+				d = ((d << 12) | (d >> (32 - 12))) + a;
+				c += workBuffer[14] + 0xA679438E + (b ^ (d & (a ^ b)));
+				c = ((c << 17) | (c >> (32 - 17))) + d;
+				b += workBuffer[15] + 0x49B40821 + (a ^ (c & (d ^ a)));
+				b = ((b << 22) | (b >> (32 - 22))) + c;
 				#endregion
 
 				#region Round 2
-				a = GG(a, b, c, d, workBuffer[ 1],  5, 0xF61E2562);
-				d = GG(d, a, b, c, workBuffer[ 6],  9, 0xC040B340);
-				c = GG(c, d, a, b, workBuffer[11], 14, 0x265E5A51);
-				b = GG(b, c, d, a, workBuffer[ 0], 20, 0xE9B6C7AA);
-				a = GG(a, b, c, d, workBuffer[ 5],  5, 0xD62F105D);
-				d = GG(d, a, b, c, workBuffer[10],  9, 0x02441453);
-				c = GG(c, d, a, b, workBuffer[15], 14, 0xD8A1E681);
-				b = GG(b, c, d, a, workBuffer[ 4], 20, 0xE7D3FBC8);
-				a = GG(a, b, c, d, workBuffer[ 9],  5, 0x21E1CDE6);
-				d = GG(d, a, b, c, workBuffer[14],  9, 0xC33707D6);
-				c = GG(c, d, a, b, workBuffer[ 3], 14, 0xF4D50D87);
-				b = GG(b, c, d, a, workBuffer[ 8], 20, 0x455A14ED);
-				a = GG(a, b, c, d, workBuffer[13],  5, 0xA9E3E905);
-				d = GG(d, a, b, c, workBuffer[ 2],  9, 0xFCEFA3F8);
-				c = GG(c, d, a, b, workBuffer[ 7], 14, 0x676F02D9);
-				b = GG(b, c, d, a, workBuffer[12], 20, 0x8D2A4C8A);
+				a += workBuffer[ 1] + 0xF61E2562 + (c ^ (d & (b ^ c)));
+				a = ((a <<  5) | (a >> (32 -  5))) + b;
+				d += workBuffer[ 6] + 0xC040B340 + (b ^ (c & (a ^ b)));
+				d = ((d <<  9) | (d >> (32 -  9))) + a;
+				c += workBuffer[11] + 0x265E5A51 + (a ^ (b & (d ^ a)));
+				c = ((c << 14) | (c >> (32 - 14))) + d;
+				b += workBuffer[ 0] + 0xE9B6C7AA + (d ^ (a & (c ^ d)));
+				b = ((b << 20) | (b >> (32 - 20))) + c;
+				a += workBuffer[ 5] + 0xD62F105D + (c ^ (d & (b ^ c)));
+				a = ((a <<  5) | (a >> (32 -  5))) + b;
+				d += workBuffer[10] + 0x02441453 + (b ^ (c & (a ^ b)));
+				d = ((d <<  9) | (d >> (32 -  9))) + a;
+				c += workBuffer[15] + 0xD8A1E681 + (a ^ (b & (d ^ a)));
+				c = ((c << 14) | (c >> (32 - 14))) + d;
+				b += workBuffer[ 4] + 0xE7D3FBC8 + (d ^ (a & (c ^ d)));
+				b = ((b << 20) | (b >> (32 - 20))) + c;
+				a += workBuffer[ 9] + 0x21E1CDE6 + (c ^ (d & (b ^ c)));
+				a = ((a <<  5) | (a >> (32 -  5))) + b;
+				d += workBuffer[14] + 0xC33707D6 + (b ^ (c & (a ^ b)));
+				d = ((d <<  9) | (d >> (32 -  9))) + a;
+				c += workBuffer[ 3] + 0xF4D50D87 + (a ^ (b & (d ^ a)));
+				c = ((c << 14) | (c >> (32 - 14))) + d;
+				b += workBuffer[ 8] + 0x455A14ED + (d ^ (a & (c ^ d)));
+				b = ((b << 20) | (b >> (32 - 20))) + c;
+				a += workBuffer[13] + 0xA9E3E905 + (c ^ (d & (b ^ c)));
+				a = ((a <<  5) | (a >> (32 -  5))) + b;
+				d += workBuffer[ 2] + 0xFCEFA3F8 + (b ^ (c & (a ^ b)));
+				d = ((d <<  9) | (d >> (32 -  9))) + a;
+				c += workBuffer[ 7] + 0x676F02D9 + (a ^ (b & (d ^ a)));
+				c = ((c << 14) | (c >> (32 - 14))) + d;
+				b += workBuffer[12] + 0x8D2A4C8A + (d ^ (a & (c ^ d)));
+				b = ((b << 20) | (b >> (32 - 20))) + c;
 				#endregion
 
 				#region Round 3
-				a = HH(a, b, c, d, workBuffer[ 5],  4, 0xFFFA3942);
-				d = HH(d, a, b, c, workBuffer[ 8], 11, 0x8771F681);
-				c = HH(c, d, a, b, workBuffer[11], 16, 0x6D9D6122);
-				b = HH(b, c, d, a, workBuffer[14], 23, 0xFDE5380C);
-				a = HH(a, b, c, d, workBuffer[ 1],  4, 0xA4BEEA44);
-				d = HH(d, a, b, c, workBuffer[ 4], 11, 0x4BDECFA9);
-				c = HH(c, d, a, b, workBuffer[ 7], 16, 0xF6BB4B60);
-				b = HH(b, c, d, a, workBuffer[10], 23, 0xBEBFBC70);
-				a = HH(a, b, c, d, workBuffer[13],  4, 0x289B7EC6);
-				d = HH(d, a, b, c, workBuffer[ 0], 11, 0xEAA127FA);
-				c = HH(c, d, a, b, workBuffer[ 3], 16, 0xD4EF3085);
-				b = HH(b, c, d, a, workBuffer[ 6], 23, 0x04881D05);
-				a = HH(a, b, c, d, workBuffer[ 9],  4, 0xD9D4D039);
-				d = HH(d, a, b, c, workBuffer[12], 11, 0xE6DB99E5);
-				c = HH(c, d, a, b, workBuffer[15], 16, 0x1FA27CF8);
-				b = HH(b, c, d, a, workBuffer[ 2], 23, 0xC4AC5665);
+				a += workBuffer[ 5] + 0xFFFA3942 + (b ^ c ^ d);
+				a = ((a <<  4) | (a >> (32 -  4))) + b;
+				d += workBuffer[ 8] + 0x8771F681 + (a ^ b ^ c);
+				d = ((d << 11) | (d >> (32 - 11))) + a;
+				c += workBuffer[11] + 0x6D9D6122 + (d ^ a ^ b);
+				c = ((c << 16) | (c >> (32 - 16))) + d;
+				b += workBuffer[14] + 0xFDE5380C + (c ^ d ^ a);
+				b = ((b << 23) | (b >> (32 - 23))) + c;
+				a += workBuffer[ 1] + 0xA4BEEA44 + (b ^ c ^ d);
+				a = ((a <<  4) | (a >> (32 -  4))) + b;
+				d += workBuffer[ 4] + 0x4BDECFA9 + (a ^ b ^ c);
+				d = ((d << 11) | (d >> (32 - 11))) + a;
+				c += workBuffer[ 7] + 0xF6BB4B60 + (d ^ a ^ b);
+				c = ((c << 16) | (c >> (32 - 16))) + d;
+				b += workBuffer[10] + 0xBEBFBC70 + (c ^ d ^ a);
+				b = ((b << 23) | (b >> (32 - 23))) + c;
+				a += workBuffer[13] + 0x289B7EC6 + (b ^ c ^ d);
+				a = ((a <<  4) | (a >> (32 -  4))) + b;
+				d += workBuffer[ 0] + 0xEAA127FA + (a ^ b ^ c);
+				d = ((d << 11) | (d >> (32 - 11))) + a;
+				c += workBuffer[ 3] + 0xD4EF3085 + (d ^ a ^ b);
+				c = ((c << 16) | (c >> (32 - 16))) + d;
+				b += workBuffer[ 6] + 0x04881D05 + (c ^ d ^ a);
+				b = ((b << 23) | (b >> (32 - 23))) + c;
+				a += workBuffer[ 9] + 0xD9D4D039 + (b ^ c ^ d);
+				a = ((a <<  4) | (a >> (32 -  4))) + b;
+				d += workBuffer[12] + 0xE6DB99E5 + (a ^ b ^ c);
+				d = ((d << 11) | (d >> (32 - 11))) + a;
+				c += workBuffer[15] + 0x1FA27CF8 + (d ^ a ^ b);
+				c = ((c << 16) | (c >> (32 - 16))) + d;
+				b += workBuffer[ 2] + 0xC4AC5665 + (c ^ d ^ a);
+				b = ((b << 23) | (b >> (32 - 23))) + c;
 				#endregion
 
 				#region Round 4
-				a = II(a, b, c, d, workBuffer[ 0],  6, 0xF4292244);
-				d = II(d, a, b, c, workBuffer[ 7], 10, 0x432AFF97);
-				c = II(c, d, a, b, workBuffer[14], 15, 0xAB9423A7);
-				b = II(b, c, d, a, workBuffer[ 5], 21, 0xFC93A039);
-				a = II(a, b, c, d, workBuffer[12],  6, 0x655B59C3);
-				d = II(d, a, b, c, workBuffer[ 3], 10, 0x8F0CCC92);
-				c = II(c, d, a, b, workBuffer[10], 15, 0xFFEFF47D);
-				b = II(b, c, d, a, workBuffer[ 1], 21, 0x85845DD1);
-				a = II(a, b, c, d, workBuffer[ 8],  6, 0x6FA87E4F);
-				d = II(d, a, b, c, workBuffer[15], 10, 0xFE2CE6E0);
-				c = II(c, d, a, b, workBuffer[ 6], 15, 0xA3014314);
-				b = II(b, c, d, a, workBuffer[13], 21, 0x4E0811A1);
-				a = II(a, b, c, d, workBuffer[ 4],  6, 0xF7537E82);
-				d = II(d, a, b, c, workBuffer[11], 10, 0xBD3AF235);
-				c = II(c, d, a, b, workBuffer[ 2], 15, 0x2AD7D2BB);
-				b = II(b, c, d, a, workBuffer[ 9], 21, 0xEB86D391);
+				a += workBuffer[ 0] + 0xF4292244 + (c  ^ (b | ~d));
+				a = ((a <<  6) | (a >> (32 -  6))) + b;
+				d += workBuffer[ 7] + 0x432AFF97 + (b  ^ (a | ~c));
+				d = ((d << 10) | (d >> (32 - 10))) + a;
+				c += workBuffer[14] + 0xAB9423A7 + (a  ^ (d | ~b));
+				c = ((c << 15) | (c >> (32 - 15))) + d;
+				b += workBuffer[ 5] + 0xFC93A039 + (d  ^ (c | ~a));
+				b = ((b << 21) | (b >> (32 - 21))) + c;
+				a += workBuffer[12] + 0x655B59C3 + (c  ^ (b | ~d));
+				a = ((a <<  6) | (a >> (32 -  6))) + b;
+				d += workBuffer[ 3] + 0x8F0CCC92 + (b  ^ (a | ~c));
+				d = ((d << 10) | (d >> (32 - 10))) + a;
+				c += workBuffer[10] + 0xFFEFF47D + (a  ^ (d | ~b));
+				c = ((c << 15) | (c >> (32 - 15))) + d;
+				b += workBuffer[ 1] + 0x85845DD1 + (d  ^ (c | ~a));
+				b = ((b << 21) | (b >> (32 - 21))) + c;
+				a += workBuffer[ 8] + 0x6FA87E4F + (c  ^ (b | ~d));
+				a = ((a <<  6) | (a >> (32 -  6))) + b;
+				d += workBuffer[15] + 0xFE2CE6E0 + (b  ^ (a | ~c));
+				d = ((d << 10) | (d >> (32 - 10))) + a;
+				c += workBuffer[ 6] + 0xA3014314 + (a  ^ (d | ~b));
+				c = ((c << 15) | (c >> (32 - 15))) + d;
+				b += workBuffer[13] + 0x4E0811A1 + (d  ^ (c | ~a));
+				b = ((b << 21) | (b >> (32 - 21))) + c;
+				a += workBuffer[ 4] + 0xF7537E82 + (c  ^ (b | ~d));
+				a = ((a <<  6) | (a >> (32 -  6))) + b;
+				d += workBuffer[11] + 0xBD3AF235 + (b  ^ (a | ~c));
+				d = ((d << 10) | (d >> (32 - 10))) + a;
+				c += workBuffer[ 2] + 0x2AD7D2BB + (a  ^ (d | ~b));
+				c = ((c << 15) | (c >> (32 - 15))) + d;
+				b += workBuffer[ 9] + 0xEB86D391 + (d  ^ (c | ~a));
+				b = ((b << 21) | (b >> (32 - 21))) + c;
 				#endregion
 
 				accumulator[0] += a;
@@ -178,31 +242,6 @@ namespace Classless.Hasher {
 
 				return Conversions.UIntToByte(accumulator);
 			}
-		}
-
-
-		static private uint FF(uint a, uint b, uint c, uint d, uint k, int s, uint t) {
-			a += k + t + (d ^ (b & (c ^ d)));
-			a = BitTools.RotateLeft(a, s);
-			return a + b;
-		}
-
-		static private uint GG(uint a, uint b, uint c, uint d, uint k, int s, uint t) {
-			a += k + t + (c ^ (d & (b ^ c)));
-			a = BitTools.RotateLeft(a, s);
-			return a + b;
-		}
-
-		static private uint HH(uint a, uint b, uint c, uint d, uint k, int s, uint t) {
-			a += k + t + (b ^ c ^ d);
-			a = BitTools.RotateLeft(a, s);
-			return a + b;
-		}
-
-		static private uint II(uint a, uint b, uint c, uint d, uint k, int s, uint t) {
-			a += k + t + (c  ^ (b | ~d));
-			a = BitTools.RotateLeft(a, s);
-			return a + b;
 		}
 	}
 }

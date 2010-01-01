@@ -102,7 +102,7 @@ namespace Classless.Hasher {
 						workBuffer[14] ^= SBoxes[((2 * i) + 1),(workBuffer[15] & 0xFF)]; workBuffer[ 0] ^= SBoxes[((2 * i) + 1), (workBuffer[15] & 0xFF)];
 
 						for (k = 0; k < workBuffer.Length; k++) {
-							workBuffer[k] = BitTools.RotateRight(workBuffer[k], ShiftTable[j]);
+							workBuffer[k] = ((workBuffer[k] >> ShiftTable[j]) | (workBuffer[k] << (32 - ShiftTable[j])));
 						}
 					}
 				}

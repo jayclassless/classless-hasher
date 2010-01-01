@@ -114,83 +114,64 @@ namespace Classless.Hasher {
 		}
 
 
-		static private uint F1(uint x6, uint x5, uint x4, uint x3, uint x2, uint x1, uint x0) {
-			return ((x1 & (x0 ^ x4)) ^ (x2 & x5) ^ (x3 & x6) ^ x0);
-		}
-
-		static private uint F2(uint x6, uint x5, uint x4, uint x3, uint x2, uint x1, uint x0) {
-			return ((x2 & ((x1 & (~x3)) ^ (x4 & x5) ^ x6 ^ x0)) ^ ((x4 & (x1 ^ x5)) ^ (x3 & x5) ^ x0));
-		}
-
-		static private uint F3(uint x6, uint x5, uint x4, uint x3, uint x2, uint x1, uint x0) {
-			return ((x3 & ((x1 & x2) ^ x6 ^ x0)) ^ (x1 & x4) ^ (x2 & x5) ^ x0);
-		}
-
-		static private uint F4(uint x6, uint x5, uint x4, uint x3, uint x2, uint x1, uint x0) {
-			return ((x4 & ((x5 & (~x2)) ^ (x3 & (~x6)) ^ x1 ^ x6 ^ x0)) ^ (x3 & ((x1 & x2) ^ x5 ^ x6) ^ (x2 & x6) ^ x0));
-		}
-
-		static private uint F5(uint x6, uint x5, uint x4, uint x3, uint x2, uint x1, uint x0) {
-			return ((x0 & ((x1 & x2 & x3) ^ (~x5))) ^ (x1 & x4) ^ (x2 & x5) ^ (x3 & x6));
-		}
-
 		private uint FF1(uint x7, uint x6, uint x5, uint x4, uint x3, uint x2, uint x1, uint x0, uint w) {
 			uint temp;
 
 			if (parameters.Passes == 3) {
-				temp = F1(x1, x0, x3, x5, x6, x2, x4);
+				temp = ((x2 & (x4 ^ x3)) ^ (x6 & x0) ^ (x5 & x1) ^ x4);
 			} else if (parameters.Passes == 4) {
-				temp = F1(x2, x6, x1, x4, x5, x3, x0);
+				temp = ((x3 & (x0 ^ x1)) ^ (x5 & x6) ^ (x4 & x2) ^ x0);
 			} else {
-				temp = F1(x3, x4, x1, x0, x5, x2, x6);
+				temp = ((x2 & (x6 ^ x1)) ^ (x5 & x4) ^ (x0 & x3) ^ x6);
 			}
 
-			return BitTools.RotateRight(temp, 7) + BitTools.RotateRight(x7, 11) + w;
+			return ((temp >> 7) | (temp << 25)) + ((x7 >> 11) | (x7 << 21)) + w;
 		}
 
 		private uint FF2(uint x7, uint x6, uint x5, uint x4, uint x3, uint x2, uint x1, uint x0, uint w, uint c) {
 			uint temp;
 
 			if (parameters.Passes == 3) {
-				temp = F2(x4, x2, x1, x0, x5, x3, x6);
+				temp = ((x5 & ((x3 & (~x0)) ^ (x1 & x2) ^ x4 ^ x6)) ^ ((x1 & (x3 ^ x2)) ^ (x0 & x2) ^ x6));
 			} else if (parameters.Passes == 4) {
-				temp = F2(x3, x5, x2, x0, x1, x6, x4);
+				temp = ((x1 & ((x6 & (~x0)) ^ (x2 & x5) ^ x3 ^ x4)) ^ ((x2 & (x6 ^ x5)) ^ (x0 & x5) ^ x4));
 			} else {
-				temp = F2(x6, x2, x1, x0, x3, x4, x5);
+				temp = ((x3 & ((x4 & (~x0)) ^ (x1 & x2) ^ x6 ^ x5)) ^ ((x1 & (x4 ^ x2)) ^ (x0 & x2) ^ x5));
 			}
 
-			return BitTools.RotateRight(temp, 7) + BitTools.RotateRight(x7, 11) + w + c;
+			return ((temp >> 7) | (temp << 25)) + ((x7 >> 11) | (x7 << 21)) + w + c;
 		}
 
 		private uint FF3(uint x7, uint x6, uint x5, uint x4, uint x3, uint x2, uint x1, uint x0, uint w, uint c) {
 			uint temp;
 
 			if (parameters.Passes == 3) {
-				temp = F3(x6, x1, x2, x3, x4, x5, x0);
+				temp = ((x3 & ((x5 & x4) ^ x6 ^ x0)) ^ (x5 & x2) ^ (x4 & x1) ^ x0);
 			} else if (parameters.Passes == 4) {
-				temp = F3(x1, x4, x3, x6, x0, x2, x5);
+				temp = ((x6 & ((x2 & x0) ^ x1 ^ x5)) ^ (x2 & x3) ^ (x0 & x4) ^ x5);
 			} else {
-				temp = F3(x2, x6, x0, x4, x3, x1, x5);
+				temp = ((x4 & ((x1 & x3) ^ x2 ^ x5)) ^ (x1 & x0) ^ (x3 & x6) ^ x5);
 			}
 
-			return BitTools.RotateRight(temp, 7) + BitTools.RotateRight(x7, 11) + w + c;
+			return ((temp >> 7) | (temp << 25)) + ((x7 >> 11) | (x7 << 21)) + w + c;
 		}
 
 		private uint FF4(uint x7, uint x6, uint x5, uint x4, uint x3, uint x2, uint x1, uint x0, uint w, uint c) {
 			uint temp;
 
 			if (parameters.Passes == 4) {
-				temp = F4(x6, x4, x0, x5, x2, x1, x3);
+				temp = ((x0 & ((x4 & (~x2)) ^ (x5 & (~x6)) ^ x1 ^ x6 ^ x3)) ^ (x5 & ((x1 & x2) ^ x4 ^ x6) ^ (x2 & x6) ^ x3));
 			} else {
-				temp = F4(x1, x5, x3, x2, x0, x4, x6);
+				temp = ((x3 & ((x5 & (~x0)) ^ (x2 & (~x1)) ^ x4 ^ x1 ^ x6)) ^ (x2 & ((x4 & x0) ^ x5 ^ x1) ^ (x0 & x1) ^ x6));
 			}
 
-			return BitTools.RotateRight(temp, 7) + BitTools.RotateRight(x7, 11) + w + c;
+			return ((temp >> 7) | (temp << 25)) + ((x7 >> 11) | (x7 << 21)) + w + c;
 		}
 
 		static private uint FF5(uint x7, uint x6, uint x5, uint x4, uint x3, uint x2, uint x1, uint x0, uint w, uint c) {
-			uint temp = F5(x2, x5, x0, x6, x4, x3, x1);
-			return BitTools.RotateRight(temp, 7) + BitTools.RotateRight(x7, 11) + w + c;
+			uint temp = ((x1 & ((x3 & x4 & x6) ^ (~x5))) ^ (x3 & x0) ^ (x4 & x5) ^ (x6 & x2));
+
+			return ((temp >> 7) | (temp << 25)) + ((x7 >> 11) | (x7 << 21)) + w + c;
 		}
 
 
@@ -402,27 +383,23 @@ namespace Classless.Hasher {
 			uint temp;
 
 			if (parameters.Length == 128) {
-				temp = (accumulator[7] & 0x000000FF) | (accumulator[6] & 0xFF000000) |
-					(accumulator[5] & 0x00FF0000) | (accumulator[4] & 0x0000FF00);
-				accumulator[0] += BitTools.RotateRight(temp, 8);
+				temp = (accumulator[7] & 0x000000FF) | (accumulator[6] & 0xFF000000) | (accumulator[5] & 0x00FF0000) | (accumulator[4] & 0x0000FF00);
+				accumulator[0] += ((temp >> 8) | (temp << 24));
 
-				temp = (accumulator[7] & 0x0000FF00) | (accumulator[6] & 0x000000FF) |
-					(accumulator[5] & 0xFF000000) | (accumulator[4] & 0x00FF0000);
-				accumulator[1] += BitTools.RotateRight(temp, 16);
+				temp = (accumulator[7] & 0x0000FF00) | (accumulator[6] & 0x000000FF) | (accumulator[5] & 0xFF000000) | (accumulator[4] & 0x00FF0000);
+				accumulator[1] += ((temp >> 16) | (temp << 16));
 
-				temp = (accumulator[7] & 0x00FF0000) | (accumulator[6] & 0x0000FF00) |
-					(accumulator[5] & 0x000000FF) | (accumulator[4] & 0xFF000000);
-				accumulator[2] += BitTools.RotateRight(temp, 24);
+				temp = (accumulator[7] & 0x00FF0000) | (accumulator[6] & 0x0000FF00) | (accumulator[5] & 0x000000FF) | (accumulator[4] & 0xFF000000);
+				accumulator[2] += ((temp >> 24) | (temp << 8));
 
-				temp = (accumulator[7] & 0xFF000000) | (accumulator[6] & 0x00FF0000) |
-					(accumulator[5] & 0x0000FF00) | (accumulator[4] & 0x000000FF);
+				temp = (accumulator[7] & 0xFF000000) | (accumulator[6] & 0x00FF0000) | (accumulator[5] & 0x0000FF00) | (accumulator[4] & 0x000000FF);
 				accumulator[3] += temp;
 			} else if (parameters.Length == 160) {
 				temp = (uint)((accumulator[7] & 0x3F) | (accumulator[6] & (0x7F << 25)) | (accumulator[5] & (0x3F << 19)));
-				accumulator[0] += BitTools.RotateRight(temp, 19);
+				accumulator[0] += ((temp >> 19) | (temp << 13));
 
 				temp = (uint)((accumulator[7] & (0x3F << 6)) | (accumulator[6] & 0x3F) | (accumulator[5] & (0x7F << 25)));
-				accumulator[1] += BitTools.RotateRight(temp, 25);
+				accumulator[1] += ((temp >> 25) | (temp << 7));
 
 				temp = (uint)((accumulator[7] & (0x7F << 12)) | (accumulator[6] & (0x3F << 6)) | (accumulator[5] & 0x3F));
 				accumulator[2] += temp;
@@ -434,7 +411,7 @@ namespace Classless.Hasher {
 				accumulator[4] += temp >> 12;
 			} else if (parameters.Length == 192) {
 				temp = (uint)((accumulator[7] & 0x1F) | (accumulator[6] & (0x3F << 26)));
-				accumulator[0] += BitTools.RotateRight(temp, 26);
+				accumulator[0] += ((temp >> 26) | (temp << 6));
 
 				temp = (uint)((accumulator[7] & (0x1F << 5)) | (accumulator[6] & 0x1F));
 				accumulator[1] += temp;

@@ -64,60 +64,108 @@ namespace Classless.Hasher {
 				workBuffer = Conversions.ByteToUInt(inputBuffer, inputOffset, BlockSize);
 
 				#region Round 1
-				A = FF(A, B, C, D, workBuffer[ 0],  3);
-				D = FF(D, A, B, C, workBuffer[ 1],  7);
-				C = FF(C, D, A, B, workBuffer[ 2], 11);
-				B = FF(B, C, D, A, workBuffer[ 3], 19);
-				A = FF(A, B, C, D, workBuffer[ 4],  3);
-				D = FF(D, A, B, C, workBuffer[ 5],  7);
-				C = FF(C, D, A, B, workBuffer[ 6], 11);
-				B = FF(B, C, D, A, workBuffer[ 7], 19);
-				A = FF(A, B, C, D, workBuffer[ 8],  3);
-				D = FF(D, A, B, C, workBuffer[ 9],  7);
-				C = FF(C, D, A, B, workBuffer[10], 11);
-				B = FF(B, C, D, A, workBuffer[11], 19);
-				A = FF(A, B, C, D, workBuffer[12],  3);
-				D = FF(D, A, B, C, workBuffer[13],  7);
-				C = FF(C, D, A, B, workBuffer[14], 11);
-				B = FF(B, C, D, A, workBuffer[15], 19);
+				A += workBuffer[ 0] + ((B & C) | (~B & D));
+				A = (A <<  3) | (A >> (32 -  3));
+				D += workBuffer[ 1] + ((A & B) | (~A & C));
+				D = (D <<  7) | (D >> (32 -  7));
+				C += workBuffer[ 2] + ((D & A) | (~D & B));
+				C = (C << 11) | (C >> (32 - 11));
+				B += workBuffer[ 3] + ((C & D) | (~C & A));
+				B = (B << 19) | (B >> (32 - 19));
+				A += workBuffer[ 4] + ((B & C) | (~B & D));
+				A = (A <<  3) | (A >> (32 -  3));
+				D += workBuffer[ 5] + ((A & B) | (~A & C));
+				D = (D <<  7) | (D >> (32 -  7));
+				C += workBuffer[ 6] + ((D & A) | (~D & B));
+				C = (C << 11) | (C >> (32 - 11));
+				B += workBuffer[ 7] + ((C & D) | (~C & A));
+				B = (B << 19) | (B >> (32 - 19));
+				A += workBuffer[ 8] + ((B & C) | (~B & D));
+				A = (A <<  3) | (A >> (32 -  3));
+				D += workBuffer[ 9] + ((A & B) | (~A & C));
+				D = (D <<  7) | (D >> (32 -  7));
+				C += workBuffer[10] + ((D & A) | (~D & B));
+				C = (C << 11) | (C >> (32 - 11));
+				B += workBuffer[11] + ((C & D) | (~C & A));
+				B = (B << 19) | (B >> (32 - 19));
+				A += workBuffer[12] + ((B & C) | (~B & D));
+				A = (A <<  3) | (A >> (32 -  3));
+				D += workBuffer[13] + ((A & B) | (~A & C));
+				D = (D <<  7) | (D >> (32 -  7));
+				C += workBuffer[14] + ((D & A) | (~D & B));
+				C = (C << 11) | (C >> (32 - 11));
+				B += workBuffer[15] + ((C & D) | (~C & A));
+				B = (B << 19) | (B >> (32 - 19));
 				#endregion
 
 				#region Round 2
-				A = GG(A, B, C, D, workBuffer[ 0],  3);
-				D = GG(D, A, B, C, workBuffer[ 4],  5);
-				C = GG(C, D, A, B, workBuffer[ 8],  9);
-				B = GG(B, C, D, A, workBuffer[12], 13);
-				A = GG(A, B, C, D, workBuffer[ 1],  3);
-				D = GG(D, A, B, C, workBuffer[ 5],  5);
-				C = GG(C, D, A, B, workBuffer[ 9],  9);
-				B = GG(B, C, D, A, workBuffer[13], 13);
-				A = GG(A, B, C, D, workBuffer[ 2],  3);
-				D = GG(D, A, B, C, workBuffer[ 6],  5);
-				C = GG(C, D, A, B, workBuffer[10],  9);
-				B = GG(B, C, D, A, workBuffer[14], 13);
-				A = GG(A, B, C, D, workBuffer[ 3],  3);
-				D = GG(D, A, B, C, workBuffer[ 7],  5);
-				C = GG(C, D, A, B, workBuffer[11],  9);
-				B = GG(B, C, D, A, workBuffer[15], 13);
+				A += workBuffer[ 0] + 0x5A827999 + ((B & C) | (B & D) | (C & D));
+				A = (A <<  3) | (A >> (32 -  3));
+				D += workBuffer[ 4] + 0x5A827999 + ((A & B) | (A & C) | (B & C));
+				D = (D <<  5) | (D >> (32 -  5));
+				C += workBuffer[ 8] + 0x5A827999 + ((D & A) | (D & B) | (A & B));
+				C = (C <<  9) | (C >> (32 -  9));
+				B += workBuffer[12] + 0x5A827999 + ((C & D) | (C & A) | (D & A));
+				B = (B << 13) | (B >> (32 - 13));
+				A += workBuffer[ 1] + 0x5A827999 + ((B & C) | (B & D) | (C & D));
+				A = (A <<  3) | (A >> (32 -  3));
+				D += workBuffer[ 5] + 0x5A827999 + ((A & B) | (A & C) | (B & C));
+				D = (D <<  5) | (D >> (32 -  5));
+				C += workBuffer[ 9] + 0x5A827999 + ((D & A) | (D & B) | (A & B));
+				C = (C <<  9) | (C >> (32 -  9));
+				B += workBuffer[13] + 0x5A827999 + ((C & D) | (C & A) | (D & A));
+				B = (B << 13) | (B >> (32 - 13));
+				A += workBuffer[ 2] + 0x5A827999 + ((B & C) | (B & D) | (C & D));
+				A = (A <<  3) | (A >> (32 -  3));
+				D += workBuffer[ 6] + 0x5A827999 + ((A & B) | (A & C) | (B & C));
+				D = (D <<  5) | (D >> (32 -  5));
+				C += workBuffer[10] + 0x5A827999 + ((D & A) | (D & B) | (A & B));
+				C = (C <<  9) | (C >> (32 -  9));
+				B += workBuffer[14] + 0x5A827999 + ((C & D) | (C & A) | (D & A));
+				B = (B << 13) | (B >> (32 - 13));
+				A += workBuffer[ 3] + 0x5A827999 + ((B & C) | (B & D) | (C & D));
+				A = (A <<  3) | (A >> (32 -  3));
+				D += workBuffer[ 7] + 0x5A827999 + ((A & B) | (A & C) | (B & C));
+				D = (D <<  5) | (D >> (32 -  5));
+				C += workBuffer[11] + 0x5A827999 + ((D & A) | (D & B) | (A & B));
+				C = (C <<  9) | (C >> (32 -  9));
+				B += workBuffer[15] + 0x5A827999 + ((C & D) | (C & A) | (D & A));
+				B = (B << 13) | (B >> (32 - 13));
 				#endregion
 
 				#region Round 3
-				A = HH(A, B, C, D, workBuffer[ 0],  3);
-				D = HH(D, A, B, C, workBuffer[ 8],  9);
-				C = HH(C, D, A, B, workBuffer[ 4], 11);
-				B = HH(B, C, D, A, workBuffer[12], 15);
-				A = HH(A, B, C, D, workBuffer[ 2],  3);
-				D = HH(D, A, B, C, workBuffer[10],  9);
-				C = HH(C, D, A, B, workBuffer[ 6], 11);
-				B = HH(B, C, D, A, workBuffer[14], 15);
-				A = HH(A, B, C, D, workBuffer[ 1],  3);
-				D = HH(D, A, B, C, workBuffer[ 9],  9);
-				C = HH(C, D, A, B, workBuffer[ 5], 11);
-				B = HH(B, C, D, A, workBuffer[13], 15);
-				A = HH(A, B, C, D, workBuffer[ 3],  3);
-				D = HH(D, A, B, C, workBuffer[11],  9);
-				C = HH(C, D, A, B, workBuffer[ 7], 11);
-				B = HH(B, C, D, A, workBuffer[15], 15);
+				A += workBuffer[ 0] + 0x6ED9EBA1 + (B ^ C ^ D);
+				A = (A <<  3) | (A >> (32 -  3));
+				D += workBuffer[ 8] + 0x6ED9EBA1 + (A ^ B ^ C);
+				D = (D <<  9) | (D >> (32 -  9));
+				C += workBuffer[ 4] + 0x6ED9EBA1 + (D ^ A ^ B);
+				C = (C << 11) | (C >> (32 - 11));
+				B += workBuffer[12] + 0x6ED9EBA1 + (C ^ D ^ A);
+				B = (B << 15) | (B >> (32 - 15));
+				A += workBuffer[ 2] + 0x6ED9EBA1 + (B ^ C ^ D);
+				A = (A <<  3) | (A >> (32 -  3));
+				D += workBuffer[10] + 0x6ED9EBA1 + (A ^ B ^ C);
+				D = (D <<  9) | (D >> (32 -  9));
+				C += workBuffer[ 6] + 0x6ED9EBA1 + (D ^ A ^ B);
+				C = (C << 11) | (C >> (32 - 11));
+				B += workBuffer[14] + 0x6ED9EBA1 + (C ^ D ^ A);
+				B = (B << 15) | (B >> (32 - 15));
+				A += workBuffer[ 1] + 0x6ED9EBA1 + (B ^ C ^ D);
+				A = (A <<  3) | (A >> (32 -  3));
+				D += workBuffer[ 9] + 0x6ED9EBA1 + (A ^ B ^ C);
+				D = (D <<  9) | (D >> (32 -  9));
+				C += workBuffer[ 5] + 0x6ED9EBA1 + (D ^ A ^ B);
+				C = (C << 11) | (C >> (32 - 11));
+				B += workBuffer[13] + 0x6ED9EBA1 + (C ^ D ^ A);
+				B = (B << 15) | (B >> (32 - 15));
+				A += workBuffer[ 3] + 0x6ED9EBA1 + (B ^ C ^ D);
+				A = (A <<  3) | (A >> (32 -  3));
+				D += workBuffer[11] + 0x6ED9EBA1 + (A ^ B ^ C);
+				D = (D <<  9) | (D >> (32 -  9));
+				C += workBuffer[ 7] + 0x6ED9EBA1 + (D ^ A ^ B);
+				C = (C << 11) | (C >> (32 - 11));
+				B += workBuffer[15] + 0x6ED9EBA1 + (C ^ D ^ A);
+				B = (B << 15) | (B >> (32 - 15));
 				#endregion
 
 				accumulator[0] += A;
@@ -159,22 +207,6 @@ namespace Classless.Hasher {
 
 				return Conversions.UIntToByte(accumulator);
 			}
-		}
-
-
-		static private uint FF(uint a, uint b, uint c, uint d, uint x, int s) {
-			uint t = a + ((b & c) | (~b & d)) + x;
-			return BitTools.RotateLeft(t, s);
-		}
-
-		static private uint GG(uint a, uint b, uint c, uint d, uint x, int s) {
-			uint t = a + ((b & c) | (b & d) | (c & d)) + x + 0x5A827999;
-			return BitTools.RotateLeft(t, s);
-		}
-
-		static private uint HH(uint a, uint b, uint c, uint d, uint x, int s) {
-			uint t = a + (b ^ c ^ d) + x + 0x6ED9EBA1;
-			return BitTools.RotateLeft(t, s);
 		}
 	}
 }

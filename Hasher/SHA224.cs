@@ -92,12 +92,17 @@ namespace Classless.Hasher {
 				uint[] temp = Conversions.ByteToUInt(inputBuffer, inputOffset, BlockSize, EndianType.BigEndian);
 				Array.Copy(temp, 0, workBuffer, 0, temp.Length);
 				for (i = 16; i < 64; i++) {
-					workBuffer[i] = Sig1R(workBuffer[i - 2]) + workBuffer[i - 7] + Sig0R(workBuffer[i - 15]) + workBuffer[i - 16];
+					workBuffer[i] =
+						(((workBuffer[i - 2] >> 17) | (workBuffer[i - 2] << 15)) ^ ((workBuffer[i - 2] >> 19) | (workBuffer[i - 2] << 13)) ^ (workBuffer[i - 2] >> 10))
+						+ workBuffer[i - 7]
+						+ (((workBuffer[i - 15] >> 7) | (workBuffer[i - 15] << 25)) ^ ((workBuffer[i - 15] >> 18) | (workBuffer[i - 15] << 14)) ^ (workBuffer[i - 15] >> 3))
+						+ workBuffer[i - 16]
+					;
 				}
 
 				for (i = 0; i < 64; i++) {
-					T1 = h + Sig1(e) + Ch(e, f, g) + K[i] + workBuffer[i];
-					T2 = Sig0(a) + Maj(a, b, c);
+					T1 = h + (((e >> 6) | (e << 26)) ^ ((e >> 11) | (e << 21)) ^ ((e >> 25) | (e << 7))) + ((e & f) ^ (~e & g)) + K[i] + workBuffer[i];
+					T2 = (((a >> 2) | (a << 30)) ^ ((a >> 13) | (a << 19)) ^ ((a >> 22) | (a << 10))) + ((a & b) ^ (a & c) ^ (b & c));
 
 					h = g; g = f; f = e;
 					e = d + T1;
@@ -150,35 +155,6 @@ namespace Classless.Hasher {
 				Array.Copy(accumulator, final, 7);
 				return Conversions.UIntToByte(final, EndianType.BigEndian);
 			}
-		}
-
-
-		static private uint Ch(uint x, uint y, uint z) {
-			return (x & y) ^ (~x & z);
-		}
-
-		static private uint Maj(uint x, uint y, uint z) {
-			return (x & y) ^ (x & z) ^ (y & z);
-		}
-
-		static private uint Sig0(uint x) {
-			return BitTools.RotateRight(x, 2) ^ BitTools.RotateRight(x, 13) ^ BitTools.RotateRight(x, 22);
-		}
-
-		static private uint Sig1(uint x) {
-			return BitTools.RotateRight(x, 6) ^ BitTools.RotateRight(x, 11) ^ BitTools.RotateRight(x, 25);
-		}
-
-		static private uint Sig0R(uint x) {
-			return BitTools.RotateRight(x, 7) ^ BitTools.RotateRight(x, 18) ^ R(3, x);
-		}
-
-		static private uint Sig1R(uint x) {
-			return BitTools.RotateRight(x, 17) ^ BitTools.RotateRight(x, 19) ^ R(10, x);
-		}
-
-		static private uint R(int offset, uint x) {
-			return (x >> offset);
 		}
 	}
 }

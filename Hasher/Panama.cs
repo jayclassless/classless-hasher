@@ -90,22 +90,22 @@ namespace Classless.Hasher {
 
 				// Pi
 				pi[ 0] = gamma[0];
-				pi[ 1] = BitTools.RotateLeft(gamma[ 7],  1);
-				pi[ 2] = BitTools.RotateLeft(gamma[14],  3);
-				pi[ 3] = BitTools.RotateLeft(gamma[ 4],  6);
-				pi[ 4] = BitTools.RotateLeft(gamma[11], 10);
-				pi[ 5] = BitTools.RotateLeft(gamma[ 1], 15);
-				pi[ 6] = BitTools.RotateLeft(gamma[ 8], 21);
-				pi[ 7] = BitTools.RotateLeft(gamma[15], 28);
-				pi[ 8] = BitTools.RotateLeft(gamma[ 5],  4);
-				pi[ 9] = BitTools.RotateLeft(gamma[12], 13);
-				pi[10] = BitTools.RotateLeft(gamma[ 2], 23);
-				pi[11] = BitTools.RotateLeft(gamma[ 9],  2);
-				pi[12] = BitTools.RotateLeft(gamma[16], 14);
-				pi[13] = BitTools.RotateLeft(gamma[ 6], 27);
-				pi[14] = BitTools.RotateLeft(gamma[13],  9);
-				pi[15] = BitTools.RotateLeft(gamma[ 3], 24);
-				pi[16] = BitTools.RotateLeft(gamma[10],  8);
+				pi[ 1] = ((gamma[ 7] <<  1) | (gamma[ 7] >> 31));
+				pi[ 2] = ((gamma[14] <<  3) | (gamma[14] >> 29));
+				pi[ 3] = ((gamma[ 4] <<  6) | (gamma[ 4] >> 26));
+				pi[ 4] = ((gamma[11] << 10) | (gamma[11] >> 22));
+				pi[ 5] = ((gamma[ 1] << 15) | (gamma[ 1] >> 17));
+				pi[ 6] = ((gamma[ 8] << 21) | (gamma[ 8] >> 11));
+				pi[ 7] = ((gamma[15] << 28) | (gamma[15] >>  4));
+				pi[ 8] = ((gamma[ 5] <<  4) | (gamma[ 5] >> 28));
+				pi[ 9] = ((gamma[12] << 13) | (gamma[12] >> 19));
+				pi[10] = ((gamma[ 2] << 23) | (gamma[ 2] >>  9));
+				pi[11] = ((gamma[ 9] <<  2) | (gamma[ 9] >> 30));
+				pi[12] = ((gamma[16] << 14) | (gamma[16] >> 18));
+				pi[13] = ((gamma[ 6] << 27) | (gamma[ 6] >>  5));
+				pi[14] = ((gamma[13] <<  9) | (gamma[13] >> 23));
+				pi[15] = ((gamma[ 3] << 24) | (gamma[ 3] >>  8));
+				pi[16] = ((gamma[10] <<  8) | (gamma[10] >> 24));
 
 				// Theta
 				theta[ 0] = pi[ 0] ^ pi[ 1] ^ pi[ 4];
@@ -229,22 +229,22 @@ namespace Classless.Hasher {
 
 				// Pi
 				pi[ 0] = gamma[0];
-				pi[ 1] = BitTools.RotateLeft(gamma[ 7],  1);
-				pi[ 2] = BitTools.RotateLeft(gamma[14],  3);
-				pi[ 3] = BitTools.RotateLeft(gamma[ 4],  6);
-				pi[ 4] = BitTools.RotateLeft(gamma[11], 10);
-				pi[ 5] = BitTools.RotateLeft(gamma[ 1], 15);
-				pi[ 6] = BitTools.RotateLeft(gamma[ 8], 21);
-				pi[ 7] = BitTools.RotateLeft(gamma[15], 28);
-				pi[ 8] = BitTools.RotateLeft(gamma[ 5],  4);
-				pi[ 9] = BitTools.RotateLeft(gamma[12], 13);
-				pi[10] = BitTools.RotateLeft(gamma[ 2], 23);
-				pi[11] = BitTools.RotateLeft(gamma[ 9],  2);
-				pi[12] = BitTools.RotateLeft(gamma[16], 14);
-				pi[13] = BitTools.RotateLeft(gamma[ 6], 27);
-				pi[14] = BitTools.RotateLeft(gamma[13],  9);
-				pi[15] = BitTools.RotateLeft(gamma[ 3], 24);
-				pi[16] = BitTools.RotateLeft(gamma[10],  8);
+				pi[ 1] = ((gamma[ 7] <<  1) | (gamma[ 7] >> 31));
+				pi[ 2] = ((gamma[14] <<  3) | (gamma[14] >> 29));
+				pi[ 3] = ((gamma[ 4] <<  6) | (gamma[ 4] >> 26));
+				pi[ 4] = ((gamma[11] << 10) | (gamma[11] >> 22));
+				pi[ 5] = ((gamma[ 1] << 15) | (gamma[ 1] >> 17));
+				pi[ 6] = ((gamma[ 8] << 21) | (gamma[ 8] >> 11));
+				pi[ 7] = ((gamma[15] << 28) | (gamma[15] >>  4));
+				pi[ 8] = ((gamma[ 5] <<  4) | (gamma[ 5] >> 28));
+				pi[ 9] = ((gamma[12] << 13) | (gamma[12] >> 19));
+				pi[10] = ((gamma[ 2] << 23) | (gamma[ 2] >>  9));
+				pi[11] = ((gamma[ 9] <<  2) | (gamma[ 9] >> 30));
+				pi[12] = ((gamma[16] << 14) | (gamma[16] >> 18));
+				pi[13] = ((gamma[ 6] << 27) | (gamma[ 6] >>  5));
+				pi[14] = ((gamma[13] <<  9) | (gamma[13] >> 23));
+				pi[15] = ((gamma[ 3] << 24) | (gamma[ 3] >>  8));
+				pi[16] = ((gamma[10] <<  8) | (gamma[10] >> 24));
 
 				// Theta
 				theta[ 0] = pi[ 0] ^ pi[ 1] ^ pi[ 4];

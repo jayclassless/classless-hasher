@@ -106,65 +106,65 @@ namespace Classless.Hasher {
 				for (i = 0; i < 16; i++) {
 					s = S[i];
 					T = A + (B ^ C ^ D) + workBuffer[i];
-					A = E; E = D; D = BitTools.RotateLeft(C, 10); C = B;
-					B = BitTools.RotateLeft(T, s) + A;
+					A = E; E = D; D = ((C << 10) | (C >> 22)); C = B;
+					B = ((T << s) | (T >> (32 - s))) + A;
 
 					s = Sp[i];
 					T = Ap + (Bp ^ (Cp | ~Dp)) + workBuffer[Rp[i]] + 0x50A28BE6;
-					Ap = Ep; Ep = Dp; Dp = BitTools.RotateLeft(Cp, 10); Cp = Bp;
-					Bp = BitTools.RotateLeft(T, s) + Ap;
+					Ap = Ep; Ep = Dp; Dp = ((Cp << 10) | (Cp >> 22)); Cp = Bp;
+					Bp = ((T << s) | (T >> (32 - s))) + Ap;
 				}
 
 				// Round 2
 				for (i = 16; i < 32; i++) {
 					s = S[i];
 					T = A + ((B & C) | (~B & D)) + workBuffer[R[i]] + 0x5A827999;
-					A = E; E = D; D = BitTools.RotateLeft(C, 10); C = B;
-					B = BitTools.RotateLeft(T, s) + A;
+					A = E; E = D; D = ((C << 10) | (C >> 22)); C = B;
+					B = ((T << s) | (T >> (32 - s))) + A;
 
 					s = Sp[i];
 					T = Ap + ((Bp & Dp) | (Cp & ~Dp)) + workBuffer[Rp[i]] + 0x5C4DD124;
-					Ap = Ep; Ep = Dp; Dp = BitTools.RotateLeft(Cp, 10); Cp = Bp;
-					Bp = BitTools.RotateLeft(T, s) + Ap;
+					Ap = Ep; Ep = Dp; Dp = ((Cp << 10) | (Cp >> 22)); Cp = Bp;
+					Bp = ((T << s) | (T >> (32 - s))) + Ap;
 				}
 
 				// Round 3
 				for (i = 32; i < 48; i++) {
 					s = S[i];
 					T = A + ((B | ~C) ^ D) + workBuffer[R[i]] + 0x6ED9EBA1;
-					A = E; E = D; D = BitTools.RotateLeft(C, 10); C = B;
-					B = BitTools.RotateLeft(T, s) + A;
+					A = E; E = D; D = ((C << 10) | (C >> 22)); C = B;
+					B = ((T << s) | (T >> (32 - s))) + A;
 
 					s = Sp[i];
 					T = Ap + ((Bp | ~Cp) ^ Dp) + workBuffer[Rp[i]] + 0x6D703EF3;
-					Ap = Ep; Ep = Dp; Dp = BitTools.RotateLeft(Cp, 10); Cp = Bp;
-					Bp = BitTools.RotateLeft(T, s) + Ap;
+					Ap = Ep; Ep = Dp; Dp = ((Cp << 10) | (Cp >> 22)); Cp = Bp;
+					Bp = ((T << s) | (T >> (32 - s))) + Ap;
 				}
 
 				// Round 4
 				for (i = 48; i < 64; i++) {
 					s = S[i];
 					T = A + ((B & D) | (C & ~D)) + workBuffer[R[i]] + 0x8F1BBCDC;
-					A = E; E = D; D = BitTools.RotateLeft(C, 10); C = B;
-					B = BitTools.RotateLeft(T, s) + A;
+					A = E; E = D; D = ((C << 10) | (C >> 22)); C = B;
+					B = ((T << s) | (T >> (32 - s))) + A;
 
 					s = Sp[i];
 					T = Ap + ((Bp & Cp) | (~Bp & Dp)) + workBuffer[Rp[i]] + 0x7A6D76E9;
-					Ap = Ep; Ep = Dp; Dp = BitTools.RotateLeft(Cp, 10); Cp = Bp;
-					Bp = BitTools.RotateLeft(T, s) + Ap;
+					Ap = Ep; Ep = Dp; Dp = ((Cp << 10) | (Cp >> 22)); Cp = Bp;
+					Bp = ((T << s) | (T >> (32 - s))) + Ap;
 				}
 
 				// Round 5
 				for (i = 64; i < 80; i++) {
 					s = S[i];
 					T = A + (B ^ (C | ~D)) + workBuffer[R[i]] + 0xA953FD4E;
-					A = E; E = D; D = BitTools.RotateLeft(C, 10); C = B;
-					B = BitTools.RotateLeft(T, s) + A;
+					A = E; E = D; D = ((C << 10) | (C >> 22)); C = B;
+					B = ((T << s) | (T >> (32 - s))) + A;
 
 					s = Sp[i];
 					T = Ap + (Bp ^ Cp ^ Dp) + workBuffer[Rp[i]];
-					Ap = Ep; Ep = Dp; Dp = BitTools.RotateLeft(Cp, 10); Cp = Bp;
-					Bp = BitTools.RotateLeft(T, s) + Ap;
+					Ap = Ep; Ep = Dp; Dp = ((Cp << 10) | (Cp >> 22)); Cp = Bp;
+					Bp = ((T << s) | (T >> (32 - s))) + Ap;
 				}
 
 				T = accumulator[1] + C + Dp;

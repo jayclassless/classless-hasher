@@ -102,12 +102,12 @@ namespace Classless.Hasher {
 					s = S[i];
 					T = A + (B ^ C ^ D) + workBuffer[i];
 					A = D; D = C; C = B;
-					B = BitTools.RotateLeft(T, s);
+					B = (T << s) | (T >> (32 - s));
 
 					s = Sp[i];
 					T = Ap + ((Bp & Dp) | (Cp & ~Dp)) + workBuffer[Rp[i]] + 0x50A28BE6;
 					Ap = Dp; Dp = Cp; Cp = Bp;
-					Bp = BitTools.RotateLeft(T, s);
+					Bp = (T << s) | (T >> (32 - s));
 				}
 
 				// Round 2
@@ -115,12 +115,12 @@ namespace Classless.Hasher {
 					s = S[i];
 					T = A + ((B & C) | (~B & D)) + workBuffer[R[i]] + 0x5A827999;
 					A = D; D = C; C = B;
-					B = BitTools.RotateLeft(T, s);
+					B = (T << s) | (T >> (32 - s));
 
 					s = Sp[i];
 					T = Ap + ((Bp | ~Cp) ^ Dp) + workBuffer[Rp[i]] + 0x5C4DD124;
 					Ap = Dp; Dp = Cp; Cp = Bp;
-					Bp = BitTools.RotateLeft(T, s);
+					Bp = (T << s) | (T >> (32 - s));
 				}
 
 				// Round 3
@@ -128,12 +128,12 @@ namespace Classless.Hasher {
 					s = S[i];
 					T = A + ((B | ~C) ^ D) + workBuffer[R[i]] + 0x6ED9EBA1;
 					A = D; D = C; C = B;
-					B = BitTools.RotateLeft(T, s);
+					B = (T << s) | (T >> (32 - s));
 
 					s = Sp[i];
 					T = Ap + ((Bp & Cp) | (~Bp & Dp)) + workBuffer[Rp[i]] + 0x6D703EF3;
 					Ap = Dp; Dp = Cp; Cp = Bp;
-					Bp = BitTools.RotateLeft(T, s);
+					Bp = (T << s) | (T >> (32 - s));
 				}
 
 				// Round 4
@@ -141,12 +141,12 @@ namespace Classless.Hasher {
 					s = S[i];
 					T = A + ((B & D) | (C & ~D)) + workBuffer[R[i]] + 0x8F1BBCDC;
 					A = D; D = C; C = B;
-					B = BitTools.RotateLeft(T, s);
+					B = (T << s) | (T >> (32 - s));
 
 					s = Sp[i];
 					T = Ap + (Bp ^ Cp ^ Dp) + workBuffer[Rp[i]];
 					Ap = Dp; Dp = Cp; Cp = Bp;
-					Bp = BitTools.RotateLeft(T, s);
+					Bp = (T << s) | (T >> (32 - s));
 				}
 
 				T = accumulator[1] + C + Dp;

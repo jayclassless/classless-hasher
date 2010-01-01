@@ -75,7 +75,7 @@ namespace Classless.Hasher {
 		/// <returns>The final hash value.</returns>
 		override protected byte[] HashFinal() {
 			lock (syncLock) {
-				uint hash = BitTools.RotateLeft(length, 16);
+				uint hash = (length << 16) | (length >> 16);
 				uint[] temp;
 
 				crcHash.TransformFinalBlock(new byte[1], 0, 0);

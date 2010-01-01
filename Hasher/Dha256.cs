@@ -73,18 +73,18 @@ namespace Classless.Hasher {
 				}
 
 				for (i = 16; i < 64; i++) {
-					w[i] = (BitTools.RotateLeft(w[i - 15], 13) ^ BitTools.RotateLeft(w[i - 15], 27) ^ w[i - 15]) + (BitTools.RotateLeft(w[i - 1], 7) ^ BitTools.RotateLeft(w[i - 1], 22) ^ w[i - 1]) + w[i - 9] + w[i - 16];
+					w[i] = (((w[i - 15] << 13) | (w[i - 15] >> 19)) ^ ((w[i - 15] << 27) | (w[i - 15] >> 5)) ^ w[i - 15]) + (((w[i - 1] << 7) | (w[i - 1] >> 25)) ^ ((w[i - 1] << 22) | (w[i - 1] >> 10)) ^ w[i - 1]) + w[i - 9] + w[i - 16];
 				}
 
 				for (i = 0; i < 64; i++) {
-					t1 = (BitTools.RotateLeft(h, 19) ^ BitTools.RotateLeft(h, 29) ^ h) + (f & g ^ g & h ^ f & h) + e + K[i] + w[i];
-					t2 = (BitTools.RotateLeft(d, 11) ^ BitTools.RotateLeft(d, 25) ^ d) + (~b & d ^ b & c) + a + K[i] + w[i];
+					t1 = (((h << 19) | (h >> 13)) ^ ((h << 29) | (h >> 3)) ^ h) + (f & g ^ g & h ^ f & h) + e + K[i] + w[i];
+					t2 = (((d << 11) | (d >> 21)) ^ ((d << 25) | (d >> 7)) ^ d) + (~b & d ^ b & c) + a + K[i] + w[i];
 					a = b;
-					b = BitTools.RotateLeft(c, 17);
+					b = ((c << 17) | (c >> 15));
 					c = d;
 					d = t1;
 					e = f;
-					f = BitTools.RotateLeft(g, 2);
+					f = ((g << 2) | (g >> 30));
 					g = h;
 					h = t2;
 				}
