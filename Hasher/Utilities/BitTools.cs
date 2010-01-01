@@ -55,7 +55,7 @@ namespace Classless.Hasher.Utilities {
 		static public uint RotateRight(uint value, int shift) {
 			if (shift < 0) { return RotateLeft(value, Math.Abs(shift)); }
 			int s = shift % 32;
-			return (value >> shift) | (value << (32 - s));
+			return (value >> s) | (value << (32 - s));
 		}
 
 
@@ -68,7 +68,7 @@ namespace Classless.Hasher.Utilities {
 		static public ulong RotateRight(ulong value, int shift) {
 			if (shift < 0) { return RotateLeft(value, Math.Abs(shift)); }
 			int s = shift % 64;
-			return (value >> shift) | (value << (64 - s));
+			return (value >> s) | (value << (64 - s));
 		}
 
 
