@@ -98,7 +98,6 @@
     <Compile Include="TigerAlgorithmType.cs" />
     <Compile Include="TigerParameters.cs" />
     <Compile Include="TigerStandard.cs" />
-    <Compile Include="Utilities\BitTools.cs" />
     <Compile Include="HashAlgorithmCollection.cs" />
     <Compile Include="Methods\MultiHash.cs" />
     <Compile Include="Panama.cs" />
