@@ -177,7 +177,7 @@
 			</fileset>
 			<fileset basedir="${project::get-base-directory()}">
 				<include name="readme.txt" />
-				<include name="MPL-1.1.txt" />
+				<include name="license.txt" />
 			</fileset>
 		</zip>
 	</target>
