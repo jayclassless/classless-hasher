@@ -25,6 +25,7 @@
 #endregion
 
 using System;
+using Classless.Hasher.Utilities;
 
 namespace Classless.Hasher {
 	/// <summary>Represents the abstract class from which all implementations of the Classless.Hasher.BlockHashAlgorithm inherit.</summary>
@@ -142,5 +143,31 @@ namespace Classless.Hasher {
 		/// <param name="inputCount">How many bytes need to be processed.</param>
 		/// <returns>The results of the completed hash calculation.</returns>
 		abstract protected byte[] ProcessFinalBlock(byte[] inputBuffer, int inputOffset, int inputCount);
+
+
+		/// <summary>Pads the final block of data using the common method.</summary>
+		/// <param name="inputBuffer">The block of data to process.</param>
+		/// <param name="inputOffset">Where to start in the block.</param>
+		/// <param name="inputCount">How many bytes need to be processed.</param>
+		/// <param name="endianness">The endianness of the size value when written to the data block.</param>
+		protected void StandardDigestPadding(byte[] inputBuffer, int inputOffset, int inputCount, EndianType endianness) {
+			// Figure out how much padding is needed between the last byte and the size.
+			int paddingSize = (int)(((ulong)inputCount + (ulong)Count) % (ulong)BlockSize);
+			paddingSize = (BlockSize - 8) - paddingSize;
+			if (paddingSize < 1) { paddingSize += BlockSize; }
+
+			// Create the final, padded block(s).
+			byte[] temp = new byte[inputCount + paddingSize + 8];
+			Array.Copy(inputBuffer, inputOffset, temp, 0, inputCount);
+			temp[inputCount] = 0x80;
+			ulong size = ((ulong)Count + (ulong)inputCount) * 8;
+			Array.Copy(Conversions.ULongToByte(size, endianness), 0, temp, (temp.Length - 8), 8);
+
+			// Push the final block(s) into the calculation.
+			ProcessBlock(temp, 0);
+			if (temp.Length == (BlockSize * 2)) {
+				ProcessBlock(temp, BlockSize);
+			}
+		}
 	}
 }

@@ -218,28 +218,7 @@ namespace Classless.Hasher {
 		/// <returns>The results of the completed hash calculation.</returns>
 		override protected byte[] ProcessFinalBlock(byte[] inputBuffer, int inputOffset, int inputCount) {
 			lock (syncLock) {
-				byte[] temp;
-				int paddingSize;
-				ulong size;
-
-				// Figure out how much padding is needed between the last byte and the size.
-				paddingSize = (int)((inputCount + Count) % BlockSize);
-				paddingSize = (BlockSize - 8) - paddingSize;
-				if (paddingSize < 1) { paddingSize += BlockSize; }
-
-				// Create the final, padded block(s).
-				temp = new byte[inputCount + paddingSize + 8];
-				Array.Copy(inputBuffer, inputOffset, temp, 0, inputCount);
-				temp[inputCount] = 0x80;
-				size = ((ulong)Count + (ulong)inputCount) * 8;
-				Array.Copy(Conversions.ULongToByte(size), 0, temp, (inputCount + paddingSize), 8);
-
-				// Push the final block(s) into the calculation.
-				ProcessBlock(temp, 0);
-				if (temp.Length == (BlockSize * 2)) {
-					ProcessBlock(temp, BlockSize);
-				}
-
+				StandardDigestPadding(inputBuffer, inputOffset, inputCount, EndianType.LittleEndian);
 				return Conversions.UIntToByte(accumulator);
 			}
 		}
