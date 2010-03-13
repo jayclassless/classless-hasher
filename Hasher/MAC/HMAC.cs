@@ -169,10 +169,6 @@ namespace Classless.Hasher.Mac {
 		/// <returns>The computed hash code.</returns>
 		override protected byte[] HashFinal() {
 			lock (syncLock) {
-				if (!isHashing) {
-					HashAlgorithm.TransformBlock(innerPadding, 0, innerPadding.Length, null, 0);
-					isHashing = true;
-				}
 				HashAlgorithm.TransformFinalBlock(new byte[0], 0, 0);
 				byte[] data = HashAlgorithm.Hash;
 

@@ -71,6 +71,7 @@ namespace Classless.Hasher.Tests {
 			new object[] { "Blah" },
 			new object[] { "System.Int32" },
 			new object[] { "Classless.Hasher.Something" },
+			new object[] { "Classless.Hasher.ChangedEventArgs" },
 			new object[] { "System.Collections.ArrayList" },
 		};
 
