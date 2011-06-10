@@ -181,7 +181,7 @@ namespace Classless.Hasher.SpeedTests {
 			Console.Out.WriteLine("{0} Version {1}", current.GetName().Name, current.GetName().Version);
 			AssemblyCopyrightAttribute attr = (AssemblyCopyrightAttribute)AssemblyCopyrightAttribute.GetCustomAttribute(current, typeof(AssemblyCopyrightAttribute));
 			Console.Out.WriteLine(attr.Copyright);
-			Console.Out.WriteLine("http://code.google.com/p/classless-hasher/");
+			Console.Out.WriteLine("https://bitbucket.org/jayclassless/classless-hasher/");
 
 			Console.Out.WriteLine();
 			Console.Out.WriteLine("Runtime Environment:");

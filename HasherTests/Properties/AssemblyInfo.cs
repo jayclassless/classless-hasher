@@ -34,7 +34,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Classless.net")]
 [assembly: AssemblyProduct("Hasher")]
-[assembly: AssemblyCopyright("(c)2004-2009 Classless.net")]
+[assembly: AssemblyCopyright("(c)2004-2011 Classless.net")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

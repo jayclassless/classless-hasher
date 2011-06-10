@@ -20,6 +20,7 @@
  *
  * Contributor(s):
  *		Jason Simeone (jay@classless.net)
+ *		Bas Hamer (bas@bashamer.com)
  * 
  * ***** END LICENSE BLOCK ***** */
 #endregion
@@ -251,7 +252,7 @@ namespace Classless.Hasher.Utilities {
 				throw new ArgumentException(Hasher.Properties.Resources.lengthOffsetOutOfBounds);
 			}
 			if (length > (int.MaxValue / 2)) {
-				throw new ArgumentOutOfRangeException("length", length, Properties.Resources.lengthWayTooLong);
+				throw new ArgumentOutOfRangeException("length", Properties.Resources.lengthWayTooLong);
 			}
 
 			byte[] temp = new byte[length * 2];
@@ -316,7 +317,7 @@ namespace Classless.Hasher.Utilities {
 				throw new ArgumentException(Hasher.Properties.Resources.lengthOffsetOutOfBounds);
 			}
 			if (length > (int.MaxValue / 4)) {
-				throw new ArgumentOutOfRangeException("length", length, Properties.Resources.lengthWayTooLong);
+				throw new ArgumentOutOfRangeException("length", Properties.Resources.lengthWayTooLong);
 			}
 
 			byte[] temp = new byte[length * 4];
@@ -381,7 +382,7 @@ namespace Classless.Hasher.Utilities {
 				throw new ArgumentException(Hasher.Properties.Resources.lengthOffsetOutOfBounds);
 			}
 			if (length > (int.MaxValue / 8)) {
-				throw new ArgumentOutOfRangeException("length", length, Properties.Resources.lengthWayTooLong);
+				throw new ArgumentOutOfRangeException("length", Properties.Resources.lengthWayTooLong);
 			}
 
 			byte[] temp = new byte[length * 8];
@@ -420,7 +421,7 @@ namespace Classless.Hasher.Utilities {
 				throw new ArgumentException(Hasher.Properties.Resources.lengthOffsetOutOfBounds);
 			}
 			if (length > (int.MaxValue / 2)) {
-				throw new ArgumentOutOfRangeException("length", length, Properties.Resources.lengthWayTooLong);
+				throw new ArgumentOutOfRangeException("length", Properties.Resources.lengthWayTooLong);
 			}
 
 			System.Text.StringBuilder temp = new System.Text.StringBuilder(2 * length);

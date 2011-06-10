@@ -20,6 +20,7 @@
  *
  * Contributor(s):
  *		Jason Simeone (jay@classless.net)
+ *		Bas Hamer (bas@bashamer.com)
  * 
  * ***** END LICENSE BLOCK ***** */
 #endregion
@@ -69,11 +70,16 @@ namespace Classless.Hasher {
 			}
 
 			try {
-				return (System.Security.Cryptography.HashAlgorithm)Activator.CreateInstance(thisAssembly, normalizedName).Unwrap();
+				return (System.Security.Cryptography.HashAlgorithm)Activator.CreateInstance(Type.GetType(normalizedName, true));
 			} catch (TypeLoadException) {
 				try {
+#if SILVERLIGHT
+					// Silverlight doesn't have a Create(string) method, so passing it up won't get us anywhere.
+					return null;
+#else
 					// It's not one of ours, let the host framework figure it out.
 					return System.Security.Cryptography.HashAlgorithm.Create(hashName);
+#endif
 				} catch (InvalidCastException) {
 					return null;
 				}

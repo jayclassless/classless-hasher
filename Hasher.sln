@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hasher", "Hasher\Hasher.csproj", "{692B115B-C471-4A36-B7DB-0876ADA83857}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HasherTests", "HasherTests\HasherTests.csproj", "{14959694-00A4-435B-B0F1-A1F08C7871D3}"
@@ -10,21 +10,35 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		DebugSilverlight|Any CPU = DebugSilverlight|Any CPU
 		Release|Any CPU = Release|Any CPU
+		ReleaseSilverlight|Any CPU = ReleaseSilverlight|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{692B115B-C471-4A36-B7DB-0876ADA83857}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{692B115B-C471-4A36-B7DB-0876ADA83857}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{692B115B-C471-4A36-B7DB-0876ADA83857}.DebugSilverlight|Any CPU.ActiveCfg = DebugSilverlight|Any CPU
+		{692B115B-C471-4A36-B7DB-0876ADA83857}.DebugSilverlight|Any CPU.Build.0 = DebugSilverlight|Any CPU
 		{692B115B-C471-4A36-B7DB-0876ADA83857}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{692B115B-C471-4A36-B7DB-0876ADA83857}.Release|Any CPU.Build.0 = Release|Any CPU
+		{692B115B-C471-4A36-B7DB-0876ADA83857}.ReleaseSilverlight|Any CPU.ActiveCfg = ReleaseSilverlight|Any CPU
+		{692B115B-C471-4A36-B7DB-0876ADA83857}.ReleaseSilverlight|Any CPU.Build.0 = ReleaseSilverlight|Any CPU
 		{14959694-00A4-435B-B0F1-A1F08C7871D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{14959694-00A4-435B-B0F1-A1F08C7871D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14959694-00A4-435B-B0F1-A1F08C7871D3}.DebugSilverlight|Any CPU.ActiveCfg = DebugSilverlight|Any CPU
+		{14959694-00A4-435B-B0F1-A1F08C7871D3}.DebugSilverlight|Any CPU.Build.0 = DebugSilverlight|Any CPU
 		{14959694-00A4-435B-B0F1-A1F08C7871D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14959694-00A4-435B-B0F1-A1F08C7871D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14959694-00A4-435B-B0F1-A1F08C7871D3}.ReleaseSilverlight|Any CPU.ActiveCfg = ReleaseSilverlight|Any CPU
+		{14959694-00A4-435B-B0F1-A1F08C7871D3}.ReleaseSilverlight|Any CPU.Build.0 = ReleaseSilverlight|Any CPU
 		{A42BD05C-6446-4CC8-81C6-10B21CA9D8E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A42BD05C-6446-4CC8-81C6-10B21CA9D8E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A42BD05C-6446-4CC8-81C6-10B21CA9D8E2}.DebugSilverlight|Any CPU.ActiveCfg = DebugSilverlight|Any CPU
+		{A42BD05C-6446-4CC8-81C6-10B21CA9D8E2}.DebugSilverlight|Any CPU.Build.0 = DebugSilverlight|Any CPU
 		{A42BD05C-6446-4CC8-81C6-10B21CA9D8E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A42BD05C-6446-4CC8-81C6-10B21CA9D8E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A42BD05C-6446-4CC8-81C6-10B21CA9D8E2}.ReleaseSilverlight|Any CPU.ActiveCfg = ReleaseSilverlight|Any CPU
+		{A42BD05C-6446-4CC8-81C6-10B21CA9D8E2}.ReleaseSilverlight|Any CPU.Build.0 = ReleaseSilverlight|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

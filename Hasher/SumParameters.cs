@@ -20,6 +20,7 @@
  *
  * Contributor(s):
  *		Jason Simeone (jay@classless.net)
+ *		Bas Hamer (bas@bashamer.com)
  * 
  * ***** END LICENSE BLOCK ***** */
 #endregion
@@ -38,7 +39,7 @@ namespace Classless.Hasher {
 			get { return order; }
 			set {
 				if (((value % 8) != 0) || (value < 8) || (value > 64)) {
-					throw new ArgumentOutOfRangeException("value", value, Properties.Resources.invalidSumOrder);
+					throw new ArgumentOutOfRangeException("value", Properties.Resources.invalidSumOrder);
 				} else {
 					order = value;
 				}

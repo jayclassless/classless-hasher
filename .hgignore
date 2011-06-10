@@ -1,0 +1,4 @@
+syntax: glob
+Hasher.suo
+obj
+bin

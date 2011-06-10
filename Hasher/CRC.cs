@@ -20,19 +20,20 @@
  *
  * Contributor(s):
  *		Jason Simeone (jay@classless.net)
+ *		Bas Hamer (bas@bashamer.com)
  * 
  * ***** END LICENSE BLOCK ***** */
 #endregion
 
 using System;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace Classless.Hasher {
 	/// <summary>Computes the CRC hash for the input data using the managed library.</summary>
 	public class Crc : HashAlgorithm, IParametrizedHashAlgorithm {
 		private readonly object syncLock = new object();
 
-		static private Hashtable lookupTables;
+		static private Dictionary<CrcParameters, long[]> lookupTables;
 
 		private CrcParameters parameters;
 		private long[] lookup;
@@ -77,14 +78,14 @@ namespace Classless.Hasher {
 
 		// Pre-build the more popular lookup tables.
 		static Crc() {
-			lookupTables = new Hashtable();
+			lookupTables = new Dictionary<CrcParameters, long[]>();
 			BuildLookup(CrcParameters.GetParameters(CrcStandard.Crc32Bit));
 		}
 
 
 		/// <summary>Build the CRC lookup table for a given polynomial.</summary>
 		static private void BuildLookup(CrcParameters param) {
-			if (lookupTables.Contains(param)) {
+			if (lookupTables.ContainsKey(param)) {
 				// No sense in creating the table twice.
 				return;
 			}
