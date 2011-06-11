@@ -31,7 +31,11 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Hasher")]
+#if SILVERLIGHT
+[assembly: AssemblyDescription("Hash and Checksum Algorithm Library for Silverlight")]
+#else
 [assembly: AssemblyDescription("Hash and Checksum Algorithm Library")]
+#endif
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Classless.net")]
 [assembly: AssemblyProduct("Hasher")]

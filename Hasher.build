@@ -22,13 +22,20 @@
 		<property name="build.warnaserror" value="true" />
 		<property name="build.optimize" value="true" />
 		<property name="build.dir" value="${project::get-base-directory()}/build/${build.config}/${nant.settings.currentframework}" />
+		<if test="${nant.settings.currentframework=='silverlight-4.0'}">
+			<echo message="Silverlight identified." />
+			<property name="build.defines" value="SILVERLIGHT" />
+		</if>
 	</target>
 	<target name="debug" description="Perform a 'debug' build.">
 		<echo message="Preparing for a Debug build." />
 		<property name="build.debug" value="true" />
 		<property name="build.warnaserror" value="false" />
 		<property name="build.optimize" value="false" />
-		<property name="build.defines" value="DEBUG" />
+		<if test="${nant.settings.currentframework=='silverlight-4.0'}">
+			<echo message="Silverlight identified." />
+			<property name="build.defines" value="DEBUG;SILVERLIGHT" />
+		</if>
 		<property name="build.dir" value="${project::get-base-directory()}/build/${build.config}/${nant.settings.currentframework}" />
 	</target>
 
@@ -188,6 +195,9 @@
 		<zip zipfile="${project::get-base-directory()}/build/${project::get-name()}.${project.version}-src.zip" ziplevel="9">
 			<fileset basedir="${project::get-base-directory()}">
 				<include name="**/*" />
+				<exclude name=".hg/**" />
+				<exclude name=".hgignore" />
+				<exclude name=".hgtags" />
 				<exclude name="build/**" />
 				<exclude name="doc/**" />
 				<exclude name="**/bin/**" />
